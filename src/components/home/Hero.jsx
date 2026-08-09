@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowRight, FaChevronDown } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaChevronDown,
+} from "react-icons/fa";
 
 import { heroSlides } from "../../data/heroData";
 import PrimaryButton from "../common/PrimaryButton";
@@ -16,11 +19,61 @@ export default function Hero() {
     return () => clearInterval(slider);
   }, []);
 
+  const handleEnquiry = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const email = form.email.value.trim();
+    const service = form.service.value;
+    const message = form.message.value.trim();
+
+    if (!name || !phone || !email || !service || !message) {
+      alert("Please fill in all the fields.");
+      return;
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    const whatsappNumber = "917666984626";
+
+    const whatsappMessage = `
+Hello Sarathi NX,
+
+I would like to make a travel enquiry.
+
+Name: ${name}
+Mobile: ${phone}
+Email: ${email}
+Interested In: ${service}
+
+Message:
+${message}
+
+Thank you.
+    `.trim();
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
+
+    form.reset();
+  };
+
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen overflow-hidden"
+    >
 
       {/* Background Slider */}
-
       <AnimatePresence mode="wait">
 
         <motion.div
@@ -34,158 +87,225 @@ export default function Hero() {
 
           <img
             src={heroSlides[current].image}
-            alt=""
+            alt="Sarathi NX International Travel"
             className="w-full h-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-black/60" />
 
         </motion.div>
 
       </AnimatePresence>
 
-      {/* Content */}
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen max-w-7xl mx-auto px-6 pt-32 pb-24 flex items-center">
 
-      <div className="relative z-10 h-full flex items-center">
+        <div className="w-full grid lg:grid-cols-[1fr_380px] gap-12 items-center">
 
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-         <div>
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: .2 }}
-            className="uppercase tracking-[4px] text-[#14B8A6] font-semibold"
-          >
-            {heroSlides[current].subtitle}
-          </motion.p>
+          {/* LEFT CONTENT */}
+          <div>
 
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: .4 }}
-            className="text-5xl md:text-7xl font-bold text-white mt-5 leading-tight max-w-4xl"
-          >
-            {heroSlides[current].title}
-          </motion.h1>
+            <motion.span
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-block text-[#5EEAD4] font-semibold uppercase tracking-[3px] text-sm"
+            >
+              International Exhibition & Business Travel
+            </motion.span>
 
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: .6 }}
-            className="text-gray-300 text-lg mt-6 max-w-2xl leading-8"
-          >
-            {heroSlides[current].description}
-          </motion.p>
+            <motion.h1
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-white mt-5 leading-tight max-w-4xl"
+            >
+              {heroSlides[current].title}
+            </motion.h1>
 
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: .8 }}
-            className="flex flex-wrap gap-5 mt-10"
-          >
+            <motion.p
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="text-gray-200 text-base md:text-lg mt-6 max-w-2xl leading-8"
+            >
+              {heroSlides[current].description}
+            </motion.p>
 
-            <PrimaryButton>
-              Get Started
-            </PrimaryButton>
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="text-[#5EEAD4] font-medium mt-5"
+            >
+              We Plan. You Travel. We Care.
+            </motion.p>
 
-            <button className="border-2 border-white px-8 py-4 rounded-full text-white font-semibold hover:bg-white hover:text-[#0F766E] transition">
+            {/* Buttons */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="flex flex-wrap gap-4 mt-8"
+            >
 
-              Contact Us
-              <FaArrowRight className="inline ml-2"/>
+              <a
+                href="#exhibitions"
+                className="inline-flex items-center gap-2 bg-[#0F766E] hover:bg-[#115E59] text-white px-7 py-4 rounded-full font-semibold transition"
+              >
+                Explore Exhibitions
+                <FaArrowRight className="text-sm" />
+              </a>
 
-            </button>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 border-2 border-white px-7 py-4 rounded-full text-white font-semibold hover:bg-white hover:text-[#0F766E] transition"
+              >
+                Plan Your Trip
+                <FaArrowRight className="text-sm" />
+              </a>
 
-          </motion.div>
+            </motion.div>
+
           </div>
 
-          {/* right side div */}
-          <div className="hidden lg:block">
+          {/* RIGHT - QUICK ENQUIRY */}
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
+            className="hidden lg:block"
+          >
 
-  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 shadow-2xl">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6">
 
-    <h2 className="text-3xl font-bold text-white mb-6">
-      Quick Enquiry
-    </h2>
+              <div className="mb-5">
 
-    <form className="space-y-4">
+                <span className="text-[#0F766E] text-sm font-semibold uppercase tracking-wider">
+                  Quick Enquiry
+                </span>
 
-      <input
-        type="text"
-        placeholder="Your Name"
-        className="w-full px-4 py-3 rounded-xl bg-white text-gray-700 outline-none"
-      />
+                <h2 className="text-2xl font-bold text-gray-800 mt-1">
+                  Plan Your Journey
+                </h2>
 
-      <input
-        type="tel"
-        placeholder="Phone Number"
-        className="w-full px-4 py-3 rounded-xl bg-white text-gray-700 outline-none"
-      />
+                <p className="text-gray-500 text-sm mt-2">
+                  Tell us your requirements and our team will assist you.
+                </p>
 
-      <input
-        type="email"
-        placeholder="Email Address"
-        className="w-full px-4 py-3 rounded-xl bg-white text-gray-700 outline-none"
-      />
+              </div>
 
-      <select
-        className="w-full px-4 py-3 rounded-xl bg-white text-gray-700 outline-none"
-      >
-        <option>Select Service</option>
-        <option>Corporate Travel</option>
-        <option>Visa Assistance</option>
-        <option>Hotel Booking</option>
-        <option>International Exhibitions</option>
-      </select>
+              <form
+                onSubmit={handleEnquiry}
+                className="space-y-3"
+              >
 
-      <textarea
-        rows="4"
-        placeholder="Message"
-        className="w-full px-4 py-3 rounded-xl bg-white text-gray-700 outline-none"
-      ></textarea>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                />
 
-      <button
-        className="w-full bg-[#0F766E] hover:bg-[#115E59] text-white py-4 rounded-xl font-semibold transition"
-      >
-        Send Enquiry
-      </button>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  maxLength="10"
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                />
 
-    </form>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                />
 
-  </div>
+                <select
+                  name="service"
+                  defaultValue=""
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                >
+                  <option value="" disabled>
+                    Select Service
+                  </option>
 
-</div>
+                  <option value="International Exhibition Travel">
+                    International Exhibition Travel
+                  </option>
+
+                  <option value="Corporate Travel">
+                    Corporate Travel
+                  </option>
+
+                  <option value="Business Travel">
+                    Business Travel
+                  </option>
+
+                  <option value="Visa Assistance">
+                    Visa Assistance
+                  </option>
+
+                  <option value="Hotel Booking">
+                    Hotel Booking
+                  </option>
+
+                  <option value="Group Tours">
+                    Group Tours
+                  </option>
+                </select>
+
+                <textarea
+                  name="message"
+                  rows="3"
+                  placeholder="Message"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none resize-none focus:ring-2 focus:ring-[#0F766E]"
+                />
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#0F766E] hover:bg-[#115E59] text-white py-3.5 rounded-xl font-semibold transition"
+                >
+                  Send Enquiry
+                </button>
+
+              </form>
+
+            </div>
+
+          </motion.div>
 
         </div>
 
       </div>
 
       {/* Slider Dots */}
-
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
 
         {heroSlides.map((_, index) => (
-
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full transition ${
+            aria-label={`Go to slide ${index + 1}`}
+            className={`h-3 rounded-full transition-all ${
               current === index
                 ? "bg-[#14B8A6] w-8"
-                : "bg-white/50"
+                : "bg-white/50 w-3"
             }`}
           />
-
         ))}
 
       </div>
 
       {/* Scroll Down */}
-
-      <div className="absolute bottom-6 right-8 text-white animate-bounce z-20">
-
-        <FaChevronDown size={22}/>
-
-      </div>
+      <a
+        href="#about"
+        aria-label="Scroll to About section"
+        className="absolute bottom-6 right-8 text-white animate-bounce z-20"
+      >
+        <FaChevronDown size={22} />
+      </a>
 
     </section>
   );

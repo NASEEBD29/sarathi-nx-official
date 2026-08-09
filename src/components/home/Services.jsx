@@ -1,4 +1,5 @@
 import SectionHeading from "../common/SectionHeading";
+import Reveal from "../common/Reveal";
 import {
   FaPlaneDeparture,
   FaBuilding,
@@ -35,10 +36,9 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-24 bg-[#F8FAFC]" id="services">
+    <section id="services" className="py-24 bg-[#F8FAFC]" id="services">
       <div className="max-w-7xl mx-auto px-6">
 
-        import SectionHeading from "../common/SectionHeading";
 
 <SectionHeading
   subtitle="Our Services"
@@ -49,27 +49,28 @@ export default function Services() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-8 shadow-md hover:-translate-y-3 hover:shadow-2xl transition duration-300"
-            >
-              <div className="w-16 h-16 rounded-full bg-[#0F766E] text-white flex items-center justify-center text-2xl mb-6">
-                {service.icon}
-              </div>
+  <Reveal key={index} delay={index * 0.15}>
+    <div className="bg-white rounded-2xl p-8 shadow-md hover:-translate-y-3 hover:shadow-2xl transition duration-300 h-full">
 
-              <h3 className="text-2xl font-semibold mb-4">
-                {service.title}
-              </h3>
+      <div className="w-16 h-16 rounded-full bg-[#0F766E] text-white flex items-center justify-center text-2xl mb-6">
+        {service.icon}
+      </div>
 
-              <p className="text-gray-600 leading-7">
-                {service.description}
-              </p>
+      <h3 className="text-2xl font-semibold mb-4">
+        {service.title}
+      </h3>
 
-              <button className="mt-6 text-[#0F766E] font-semibold hover:underline">
-                Read More →
-              </button>
-            </div>
-          ))}
+      <p className="text-gray-600 leading-7">
+        {service.description}
+      </p>
+
+      <button className="mt-6 text-[#0F766E] font-semibold hover:underline">
+        Read More →
+      </button>
+
+    </div>
+  </Reveal>
+))}
 
         </div>
 

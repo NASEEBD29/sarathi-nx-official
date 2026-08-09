@@ -13,6 +13,9 @@ import Testimonials from "../components/home/Testimonials";
 import Contact from "../components/home/Contact";
 import Footer from "../components/layout/Footer";
 import WhatsAppButton from "../components/common/WhatsAppButton";
+import BackToTop from "../components/common/BackToTop";
+import InternationalExhibitions from "../components/home/InternationalExhibitions";
+import UpcomingEvents from "../components/home/UpcomingEvents";
 
 export default function Home() {
   return (
@@ -23,15 +26,19 @@ export default function Home() {
       {/* <TrustedCompanies /> */}
       <About />
       <Services/>
+      <InternationalExhibitions />
+      <Industries/>
       <WhyChooseUs/>
       <StatsSection />
-      <UpcomingExhibitions/>
-      <Industries/>
+      <UpcomingEvents/>
+      {/* <UpcomingExhibitions/> */}
+      {/* <Industries/> */}
       <Gallery/>
       <Testimonials/>
       <Contact/>
-      <Footer/>
-      <WhatsAppButton/>
+      {/* <Footer/> */}
+      {/* <WhatsAppButton/> */}
+      <BackToTop/>  
     </>
   );
 }
