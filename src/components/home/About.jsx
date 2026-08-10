@@ -1,90 +1,130 @@
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import Reveal from "../common/Reveal";
 
 export default function About() {
+  const features = [
+    "International Exhibition Travel",
+    "Business & Corporate Travel",
+    "MICE & Group Tours",
+    "Visa & Travel Assistance",
+  ];
+
   return (
-    <section id="about" className="bg-white py-24" id="about">
+    <section
+      id="about"
+      className="py-24 bg-white overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-          {/* Left Image */}
-
+          {/* ================= LEFT IMAGE ================= */}
           <Reveal direction="left">
-  <div>
-    <img
-      src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900"
-      alt="About Sarathi NX"
-      className="rounded-2xl shadow-xl w-full h-[500px] object-cover"
-    />
-  </div>
-</Reveal>
 
-          {/* Right Content */}
-          <Reveal direction="right">
+            <div className="relative">
 
+              <img
+                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1000"
+                alt="Sarathi NX Business Travel"
+                className="w-full h-[500px] object-cover rounded-3xl shadow-xl"
+              />
+
+              {/* Experience Card */}
+              <div className="absolute -bottom-8 -right-5 md:right-8 bg-[#003DA5] text-white rounded-2xl px-7 py-6 shadow-2xl">
+
+                <p className="text-4xl font-bold">
+                  2012
+                </p>
+
+                <p className="text-blue-100 mt-1">
+                  Travel Legacy
+                </p>
+
+              </div>
+
+            </div>
+
+          </Reveal>
+
+
+          {/* ================= RIGHT CONTENT ================= */}
           <div>
 
-            <Reveal delay={0.1}>
-  <span className="text-[#0F766E] font-semibold uppercase tracking-widest">
-    About Sarathi NX
-  </span>
-</Reveal>
+            <Reveal direction="right">
 
-<Reveal delay={0.2}>
-  <h2 className="text-5xl font-bold mt-4 text-gray-800 leading-tight">
-    Your Trusted Partner For Business Travel & Exhibitions
-  </h2>
-</Reveal>
+              <span className="text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
+                Who We Are
+              </span>
 
-            <Reveal delay={0.3}>
-  <p className="mt-6 text-gray-600 leading-8">
-    Sarathi NX provides end-to-end travel solutions for corporate
-    clients, exhibitions, business delegations, hotel bookings,
-    visa assistance and international travel planning.
-  </p>
-</Reveal>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4 leading-tight">
+                Your Trusted Partner for Business & International Travel
+              </h2>
 
-           <div className="grid grid-cols-2 gap-4 mt-8">
+              <p className="mt-6 text-gray-600 leading-8">
+                Sarathi NX Pvt. Ltd. is a professionally managed travel
+                company dedicated to delivering seamless business and
+                leisure travel experiences.
+              </p>
 
-  <Reveal delay={0.4}>
-    <div className="flex items-center gap-3">
-      <FaCheckCircle className="text-[#0F766E]" />
-      Corporate Travel
-    </div>
-  </Reveal>
+              <p className="mt-5 text-gray-600 leading-8">
+                Built on a travel legacy dating back to 2012 and officially
+                incorporated on 1st March 2020, we combine years of industry
+                expertise with a commitment to excellence.
+              </p>
 
-  <Reveal delay={0.5}>
-    <div className="flex items-center gap-3">
-      <FaCheckCircle className="text-[#0F766E]" />
-      Visa Assistance
-    </div>
-  </Reveal>
+              <p className="mt-5 text-gray-600 leading-8">
+                We specialize in International Exhibition Travel, Business
+                Travel, Corporate Travel, MICE, Group Tours and Global
+                Tourism, providing comprehensive travel solutions tailored
+                to the unique needs of businesses and individual travelers.
+              </p>
 
-  <Reveal delay={0.6}>
-    <div className="flex items-center gap-3">
-      <FaCheckCircle className="text-[#0F766E]" />
-      Exhibition Tours
-    </div>
-  </Reveal>
+            </Reveal>
 
-  <Reveal delay={0.7}>
-    <div className="flex items-center gap-3">
-      <FaCheckCircle className="text-[#0F766E]" />
-      Hotel Booking
-    </div>
-  </Reveal>
 
-</div>
+            {/* ================= FEATURES ================= */}
+            <div className="grid sm:grid-cols-2 gap-4 mt-8">
 
-           <Reveal delay={0.8}>
-  <button className="mt-10 bg-[#0F766E] hover:bg-[#115E59] text-white px-8 py-4 rounded-full transition">
-    Read More
-  </button>
-</Reveal>
+              {features.map((feature, index) => (
+
+                <Reveal
+                  key={feature}
+                  delay={0.1 * index}
+                >
+
+                  <div className="flex items-center gap-3">
+
+                    <FaCheckCircle className="text-[#003DA5] shrink-0" />
+
+                    <span className="text-gray-700 font-medium">
+                      {feature}
+                    </span>
+
+                  </div>
+
+                </Reveal>
+
+              ))}
+
+            </div>
+
+
+            {/* ================= BUTTON ================= */}
+            <Reveal delay={0.5}>
+
+              <a
+                href="/sarathi-nx-official/about"
+                className="inline-flex items-center gap-2 mt-10 bg-[#0057B8] hover:bg-[#003DA5] text-white px-7 py-4 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              >
+                Discover More
+
+                <FaArrowRight className="text-sm" />
+
+              </a>
+
+            </Reveal>
 
           </div>
-          </Reveal>
 
         </div>
 

@@ -1,65 +1,22 @@
-// import SectionHeading from "../common/SectionHeading";
-// import { industries } from "../../data/industries";
-
-// export default function Industries() {
-//   return (
-//     <section className="py-24 bg-white">
-//       <div className="max-w-7xl mx-auto px-6">
-
-//         <SectionHeading
-//           subtitle="Industries"
-//           title="Industries We Serve"
-//           description="We provide customized travel and exhibition solutions across multiple industries."
-//         />
-
-//         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-
-//           {industries.map((item) => {
-//             const Icon = item.icon;
-
-//             return (
-//               <div
-//                 key={item.id}
-//                 className="group bg-[#F8FAFC] rounded-2xl p-8 text-center hover:bg-[#0F766E] transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl cursor-pointer"
-//               >
-//                 <div className="w-16 h-16 mx-auto rounded-full bg-white flex items-center justify-center text-[#0F766E] group-hover:bg-white">
-//                   <Icon className="text-3xl" />
-//                 </div>
-
-//                 <h3 className="mt-5 font-semibold text-gray-800 group-hover:text-white text-lg">
-//                   {item.title}
-//                 </h3>
-//               </div>
-//             );
-//           })}
-
-//         </div>
-
-//       </div>
-//     </section>
-//   );
-// }
-
-
 import {
   FaHeartbeat,
-  FaUtensils,
+  FaSeedling,
   FaCar,
-  FaPaintBrush,
-  FaBuilding,
+  FaSpa,
+  FaHardHat,
   FaIndustry,
   FaMicrochip,
   FaLaptopCode,
-  FaSolarPanel,
+  FaBolt,
   FaCogs,
   FaBoxOpen,
   FaTshirt,
   FaCouch,
   FaGem,
-  FaPlane,
+  FaHotel,
   FaTruck,
   FaLeaf,
-  FaRecycle,
+  FaFlask,
   FaGraduationCap,
   FaGlasses,
 } from "react-icons/fa";
@@ -68,139 +25,170 @@ import Reveal from "../common/Reveal";
 
 const industries = [
   {
-    icon: FaHeartbeat,
+    icon: <FaHeartbeat />,
     title: "Medical, Healthcare & Pharmaceuticals",
   },
   {
-    icon: FaUtensils,
+    icon: <FaSeedling />,
     title: "Agriculture, Food & Beverage",
   },
   {
-    icon: FaCar,
+    icon: <FaCar />,
     title: "Automotive & Mobility",
   },
   {
-    icon: FaPaintBrush,
+    icon: <FaSpa />,
     title: "Beauty, Cosmetics & Personal Care",
   },
   {
-    icon: FaBuilding,
+    icon: <FaHardHat />,
     title: "Construction, Building & Architecture",
   },
   {
-    icon: FaIndustry,
+    icon: <FaIndustry />,
     title: "Industrial Manufacturing & Machinery",
   },
   {
-    icon: FaMicrochip,
+    icon: <FaMicrochip />,
     title: "Electronics, Electrical & Semiconductors",
   },
   {
-    icon: FaLaptopCode,
+    icon: <FaLaptopCode />,
     title: "Information Technology & AI",
   },
   {
-    icon: FaSolarPanel,
+    icon: <FaBolt />,
     title: "Energy & Renewable Energy",
   },
   {
-    icon: FaCogs,
+    icon: <FaCogs />,
     title: "Metal, Steel & Engineering",
   },
   {
-    icon: FaBoxOpen,
+    icon: <FaBoxOpen />,
     title: "Packaging, Printing & Publishing",
   },
   {
-    icon: FaTshirt,
+    icon: <FaTshirt />,
     title: "Textiles, Apparel & Fashion",
   },
   {
-    icon: FaCouch,
+    icon: <FaCouch />,
     title: "Furniture, Interior & Home Living",
   },
   {
-    icon: FaGem,
+    icon: <FaGem />,
     title: "Jewellery, Watches & Gifts",
   },
   {
-    icon: FaPlane,
+    icon: <FaHotel />,
     title: "Tourism, Hospitality & Leisure",
   },
   {
-    icon: FaTruck,
+    icon: <FaTruck />,
     title: "Logistics & Transportation",
   },
   {
-    icon: FaLeaf,
+    icon: <FaLeaf />,
     title: "Environment & Green Technology",
   },
   {
-    icon: FaRecycle,
+    icon: <FaFlask />,
     title: "Plastics, Rubber & Materials",
   },
   {
-    icon: FaGraduationCap,
+    icon: <FaGraduationCap />,
     title: "Education, Licensing & Business Services",
   },
   {
-    icon: FaGlasses,
+    icon: <FaGlasses />,
     title: "Optics & Precision Technology",
   },
 ];
 
 export default function Industries() {
   return (
-    <section  id="industries" className="py-20 bg-white">
+    <section
+      id="industries"
+      className="py-24 bg-[#F8FBFF]"
+    >
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Heading */}
+        {/* ================= HEADING ================= */}
+
         <Reveal>
           <div className="text-center mb-14">
 
-            <span className="text-[#0F766E] uppercase tracking-[4px] font-semibold">
+            <span className="text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
               Industries We Serve
             </span>
 
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 text-gray-800">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4">
               Travel Solutions Across
-              <span className="text-[#0F766E]"> Global Industries</span>
+              <span className="block text-[#003DA5] mt-2">
+                Global Industries
+              </span>
             </h2>
 
             <p className="mt-5 text-gray-600 max-w-3xl mx-auto leading-7">
-              From healthcare and manufacturing to technology and tourism,
-              we support professionals and businesses across diverse
-              industries with seamless international travel solutions.
+              From healthcare and technology to manufacturing, fashion
+              and renewable energy, we support professionals and
+              businesses attending exhibitions worldwide.
             </p>
 
           </div>
         </Reveal>
 
-        {/* Industries Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
 
-          {industries.map((industry, index) => {
-            const Icon = industry.icon;
+        {/* ================= INDUSTRIES GRID ================= */}
 
-            return (
-              <Reveal
-                key={index}
-                delay={index * 0.04}
-              >
-                <div className="group h-full bg-[#F8FAFC] border border-gray-100 rounded-xl p-6 hover:bg-[#0F766E] hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
 
-                  <Icon className="text-3xl text-[#0F766E] group-hover:text-white transition-colors duration-300" />
+          {industries.map((industry, index) => (
 
-                  <h3 className="mt-4 font-semibold text-gray-800 group-hover:text-white transition-colors duration-300 leading-6">
-                    {industry.title}
-                  </h3>
+            <Reveal
+              key={industry.title}
+              delay={index * 0.04}
+            >
 
+              <div className="group h-full bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+
+                {/* Icon */}
+
+                <div className="w-14 h-14 mx-auto rounded-2xl bg-[#EAF2FF] text-[#003DA5] flex items-center justify-center text-xl group-hover:bg-[#003DA5] group-hover:text-white transition-all duration-300">
+                  {industry.icon}
                 </div>
-              </Reveal>
-            );
-          })}
+
+
+                {/* Title */}
+
+                <h3 className="mt-5 text-sm md:text-base font-semibold text-gray-700 leading-6 group-hover:text-[#003DA5] transition">
+                  {industry.title}
+                </h3>
+
+              </div>
+
+            </Reveal>
+
+          ))}
 
         </div>
+
+
+        {/* ================= BOTTOM MESSAGE ================= */}
+
+        <Reveal delay={0.4}>
+
+          <div className="mt-14 text-center">
+
+            <p className="text-gray-500">
+              Whatever your industry, we help you travel smarter,
+              connect globally and participate with confidence.
+            </p>
+
+          </div>
+
+        </Reveal>
 
       </div>
     </section>

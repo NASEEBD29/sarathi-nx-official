@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaPhoneAlt,
+} from "react-icons/fa";
+
 import { navLinks } from "../../data/navLinks";
-import {  FaPhoneAlt } from "react-icons/fa";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,99 +18,121 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <nav
-      className={`fixed left-0 w-full z-50 transition-all duration-300 ${
+  className={`sticky top-0 left-0 w-full z-50 transition-all duration-300 ${
     scrolled
-      ? "top-0 bg-white/95 backdrop-blur-md shadow-lg py-4"
-      : "top-11 bg-transparent py-6"
+      ? "bg-white shadow-lg py-3"
+      : "bg-white shadow-md py-3"
   }`}
-    >
+>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
 
-        {/* Logo */}
-        <h1
-          className={`text-3xl font-bold transition ${
-            scrolled ? "text-[#0F766E]" : "text-white"
-          }`}
+        {/* ================= LOGO ================= */}
+        <a
+          href="/sarathi-nx-official/"
+          className="flex items-center shrink-0"
         >
-          Sarathi <span className="text-[#14B8A6]">NX</span>
-        </h1>
+          <img
+            src="/sarathi-nx-official/sarathi-logo.png"
+            alt="Sarathi NX"
+            className="w-40 sm:w-44 md:w-52 h-auto object-contain"
+          />
+        </a>
 
-        {/* Desktop Menu */}
+
+        {/* ================= DESKTOP MENU ================= */}
         <ul className="hidden lg:flex items-center gap-8">
+
           {navLinks.map((item) => (
             <li key={item.id}>
+
               <a
                 href={item.href}
-                className={`font-medium transition ${
-                  scrolled
-                    ? "text-gray-700 hover:text-[#0F766E]"
-                    : "text-white hover:text-[#14B8A6]"
-                }`}
+                className="font-medium text-gray-700 hover:text-[#003DA5] transition-colors duration-300"
               >
                 {item.title}
               </a>
+
             </li>
           ))}
+
         </ul>
 
-        {/* Quote Button */}
+
+        {/* ================= CALL BUTTON ================= */}
         <a
-  href="tel:+917666984626"
-  className="hidden lg:flex items-center gap-3 bg-[#0F766E] hover:bg-[#115E59] text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
->
-  <FaPhoneAlt className="text-lg" />
+          href="tel:+917666984626"
+          className="hidden lg:flex items-center gap-3 bg-[#003DA5] hover:bg-[#002B73] text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+          <FaPhoneAlt />
 
-  <div className="leading-tight">
-    <p className="text-xs opacity-80">Call Now</p>
-    <p className="font-semibold">+91 766 698 4626</p>
-  </div>
-</a>
+          <span>
+            Call Now
+          </span>
+        </a>
 
-        {/* Mobile Menu Button */}
+
+        {/* ================= MOBILE MENU BUTTON ================= */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`lg:hidden text-2xl ${
-            scrolled ? "text-[#0F766E]" : "text-white"
-          }`}
+          className="lg:hidden text-2xl text-[#003DA5]"
+          aria-label="Toggle Menu"
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
       </div>
 
-      {/* Mobile Menu */}
+
+      {/* ================= MOBILE MENU ================= */}
       {menuOpen && (
-        <div className="lg:hidden bg-white shadow-lg">
+        <div className="lg:hidden bg-white shadow-lg border-t border-gray-100">
+
           <ul className="flex flex-col py-4">
+
             {navLinks.map((item) => (
               <li key={item.id}>
+
                 <a
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block px-6 py-4 hover:bg-gray-100 text-gray-700"
+                  className="block px-6 py-4 text-gray-700 hover:bg-[#EAF2FF] hover:text-[#003DA5] transition"
                 >
                   {item.title}
                 </a>
+
               </li>
             ))}
 
-            <div className="px-6 mt-4">
+
+            {/* Mobile Call Button */}
+            <li className="px-6 mt-4">
+
               <a
-  href="tel:+917666984626"
-  className="w-full flex items-center justify-center gap-2 bg-[#0F766E] text-white py-3 rounded-full"
->
-  <FaPhoneAlt />
-  Call Now
-</a>
-            </div>
+                href="tel:+917666984626"
+                onClick={() => setMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 bg-[#003DA5] hover:bg-[#002B73] text-white py-3 rounded-full transition"
+              >
+                <FaPhoneAlt />
+
+                <span>
+                  Call Now
+                </span>
+              </a>
+
+            </li>
+
           </ul>
+
         </div>
       )}
+
     </nav>
   );
 }

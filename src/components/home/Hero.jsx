@@ -6,7 +6,6 @@ import {
 } from "react-icons/fa";
 
 import { heroSlides } from "../../data/heroData";
-import PrimaryButton from "../common/PrimaryButton";
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -56,7 +55,7 @@ Message:
 ${message}
 
 Thank you.
-    `.trim();
+`.trim();
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       whatsappMessage
@@ -73,12 +72,12 @@ Thank you.
       className="relative min-h-screen overflow-hidden"
     >
 
-      {/* Background Slider */}
+      {/* ================= BACKGROUND SLIDER ================= */}
       <AnimatePresence mode="wait">
 
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
@@ -91,28 +90,35 @@ Thank you.
             className="w-full h-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-black/60" />
+          {/* Blue Overlay */}
+          <div className="absolute inset-0 bg-[#001F54]/75" />
+
+          {/* Additional Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001F54]/90 via-[#003DA5]/55 to-black/30" />
 
         </motion.div>
 
       </AnimatePresence>
 
-      {/* Main Content */}
+
+      {/* ================= MAIN CONTENT ================= */}
       <div className="relative z-10 min-h-screen max-w-7xl mx-auto px-6 pt-32 pb-24 flex items-center">
 
         <div className="w-full grid lg:grid-cols-[1fr_380px] gap-12 items-center">
 
-          {/* LEFT CONTENT */}
+
+          {/* ================= LEFT CONTENT ================= */}
           <div>
 
             <motion.span
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-block text-[#5EEAD4] font-semibold uppercase tracking-[3px] text-sm"
+              className="inline-block text-[#BFDBFE] font-semibold uppercase tracking-[3px] text-sm"
             >
               International Exhibition & Business Travel
             </motion.span>
+
 
             <motion.h1
               initial={{ y: 30, opacity: 0 }}
@@ -123,6 +129,7 @@ Thank you.
               {heroSlides[current].title}
             </motion.h1>
 
+
             <motion.p
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -132,16 +139,18 @@ Thank you.
               {heroSlides[current].description}
             </motion.p>
 
+
             <motion.p
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.7 }}
-              className="text-[#5EEAD4] font-medium mt-5"
+              className="text-[#BFDBFE] font-medium mt-5"
             >
               We Plan. You Travel. We Care.
             </motion.p>
 
-            {/* Buttons */}
+
+            {/* ================= BUTTONS ================= */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -151,17 +160,20 @@ Thank you.
 
               <a
                 href="#exhibitions"
-                className="inline-flex items-center gap-2 bg-[#0F766E] hover:bg-[#115E59] text-white px-7 py-4 rounded-full font-semibold transition"
+                className="inline-flex items-center gap-2 bg-[#0057B8] hover:bg-[#003DA5] text-white px-7 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 Explore Exhibitions
+
                 <FaArrowRight className="text-sm" />
               </a>
 
+
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 border-2 border-white px-7 py-4 rounded-full text-white font-semibold hover:bg-white hover:text-[#0F766E] transition"
+                className="inline-flex items-center gap-2 border-2 border-white px-7 py-4 rounded-full text-white font-semibold hover:bg-white hover:text-[#003DA5] transition-all duration-300"
               >
                 Plan Your Trip
+
                 <FaArrowRight className="text-sm" />
               </a>
 
@@ -169,7 +181,8 @@ Thank you.
 
           </div>
 
-          {/* RIGHT - QUICK ENQUIRY */}
+
+          {/* ================= QUICK ENQUIRY ================= */}
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -177,11 +190,12 @@ Thank you.
             className="hidden lg:block"
           >
 
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-white/50">
 
+              {/* Heading */}
               <div className="mb-5">
 
-                <span className="text-[#0F766E] text-sm font-semibold uppercase tracking-wider">
+                <span className="text-[#003DA5] text-sm font-semibold uppercase tracking-wider">
                   Quick Enquiry
                 </span>
 
@@ -195,38 +209,48 @@ Thank you.
 
               </div>
 
+
+              {/* Form */}
               <form
                 onSubmit={handleEnquiry}
                 className="space-y-3"
               >
 
+                {/* Name */}
                 <input
                   type="text"
                   name="name"
                   placeholder="Your Name"
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
                 />
 
+
+                {/* Phone */}
                 <input
                   type="tel"
                   name="phone"
                   placeholder="Phone Number"
                   maxLength="10"
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
                 />
 
+
+                {/* Email */}
                 <input
                   type="email"
                   name="email"
                   placeholder="Email Address"
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
                 />
 
+
+                {/* Service */}
                 <select
                   name="service"
                   defaultValue=""
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:ring-2 focus:ring-[#0F766E]"
+                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
                 >
+
                   <option value="" disabled>
                     Select Service
                   </option>
@@ -254,18 +278,23 @@ Thank you.
                   <option value="Group Tours">
                     Group Tours
                   </option>
+
                 </select>
 
+
+                {/* Message */}
                 <textarea
                   name="message"
                   rows="3"
                   placeholder="Message"
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none resize-none focus:ring-2 focus:ring-[#0F766E]"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none resize-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
                 />
 
+
+                {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full bg-[#0F766E] hover:bg-[#115E59] text-white py-3.5 rounded-xl font-semibold transition"
+                  className="w-full bg-[#0057B8] hover:bg-[#003DA5] text-white py-3.5 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Send Enquiry
                 </button>
@@ -280,29 +309,33 @@ Thank you.
 
       </div>
 
-      {/* Slider Dots */}
+
+      {/* ================= SLIDER DOTS ================= */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
 
         {heroSlides.map((_, index) => (
+
           <button
             key={index}
             onClick={() => setCurrent(index)}
             aria-label={`Go to slide ${index + 1}`}
             className={`h-3 rounded-full transition-all ${
               current === index
-                ? "bg-[#14B8A6] w-8"
-                : "bg-white/50 w-3"
+                ? "bg-[#60A5FA] w-8"
+                : "bg-white/50 w-3 hover:bg-white/80"
             }`}
           />
+
         ))}
 
       </div>
 
-      {/* Scroll Down */}
+
+      {/* ================= SCROLL DOWN ================= */}
       <a
         href="#about"
         aria-label="Scroll to About section"
-        className="absolute bottom-6 right-8 text-white animate-bounce z-20"
+        className="absolute bottom-6 right-8 text-white animate-bounce z-20 hover:text-[#60A5FA] transition"
       >
         <FaChevronDown size={22} />
       </a>

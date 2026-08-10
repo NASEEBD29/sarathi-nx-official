@@ -33,7 +33,7 @@ export default function Footer() {
   );
 
   return (
-    <footer className="bg-[#0B3F3A] text-white">
+    <footer className="bg-[#002B73] text-white">
 
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -43,11 +43,13 @@ export default function Footer() {
           {/* Company */}
           <div>
 
-            <h2 className="text-3xl font-bold">
-              Sarathi <span className="text-[#14B8A6]">NX</span>
-            </h2>
+         <img
+  src="/sarathi-nx-official/sarathi-logo.png"
+  alt="Sarathi NX"
+  className="w-56 md:w-64 h-auto object-contain"
+/>
 
-            <p className="mt-2 text-[#5EEAD4] font-medium">
+            <p className="mt-3 text-white font-medium">
               We Plan. You Travel. We Care.
             </p>
 

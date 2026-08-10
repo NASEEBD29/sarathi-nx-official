@@ -20,8 +20,8 @@ import UpcomingEvents from "../components/home/UpcomingEvents";
 export default function Home() {
   return (
     <>
-      <TopHeader />
-      <Navbar />
+      {/* <TopHeader />
+      <Navbar /> */}
       <Hero />
       {/* <TrustedCompanies /> */}
       <About />
