@@ -16,7 +16,7 @@ export default function FloatingContact() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Sarathi NX on WhatsApp"
-        className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-xl hover:scale-110 transition-transform duration-300"
+        className="w-14 h-14 rounded-full bg-[#003DA5] text-white flex items-center justify-center text-2xl shadow-xl hover:bg-[#002B75] hover:scale-110 transition-all duration-300"
       >
         <FaWhatsapp />
       </a>
@@ -25,7 +25,7 @@ export default function FloatingContact() {
       <a
         href="tel:+917666984626"
         aria-label="Call Sarathi NX"
-        className="w-14 h-14 rounded-full bg-[#0F766E] text-white flex items-center justify-center text-xl shadow-xl hover:scale-110 transition-transform duration-300"
+        className="w-14 h-14 rounded-full bg-[#003DA5] text-white flex items-center justify-center text-xl shadow-xl hover:bg-[#002B75] hover:scale-110 transition-all duration-300"
       >
         <FaPhoneAlt />
       </a>

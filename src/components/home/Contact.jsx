@@ -1,138 +1,180 @@
-import { useState } from "react";
 import {
-  FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
+  FaMapMarkerAlt,
   FaClock,
+  FaWhatsapp,
+  FaArrowRight,
 } from "react-icons/fa";
 
 import Reveal from "../common/Reveal";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    service: "",
-    message: "",
-  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const [submitted, setSubmitted] = useState(false);
+    const form = e.target;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const email = form.email.value.trim();
+    const service = form.service.value;
+    const message = form.message.value.trim();
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+    if (!name || !phone || !email || !service || !message) {
+      alert("Please fill in all the fields.");
+      return;
+    }
 
- const handleSubmit = (e) => {
-  e.preventDefault();
+    if (!/^[0-9]{10}$/.test(phone)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
 
-  if (
-    !formData.name ||
-    !formData.phone ||
-    !formData.email ||
-    !formData.service ||
-    !formData.message
-  ) {
-    alert("Please fill in all the required fields.");
-    return;
-  }
+    const whatsappNumber = "917666984626";
 
-  if (!/^[0-9]{10}$/.test(formData.phone)) {
-    alert("Please enter a valid 10-digit mobile number.");
-    return;
-  }
-
-  const whatsappNumber = "917666984626";
-
-  const whatsappMessage = `
+    const whatsappMessage = `
 Hello Sarathi NX,
 
-I would like to make an enquiry.
+I would like to make a travel enquiry.
 
-Name: ${formData.name}
-Mobile: ${formData.phone}
-Email: ${formData.email}
-Interested In: ${formData.service}
+Name: ${name}
+Mobile: ${phone}
+Email: ${email}
+Interested In: ${service}
 
 Message:
-${formData.message}
+${message}
 
 Thank you.
-  `.trim();
+    `.trim();
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
 
-  window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank");
 
-  setFormData({
-    name: "",
-    phone: "",
-    email: "",
-    service: "",
-    message: "",
-  });
-};
+    form.reset();
+  };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section
+      id="contact"
+      className="py-24 bg-[#F5F9FF]"
+    >
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
         <Reveal>
           <div className="text-center mb-14">
-            <span className="text-[#0F766E] uppercase tracking-[4px] font-semibold">
+
+            <span className="text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
               Contact Us
             </span>
 
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 text-gray-800">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4">
               Let's Plan Your
-              <span className="text-[#0F766E]"> Next Journey</span>
+              <span className="text-[#003DA5]">
+                {" "}Journey
+              </span>
             </h2>
 
-            <p className="mt-5 text-gray-600 max-w-2xl mx-auto leading-7">
-              Whether you are planning an international exhibition, business
-              trip or leisure journey, our team is ready to assist you.
+            <p className="mt-5 text-gray-600 max-w-3xl mx-auto leading-7">
+              Whether you are planning an international exhibition,
+              corporate trip or business travel, our team is ready to
+              assist you with complete travel solutions.
             </p>
+
           </div>
         </Reveal>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+
+        {/* Main Content */}
+        <div className="grid lg:grid-cols-2 gap-10 items-stretch">
 
           {/* Contact Information */}
-          <Reveal>
-            <div className="bg-[#0F766E] rounded-3xl p-8 md:p-10 text-white h-full">
+          <Reveal direction="left">
 
-              <h3 className="text-3xl font-bold">
+            <div className="bg-[#003DA5] rounded-3xl p-8 md:p-10 text-white h-full">
+
+              <span className="text-blue-200 uppercase tracking-[3px] text-sm font-semibold">
                 Get In Touch
+              </span>
+
+              <h3 className="text-3xl md:text-4xl font-bold mt-4">
+                We're Here To Help
               </h3>
 
-              <p className="mt-4 text-teal-100 leading-7">
-                Connect with Sarathi NX for complete travel solutions,
-                international exhibitions, corporate travel and visa
-                assistance.
+              <p className="text-blue-100 leading-7 mt-5">
+                Talk to our travel experts and let us help you plan
+                your next business trip, exhibition visit or corporate
+                journey.
               </p>
 
-              <div className="mt-10 space-y-7">
+
+              {/* Contact Details */}
+              <div className="space-y-6 mt-10">
+
+                {/* Phone */}
+                <a
+                  href="tel:+917666984626"
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-[#003DA5] transition">
+                    <FaPhoneAlt />
+                  </div>
+
+                  <div>
+                    <p className="text-blue-200 text-sm">
+                      Call Us
+                    </p>
+
+                    <p className="font-semibold mt-1">
+                      +91 766 698 4626
+                    </p>
+
+                    <p className="font-semibold">
+                      +91 865 786 7181
+                    </p>
+                  </div>
+                </a>
+
+
+                {/* Email */}
+                <a
+                  href="mailto:sajid@sarathinx.com"
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-[#003DA5] transition">
+                    <FaEnvelope />
+                  </div>
+
+                  <div>
+                    <p className="text-blue-200 text-sm">
+                      Email Us
+                    </p>
+
+                    <p className="font-semibold mt-1 break-all">
+                      sajid@sarathinx.com
+                    </p>
+                  </div>
+                </a>
+
 
                 {/* Address */}
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white text-[#0F766E] flex items-center justify-center">
+                <div className="flex items-start gap-4">
+
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center">
                     <FaMapMarkerAlt />
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-lg">
-                      Our Office
-                    </h4>
+                    <p className="text-blue-200 text-sm">
+                      Visit Our Office
+                    </p>
 
-                    <p className="mt-1 text-teal-100 leading-6">
+                    <p className="font-semibold mt-1 leading-6">
                       1st Floor, Office No. 026,
                       <br />
                       Crystal Plaza CHS Ltd,
@@ -142,166 +184,137 @@ Thank you.
                       Thane - 401107
                     </p>
                   </div>
+
                 </div>
 
-                {/* Phone */}
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white text-[#0F766E] flex items-center justify-center">
-                    <FaPhoneAlt />
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-lg">
-                      Call Us
-                    </h4>
-
-                    <div className="mt-1 space-y-1">
-                      <a
-                        href="tel:+917666984626"
-                        className="block text-teal-100 hover:text-white transition"
-                      >
-                        +91 766 698 4626
-                      </a>
-
-                      <a
-                        href="tel:+918657867181"
-                        className="block text-teal-100 hover:text-white transition"
-                      >
-                        +91 865 786 7181
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white text-[#0F766E] flex items-center justify-center">
-                    <FaEnvelope />
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-lg">
-                      Email Us
-                    </h4>
-
-                    <a
-                      href="mailto:sajid@sarathinx.com"
-                      className="mt-1 block text-teal-100 hover:text-white transition"
-                    >
-                      sajid@sarathinx.com
-                    </a>
-                  </div>
-                </div>
 
                 {/* Working Hours */}
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white text-[#0F766E] flex items-center justify-center">
+                <div className="flex items-start gap-4">
+
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center">
                     <FaClock />
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-lg">
+                    <p className="text-blue-200 text-sm">
                       Working Hours
-                    </h4>
+                    </p>
 
-                    <p className="mt-1 text-teal-100">
+                    <p className="font-semibold mt-1">
                       Monday - Saturday
-                      <br />
+                    </p>
+
+                    <p className="text-blue-100">
                       9:30 AM - 7:00 PM
                     </p>
                   </div>
+
                 </div>
 
               </div>
+
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/917666984626"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 mt-10 bg-white text-[#003DA5] px-6 py-3.5 rounded-full font-semibold hover:bg-blue-50 transition"
+              >
+                <FaWhatsapp className="text-xl" />
+                Chat on WhatsApp
+              </a>
+
             </div>
+
           </Reveal>
 
-          {/* Enquiry Form */}
-          <Reveal delay={0.15}>
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-lg">
 
-              <h3 className="text-3xl font-bold text-gray-800">
-                Quick Enquiry
+          {/* Contact Form */}
+          <Reveal direction="right">
+
+            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-blue-100 h-full">
+
+              <span className="text-[#003DA5] uppercase tracking-[3px] text-sm font-semibold">
+                Send Enquiry
+              </span>
+
+              <h3 className="text-3xl font-bold text-gray-800 mt-4">
+                Tell Us About Your Trip
               </h3>
 
-              <p className="mt-3 text-gray-600">
-                Tell us about your travel requirements and our team will
-                get back to you.
+              <p className="text-gray-500 mt-3">
+                Fill in your details and our travel experts will get
+                back to you shortly.
               </p>
 
-              {submitted && (
-                <div className="mt-6 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700">
-                  Thank you! Your enquiry has been submitted successfully.
-                </div>
-              )}
 
               <form
                 onSubmit={handleSubmit}
-                className="mt-8 space-y-5"
+                className="space-y-5 mt-8"
               >
 
                 {/* Name */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Full Name *
+                    Full Name
                   </label>
 
                   <input
                     type="text"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     placeholder="Enter your name"
-                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:border-transparent transition"
+                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
                   />
                 </div>
 
-                {/* Phone */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Mobile Number *
-                  </label>
 
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Enter mobile number"
-                    maxLength="10"
-                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:border-transparent transition"
-                  />
+                {/* Phone + Email */}
+                <div className="grid md:grid-cols-2 gap-5">
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+
+                    <input
+                      type="tel"
+                      name="phone"
+                      maxLength="10"
+                      placeholder="10-digit mobile number"
+                      className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Email Address
+                    </label>
+
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Enter your email"
-                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:border-transparent transition"
-                  />
-                </div>
 
                 {/* Service */}
                 <div>
+
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Interested In *
+                    Service Required
                   </label>
 
                   <select
                     name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:border-transparent transition"
+                    defaultValue=""
+                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
                   >
-                    <option value="">
+                    <option value="" disabled>
                       Select a service
                     </option>
 
@@ -329,41 +342,45 @@ Thank you.
                       Group Tours
                     </option>
 
-                    <option value="Global Tourism">
-                      Global Tourism
-                    </option>
                   </select>
+
                 </div>
+
 
                 {/* Message */}
                 <div>
+
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Message *
+                    Message
                   </label>
 
                   <textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="4"
+                    rows="5"
                     placeholder="Tell us about your travel requirements..."
-                    className="w-full px-5 py-3.5 rounded-xl border border-gray-200 resize-none focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:border-transparent transition"
+                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none resize-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
                   />
+
                 </div>
+
 
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full bg-[#0F766E] hover:bg-[#115E59] text-white py-4 rounded-xl font-semibold transition shadow-md hover:shadow-lg"
+                  className="w-full inline-flex items-center justify-center gap-3 bg-[#003DA5] hover:bg-[#002B75] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
                 >
-                  Submit Enquiry
+                  Send Enquiry
+                  <FaArrowRight />
                 </button>
 
               </form>
+
             </div>
+
           </Reveal>
 
         </div>
+
       </div>
     </section>
   );
