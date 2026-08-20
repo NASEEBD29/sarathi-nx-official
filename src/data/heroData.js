@@ -1,30 +1,20 @@
-import hero1 from "../assets/images/hero/hero1.jpg";
-import hero2 from "../assets/images/hero/hero2.jpg";
-import hero3 from "../assets/images/hero/hero3.jpg";
-
 export const heroSlides = [
   {
-    id: 1,
-    image: hero1,
-    subtitle: "Corporate Travel & Exhibitions",
-    title: "Your Trusted Global Travel Partner",
+    
+    title: "Explore The World With Confidence",
     description:
-      "Sarathi NX provides international exhibition tours, business travel, visa assistance, hotel bookings and complete corporate travel management.",
+      "Professional international exhibition, corporate and business travel solutions tailored to your needs.",
   },
   {
-    id: 2,
-    image: hero2,
-    subtitle: "Business Travel Solutions",
-    title: "Connecting Businesses Worldwide",
+    
+    title: "Your Global Travel Partner",
     description:
-      "Experience seamless international travel with our customized business travel solutions.",
+      "From exhibitions to business trips, we make your international journey smooth and stress-free.",
   },
   {
-    id: 3,
-    image: hero3,
-    subtitle: "Worldwide Exhibitions",
-    title: "Explore Global Opportunities",
+    
+    title: "We Plan. You Travel. We Care.",
     description:
-      "Participate in leading international exhibitions with complete planning and travel support.",
+      "Complete travel assistance with reliable service, expert planning and personalized support.",
   },
 ];

@@ -1,305 +1,535 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 import {
-  FaArrowRight,
-  FaChevronDown,
+  FaUser,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaGlobe,
+  FaCommentDots,
 } from "react-icons/fa";
+
+// =====================================================
+// HERO IMAGES
+// =====================================================
+
+import hero1 from "../../assets/images/hero/hero1.jpg";
+import hero2 from "../../assets/images/hero/hero2.jpg";
+import hero3 from "../../assets/images/hero/hero3.jpg";
 
 import { heroSlides } from "../../data/heroData";
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
 
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    service: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  // =====================================================
+  // HERO IMAGES
+  // =====================================================
+
+  const slideImages = [hero1, hero2, hero3];
+
+  // =====================================================
+  // AUTO SLIDER
+  // =====================================================
+
   useEffect(() => {
     const slider = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroSlides.length);
+      setCurrent((prev) => (prev + 1) % slideImages.length);
     }, 5000);
 
     return () => clearInterval(slider);
   }, []);
 
-  const handleEnquiry = (e) => {
+  // =====================================================
+  // HANDLE INPUT
+  // =====================================================
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setSuccess("");
+    setError("");
+  };
+
+  // =====================================================
+  // PHONE INPUT
+  // =====================================================
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+
+    if (value.length <= 10) {
+      setFormData((prev) => ({
+        ...prev,
+        phone: value,
+      }));
+    }
+
+    setSuccess("");
+    setError("");
+  };
+
+  // =====================================================
+  // SUBMIT ENQUIRY
+  // =====================================================
+
+  const handleEnquiry = async (e) => {
     e.preventDefault();
 
-    const form = e.target;
+    setSuccess("");
+    setError("");
 
-    const name = form.name.value.trim();
-    const phone = form.phone.value.trim();
-    const email = form.email.value.trim();
-    const service = form.service.value;
-    const message = form.message.value.trim();
-
-    if (!name || !phone || !email || !service || !message) {
-      alert("Please fill in all the fields.");
+    if (
+      !formData.name.trim() ||
+      !formData.phone.trim() ||
+      !formData.email.trim() ||
+      !formData.service
+    ) {
+      setError("Please fill all required fields.");
       return;
     }
 
-    if (!/^[0-9]{10}$/.test(phone)) {
-      alert("Please enter a valid 10-digit mobile number.");
+    if (!/^[0-9]{10}$/.test(formData.phone)) {
+      setError("Please enter a valid 10-digit mobile number.");
       return;
     }
 
-    const whatsappNumber = "917666984626";
+    setLoading(true);
 
-    const whatsappMessage = `
-Hello Sarathi NX,
+    try {
+      console.log("Sending enquiry:", formData);
 
-I would like to make a travel enquiry.
+      const response = await fetch(
+        "http://localhost:8080/api/enquiries",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-Name: ${name}
-Mobile: ${phone}
-Email: ${email}
-Interested In: ${service}
+      console.log("Response status:", response.status);
 
-Message:
-${message}
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}`);
+      }
 
-Thank you.
-`.trim();
+      const data = await response.json();
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
+      console.log("Enquiry saved:", data);
 
-    window.open(whatsappUrl, "_blank");
+      setSuccess(
+        "Thank you! Your enquiry has been submitted successfully."
+      );
 
-    form.reset();
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        service: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error("Enquiry error:", err);
+
+      setError(
+        "Unable to submit enquiry. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
+
+  // =====================================================
+  // CURRENT SLIDE
+  // =====================================================
+
+  const currentSlide = heroSlides[current];
 
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden"
+      className="relative overflow-hidden min-h-[560px] lg:min-h-[590px]"
     >
 
-      {/* ================= BACKGROUND SLIDER ================= */}
+      {/* =================================================
+          BACKGROUND SLIDER
+      ================================================= */}
+
       <AnimatePresence mode="wait">
 
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          initial={{
+            opacity: 0,
+            scale: 1.03,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+          }}
+          transition={{
+            duration: 0.8,
+          }}
           className="absolute inset-0"
         >
 
           <img
-            src={heroSlides[current].image}
+            src={slideImages[current]}
             alt="Sarathi NX International Travel"
             className="w-full h-full object-cover"
           />
 
-          {/* Blue Overlay */}
-          <div className="absolute inset-0 bg-[#001F54]/75" />
+          {/* Light Overlay */}
+          <div className="absolute inset-0 bg-black/20" />
 
-          {/* Additional Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#001F54]/90 via-[#003DA5]/55 to-black/30" />
+          {/* Left Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001F54]/60 via-[#001F54]/25 to-transparent" />
 
         </motion.div>
 
       </AnimatePresence>
 
 
-      {/* ================= MAIN CONTENT ================= */}
-      <div className="relative z-10 min-h-screen max-w-7xl mx-auto px-6 pt-32 pb-24 flex items-center">
+      {/* =================================================
+          MAIN CONTENT
+      ================================================= */}
 
-        <div className="w-full grid lg:grid-cols-[1fr_380px] gap-12 items-center">
+      <div className="relative z-10 max-w-[1500px] mx-auto px-5 sm:px-8 lg:px-12 py-14 lg:py-16">
 
-
-          {/* ================= LEFT CONTENT ================= */}
-          <div>
-
-            <motion.span
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block text-[#BFDBFE] font-semibold uppercase tracking-[3px] text-sm"
-            >
-              International Exhibition & Business Travel
-            </motion.span>
+        <div className="grid lg:grid-cols-[1fr_520px] gap-10 lg:gap-14 items-start">
 
 
-            <motion.h1
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-white mt-5 leading-tight max-w-4xl"
-            >
-              {heroSlides[current].title}
-            </motion.h1>
+          {/* =================================================
+              LEFT CONTENT
+          ================================================= */}
 
+          <div className="text-white pt-10 lg:pt-16 max-w-4xl">
 
             <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="text-gray-200 text-base md:text-lg mt-6 max-w-2xl leading-8"
+              initial={{
+                y: 20,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.6,
+              }}
+              className="text-blue-100 font-semibold uppercase tracking-[2px] text-sm sm:text-base mb-4"
             >
-              {heroSlides[current].description}
+              International Exhibition & Business Travel
             </motion.p>
 
 
+            {/* MAIN HEADING */}
+
+            <motion.h1
+              key={`heading-${current}`}
+              initial={{
+                y: 25,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.7,
+              }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight drop-shadow-lg"
+            >
+              {currentSlide?.title}
+            </motion.h1>
+
+
+            {/* DESCRIPTION */}
+
             <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="text-[#BFDBFE] font-medium mt-5"
+              key={`description-${current}`}
+              initial={{
+                y: 20,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                delay: 0.15,
+                duration: 0.7,
+              }}
+              className="mt-5 text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl drop-shadow-md"
+            >
+              {currentSlide?.description}
+            </motion.p>
+
+
+            {/* TAGLINE */}
+
+            <motion.p
+              initial={{
+                y: 15,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                delay: 0.3,
+                duration: 0.7,
+              }}
+              className="mt-5 text-lg sm:text-xl font-semibold text-white"
             >
               We Plan. You Travel. We Care.
             </motion.p>
 
-
-            {/* ================= BUTTONS ================= */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-wrap gap-4 mt-8"
-            >
-
-              <a
-                href="#exhibitions"
-                className="inline-flex items-center gap-2 bg-[#0057B8] hover:bg-[#003DA5] text-white px-7 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-              >
-                Explore Exhibitions
-
-                <FaArrowRight className="text-sm" />
-              </a>
-
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 border-2 border-white px-7 py-4 rounded-full text-white font-semibold hover:bg-white hover:text-[#003DA5] transition-all duration-300"
-              >
-                Plan Your Trip
-
-                <FaArrowRight className="text-sm" />
-              </a>
-
-            </motion.div>
-
           </div>
 
 
-          {/* ================= QUICK ENQUIRY ================= */}
+          {/* =================================================
+              QUICK ENQUIRY FORM
+          ================================================= */}
+
           <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-            className="hidden lg:block"
+            initial={{
+              x: 50,
+              opacity: 0,
+            }}
+            animate={{
+              x: 0,
+              opacity: 1,
+            }}
+            transition={{
+              delay: 0.2,
+              duration: 0.7,
+            }}
+            className="w-full lg:-mt-2"
           >
 
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-white/50">
+            <div className="bg-white rounded-sm shadow-2xl overflow-hidden">
 
-              {/* Heading */}
-              <div className="mb-5">
+              {/* =================================================
+                  FORM HEADER
+              ================================================= */}
 
-                <span className="text-[#003DA5] text-sm font-semibold uppercase tracking-wider">
+              <div className="bg-[#003DA5] px-7 py-4">
+
+                <h2 className="text-2xl sm:text-3xl font-bold text-white">
                   Quick Enquiry
-                </span>
-
-                <h2 className="text-2xl font-bold text-gray-800 mt-1">
-                  Plan Your Journey
                 </h2>
 
-                <p className="text-gray-500 text-sm mt-2">
-                  Tell us your requirements and our team will assist you.
+                <p className="text-blue-100 mt-1 text-sm">
+                  Let us help you plan your perfect journey.
                 </p>
 
               </div>
 
 
-              {/* Form */}
-              <form
-                onSubmit={handleEnquiry}
-                className="space-y-3"
-              >
+              {/* =================================================
+                  FORM BODY
+              ================================================= */}
 
-                {/* Name */}
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
-                />
+              <div className="p-6">
 
-
-                {/* Phone */}
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  maxLength="10"
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
-                />
-
-
-                {/* Email */}
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
-                />
-
-
-                {/* Service */}
-                <select
-                  name="service"
-                  defaultValue=""
-                  className="w-full px-4 py-2.5 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 outline-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
+                <form
+                  onSubmit={handleEnquiry}
+                  className="space-y-3"
                 >
 
-                  <option value="" disabled>
-                    Select Service
-                  </option>
+                  {/* NAME */}
 
-                  <option value="International Exhibition Travel">
-                    International Exhibition Travel
-                  </option>
+                  <div className="relative">
 
-                  <option value="Corporate Travel">
-                    Corporate Travel
-                  </option>
+                    <FaUser
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5]"
+                    />
 
-                  <option value="Business Travel">
-                    Business Travel
-                  </option>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your Name"
+                      required
+                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                    />
 
-                  <option value="Visa Assistance">
-                    Visa Assistance
-                  </option>
-
-                  <option value="Hotel Booking">
-                    Hotel Booking
-                  </option>
-
-                  <option value="Group Tours">
-                    Group Tours
-                  </option>
-
-                </select>
+                  </div>
 
 
-                {/* Message */}
-                <textarea
-                  name="message"
-                  rows="3"
-                  placeholder="Message"
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none resize-none transition focus:border-[#003DA5] focus:ring-2 focus:ring-[#003DA5]/20"
-                />
+                  {/* MOBILE */}
+
+                  <div className="relative">
+
+                    <FaPhoneAlt
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5]"
+                    />
+
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handlePhoneChange}
+                      placeholder="Mobile Number"
+                      inputMode="numeric"
+                      pattern="[0-9]{10}"
+                      maxLength={10}
+                      required
+                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                    />
+
+                  </div>
 
 
-                {/* Submit */}
-                <button
-                  type="submit"
-                  className="w-full bg-[#0057B8] hover:bg-[#003DA5] text-white py-3.5 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                  Send Enquiry
-                </button>
+                  {/* EMAIL */}
 
-              </form>
+                  <div className="relative">
+
+                    <FaEnvelope
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5]"
+                    />
+
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Email Address"
+                      required
+                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                    />
+
+                  </div>
+
+
+                  {/* SERVICE */}
+
+                  <div className="relative">
+
+                    <FaGlobe
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5] z-10"
+                    />
+
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none appearance-none bg-white focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                    >
+
+                      <option value="" disabled>
+                        Select Service
+                      </option>
+
+                      <option value="International Exhibition Travel">
+                        International Exhibition Travel
+                      </option>
+
+                      <option value="Corporate Travel">
+                        Corporate Travel
+                      </option>
+
+                      <option value="Business Travel">
+                        Business Travel
+                      </option>
+
+                      <option value="Visa Assistance">
+                        Visa Assistance
+                      </option>
+
+                      <option value="Hotel Booking">
+                        Hotel Booking
+                      </option>
+
+                      <option value="Group Tours">
+                        Group Tours
+                      </option>
+
+                    </select>
+
+                  </div>
+
+
+                  {/* MESSAGE */}
+
+                  <div className="relative">
+
+                    <FaCommentDots
+                      className="absolute left-4 top-4 text-[#003DA5]"
+                    />
+
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Your Message"
+                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none resize-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                    />
+
+                  </div>
+
+
+                  {/* SUCCESS */}
+
+                  {success && (
+                    <p className="text-green-600 text-sm font-medium">
+                      {success}
+                    </p>
+                  )}
+
+
+                  {/* ERROR */}
+
+                  {error && (
+                    <p className="text-red-600 text-sm font-medium">
+                      {error}
+                    </p>
+                  )}
+
+
+                  {/* SUBMIT */}
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-[#003DA5] hover:bg-[#002B73] disabled:bg-gray-400 text-white py-3.5 rounded-sm font-semibold text-base transition-all duration-300"
+                  >
+                    {loading
+                      ? "Submitting..."
+                      : "Submit Enquiry"}
+                  </button>
+
+                </form>
+
+              </div>
 
             </div>
 
@@ -310,35 +540,29 @@ Thank you.
       </div>
 
 
-      {/* ================= SLIDER DOTS ================= */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+      {/* =================================================
+          SLIDER DOTS
+      ================================================= */}
 
-        {heroSlides.map((_, index) => (
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+
+        {slideImages.map((_, index) => (
 
           <button
             key={index}
+            type="button"
             onClick={() => setCurrent(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`h-3 rounded-full transition-all ${
+            className={`h-2.5 rounded-full transition-all duration-300 ${
               current === index
-                ? "bg-[#60A5FA] w-8"
-                : "bg-white/50 w-3 hover:bg-white/80"
+                ? "bg-white w-8"
+                : "bg-white/50 w-2.5 hover:bg-white"
             }`}
           />
 
         ))}
 
       </div>
-
-
-      {/* ================= SCROLL DOWN ================= */}
-      <a
-        href="#about"
-        aria-label="Scroll to About section"
-        className="absolute bottom-6 right-8 text-white animate-bounce z-20 hover:text-[#60A5FA] transition"
-      >
-        <FaChevronDown size={22} />
-      </a>
 
     </section>
   );

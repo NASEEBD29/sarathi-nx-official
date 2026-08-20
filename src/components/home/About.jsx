@@ -12,7 +12,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-24 bg-white overflow-hidden"
+      className="py-10 bg-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
 

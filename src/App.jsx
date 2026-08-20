@@ -11,6 +11,9 @@ import TopHeader from "./components/layout/TopHeader";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import FloatingContact from "./components/common/FloatingContact";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   return (
@@ -33,6 +36,17 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
 
          <Route path="/contact" element={<Contact />} />
+
+         <Route path="/admin/login" element={<AdminLogin />} />
+
+         <Route
+  path="/admin"
+  element={
+    <ProtectedRoute>
+      <AdminDashboard />
+    </ProtectedRoute>
+  }
+/>
 
       </Routes>
 

@@ -1,5 +1,5 @@
-import SectionHeading from "../common/SectionHeading";
-import Reveal from "../common/Reveal";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   FaPlaneDeparture,
@@ -10,170 +10,303 @@ import {
   FaGlobeAsia,
   FaBriefcase,
   FaSuitcaseRolling,
+  FaArrowRight,
 } from "react-icons/fa";
 
 const services = [
   {
-    icon: <FaPlaneDeparture />,
+    icon: FaPlaneDeparture,
     title: "International Exhibition Travel",
+    shortTitle: "Exhibition Travel",
     description:
-      "Complete travel solutions for international exhibitions, trade fairs and business events worldwide.",
+      "Travel confidently to international exhibitions, trade fairs and business events with complete planning, documentation and travel assistance.",
   },
   {
-    icon: <FaBriefcase />,
+    icon: FaBriefcase,
     title: "Business Travel",
+    shortTitle: "Business Travel",
     description:
-      "Professional business travel planning with flights, hotels, transfers and personalized assistance.",
+      "Make every business trip simple and efficient with carefully planned flights, hotels, transfers and personalized travel support.",
   },
   {
-    icon: <FaBuilding />,
+    icon: FaBuilding,
     title: "Corporate Travel",
+    shortTitle: "Corporate Travel",
     description:
-      "Customized corporate travel solutions designed around your organization's business requirements.",
+      "Customized corporate travel solutions designed around your company's requirements, schedules and business objectives.",
   },
   {
-    icon: <FaPassport />,
+    icon: FaPassport,
     title: "Visa Assistance",
+    shortTitle: "Visa Assistance",
     description:
-      "Reliable visa guidance and documentation support for business and international travel.",
+      "Get professional guidance with visa documentation, application requirements and travel-related formalities for international destinations.",
   },
   {
-    icon: <FaUsers />,
+    icon: FaUsers,
     title: "MICE",
+    shortTitle: "MICE",
     description:
-      "Meetings, Incentives, Conferences and Events managed with professional travel support.",
+      "From meetings and conferences to incentive programs and corporate events, we manage travel arrangements with professional attention.",
   },
   {
-    icon: <FaSuitcaseRolling />,
+    icon: FaSuitcaseRolling,
     title: "Group Tours",
+    shortTitle: "Group Tours",
     description:
-      "Well-planned group travel experiences with customized itineraries and complete travel assistance.",
+      "Enjoy well-organized group journeys with customized itineraries, accommodation, transportation and complete travel assistance.",
   },
   {
-    icon: <FaGlobeAsia />,
+    icon: FaGlobeAsia,
     title: "Global Tourism",
+    shortTitle: "Global Tourism",
     description:
-      "Explore destinations worldwide with carefully planned leisure and international travel experiences.",
+      "Discover destinations around the world through thoughtfully planned leisure travel experiences designed around your preferences.",
   },
   {
-    icon: <FaHotel />,
+    icon: FaHotel,
     title: "Hotel & Travel Assistance",
+    shortTitle: "Hotel & Assistance",
     description:
-      "Comfortable hotel bookings and end-to-end travel arrangements at competitive rates.",
+      "From comfortable hotel bookings to transfers and other travel arrangements, we take care of the details for a smooth journey.",
   },
 ];
 
 export default function Services() {
+  const [activeService, setActiveService] = useState(0);
+
+  // Auto rotate
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveService((prev) => (prev + 1) % services.length);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const service = services[activeService];
+  const Icon = service.icon;
+
   return (
     <section
       id="services"
-      className="py-24 bg-[#F8FBFF]"
+      className="bg-[#F8FBFF] py-10 lg:py-12"
     >
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ================= HEADING ================= */}
 
-        <SectionHeading
-          eyebrow="Our Services"
-          title="Complete Travel Solutions Under One Roof"
-          description="From international exhibitions and corporate travel to visas, hotels and group tours, Sarathi NX provides professional travel solutions tailored to your needs."
-        />
+        <div className="text-center mb-8">
 
+          <span className="inline-block text-[#003DA5] text-sm font-bold uppercase tracking-[3px]">
+            Our Services
+          </span>
 
-        {/* ================= SERVICES GRID ================= */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mt-2">
+            Complete Travel Solutions
+          </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7 mt-16">
-
-          {services.map((service, index) => (
-
-            <Reveal
-              key={service.title}
-              delay={index * 0.1}
-            >
-
-              <div
-                className="group h-full bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
-              >
-
-                {/* Icon */}
-
-                <div className="w-16 h-16 rounded-2xl bg-[#EAF2FF] text-[#003DA5] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#003DA5] group-hover:text-white transition-all duration-300">
-                  {service.icon}
-                </div>
-
-
-                {/* Title */}
-
-                <h3 className="text-xl font-bold text-gray-800 mb-4 leading-snug">
-                  {service.title}
-                </h3>
-
-
-                {/* Description */}
-
-                <p className="text-gray-600 leading-7 text-sm">
-                  {service.description}
-                </p>
-
-
-                {/* Read More */}
-
-                <a
-                  href="/sarathi-nx-official/services"
-                  className="inline-flex items-center gap-2 mt-6 text-[#003DA5] font-semibold text-sm hover:text-[#002B73] transition"
-                >
-                  Learn More
-
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-
-                </a>
-
-              </div>
-
-            </Reveal>
-
-          ))}
+          <p className="text-gray-600 max-w-2xl mx-auto mt-3 text-sm md:text-base leading-6">
+            From international exhibitions and corporate journeys to visas,
+            hotels and group tours, we take care of every important detail
+            so you can travel with confidence.
+          </p>
 
         </div>
 
 
-        {/* ================= BOTTOM CTA ================= */}
+        {/* ================= SERVICE AREA ================= */}
 
-        <Reveal delay={0.4}>
+        <div className="grid lg:grid-cols-[270px_1fr] gap-5 items-stretch">
 
-          <div className="mt-16 rounded-3xl bg-gradient-to-r from-[#002B73] to-[#0057B8] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-white">
+          {/* ================= LEFT MENU ================= */}
 
-            <div>
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
 
-              <p className="text-blue-200 uppercase tracking-[3px] text-sm font-semibold">
-                Need Travel Assistance?
+            <div className="px-5 py-4 bg-[#003DA5] text-white">
+
+              <p className="text-xs uppercase tracking-[2px] text-blue-200 font-semibold">
+                What We Offer
               </p>
 
-              <h3 className="text-2xl md:text-3xl font-bold mt-2">
-                Let us plan your next journey.
+              <h3 className="text-lg font-bold mt-1">
+                Our Services
               </h3>
-
-              <p className="text-blue-100 mt-2">
-                Our travel experts are ready to assist you.
-              </p>
 
             </div>
 
 
-            <a
-              href="#contact"
-              className="shrink-0 inline-flex items-center gap-2 bg-white text-[#003DA5] px-7 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300"
-            >
-              Plan Your Trip
+            <div className="p-2">
 
-              <FaPlaneDeparture />
-            </a>
+              {services.map((item, index) => {
+                const MenuIcon = item.icon;
+
+                return (
+                  <button
+                    key={item.title}
+                    type="button"
+                    onClick={() => setActiveService(index)}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-300 ${
+                      activeService === index
+                        ? "bg-[#EAF2FF] text-[#003DA5] shadow-sm"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-[#003DA5]"
+                    }`}
+                  >
+
+                    <span
+                      className={`w-9 h-9 shrink-0 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                        activeService === index
+                          ? "bg-[#003DA5] text-white"
+                          : "bg-gray-100 text-gray-500"
+                      }`}
+                    >
+                      <MenuIcon className="text-sm" />
+                    </span>
+
+
+                    <span
+                      className={`text-sm font-semibold ${
+                        activeService === index
+                          ? "text-[#003DA5]"
+                          : "text-gray-600"
+                      }`}
+                    >
+                      {item.shortTitle}
+                    </span>
+
+                  </button>
+                );
+              })}
+
+            </div>
 
           </div>
 
-        </Reveal>
+
+          {/* ================= MAIN CARD ================= */}
+
+          <div className="relative min-h-[520px] lg:min-h-0">
+
+            <AnimatePresence mode="wait">
+
+              <motion.div
+                key={activeService}
+                initial={{
+                  opacity: 0,
+                  rotateY: -12,
+                  x: 30,
+                }}
+                animate={{
+                  opacity: 1,
+                  rotateY: 0,
+                  x: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  rotateY: 12,
+                  x: -30,
+                }}
+                transition={{
+                  duration: 0.55,
+                  ease: "easeInOut",
+                }}
+                className="h-full"
+              >
+
+                <div className="h-full min-h-[520px] lg:min-h-0 bg-white rounded-2xl border border-gray-100 shadow-lg overflow-hidden relative">
+
+                  {/* Decorative background */}
+
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#EAF2FF] rounded-full blur-3xl opacity-70 -translate-y-1/2 translate-x-1/3" />
+
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-50 rounded-full blur-3xl opacity-60 translate-y-1/2 -translate-x-1/3" />
+
+
+                  {/* Card Content */}
+
+                  <div className="relative z-10 h-full flex flex-col justify-center p-8 md:p-10 lg:p-12">
+
+                    {/* Icon */}
+
+                    <div className="w-20 h-20 rounded-2xl bg-[#EAF2FF] text-[#003DA5] flex items-center justify-center text-3xl shadow-sm mb-7">
+                      <Icon />
+                    </div>
+
+
+                    {/* Small label */}
+
+                    <span className="text-[#003DA5] text-sm font-bold uppercase tracking-[2px]">
+                      Sarathi NX
+                    </span>
+
+
+                    {/* Title */}
+
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mt-3 max-w-2xl leading-tight">
+                      {service.title}
+                    </h3>
+
+
+                    {/* Description */}
+
+                    <p className="text-gray-600 text-base md:text-lg leading-8 mt-5 max-w-2xl">
+                      {service.description}
+                    </p>
+
+
+                    {/* Bottom content */}
+
+                    <div className="flex flex-wrap items-center gap-5 mt-8">
+
+                      <a
+                        href="#contact"
+                        className="inline-flex items-center gap-3 bg-[#003DA5] hover:bg-[#002B73] text-white px-6 py-3.5 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                      >
+                        Enquire Now
+
+                        <FaArrowRight className="text-sm" />
+                      </a>
+
+
+                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                        <span className="w-2 h-2 rounded-full bg-[#003DA5]" />
+                        Professional Travel Assistance
+                      </div>
+
+                    </div>
+
+
+                    {/* Progress indicators */}
+
+                    <div className="flex gap-2 mt-9">
+
+                      {services.map((_, index) => (
+                        <button
+                          key={index}
+                          type="button"
+                          onClick={() => setActiveService(index)}
+                          aria-label={`Show service ${index + 1}`}
+                          className={`h-1.5 rounded-full transition-all duration-500 ${
+                            activeService === index
+                              ? "w-10 bg-[#003DA5]"
+                              : "w-5 bg-gray-200 hover:bg-gray-300"
+                          }`}
+                        />
+                      ))}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </motion.div>
+
+            </AnimatePresence>
+
+          </div>
+
+        </div>
 
       </div>
     </section>

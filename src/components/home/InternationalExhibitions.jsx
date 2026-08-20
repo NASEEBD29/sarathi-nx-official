@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import {
   FaArrowRight,
   FaMapMarkerAlt,
   FaGlobeAsia,
+  FaChevronLeft,
+  FaChevronRight,
+  FaPlaneDeparture,
+  FaCalendarAlt,
 } from "react-icons/fa";
 
 import Reveal from "../common/Reveal";
@@ -59,38 +66,145 @@ const exhibitions = [
 ];
 
 export default function InternationalExhibitions() {
+  const [startIndex, setStartIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  // ==========================================
+  // NEXT SLIDE
+  // ==========================================
+
+  const handleNext = () => {
+    setDirection(1);
+
+    setStartIndex(
+      (prev) => (prev + 1) % exhibitions.length
+    );
+  };
+
+  // ==========================================
+  // PREVIOUS SLIDE
+  // ==========================================
+
+  const handlePrevious = () => {
+    setDirection(-1);
+
+    setStartIndex(
+      (prev) =>
+        (prev - 1 + exhibitions.length) %
+        exhibitions.length
+    );
+  };
+
+  // ==========================================
+  // AUTO SLIDER
+  // ==========================================
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // ==========================================
+  // 3 VISIBLE CARDS
+  // ==========================================
+
+  const visibleCards = [
+    exhibitions[startIndex % exhibitions.length],
+
+    exhibitions[
+      (startIndex + 1) % exhibitions.length
+    ],
+
+    exhibitions[
+      (startIndex + 2) % exhibitions.length
+    ],
+  ];
+
+  // ==========================================
+  // CARD ANIMATION
+  // ==========================================
+
+  const cardVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 420 : -420,
+      opacity: 0,
+      scale: 0.94,
+    }),
+
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+
+    exit: (direction) => ({
+      x: direction > 0 ? -420 : 420,
+      opacity: 0,
+      scale: 0.94,
+    }),
+  };
+
   return (
     <section
       id="exhibitions"
-      className="py-24 bg-white"
+      className="relative py-16 md:py-20 bg-gradient-to-b from-white via-[#F8FBFF] to-white overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6">
 
-        {/* ================= SECTION HEADING ================= */}
+      {/* ==========================================
+          DECORATIVE BACKGROUND
+      ========================================== */}
+
+      <div className="absolute top-10 -left-24 w-72 h-72 bg-[#0057B8]/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="absolute bottom-10 -right-24 w-72 h-72 bg-[#00A6A6]/5 rounded-full blur-3xl pointer-events-none" />
+
+
+      <div className="relative max-w-7xl mx-auto px-6">
+
+        {/* ==========================================
+            SECTION HEADING
+        ========================================== */}
 
         <Reveal>
 
-          <div className="text-center mb-14">
+          <div className="text-center max-w-4xl mx-auto mb-10">
 
-            <span className="inline-flex items-center gap-2 text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
+            {/* Eyebrow */}
+
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EAF2FF] text-[#003DA5] text-xs md:text-sm font-bold uppercase tracking-[2px]">
+
               <FaGlobeAsia />
+
               International Exhibitions
-            </span>
 
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 text-gray-800 leading-tight">
+            </div>
 
-              Your Trusted Travel Partner for
 
-              <span className="block text-[#003DA5] mt-2">
-                Leading International Exhibitions
+            {/* Heading */}
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800 mt-4 leading-tight">
+
+              Your Gateway to
+
+              <span className="block text-[#003DA5] mt-1">
+                Global Exhibitions
               </span>
 
             </h2>
 
-            <p className="mt-5 text-gray-600 max-w-3xl mx-auto leading-7">
-              We provide complete travel solutions for businesses
-              attending leading international exhibitions and trade
-              fairs worldwide.
+
+            {/* Description */}
+
+            <p className="mt-4 text-gray-600 max-w-3xl mx-auto leading-7 text-sm md:text-base">
+
+              Discover leading international exhibitions and
+              trade fairs with complete travel assistance from
+              Sarathi NX. We make your business journey
+              simple, comfortable and stress-free.
+
             </p>
 
           </div>
@@ -98,106 +212,606 @@ export default function InternationalExhibitions() {
         </Reveal>
 
 
-        {/* ================= EXHIBITION CARDS ================= */}
+        {/* ==========================================
+            CAROUSEL AREA
+        ========================================== */}
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="relative">
 
-          {exhibitions.map((item, index) => (
+          {/* ==========================================
+              LEFT ARROW
+          ========================================== */}
 
-            <Reveal
-              key={item.title}
-              delay={index * 0.1}
+          <button
+            type="button"
+            onClick={handlePrevious}
+            aria-label="Previous exhibitions"
+            className="
+              hidden lg:flex
+              absolute
+              -left-6
+              top-1/2
+              -translate-y-1/2
+              z-30
+              w-12
+              h-12
+              rounded-full
+              bg-white
+              text-[#003DA5]
+              shadow-xl
+              border
+              border-gray-100
+              items-center
+              justify-center
+              hover:bg-[#003DA5]
+              hover:text-white
+              hover:scale-110
+              transition-all
+              duration-300
+            "
+          >
+            <FaChevronLeft />
+          </button>
+
+
+          {/* ==========================================
+              CARD VIEWPORT
+          ========================================== */}
+
+          <div className="relative overflow-hidden px-1 py-3">
+
+            <AnimatePresence
+              initial={false}
+              custom={direction}
+              mode="popLayout"
             >
 
-              <div className="group bg-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+              <motion.div
+                key={startIndex}
+                custom={direction}
+                variants={cardVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: {
+                    type: "spring",
+                    stiffness: 180,
+                    damping: 25,
+                  },
+                  opacity: {
+                    duration: 0.35,
+                  },
+                  scale: {
+                    duration: 0.35,
+                  },
+                }}
+                className="
+                  grid
+                  grid-cols-1
+                  md:grid-cols-3
+                  gap-6
+                  w-full
+                "
+              >
 
-                {/* Top Icon */}
+                {visibleCards.map((item, index) => (
 
-                <div className="w-14 h-14 rounded-xl bg-[#EAF2FF] text-[#003DA5] flex items-center justify-center text-xl mb-6 group-hover:bg-[#003DA5] group-hover:text-white transition-all duration-300">
-                  <FaGlobeAsia />
-                </div>
+                  <motion.div
+                    key={`${item.title}-${startIndex}-${index}`}
+                    whileHover={{
+                      y: -8,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                    }}
+                    className="
+                      group
+                      relative
+                      bg-white
+                      rounded-3xl
+                      border
+                      border-gray-100
+                      shadow-[0_10px_35px_rgba(0,0,0,0.07)]
+                      hover:shadow-[0_20px_50px_rgba(0,61,165,0.16)]
+                      min-h-[330px]
+                      flex
+                      flex-col
+                      overflow-hidden
+                      transition-shadow
+                      duration-500
+                    "
+                  >
+
+                    {/* ==================================
+                        TOP GRADIENT
+                    ================================== */}
+
+                    <div
+                      className="
+                        absolute
+                        top-0
+                        left-0
+                        right-0
+                        h-1.5
+                        bg-gradient-to-r
+                        from-[#003DA5]
+                        via-[#0084D6]
+                        to-[#00A6A6]
+                      "
+                    />
 
 
-                {/* Exhibition Name */}
+                    {/* ==================================
+                        DECORATIVE CIRCLE
+                    ================================== */}
 
-                <h3 className="text-2xl font-bold text-gray-800 group-hover:text-[#003DA5] transition">
-                  {item.title}
-                </h3>
-
-
-                {/* Description */}
-
-                <p className="mt-4 text-gray-600 leading-7">
-                  {item.description}
-                </p>
-
-
-                {/* Location */}
-
-                <div className="flex items-start gap-3 mt-5 text-[#003DA5] font-medium">
-
-                  <FaMapMarkerAlt className="mt-1 shrink-0" />
-
-                  <span>
-                    {item.location}
-                  </span>
-
-                </div>
+                    <div
+                      className="
+                        absolute
+                        -top-16
+                        -right-16
+                        w-36
+                        h-36
+                        rounded-full
+                        bg-[#EAF2FF]
+                        group-hover:bg-[#DDEBFF]
+                        transition-colors
+                        duration-500
+                      "
+                    />
 
 
-                {/* Button */}
+                    <div
+                      className="
+                        absolute
+                        -bottom-20
+                        -left-20
+                        w-40
+                        h-40
+                        rounded-full
+                        bg-[#F4FAFF]
+                        group-hover:bg-[#EAF2FF]
+                        transition-colors
+                        duration-500
+                      "
+                    />
 
-                <div className="mt-auto pt-7">
 
-                  {item.link !== "#" ? (
+                    {/* ==================================
+                        CARD CONTENT
+                    ================================== */}
 
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#003DA5] font-semibold hover:text-[#002B73] transition"
-                    >
-                      Explore Exhibition
+                    <div className="relative z-10 p-6 md:p-7 flex flex-col h-full">
 
-                      <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-                    </a>
+                      {/* ==================================
+                          NUMBER + ICON
+                      ================================== */}
 
-                  ) : (
+                      <div className="flex items-center justify-between">
 
-                    <span className="inline-flex items-center gap-2 text-gray-400 font-semibold cursor-not-allowed">
-                      Details Coming Soon
-                    </span>
+                        {/* Icon */}
 
-                  )}
+                        <motion.div
+                          whileHover={{
+                            rotate: 8,
+                            scale: 1.08,
+                          }}
+                          className="
+                            w-14
+                            h-14
+                            rounded-2xl
+                            bg-gradient-to-br
+                            from-[#EAF2FF]
+                            to-[#DCEBFF]
+                            text-[#003DA5]
+                            flex
+                            items-center
+                            justify-center
+                            text-xl
+                            shadow-sm
+                            group-hover:bg-[#003DA5]
+                            group-hover:text-white
+                            transition-all
+                            duration-500
+                          "
+                        >
+                          <FaGlobeAsia />
+                        </motion.div>
 
-                </div>
 
-              </div>
+                        {/* Number */}
 
-            </Reveal>
+                        <div
+                          className="
+                            text-4xl
+                            font-black
+                            text-gray-100
+                            group-hover:text-[#EAF2FF]
+                            transition-colors
+                            duration-500
+                          "
+                        >
+                          {String(
+                            (startIndex + index) %
+                              exhibitions.length +
+                              1
+                          ).padStart(2, "0")}
+                        </div>
+
+                      </div>
+
+
+                      {/* ==================================
+                          TITLE
+                      ================================== */}
+
+                      <h3
+                        className="
+                          mt-6
+                          text-xl
+                          md:text-2xl
+                          font-extrabold
+                          text-gray-800
+                          leading-tight
+                          group-hover:text-[#003DA5]
+                          transition-colors
+                          duration-300
+                        "
+                      >
+                        {item.title}
+                      </h3>
+
+
+                      {/* ==================================
+                          DESCRIPTION
+                      ================================== */}
+
+                      <p
+                        className="
+                          mt-3
+                          text-gray-600
+                          text-sm
+                          md:text-[15px]
+                          leading-6
+                        "
+                      >
+                        {item.description}
+                      </p>
+
+
+                      {/* ==================================
+                          LOCATION
+                      ================================== */}
+
+                      <div
+                        className="
+                          mt-5
+                          inline-flex
+                          items-center
+                          gap-2
+                          w-fit
+                          px-3
+                          py-2
+                          rounded-full
+                          bg-[#F3F7FC]
+                          text-[#003DA5]
+                          text-xs
+                          md:text-sm
+                          font-semibold
+                          group-hover:bg-[#EAF2FF]
+                          transition-colors
+                          duration-300
+                        "
+                      >
+
+                        <FaMapMarkerAlt />
+
+                        <span>
+                          {item.location}
+                        </span>
+
+                      </div>
+
+
+                      {/* ==================================
+                          BOTTOM
+                      ================================== */}
+
+                      <div className="mt-auto pt-6 flex items-center justify-between">
+
+                        {/* Exhibition type */}
+
+                        <div
+                          className="
+                            flex
+                            items-center
+                            gap-2
+                            text-gray-400
+                            text-xs
+                            font-medium
+                          "
+                        >
+                          <FaCalendarAlt />
+
+                          International Event
+
+                        </div>
+
+
+                        {/* Explore */}
+
+                        {item.link !== "#" ? (
+
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="
+                              inline-flex
+                              items-center
+                              gap-2
+                              text-[#003DA5]
+                              font-bold
+                              text-sm
+                              group/link
+                              hover:text-[#002B73]
+                              transition
+                            "
+                          >
+
+                            Explore
+
+                            <FaArrowRight
+                              className="
+                                text-xs
+                                group-hover/link:translate-x-1
+                                transition-transform
+                              "
+                            />
+
+                          </a>
+
+                        ) : (
+
+                          <span
+                            className="
+                              text-gray-400
+                              font-semibold
+                              text-xs
+                            "
+                          >
+                            Coming Soon
+                          </span>
+
+                        )}
+
+                      </div>
+
+                    </div>
+
+                  </motion.div>
+
+                ))}
+
+              </motion.div>
+
+            </AnimatePresence>
+
+          </div>
+
+
+          {/* ==========================================
+              RIGHT ARROW
+          ========================================== */}
+
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next exhibitions"
+            className="
+              hidden lg:flex
+              absolute
+              -right-6
+              top-1/2
+              -translate-y-1/2
+              z-30
+              w-12
+              h-12
+              rounded-full
+              bg-white
+              text-[#003DA5]
+              shadow-xl
+              border
+              border-gray-100
+              items-center
+              justify-center
+              hover:bg-[#003DA5]
+              hover:text-white
+              hover:scale-110
+              transition-all
+              duration-300
+            "
+          >
+            <FaChevronRight />
+          </button>
+
+        </div>
+
+
+        {/* ==========================================
+            MOBILE ARROWS
+        ========================================== */}
+
+        <div className="flex lg:hidden justify-center gap-3 mt-5">
+
+          <button
+            type="button"
+            onClick={handlePrevious}
+            className="
+              w-10
+              h-10
+              rounded-full
+              bg-white
+              text-[#003DA5]
+              border
+              border-gray-200
+              shadow-md
+              flex
+              items-center
+              justify-center
+              hover:bg-[#003DA5]
+              hover:text-white
+              transition-all
+            "
+          >
+            <FaChevronLeft />
+          </button>
+
+
+          <button
+            type="button"
+            onClick={handleNext}
+            className="
+              w-10
+              h-10
+              rounded-full
+              bg-white
+              text-[#003DA5]
+              border
+              border-gray-200
+              shadow-md
+              flex
+              items-center
+              justify-center
+              hover:bg-[#003DA5]
+              hover:text-white
+              transition-all
+            "
+          >
+            <FaChevronRight />
+          </button>
+
+        </div>
+
+
+        {/* ==========================================
+            DOTS
+        ========================================== */}
+
+        <div className="flex justify-center gap-2 mt-5">
+
+          {exhibitions.map((_, index) => (
+
+            <button
+              key={index}
+              type="button"
+              onClick={() => {
+                setDirection(
+                  index >= startIndex ? 1 : -1
+                );
+
+                setStartIndex(index);
+              }}
+              aria-label={`Go to exhibition ${index + 1}`}
+              className={`
+                h-2
+                rounded-full
+                transition-all
+                duration-300
+                ${
+                  startIndex === index
+                    ? "w-8 bg-[#003DA5]"
+                    : "w-2 bg-gray-300 hover:bg-gray-400"
+                }
+              `}
+            />
 
           ))}
 
         </div>
 
 
-        {/* ================= BOTTOM CTA ================= */}
+        {/* ==========================================
+            CTA
+        ========================================== */}
 
-        <Reveal delay={0.5}>
+        <Reveal delay={0.3}>
 
-          <div className="mt-16 bg-gradient-to-r from-[#002B73] to-[#0057B8] rounded-3xl px-8 py-10 md:px-12 text-white flex flex-col md:flex-row items-center justify-between gap-6">
+          <div
+            className="
+              mt-10
+              rounded-3xl
+              bg-gradient-to-r
+              from-[#002B73]
+              via-[#003DA5]
+              to-[#0057B8]
+              px-6
+              py-7
+              md:px-10
+              md:py-8
+              text-white
+              flex
+              flex-col
+              md:flex-row
+              items-center
+              justify-between
+              gap-5
+              shadow-xl
+              overflow-hidden
+              relative
+            "
+          >
 
-            <div>
+            {/* Decorative circle */}
 
-              <p className="text-blue-200 uppercase tracking-[3px] text-sm font-semibold">
-                Exhibition Travel Made Easy
-              </p>
+            <div
+              className="
+                absolute
+                -right-16
+                -top-16
+                w-40
+                h-40
+                rounded-full
+                bg-white/10
+              "
+            />
 
-              <h3 className="text-2xl md:text-3xl font-bold mt-2">
+
+            <div className="relative z-10">
+
+              <div className="flex items-center gap-2">
+
+                <FaPlaneDeparture className="text-blue-200" />
+
+                <p
+                  className="
+                    text-blue-200
+                    uppercase
+                    tracking-[2px]
+                    text-xs
+                    font-bold
+                  "
+                >
+                  Exhibition Travel Made Easy
+                </p>
+
+              </div>
+
+
+              <h3
+                className="
+                  text-xl
+                  md:text-2xl
+                  font-extrabold
+                  mt-2
+                "
+              >
                 Planning to attend an international exhibition?
               </h3>
 
-              <p className="text-blue-100 mt-2">
+
+              <p className="text-blue-100 mt-1 text-sm">
                 Let Sarathi NX manage your complete travel requirements.
               </p>
 
@@ -206,11 +820,30 @@ export default function InternationalExhibitions() {
 
             <a
               href="#contact"
-              className="shrink-0 inline-flex items-center gap-2 bg-white text-[#003DA5] px-7 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300"
+              className="
+                relative
+                z-10
+                shrink-0
+                inline-flex
+                items-center
+                gap-2
+                bg-white
+                text-[#003DA5]
+                px-6
+                py-3
+                rounded-full
+                font-bold
+                hover:bg-blue-50
+                hover:scale-105
+                transition-all
+                duration-300
+                shadow-lg
+              "
             >
               Plan Exhibition Travel
 
               <FaArrowRight />
+
             </a>
 
           </div>
@@ -218,6 +851,7 @@ export default function InternationalExhibitions() {
         </Reveal>
 
       </div>
+
     </section>
   );
 }

@@ -3,75 +3,124 @@ import {
   FaEnvelope,
   FaInstagram,
   FaLinkedinIn,
-  FaClock,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 
 export default function TopHeader() {
   return (
-    <header className="bg-[#003DA5] text-white">
+    <header className="w-full bg-[#003DA5] text-white">
+      <div className="w-full border-b border-white/15">
 
-      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-10">
 
-        <div className="flex justify-between items-center min-h-11">
+          <div className="min-h-[64px] flex items-center justify-between gap-6">
 
-          {/* Left */}
-          <div className="flex items-center gap-8 text-sm">
+            {/* ================= LEFT SIDE ================= */}
+            <div className="flex items-center gap-6 lg:gap-10 text-[16px] lg:text-[17px]">
 
-            <a
-              href="tel:+917666984626"
-              className="flex items-center gap-2 hover:text-blue-200 transition"
-            >
-              <FaPhoneAlt />
-              <span>+91 766 698 4626</span>
-            </a>
+              {/* Phone */}
+              <a
+                href="tel:+917666984626"
+                className="flex items-center gap-3 hover:text-blue-200 transition-colors duration-300 whitespace-nowrap"
+              >
+                <FaPhoneAlt className="text-[16px] lg:text-[17px]" />
 
-            <a
-              href="mailto:sajid@sarathinx.com"
-              className="flex items-center gap-2 hover:text-blue-200 transition"
-            >
-              <FaEnvelope />
-              <span>sajid@sarathinx.com</span>
-            </a>
-
-            <span className="flex items-center gap-2">
-              <FaClock />
-              <span>Mon - Sat : 9:30 AM - 7:00 PM</span>
-            </span>
-
-          </div>
+                <span className="font-semibold">
+                  +91 766 698 4626
+                </span>
+              </a>
 
 
-          {/* Right */}
-          <div className="flex items-center gap-4">
+              {/* Email */}
+              <a
+                href="mailto:sajid@sarathinx.com"
+                className="hidden md:flex items-center gap-3 hover:text-blue-200 transition-colors duration-300 whitespace-nowrap"
+              >
+                <FaEnvelope className="text-[17px]" />
 
-            <span className="text-sm">
-              Follow Us
-            </span>
+                <span className="font-semibold">
+                  sajid@sarathinx.com
+                </span>
+              </a>
 
-            <a
-              href="https://www.instagram.com/sarathi_nx_travel/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-200 transition"
-              aria-label="Instagram"
-            >
-              <FaInstagram />
-            </a>
 
-            <a
-              href="#"
-              className="hover:text-blue-200 transition"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedinIn />
-            </a>
+              {/* Address */}
+              <span className="hidden xl:flex items-center gap-3 whitespace-nowrap">
+                <FaMapMarkerAlt className="text-[17px]" />
+
+                <span className="font-semibold">
+                Office No. 026,
+Crystal Plaza CHS Ltd,
+Station Road, Mira Road East,
+Thane - 401107
+                </span>
+              </span>
+
+            </div>
+
+
+            {/* ================= RIGHT SIDE ================= */}
+            <div className="flex items-center gap-4">
+
+              <span className="hidden sm:block text-[16px] font-semibold">
+                Follow Us
+              </span>
+
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/sarathi_nx_travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="
+                  w-9
+                  h-9
+                  flex
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-white/30
+                  hover:bg-white
+                  hover:text-[#003DA5]
+                  transition-all
+                  duration-300
+                "
+              >
+                <FaInstagram className="text-[16px]" />
+              </a>
+
+
+              {/* LinkedIn */}
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="
+                  w-9
+                  h-9
+                  flex
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-white/30
+                  hover:bg-white
+                  hover:text-[#003DA5]
+                  transition-all
+                  duration-300
+                "
+              >
+                <FaLinkedinIn className="text-[16px]" />
+              </a>
+
+            </div>
 
           </div>
 
         </div>
 
       </div>
-
     </header>
   );
 }

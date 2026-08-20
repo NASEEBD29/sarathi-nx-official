@@ -14,7 +14,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 60);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -26,75 +26,186 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-lg py-2"
-          : "bg-white shadow-md py-2"
-      }`}
+      className={`
+        sticky top-0 left-0 w-full z-50
+        bg-white
+        border-b border-gray-100
+        transition-all duration-300
+        ${scrolled ? "shadow-lg" : "shadow-sm"}
+      `}
     >
 
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      {/* ================= NAVBAR ================= */}
 
-        {/* ================= LOGO ================= */}
-        <Link
-          to="/"
-          className="flex items-center shrink-0"
+      <div className="w-full">
+
+        <div
+          className="
+            max-w-[1440px]
+            mx-auto
+            px-5
+            sm:px-8
+            lg:px-10
+            h-[84px]
+            flex
+            items-center
+            justify-between
+            gap-8
+          "
         >
-          <img
-            src={`${import.meta.env.BASE_URL}sarathi-logo.png`}
-            alt="Sarathi NX"
-            className="w-32 sm:w-36 md:w-40 h-auto object-contain"
-          />
-        </Link>
+
+          {/* ================= LOGO ================= */}
+
+          <Link
+            to="/"
+            className="flex items-center shrink-0"
+          >
+            <img
+              src={`${import.meta.env.BASE_URL}sarathi-logo.png`}
+              alt="Sarathi NX"
+              className="
+                w-[135px]
+                sm:w-[150px]
+                lg:w-[165px]
+                h-auto
+                object-contain
+              "
+            />
+          </Link>
 
 
-        {/* ================= DESKTOP MENU ================= */}
-        <ul className="hidden lg:flex items-center gap-7">
+          {/* ================= DESKTOP MENU ================= */}
 
-          {navLinks.map((item) => (
-            <li key={item.id}>
+          <ul className="hidden lg:flex items-center gap-8 xl:gap-10">
 
-              <Link
-                to={item.href}
-                className="font-medium text-gray-700 hover:text-[#003DA5] transition-colors duration-300"
-              >
-                {item.title}
-              </Link>
+            {navLinks.map((item) => (
+              <li key={item.id}>
 
-            </li>
-          ))}
+                <Link
+                  to={item.href}
+                  className="
+                    relative
+                    text-[17px]
+                    xl:text-[18px]
+                    font-semibold
+                    text-gray-700
+                    hover:text-[#003DA5]
+                    transition-colors
+                    duration-300
+                    whitespace-nowrap
+                    py-3
+                  "
+                >
+                  {item.title}
 
-        </ul>
+                  {/* Hover Line */}
+                  <span
+                    className="
+                      absolute
+                      left-0
+                      bottom-0
+                      w-0
+                      h-[2px]
+                      bg-[#003DA5]
+                      transition-all
+                      duration-300
+                      hover:w-full
+                    "
+                  />
+
+                </Link>
+
+              </li>
+            ))}
+
+          </ul>
 
 
-        {/* ================= CALL BUTTON ================= */}
-        <a
-          href="tel:+917666984626"
-          className="hidden lg:flex items-center gap-2 bg-[#003DA5] hover:bg-[#002B73] text-white px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-105 shadow-md"
-        >
-          <FaPhoneAlt className="text-sm" />
+          {/* ================= PHONE BUTTON ================= */}
 
-          <span>
-            Call Now
-          </span>
-        </a>
+          <a
+            href="tel:+917666984626"
+            className="
+              hidden
+              lg:flex
+              items-center
+              justify-center
+              gap-3
+              bg-[#003DA5]
+              hover:bg-[#002B73]
+              text-white
+              px-6
+              py-3.5
+              rounded-full
+              text-[16px]
+              xl:text-[17px]
+              font-bold
+              whitespace-nowrap
+              shadow-md
+              hover:shadow-lg
+              hover:-translate-y-0.5
+              transition-all
+              duration-300
+            "
+          >
+            <FaPhoneAlt className="text-[15px]" />
+
+            <span>
+              +91 766 698 4626
+            </span>
+
+          </a>
 
 
-        {/* ================= MOBILE MENU BUTTON ================= */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden text-xl text-[#003DA5]"
-          aria-label="Toggle Menu"
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
+          {/* ================= MOBILE MENU BUTTON ================= */}
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="
+              lg:hidden
+              w-12
+              h-12
+              flex
+              items-center
+              justify-center
+              rounded-lg
+              bg-[#EAF2FF]
+              text-[#003DA5]
+              text-xl
+              hover:bg-[#003DA5]
+              hover:text-white
+              transition-all
+              duration-300
+            "
+            aria-label="Toggle Menu"
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+
+        </div>
 
       </div>
 
 
       {/* ================= MOBILE MENU ================= */}
-      {menuOpen && (
-        <div className="lg:hidden bg-white shadow-lg border-t border-gray-100">
+
+      <div
+        className={`
+          lg:hidden
+          overflow-hidden
+          transition-all
+          duration-300
+          ${
+            menuOpen
+              ? "max-h-[700px] border-t border-gray-100"
+              : "max-h-0"
+          }
+        `}
+      >
+
+        <div className="bg-white shadow-lg">
 
           <ul className="flex flex-col py-3">
 
@@ -104,7 +215,18 @@ export default function Navbar() {
                 <Link
                   to={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block px-6 py-3 text-gray-700 hover:bg-[#EAF2FF] hover:text-[#003DA5] transition"
+                  className="
+                    block
+                    px-6
+                    py-4
+                    text-[18px]
+                    font-semibold
+                    text-gray-700
+                    hover:bg-[#EAF2FF]
+                    hover:text-[#003DA5]
+                    transition-colors
+                    duration-300
+                  "
                 >
                   {item.title}
                 </Link>
@@ -113,19 +235,37 @@ export default function Navbar() {
             ))}
 
 
-            {/* ================= MOBILE CALL BUTTON ================= */}
-            <li className="px-6 mt-3">
+            {/* ================= MOBILE PHONE ================= */}
+
+            <li className="px-6 pt-4 pb-3">
 
               <a
                 href="tel:+917666984626"
                 onClick={() => setMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 bg-[#003DA5] hover:bg-[#002B73] text-white py-2.5 rounded-full transition"
+                className="
+                  w-full
+                  flex
+                  items-center
+                  justify-center
+                  gap-3
+                  bg-[#003DA5]
+                  hover:bg-[#002B73]
+                  text-white
+                  py-4
+                  rounded-full
+                  text-[17px]
+                  font-bold
+                  transition-all
+                  duration-300
+                "
               >
+
                 <FaPhoneAlt />
 
                 <span>
-                  Call Now
+                  +91 766 698 4626
                 </span>
+
               </a>
 
             </li>
@@ -133,7 +273,8 @@ export default function Navbar() {
           </ul>
 
         </div>
-      )}
+
+      </div>
 
     </nav>
   );
