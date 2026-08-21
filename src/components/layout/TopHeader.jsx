@@ -1,17 +1,23 @@
 import {
   FaPhoneAlt,
   FaEnvelope,
-  FaInstagram,
-  FaLinkedinIn,
+  FaClock,
   FaMapMarkerAlt,
+  FaInstagram,
 } from "react-icons/fa";
+
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaThreads,
+} from "react-icons/fa6";
 
 export default function TopHeader() {
   return (
     <header className="w-full bg-[#003DA5] text-white">
       <div className="w-full border-b border-white/15">
 
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="max-w-[1510px] mx-auto px-5 sm:px-8 lg:px-10">
 
           <div className="min-h-[64px] flex items-center justify-between gap-6">
 
@@ -27,6 +33,9 @@ export default function TopHeader() {
 
                 <span className="font-semibold">
                   +91 766 698 4626
+                </span>
+                <span className="font-semibold">
+                  +91 865786 7181
                 </span>
               </a>
 
@@ -49,10 +58,9 @@ export default function TopHeader() {
                 <FaMapMarkerAlt className="text-[17px]" />
 
                 <span className="font-semibold">
-                Office No. 026,
-Crystal Plaza CHS Ltd,
-Station Road, Mira Road East,
-Thane - 401107
+                  Crystal Plaza CHS Ltd,
+                  Station Road, Mira Road East,
+                  Thane - 401107
                 </span>
               </span>
 
@@ -113,6 +121,53 @@ Thane - 401107
               >
                 <FaLinkedinIn className="text-[16px]" />
               </a>
+
+              {/* facebook */}
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="
+                  w-9
+                  h-9
+                  flex
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-white/30
+                  hover:bg-white
+                  hover:text-[#003DA5]
+                  transition-all
+                  duration-300
+                "
+              >
+                <FaFacebookF className="text-[16px]" />
+              </a>
+
+               {/* threads */}
+              <a
+                href="#"
+                aria-label="Threads"
+                className="
+                  w-9
+                  h-9
+                  flex
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-white/30
+                  hover:bg-white
+                  hover:text-[#003DA5]
+                  transition-all
+                  duration-300
+                "
+              >
+                <FaThreads className="text-[16px]" />
+              </a>
+
+
+              
 
             </div>
 

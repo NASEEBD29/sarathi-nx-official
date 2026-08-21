@@ -743,8 +743,8 @@ export default function InternationalExhibitions() {
               mt-10
               rounded-3xl
               bg-gradient-to-r
-              from-[#002B73]
-              via-[#003DA5]
+              from-[#fc6602]
+              via-[#fc6602]
               to-[#0057B8]
               px-6
               py-7
@@ -828,7 +828,7 @@ export default function InternationalExhibitions() {
                 items-center
                 gap-2
                 bg-white
-                text-[#003DA5]
+                text-[#a53400]
                 px-6
                 py-3
                 rounded-full

@@ -135,7 +135,7 @@ export default function WhyChooseUs() {
 
         <Reveal delay={0.5}>
 
-          <div className="mt-16 bg-gradient-to-r from-[#002B73] to-[#0057B8] rounded-3xl p-10 md:p-12 text-center text-white">
+          <div className="mt-16 bg-gradient-to-r from-[#f75c02] to-[#f75c02] rounded-3xl p-10 md:p-12 text-center text-white">
 
             <p className="text-blue-200 uppercase tracking-[4px] text-sm font-semibold">
               Our Promise

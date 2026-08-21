@@ -41,13 +41,13 @@ export default function Hero() {
   const slideImages = [hero1, hero2, hero3];
 
   // =====================================================
-  // AUTO SLIDER
+  // AUTO SLIDER - 9 SECONDS
   // =====================================================
 
   useEffect(() => {
     const slider = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slideImages.length);
-    }, 5000);
+    }, 9000);
 
     return () => clearInterval(slider);
   }, []);
@@ -114,8 +114,6 @@ export default function Hero() {
     setLoading(true);
 
     try {
-      console.log("Sending enquiry:", formData);
-
       const response = await fetch(
         "http://localhost:8080/api/enquiries",
         {
@@ -126,8 +124,6 @@ export default function Hero() {
           body: JSON.stringify(formData),
         }
       );
-
-      console.log("Response status:", response.status);
 
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);
@@ -168,7 +164,12 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-[560px] lg:min-h-[590px]"
+      className="
+        relative
+        overflow-hidden
+        min-h-[650px]
+        lg:min-h-[700px]
+      "
     >
 
       {/* =================================================
@@ -181,7 +182,7 @@ export default function Hero() {
           key={current}
           initial={{
             opacity: 0,
-            scale: 1.03,
+            scale: 1.05,
           }}
           animate={{
             opacity: 1,
@@ -193,20 +194,38 @@ export default function Hero() {
           transition={{
             duration: 0.8,
           }}
-          className="absolute inset-0"
+          className="
+            absolute
+            inset-0
+          "
         >
 
           <img
             src={slideImages[current]}
             alt="Sarathi NX International Travel"
-            className="w-full h-full object-cover"
+            className="
+              w-full
+              h-full
+              object-cover
+            "
           />
 
           {/* Light Overlay */}
+
           <div className="absolute inset-0 bg-black/20" />
 
           {/* Left Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#001F54]/60 via-[#001F54]/25 to-transparent" />
+
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-r
+              from-[#001F54]/60
+              via-[#001F54]/25
+              to-transparent
+            "
+          />
 
         </motion.div>
 
@@ -217,16 +236,42 @@ export default function Hero() {
           MAIN CONTENT
       ================================================= */}
 
-      <div className="relative z-10 max-w-[1500px] mx-auto px-5 sm:px-8 lg:px-12 py-14 lg:py-16">
+      <div
+        className="
+          relative
+          z-10
+          max-w-[1500px]
+          mx-auto
+          px-5
+          sm:px-8
+          lg:px-12
+          py-14
+          lg:py-16
+        "
+      >
 
-        <div className="grid lg:grid-cols-[1fr_520px] gap-10 lg:gap-14 items-start">
-
+        <div
+          className="
+            grid
+            lg:grid-cols-[1fr_330px]
+            gap-10
+            lg:gap-14
+            items-start
+          "
+        >
 
           {/* =================================================
               LEFT CONTENT
           ================================================= */}
 
-          <div className="text-white pt-10 lg:pt-16 max-w-4xl">
+          <div
+            className="
+              text-white
+              pt-10
+              lg:pt-16
+              max-w-4xl
+            "
+          >
 
             <motion.p
               initial={{
@@ -240,7 +285,15 @@ export default function Hero() {
               transition={{
                 duration: 0.6,
               }}
-              className="text-blue-100 font-semibold uppercase tracking-[2px] text-sm sm:text-base mb-4"
+              className="
+                text-blue-100
+                font-semibold
+                uppercase
+                tracking-[2px]
+                text-sm
+                sm:text-base
+                mb-4
+              "
             >
               International Exhibition & Business Travel
             </motion.p>
@@ -261,7 +314,16 @@ export default function Hero() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight drop-shadow-lg"
+              className="
+                text-4xl
+                sm:text-5xl
+                md:text-6xl
+                lg:text-7xl
+                font-bold
+                leading-[1.05]
+                tracking-tight
+                drop-shadow-lg
+              "
             >
               {currentSlide?.title}
             </motion.h1>
@@ -283,7 +345,16 @@ export default function Hero() {
                 delay: 0.15,
                 duration: 0.7,
               }}
-              className="mt-5 text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl drop-shadow-md"
+              className="
+                mt-5
+                text-base
+                sm:text-lg
+                lg:text-xl
+                text-white/90
+                leading-relaxed
+                max-w-3xl
+                drop-shadow-md
+              "
             >
               {currentSlide?.description}
             </motion.p>
@@ -304,7 +375,13 @@ export default function Hero() {
                 delay: 0.3,
                 duration: 0.7,
               }}
-              className="mt-5 text-lg sm:text-xl font-semibold text-white"
+              className="
+                mt-5
+                text-lg
+                sm:text-xl
+                font-semibold
+                text-white
+              "
             >
               We Plan. You Travel. We Care.
             </motion.p>
@@ -329,22 +406,53 @@ export default function Hero() {
               delay: 0.2,
               duration: 0.7,
             }}
-            className="w-full lg:-mt-2"
+            className="
+              w-full
+              max-w-[330px]
+              lg:-mt-2
+              mx-auto
+              lg:mx-0
+            "
           >
 
-            <div className="bg-white rounded-sm shadow-2xl overflow-hidden">
+            <div
+              className="
+                bg-white
+                rounded-xl
+                shadow-2xl
+                overflow-hidden
+              "
+            >
 
               {/* =================================================
                   FORM HEADER
               ================================================= */}
 
-              <div className="bg-[#003DA5] px-7 py-4">
+              <div
+                className="
+                  bg-[#003DA5]
+                  px-5
+                  py-3
+                "
+              >
 
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                <h2
+                  className="
+                    text-xl
+                    font-bold
+                    text-white
+                  "
+                >
                   Quick Enquiry
                 </h2>
 
-                <p className="text-blue-100 mt-1 text-sm">
+                <p
+                  className="
+                    text-blue-100
+                    mt-0.5
+                    text-xs
+                  "
+                >
                   Let us help you plan your perfect journey.
                 </p>
 
@@ -355,11 +463,11 @@ export default function Hero() {
                   FORM BODY
               ================================================= */}
 
-              <div className="p-6">
+              <div className="p-4">
 
                 <form
                   onSubmit={handleEnquiry}
-                  className="space-y-3"
+                  className="space-y-2"
                 >
 
                   {/* NAME */}
@@ -367,7 +475,14 @@ export default function Hero() {
                   <div className="relative">
 
                     <FaUser
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5]"
+                      className="
+                        absolute
+                        left-3
+                        top-1/2
+                        -translate-y-1/2
+                        text-[#003DA5]
+                        text-xs
+                      "
                     />
 
                     <input
@@ -377,7 +492,21 @@ export default function Hero() {
                       onChange={handleChange}
                       placeholder="Your Name"
                       required
-                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                      className="
+                        w-full
+                        pl-9
+                        pr-3
+                        h-9
+                        border
+                        border-gray-300
+                        rounded-md
+                        text-gray-700
+                        text-sm
+                        outline-none
+                        focus:border-[#003DA5]
+                        focus:ring-1
+                        focus:ring-[#003DA5]
+                      "
                     />
 
                   </div>
@@ -388,7 +517,14 @@ export default function Hero() {
                   <div className="relative">
 
                     <FaPhoneAlt
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5]"
+                      className="
+                        absolute
+                        left-3
+                        top-1/2
+                        -translate-y-1/2
+                        text-[#003DA5]
+                        text-xs
+                      "
                     />
 
                     <input
@@ -401,7 +537,21 @@ export default function Hero() {
                       pattern="[0-9]{10}"
                       maxLength={10}
                       required
-                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                      className="
+                        w-full
+                        pl-9
+                        pr-3
+                        h-9
+                        border
+                        border-gray-300
+                        rounded-md
+                        text-gray-700
+                        text-sm
+                        outline-none
+                        focus:border-[#003DA5]
+                        focus:ring-1
+                        focus:ring-[#003DA5]
+                      "
                     />
 
                   </div>
@@ -412,7 +562,14 @@ export default function Hero() {
                   <div className="relative">
 
                     <FaEnvelope
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5]"
+                      className="
+                        absolute
+                        left-3
+                        top-1/2
+                        -translate-y-1/2
+                        text-[#003DA5]
+                        text-xs
+                      "
                     />
 
                     <input
@@ -422,7 +579,21 @@ export default function Hero() {
                       onChange={handleChange}
                       placeholder="Email Address"
                       required
-                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                      className="
+                        w-full
+                        pl-9
+                        pr-3
+                        h-9
+                        border
+                        border-gray-300
+                        rounded-md
+                        text-gray-700
+                        text-sm
+                        outline-none
+                        focus:border-[#003DA5]
+                        focus:ring-1
+                        focus:ring-[#003DA5]
+                      "
                     />
 
                   </div>
@@ -433,7 +604,15 @@ export default function Hero() {
                   <div className="relative">
 
                     <FaGlobe
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#003DA5] z-10"
+                      className="
+                        absolute
+                        left-3
+                        top-1/2
+                        -translate-y-1/2
+                        text-[#003DA5]
+                        text-xs
+                        z-10
+                      "
                     />
 
                     <select
@@ -441,7 +620,23 @@ export default function Hero() {
                       value={formData.service}
                       onChange={handleChange}
                       required
-                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none appearance-none bg-white focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                      className="
+                        w-full
+                        pl-9
+                        pr-3
+                        h-9
+                        border
+                        border-gray-300
+                        rounded-md
+                        text-gray-700
+                        text-sm
+                        outline-none
+                        appearance-none
+                        bg-white
+                        focus:border-[#003DA5]
+                        focus:ring-1
+                        focus:ring-[#003DA5]
+                      "
                     >
 
                       <option value="" disabled>
@@ -482,7 +677,13 @@ export default function Hero() {
                   <div className="relative">
 
                     <FaCommentDots
-                      className="absolute left-4 top-4 text-[#003DA5]"
+                      className="
+                        absolute
+                        left-3
+                        top-3
+                        text-[#003DA5]
+                        text-xs
+                      "
                     />
 
                     <textarea
@@ -491,7 +692,22 @@ export default function Hero() {
                       onChange={handleChange}
                       rows={2}
                       placeholder="Your Message"
-                      className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-sm text-gray-700 text-base outline-none resize-none focus:border-[#003DA5] focus:ring-1 focus:ring-[#003DA5]"
+                      className="
+                        w-full
+                        pl-9
+                        pr-3
+                        py-2
+                        border
+                        border-gray-300
+                        rounded-md
+                        text-gray-700
+                        text-sm
+                        outline-none
+                        resize-none
+                        focus:border-[#003DA5]
+                        focus:ring-1
+                        focus:ring-[#003DA5]
+                      "
                     />
 
                   </div>
@@ -500,7 +716,13 @@ export default function Hero() {
                   {/* SUCCESS */}
 
                   {success && (
-                    <p className="text-green-600 text-sm font-medium">
+                    <p
+                      className="
+                        text-green-600
+                        text-[11px]
+                        font-medium
+                      "
+                    >
                       {success}
                     </p>
                   )}
@@ -509,7 +731,13 @@ export default function Hero() {
                   {/* ERROR */}
 
                   {error && (
-                    <p className="text-red-600 text-sm font-medium">
+                    <p
+                      className="
+                        text-red-600
+                        text-[11px]
+                        font-medium
+                      "
+                    >
                       {error}
                     </p>
                   )}
@@ -520,7 +748,19 @@ export default function Hero() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-[#003DA5] hover:bg-[#002B73] disabled:bg-gray-400 text-white py-3.5 rounded-sm font-semibold text-base transition-all duration-300"
+                    className="
+                      w-full
+                      h-9
+                      bg-[#F28C28]
+                      hover:bg-[#E57D18]
+                      disabled:bg-gray-400
+                      text-white
+                      rounded-md
+                      font-bold
+                      text-sm
+                      transition-all
+                      duration-300
+                    "
                   >
                     {loading
                       ? "Submitting..."
@@ -544,7 +784,17 @@ export default function Hero() {
           SLIDER DOTS
       ================================================= */}
 
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      <div
+        className="
+          absolute
+          bottom-5
+          left-1/2
+          -translate-x-1/2
+          flex
+          gap-2
+          z-20
+        "
+      >
 
         {slideImages.map((_, index) => (
 
@@ -553,11 +803,18 @@ export default function Hero() {
             type="button"
             onClick={() => setCurrent(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
-              current === index
-                ? "bg-white w-8"
-                : "bg-white/50 w-2.5 hover:bg-white"
-            }`}
+            className={`
+              h-2.5
+              rounded-full
+              transition-all
+              duration-300
+
+              ${
+                current === index
+                  ? "bg-white w-8"
+                  : "bg-white/50 w-2.5 hover:bg-white"
+              }
+            `}
           />
 
         ))}
