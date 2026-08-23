@@ -5,6 +5,7 @@ import {
   FaClock,
   FaWhatsapp,
   FaArrowRight,
+  FaPaperPlane,
 } from "react-icons/fa";
 
 import Reveal from "../common/Reveal";
@@ -58,205 +59,350 @@ Thank you.
     form.reset();
   };
 
+  const contactItems = [
+    {
+      icon: FaPhoneAlt,
+      label: "Call Us",
+      content: (
+        <>
+          <a
+            href="tel:+917666984626"
+            className="hover:text-[#fc6602] transition"
+          >
+            +91 766 698 4626
+          </a>
+          <br />
+          <a
+            href="tel:+918657867181"
+            className="hover:text-[#fc6602] transition"
+          >
+            +91 865 786 7181
+          </a>
+        </>
+      ),
+    },
+    {
+      icon: FaEnvelope,
+      label: "Email Us",
+      content: (
+        <a
+          href="mailto:sajid@sarathinx.com"
+          className="hover:text-[#fc6602] transition break-all"
+        >
+          sajid@sarathinx.com
+        </a>
+      ),
+    },
+    {
+      icon: FaMapMarkerAlt,
+      label: "Visit Us",
+      content: (
+        <>
+          1st Floor, Office No. 026,
+          <br />
+          Crystal Plaza CHS Ltd,
+          <br />
+          Station Road, Mira Road East,
+          <br />
+          Thane - 401107
+        </>
+      ),
+    },
+    {
+      icon: FaClock,
+      label: "Working Hours",
+      content: (
+        <>
+          Monday - Saturday
+          <br />
+          <span className="text-white/70">9:30 AM - 7:00 PM</span>
+        </>
+      ),
+    },
+  ];
+
   return (
     <section
       id="contact"
-      className="py-24 bg-[#F5F9FF]"
+      className="relative overflow-hidden bg-[#F6F9FD] py-20 md:py-24"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      {/* ================= BACKGROUND DECORATION ================= */}
 
-        {/* Heading */}
+      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" />
+
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-orange-100/40 blur-3xl pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+
+        {/* ================= HEADING ================= */}
+
         <Reveal>
-          <div className="text-center mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-12">
 
-            <span className="text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
-              Contact Us
-            </span>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-8 h-[2px] bg-[#fc6602]" />
 
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4">
-              Let's Plan Your
-              <span className="text-[#003DA5]">
-                {" "}Journey
+              <span className="uppercase tracking-[4px] text-xs md:text-sm font-bold text-[#0057B8]">
+                Contact Us
+              </span>
+
+              <span className="w-8 h-[2px] bg-[#0057B8]" />
+            </div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900">
+              Let's Plan Your{" "}
+              <span className="text-[#0057B8]">
+                Journey
               </span>
             </h2>
 
-            <p className="mt-5 text-gray-600 max-w-3xl mx-auto leading-7">
-              Whether you are planning an international exhibition,
-              corporate trip or business travel, our team is ready to
-              assist you with complete travel solutions.
+            <p className="mt-4 text-gray-600 text-sm md:text-base leading-7">
+              Planning an exhibition, business trip or corporate journey?
+              Talk to our travel experts and let us take care of the details.
             </p>
 
           </div>
         </Reveal>
 
 
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+        {/* ================= MAIN CONTENT ================= */}
 
-          {/* Contact Information */}
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-7 items-stretch">
+
+          {/* ================= CONTACT INFO ================= */}
+
           <Reveal direction="left">
 
-            <div className="bg-[#003DA5] rounded-3xl p-8 md:p-10 text-white h-full">
+            <div
+              className="
+                relative
+                overflow-hidden
+                h-full
+                rounded-3xl
+                bg-gradient-to-br
+                from-[#0057B8]
+                to-[#003B80]
+                p-7
+                md:p-8
+                text-white
+                shadow-xl
+              "
+            >
 
-              <span className="text-blue-200 uppercase tracking-[3px] text-sm font-semibold">
-                Get In Touch
-              </span>
+              {/* Decorative Circle */}
 
-              <h3 className="text-3xl md:text-4xl font-bold mt-4">
-                We're Here To Help
-              </h3>
+              <div
+                className="
+                  absolute
+                  -top-20
+                  -right-20
+                  w-48
+                  h-48
+                  rounded-full
+                  bg-white/10
+                "
+              />
 
-              <p className="text-blue-100 leading-7 mt-5">
-                Talk to our travel experts and let us help you plan
-                your next business trip, exhibition visit or corporate
-                journey.
-              </p>
+              <div
+                className="
+                  absolute
+                  -bottom-24
+                  -left-20
+                  w-52
+                  h-52
+                  rounded-full
+                  bg-[#fc6602]/20
+                "
+              />
 
+              <div className="relative z-10">
 
-              {/* Contact Details */}
-              <div className="space-y-6 mt-10">
+                {/* Small Heading */}
 
-                {/* Phone */}
-                <a
-                  href="tel:+917666984626"
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-[#003DA5] transition">
-                    <FaPhoneAlt />
-                  </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <FaPaperPlane className="text-[#fc6602]" />
 
-                  <div>
-                    <p className="text-blue-200 text-sm">
-                      Call Us
-                    </p>
+                  <span className="text-white/70 uppercase tracking-[3px] text-xs font-bold">
+                    Get In Touch
+                  </span>
+                </div>
 
-                    <p className="font-semibold mt-1">
-                      +91 766 698 4626
-                    </p>
+                <h3 className="text-2xl md:text-3xl font-extrabold">
+                  We're Here To Help
+                </h3>
 
-                    <p className="font-semibold">
-                      +91 865 786 7181
-                    </p>
-                  </div>
-                </a>
-
-
-                {/* Email */}
-                <a
-                  href="mailto:sajid@sarathinx.com"
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-[#003DA5] transition">
-                    <FaEnvelope />
-                  </div>
-
-                  <div>
-                    <p className="text-blue-200 text-sm">
-                      Email Us
-                    </p>
-
-                    <p className="font-semibold mt-1 break-all">
-                      sajid@sarathinx.com
-                    </p>
-                  </div>
-                </a>
+                <p className="text-white/70 text-sm leading-6 mt-3 max-w-md">
+                  Connect with our travel experts for exhibitions,
+                  corporate trips, business travel and visa assistance.
+                </p>
 
 
-                {/* Address */}
-                <div className="flex items-start gap-4">
+                {/* ================= CONTACT ITEMS ================= */}
 
-                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center">
-                    <FaMapMarkerAlt />
-                  </div>
+                <div className="mt-7 space-y-4">
 
-                  <div>
-                    <p className="text-blue-200 text-sm">
-                      Visit Our Office
-                    </p>
+                  {contactItems.map((item, index) => {
+                    const Icon = item.icon;
 
-                    <p className="font-semibold mt-1 leading-6">
-                      1st Floor, Office No. 026,
-                      <br />
-                      Crystal Plaza CHS Ltd,
-                      <br />
-                      Station Road, Mira Road East,
-                      <br />
-                      Thane - 401107
-                    </p>
-                  </div>
+                    return (
+                      <div
+                        key={index}
+                        className="
+                          flex
+                          items-start
+                          gap-4
+                          p-3.5
+                          rounded-2xl
+                          bg-white/[0.07]
+                          border
+                          border-white/10
+                          hover:bg-white/[0.13]
+                          transition-all
+                          duration-300
+                        "
+                      >
+
+                        <div
+                          className="
+                            w-10
+                            h-10
+                            shrink-0
+                            rounded-xl
+                            bg-white/10
+                            flex
+                            items-center
+                            justify-center
+                            text-[#fc6602]
+                          "
+                        >
+                          <Icon />
+                        </div>
+
+                        <div className="text-sm leading-6">
+
+                          <p className="text-white/50 text-xs uppercase tracking-wider font-semibold">
+                            {item.label}
+                          </p>
+
+                          <div className="font-medium mt-0.5">
+                            {item.content}
+                          </div>
+
+                        </div>
+
+                      </div>
+                    );
+                  })}
 
                 </div>
 
 
-                {/* Working Hours */}
-                <div className="flex items-start gap-4">
+                {/* ================= WHATSAPP ================= */}
 
-                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center">
-                    <FaClock />
-                  </div>
-
-                  <div>
-                    <p className="text-blue-200 text-sm">
-                      Working Hours
-                    </p>
-
-                    <p className="font-semibold mt-1">
-                      Monday - Saturday
-                    </p>
-
-                    <p className="text-blue-100">
-                      9:30 AM - 7:00 PM
-                    </p>
-                  </div>
-
-                </div>
+                <a
+                  href="https://wa.me/917666984626"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    mt-6
+                    inline-flex
+                    items-center
+                    justify-center
+                    gap-2
+                    w-full
+                    bg-white
+                    text-[#0057B8]
+                    py-3
+                    rounded-xl
+                    font-bold
+                    text-sm
+                    hover:bg-[#fc6602]
+                    hover:text-white
+                    transition-all
+                    duration-300
+                    shadow-lg
+                  "
+                >
+                  <FaWhatsapp className="text-lg" />
+                  Chat on WhatsApp
+                </a>
 
               </div>
-
-
-              {/* WhatsApp */}
-              <a
-                href="https://wa.me/917666984626"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 mt-10 bg-white text-[#003DA5] px-6 py-3.5 rounded-full font-semibold hover:bg-blue-50 transition"
-              >
-                <FaWhatsapp className="text-xl" />
-                Chat on WhatsApp
-              </a>
-
             </div>
 
           </Reveal>
 
 
-          {/* Contact Form */}
+          {/* ================= CONTACT FORM ================= */}
+
           <Reveal direction="right">
 
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-blue-100 h-full">
+            <div
+              className="
+                h-full
+                bg-white
+                rounded-3xl
+                p-7
+                md:p-8
+                border
+                border-gray-100
+                shadow-[0_10px_40px_rgba(0,0,0,0.06)]
+              "
+            >
 
-              <span className="text-[#003DA5] uppercase tracking-[3px] text-sm font-semibold">
-                Send Enquiry
-              </span>
+              {/* Form Heading */}
 
-              <h3 className="text-3xl font-bold text-gray-800 mt-4">
-                Tell Us About Your Trip
-              </h3>
+              <div className="flex items-start justify-between gap-4 mb-6">
 
-              <p className="text-gray-500 mt-3">
-                Fill in your details and our travel experts will get
-                back to you shortly.
-              </p>
+                <div>
+                  <span className="uppercase tracking-[3px] text-xs font-bold text-[#fc6602]">
+                    Send Enquiry
+                  </span>
 
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2">
+                    Tell Us About Your Trip
+                  </h3>
+
+                  <p className="text-gray-500 text-sm mt-2">
+                    Share your requirements and our team will get back to you.
+                  </p>
+                </div>
+
+                <div
+                  className="
+                    hidden
+                    sm:flex
+                    w-12
+                    h-12
+                    shrink-0
+                    rounded-2xl
+                    bg-gradient-to-br
+                    from-[#fc6602]
+                    to-[#0057B8]
+                    text-white
+                    items-center
+                    justify-center
+                    shadow-lg
+                  "
+                >
+                  <FaPaperPlane />
+                </div>
+
+              </div>
+
+
+              {/* ================= FORM ================= */}
 
               <form
                 onSubmit={handleSubmit}
-                className="space-y-5 mt-8"
+                className="space-y-4"
               >
 
                 {/* Name */}
+
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+
+                  <label className="block text-xs font-bold text-gray-700 mb-1.5">
                     Full Name
                   </label>
 
@@ -264,16 +410,34 @@ Thank you.
                     type="text"
                     name="name"
                     placeholder="Enter your name"
-                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
+                    className="
+                      w-full
+                      px-4
+                      py-3
+                      rounded-xl
+                      bg-gray-50
+                      border
+                      border-gray-200
+                      text-sm
+                      text-gray-700
+                      outline-none
+                      focus:border-[#0057B8]
+                      focus:ring-2
+                      focus:ring-blue-100
+                      transition
+                    "
                   />
+
                 </div>
 
 
                 {/* Phone + Email */}
-                <div className="grid md:grid-cols-2 gap-5">
+
+                <div className="grid sm:grid-cols-2 gap-4">
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5">
                       Phone Number
                     </label>
 
@@ -281,13 +445,31 @@ Thank you.
                       type="tel"
                       name="phone"
                       maxLength="10"
-                      placeholder="10-digit mobile number"
-                      className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
+                      placeholder="10-digit mobile"
+                      className="
+                        w-full
+                        px-4
+                        py-3
+                        rounded-xl
+                        bg-gray-50
+                        border
+                        border-gray-200
+                        text-sm
+                        text-gray-700
+                        outline-none
+                        focus:border-[#0057B8]
+                        focus:ring-2
+                        focus:ring-blue-100
+                        transition
+                      "
                     />
+
                   </div>
 
+
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5">
                       Email Address
                     </label>
 
@@ -295,24 +477,56 @@ Thank you.
                       type="email"
                       name="email"
                       placeholder="Enter your email"
-                      className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
+                      className="
+                        w-full
+                        px-4
+                        py-3
+                        rounded-xl
+                        bg-gray-50
+                        border
+                        border-gray-200
+                        text-sm
+                        text-gray-700
+                        outline-none
+                        focus:border-[#0057B8]
+                        focus:ring-2
+                        focus:ring-blue-100
+                        transition
+                      "
                     />
+
                   </div>
 
                 </div>
 
 
                 {/* Service */}
+
                 <div>
 
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-xs font-bold text-gray-700 mb-1.5">
                     Service Required
                   </label>
 
                   <select
                     name="service"
                     defaultValue=""
-                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
+                    className="
+                      w-full
+                      px-4
+                      py-3
+                      rounded-xl
+                      bg-gray-50
+                      border
+                      border-gray-200
+                      text-sm
+                      text-gray-700
+                      outline-none
+                      focus:border-[#0057B8]
+                      focus:ring-2
+                      focus:ring-blue-100
+                      transition
+                    "
                   >
                     <option value="" disabled>
                       Select a service
@@ -341,36 +555,80 @@ Thank you.
                     <option value="Group Tours">
                       Group Tours
                     </option>
-
                   </select>
 
                 </div>
 
 
                 {/* Message */}
+
                 <div>
 
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-xs font-bold text-gray-700 mb-1.5">
                     Message
                   </label>
 
                   <textarea
                     name="message"
-                    rows="5"
+                    rows="3"
                     placeholder="Tell us about your travel requirements..."
-                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 outline-none resize-none focus:border-[#003DA5] focus:ring-2 focus:ring-blue-100 transition"
+                    className="
+                      w-full
+                      px-4
+                      py-3
+                      rounded-xl
+                      bg-gray-50
+                      border
+                      border-gray-200
+                      text-sm
+                      text-gray-700
+                      outline-none
+                      resize-none
+                      focus:border-[#0057B8]
+                      focus:ring-2
+                      focus:ring-blue-100
+                      transition
+                    "
                   />
 
                 </div>
 
 
-                {/* Submit */}
+                {/* Submit Button */}
+
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-3 bg-[#003DA5] hover:bg-[#002B75] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
+                  className="
+                    group
+                    w-full
+                    inline-flex
+                    items-center
+                    justify-center
+                    gap-3
+                    bg-gradient-to-r
+                    from-[#fc6602]
+                    via-[#fc6602]
+                    to-[#0057B8]
+                    text-white
+                    py-3.5
+                    rounded-xl
+                    font-bold
+                    text-sm
+                    shadow-md
+                    hover:shadow-xl
+                    hover:-translate-y-0.5
+                    transition-all
+                    duration-300
+                  "
                 >
                   Send Enquiry
-                  <FaArrowRight />
+
+                  <FaArrowRight
+                    className="
+                      group-hover:translate-x-1
+                      transition-transform
+                    "
+                  />
                 </button>
 
               </form>

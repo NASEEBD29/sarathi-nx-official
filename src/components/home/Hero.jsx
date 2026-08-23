@@ -751,10 +751,14 @@ export default function Hero() {
                     className="
                       w-full
                       h-9
-                      bg-[#F28C28]
-                      hover:bg-[#E57D18]
-                      disabled:bg-gray-400
-                      text-white
+                       bg-gradient-to-r
+                          from-[#fc6602]
+                          via-[#fc6602]
+                          to-[#0057B8]
+                          hover:from-[#e95500]
+                          hover:via-[#fc6602]
+                          hover:to-[#004494]
+                          text-white
                       rounded-md
                       font-bold
                       text-sm

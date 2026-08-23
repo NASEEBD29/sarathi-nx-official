@@ -7,51 +7,59 @@ import {
   FaPassport,
   FaPlaneDeparture,
   FaUsers,
-  FaRoute,
 } from "react-icons/fa";
 
+import { motion } from "framer-motion";
 import Reveal from "../common/Reveal";
 
 const features = [
   {
-    icon: <FaCheckCircle />,
-    title: "End-to-End Travel Solutions",
-    desc: "Complete travel management under one roof, from flights and hotels to visas and travel assistance.",
+    number: "01",
+    icon: FaCheckCircle,
+    title: "Complete Travel Management",
+    desc: "Flights, hotels, visas and travel assistance managed seamlessly under one roof.",
   },
   {
-    icon: <FaUserTie />,
-    title: "Experienced Travel Experts",
-    desc: "Industry professionals with proven expertise in business, exhibition and international travel.",
+    number: "02",
+    icon: FaPlaneDeparture,
+    title: "Exhibition Travel Experts",
+    desc: "Specialized support for international exhibitions, business delegations and trade events.",
   },
   {
-    icon: <FaHandshake />,
+    number: "03",
+    icon: FaGlobeAsia,
+    title: "Global Travel Network",
+    desc: "Strong international partnerships helping you travel confidently across destinations.",
+  },
+  {
+    number: "04",
+    icon: FaUserTie,
+    title: "Dedicated Travel Consultant",
+    desc: "A dedicated travel expert to understand your requirements and manage every detail.",
+  },
+  {
+    number: "05",
+    icon: FaPassport,
+    title: "Visa & Documentation Support",
+    desc: "Professional guidance for visa applications, documentation and international travel requirements.",
+  },
+  {
+    number: "06",
+    icon: FaHandshake,
     title: "Transparent Pricing",
-    desc: "Honest and competitive pricing with complete transparency and no hidden charges.",
+    desc: "Competitive and transparent pricing with clear communication and no hidden surprises.",
   },
   {
-    icon: <FaUsers />,
-    title: "Dedicated Travel Consultants",
-    desc: "Personalized guidance and dedicated assistance for every journey and requirement.",
+    number: "07",
+    icon: FaHeadset,
+    title: "24×7 Travel Assistance",
+    desc: "Reliable assistance before, during and after your journey whenever you need us.",
   },
   {
-    icon: <FaGlobeAsia />,
-    title: "Worldwide Network",
-    desc: "Reliable global travel partnerships helping you travel confidently across destinations.",
-  },
-  {
-    icon: <FaPassport />,
-    title: "Fast Visa Assistance",
-    desc: "Quick and hassle-free visa guidance and documentation support for international travel.",
-  },
-  {
-    icon: <FaHeadset />,
-    title: "24×7 Customer Support",
-    desc: "Dedicated assistance whenever you need us, before, during and after your journey.",
-  },
-  {
-    icon: <FaRoute />,
-    title: "Personalized Travel Solutions",
-    desc: "Travel plans carefully tailored to your business needs, preferences and requirements.",
+    number: "08",
+    icon: FaUsers,
+    title: "Tailored Business Solutions",
+    desc: "Customized travel solutions designed around your business, team and travel requirements.",
   },
 ];
 
@@ -59,99 +67,405 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="py-24 bg-white"
+      className="relative overflow-hidden bg-white py-24 md:py-28"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      {/* ================= BACKGROUND DECORATION ================= */}
 
-        {/* ================= HEADING ================= */}
+      <div className="absolute top-20 -left-32 w-72 h-72 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-orange-100/40 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+        {/* ================= SECTION HEADING ================= */}
 
         <Reveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
 
-            <span className="text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
-              Why Choose Sarathi NX
-            </span>
+            {/* Small Label */}
 
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4 leading-tight">
-              Travel With Confidence.
-              <span className="block text-[#003DA5] mt-2">
-                We Take Care of Every Detail.
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="w-10 h-[2px] bg-[#fc6602]" />
+
+              <span className="uppercase tracking-[4px] text-sm font-bold text-[#0057B8]">
+                Why Choose Sarathi NX
               </span>
+
+              <span className="w-10 h-[2px] bg-[#0057B8]" />
+            </div>
+
+            {/* Heading */}
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+              Travel With
+              <span className="text-[#0057B8]"> Confidence.</span>
             </h2>
 
-            <p className="mt-5 text-gray-600 leading-7">
-              From planning and documentation to flights, hotels and
-              exhibition travel, our team is committed to making every
-              journey smooth, reliable and hassle-free.
+            <h3 className="text-2xl md:text-3xl font-bold mt-3">
+              <span className="text-[#fc6602]">
+                We Take Care of Every Detail.
+              </span>
+            </h3>
+
+            {/* Description */}
+
+            <p className="mt-6 text-gray-600 leading-8 text-base md:text-lg">
+              From business travel and international exhibitions to visas,
+              hotels and complete travel management, Sarathi NX ensures a
+              smooth, reliable and hassle-free journey.
             </p>
 
           </div>
         </Reveal>
 
 
-        {/* ================= FEATURES ================= */}
+        {/* ================= FEATURE CARDS ================= */}
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
 
-          {features.map((item, index) => (
+          {features.map((item, index) => {
+            const Icon = item.icon;
 
-            <Reveal
-              key={item.title}
-              delay={index * 0.08}
-            >
+            return (
+              <Reveal
+                key={item.title}
+                delay={index * 0.08}
+              >
 
-              <div className="group h-full bg-[#F8FBFF] rounded-2xl p-7 border border-blue-50 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <motion.div
+                  whileHover={{ y: -10 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 250,
+                    damping: 18,
+                  }}
+                  className="
+                    group
+                    relative
+                    h-full
+                    min-h-[300px]
+                    overflow-hidden
+                    rounded-3xl
+                    bg-white
+                    border
+                    border-gray-100
+                    p-7
+                    shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+                    hover:shadow-[0_20px_50px_rgba(0,87,184,0.15)]
+                    transition-all
+                    duration-500
+                  "
+                >
 
-                {/* Icon */}
+                  {/* ================= CARD DECORATION ================= */}
 
-                <div className="w-16 h-16 rounded-2xl bg-[#EAF2FF] text-[#003DA5] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#003DA5] group-hover:text-white transition-all duration-300">
-                  {item.icon}
-                </div>
+                  <div
+                    className="
+                      absolute
+                      -top-16
+                      -right-16
+                      w-40
+                      h-40
+                      rounded-full
+                      bg-gradient-to-br
+                      from-[#0057B8]/10
+                      to-[#fc6602]/10
+                      group-hover:scale-[1.8]
+                      transition-transform
+                      duration-700
+                    "
+                  />
+
+                  <div
+                    className="
+                      absolute
+                      bottom-0
+                      right-0
+                      w-24
+                      h-24
+                      bg-gradient-to-tl
+                      from-[#0057B8]/5
+                      to-transparent
+                      rounded-tl-full
+                    "
+                  />
 
 
-                {/* Title */}
+                  {/* ================= CARD NUMBER ================= */}
 
-                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#003DA5] transition">
-                  {item.title}
-                </h3>
+                  <div className="relative flex items-center justify-between mb-7">
+
+                    <span
+                      className="
+                        text-sm
+                        font-extrabold
+                        tracking-[3px]
+                        text-gray-300
+                        group-hover:text-[#fc6602]
+                        transition-colors
+                        duration-300
+                      "
+                    >
+                      {item.number}
+                    </span>
+
+                    <span
+                      className="
+                        text-xs
+                        font-semibold
+                        uppercase
+                        tracking-widest
+                        text-gray-400
+                        group-hover:text-[#0057B8]
+                        transition-colors
+                      "
+                    >
+                      Sarathi NX
+                    </span>
+
+                  </div>
 
 
-                {/* Description */}
+                  {/* ================= ICON ================= */}
 
-                <p className="text-gray-600 leading-7 text-sm">
-                  {item.desc}
-                </p>
+                  <div className="relative mb-7">
 
-              </div>
+                    <div
+                      className="
+                        w-16
+                        h-16
+                        rounded-2xl
+                        flex
+                        items-center
+                        justify-center
+                        bg-gradient-to-br
+                        from-[#0057B8]
+                        to-[#0074D9]
+                        text-white
+                        text-2xl
+                        shadow-lg
+                        shadow-blue-200
+                        group-hover:from-[#fc6602]
+                        group-hover:to-[#ff8a3d]
+                        group-hover:shadow-orange-200
+                        group-hover:scale-110
+                        group-hover:rotate-3
+                        transition-all
+                        duration-500
+                      "
+                    >
+                      <Icon />
+                    </div>
 
-            </Reveal>
+                    {/* Small Accent */}
 
-          ))}
+                    <div
+                      className="
+                        absolute
+                        -bottom-1
+                        -right-1
+                        w-5
+                        h-5
+                        rounded-full
+                        bg-[#fc6602]
+                        border-4
+                        border-white
+                        group-hover:scale-125
+                        transition-transform
+                      "
+                    />
+
+                  </div>
+
+
+                  {/* ================= TITLE ================= */}
+
+                  <h3
+                    className="
+                      relative
+                      text-xl
+                      font-extrabold
+                      text-gray-900
+                      leading-snug
+                      mb-3
+                      group-hover:text-[#0057B8]
+                      transition-colors
+                      duration-300
+                    "
+                  >
+                    {item.title}
+                  </h3>
+
+
+                  {/* ================= DESCRIPTION ================= */}
+
+                  <p
+                    className="
+                      relative
+                      text-sm
+                      text-gray-600
+                      leading-7
+                    "
+                  >
+                    {item.desc}
+                  </p>
+
+
+                  {/* ================= BOTTOM ARROW ================= */}
+
+                  <div
+                    className="
+                      relative
+                      mt-6
+                      flex
+                      items-center
+                      gap-2
+                      text-sm
+                      font-bold
+                      text-[#0057B8]
+                      group-hover:text-[#fc6602]
+                      transition-colors
+                    "
+                  >
+                    <span>Explore</span>
+
+                    <span
+                      className="
+                        inline-block
+                        group-hover:translate-x-2
+                        transition-transform
+                        duration-300
+                      "
+                    >
+                      →
+                    </span>
+                  </div>
+
+
+                  {/* ================= HOVER LINE ================= */}
+
+                  <div
+                    className="
+                      absolute
+                      bottom-0
+                      left-0
+                      h-1
+                      w-0
+                      bg-gradient-to-r
+                      from-[#fc6602]
+                      to-[#0057B8]
+                      group-hover:w-full
+                      transition-all
+                      duration-500
+                    "
+                  />
+
+                </motion.div>
+
+              </Reveal>
+            );
+          })}
 
         </div>
 
 
-        {/* ================= PROMISE ================= */}
+        {/* ================= OUR PROMISE ================= */}
 
-        <Reveal delay={0.5}>
+        <Reveal delay={0.4}>
 
-          <div className="mt-16 bg-gradient-to-r from-[#f75c02] to-[#f75c02] rounded-3xl p-10 md:p-12 text-center text-white">
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+            className="
+              relative
+              overflow-hidden
+              mt-16
+              rounded-[2rem]
+              bg-gradient-to-r
+              from-[#fc6602]
+              via-[#fc6602]
+              to-[#0057B8]
+              p-[1px]
+              shadow-xl
+            "
+          >
 
-            <p className="text-blue-200 uppercase tracking-[4px] text-sm font-semibold">
-              Our Promise
-            </p>
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[2rem]
+                bg-gradient-to-r
+                from-[#fc6602]
+                to-[#0057B8]
+                px-8
+                py-12
+                md:px-14
+                md:py-14
+                text-center
+                text-white
+              "
+            >
 
-            <h3 className="text-3xl md:text-4xl font-bold mt-4">
-              We Plan. You Travel. We Care.
-            </h3>
+              {/* Decorative Circle */}
 
-            <p className="text-blue-100 max-w-2xl mx-auto mt-4 leading-7">
-              Your journey is our responsibility. We focus on every
-              detail so you can focus on your business, exhibition or
-              travel experience.
-            </p>
+              <div
+                className="
+                  absolute
+                  -top-20
+                  -left-20
+                  w-56
+                  h-56
+                  rounded-full
+                  bg-white/10
+                "
+              />
 
-          </div>
+              <div
+                className="
+                  absolute
+                  -bottom-24
+                  -right-16
+                  w-64
+                  h-64
+                  rounded-full
+                  bg-white/10
+                "
+              />
+
+              <div className="relative z-10">
+
+                <p className="uppercase tracking-[5px] text-xs md:text-sm font-bold text-white/80">
+                  Our Promise
+                </p>
+
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mt-4">
+                  We Plan. You Travel. We Care.
+                </h3>
+
+                <p className="max-w-2xl mx-auto mt-5 text-white/90 leading-7 text-sm md:text-base">
+                  Your journey is our responsibility. We take care of every
+                  detail so you can focus on your business, exhibition or
+                  travel experience.
+                </p>
+
+                {/* Bottom Accent */}
+
+                <div className="flex justify-center items-center gap-3 mt-7">
+
+                  <span className="w-12 h-[2px] bg-white/60" />
+
+                  <FaPlaneDeparture className="text-xl" />
+
+                  <span className="w-12 h-[2px] bg-white/60" />
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </motion.div>
 
         </Reveal>
 

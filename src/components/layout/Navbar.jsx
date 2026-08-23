@@ -4,7 +4,6 @@ import {
   FaBars,
   FaTimes,
   FaPhoneAlt,
-  FaChevronDown,
 } from "react-icons/fa";
 
 import { navLinks } from "../../data/navLinks";
@@ -13,9 +12,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // ================================
+  // =====================================================
   // SCROLL EFFECT
-  // ================================
+  // =====================================================
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,9 +28,9 @@ export default function Navbar() {
     };
   }, []);
 
-  // ================================
+  // =====================================================
   // CLOSE MOBILE MENU ON RESIZE
-  // ================================
+  // =====================================================
 
   useEffect(() => {
     const handleResize = () => {
@@ -47,9 +46,9 @@ export default function Navbar() {
     };
   }, []);
 
-  // ================================
-  // CLOSE MENU WHEN CLICKING OUTSIDE
-  // ================================
+  // =====================================================
+  // BODY SCROLL LOCK
+  // =====================================================
 
   useEffect(() => {
     if (menuOpen) {
@@ -189,18 +188,24 @@ export default function Navbar() {
                     whitespace-nowrap
                     transition-all
                     duration-300
+                    overflow-hidden
 
                     ${
                       isActive
                         ? `
-                          text-[#F28C28]
-                          bg-[#FFF4E8]
-                          shadow-sm
+                          text-white
+                          bg-gradient-to-r
+                          from-[#fc6602]
+                          via-[#fc6602]
+                          to-[#0057B8]
+                          shadow-md
                         `
                         : `
                           text-gray-700
-                          hover:text-[#F28C28]
-                          hover:bg-[#FFF8F2]
+                          bg-transparent
+                          hover:bg-[#0057B8]
+                          hover:text-white
+                          hover:shadow-md
                         `
                     }
                   `}
@@ -228,7 +233,7 @@ export default function Navbar() {
                           bottom-[4px]
                           h-[3px]
                           rounded-full
-                          bg-[#F28C28]
+                          bg-white
                           transition-all
                           duration-300
                           ease-out
@@ -287,10 +292,6 @@ export default function Navbar() {
 
             <FaPhoneAlt className="text-[14px]" />
 
-            {/* <span>
-              +91 766 698 4626
-            </span> */}
-
           </a>
 
 
@@ -316,15 +317,18 @@ export default function Navbar() {
               ${
                 menuOpen
                   ? `
-                    bg-[#F28C28]
+                    bg-[#0057B8]
                     text-white
                     shadow-lg
                   `
                   : `
-                    bg-[#FFF4E8]
-                    text-[#F28C28]
-                    hover:bg-[#F28C28]
-                    hover:text-white
+                    bg-gradient-to-r
+                    from-[#fc6602]
+                    via-[#fc6602]
+                    to-[#0057B8]
+                    text-white
+                    shadow-md
+                    hover:bg-[#0057B8]
                   `
               }
             `}
@@ -405,18 +409,24 @@ export default function Navbar() {
                     font-bold
                     transition-all
                     duration-300
+                    overflow-hidden
 
                     ${
                       isActive
                         ? `
-                          bg-[#FFF4E8]
-                          text-[#F28C28]
-                          shadow-sm
+                          bg-gradient-to-r
+                          from-[#fc6602]
+                          via-[#fc6602]
+                          to-[#0057B8]
+                          text-white
+                          shadow-md
                         `
                         : `
                           text-gray-700
-                          hover:bg-[#FFF8F2]
-                          hover:text-[#F28C28]
+                          bg-transparent
+                          hover:bg-[#0057B8]
+                          hover:text-white
+                          hover:shadow-md
                         `
                     }
                   `}
@@ -425,7 +435,9 @@ export default function Navbar() {
                   {({ isActive }) => (
                     <>
 
-                      {/* LEFT ACTIVE BAR */}
+                      {/* =====================================
+                          LEFT ACTIVE BAR
+                      ====================================== */}
 
                       <span
                         className={`
@@ -435,7 +447,7 @@ export default function Navbar() {
                           -translate-y-1/2
                           w-[4px]
                           rounded-r-full
-                          bg-[#F28C28]
+                          bg-white
                           transition-all
                           duration-300
 
@@ -448,14 +460,18 @@ export default function Navbar() {
                       />
 
 
-                      {/* MENU TITLE */}
+                      {/* =====================================
+                          MENU TITLE
+                      ====================================== */}
 
-                      <span>
+                      <span className="relative z-10">
                         {item.title}
                       </span>
 
 
-                      {/* RIGHT ACTIVE DOT */}
+                      {/* =====================================
+                          ACTIVE DOT
+                      ====================================== */}
 
                       {isActive && (
                         <span
@@ -464,7 +480,8 @@ export default function Navbar() {
                             w-2
                             h-2
                             rounded-full
-                            bg-[#F28C28]
+                            bg-white
+                            shadow-sm
                           "
                         />
                       )}

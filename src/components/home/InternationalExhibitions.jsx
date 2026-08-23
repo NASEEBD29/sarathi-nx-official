@@ -13,65 +13,98 @@ import {
 
 import Reveal from "../common/Reveal";
 
+// =====================================================
+// EXHIBITION IMAGES
+// =====================================================
+
+import cmefImage from "../../assets/images/exhibitions/cmef.jpg";
+import medicaImage from "../../assets/images/exhibitions/medica.jpg";
+import arabHealthImage from "../../assets/images/exhibitions/arabHealth.jpg"; 
+import weldingImage from "../../assets/images/exhibitions/welding.jpg";
+import medlabImage from "../../assets/images/exhibitions/medlab.jpg";
+import cantonFairImage from "../../assets/images/exhibitions/cantonFair.jpg";
+import itmaImage from "../../assets/images/exhibitions/itma.jpg";
+
+// =====================================================
+// EXHIBITION DATA
+// =====================================================
+
 const exhibitions = [
   {
     title: "CMEF",
     description:
-      "China International Medical Equipment Fair",
+      "China International Medical Equipment Fair connecting global healthcare technology and medical equipment leaders.",
     location: "Shanghai & Beijing, China",
+    image: cmefImage,
     link: "https://www.cmef.com.cn/en",
   },
+
   {
     title: "MEDICA",
     description:
-      "World's Leading Trade Fair for the Medical Sector",
+      "World's leading trade fair for the medical sector, bringing together healthcare professionals and innovators.",
     location: "Düsseldorf, Germany",
+    image: medicaImage,
     link: "https://www.medica-tradefair.com/",
   },
+
   {
     title: "ARAB HEALTH",
     description:
-      "The Largest Healthcare Exhibition in the Middle East",
+      "One of the largest healthcare exhibitions in the Middle East featuring global medical technology and solutions.",
     location: "Dubai, UAE",
+    image: arabHealthImage,
     link: "https://www.worldhealthexpo.com/events/labs/dubai/",
   },
+
   {
     title: "WELDING & CUTTING",
     description:
-      "Beijing Essen Welding & Cutting Fair",
+      "Beijing Essen Welding & Cutting Fair showcasing advanced welding, cutting and industrial technologies.",
     location: "Beijing, China",
+    image: weldingImage,
     link: "#",
   },
+
   {
     title: "MEDLAB",
     description:
-      "Laboratory & Diagnostics Exhibition",
+      "A leading laboratory and diagnostics exhibition connecting professionals with the latest healthcare technologies.",
     location: "Dubai, UAE",
+    image: medlabImage,
     link: "https://www.worldhealthexpo.com/events/labs/dubai/",
   },
+
   {
     title: "CANTON FAIR",
     description:
-      "China Import & Export Fair",
+      "China Import & Export Fair connecting international buyers with manufacturers and suppliers from China.",
     location: "Guangzhou, China",
+    image: cantonFairImage,
     link: "#",
   },
+
   {
     title: "ITMA ASIA + CITME",
     description:
-      "Asia's Leading Textile Machinery Exhibition",
+      "Asia's leading textile machinery exhibition showcasing innovative textile and garment manufacturing technologies.",
     location: "Shanghai, China",
+    image: itmaImage,
     link: "#",
   },
 ];
+
+// =====================================================
+// COMPONENT
+// =====================================================
 
 export default function InternationalExhibitions() {
   const [startIndex, setStartIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  // ==========================================
-  // NEXT SLIDE
-  // ==========================================
+  // ===================================================
+  // NEXT
+  // ===================================================
 
   const handleNext = () => {
     setDirection(1);
@@ -81,9 +114,9 @@ export default function InternationalExhibitions() {
     );
   };
 
-  // ==========================================
-  // PREVIOUS SLIDE
-  // ==========================================
+  // ===================================================
+  // PREVIOUS
+  // ===================================================
 
   const handlePrevious = () => {
     setDirection(-1);
@@ -95,9 +128,9 @@ export default function InternationalExhibitions() {
     );
   };
 
-  // ==========================================
+  // ===================================================
   // AUTO SLIDER
-  // ==========================================
+  // ===================================================
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -107,9 +140,9 @@ export default function InternationalExhibitions() {
     return () => clearInterval(interval);
   }, []);
 
-  // ==========================================
+  // ===================================================
   // 3 VISIBLE CARDS
-  // ==========================================
+  // ===================================================
 
   const visibleCards = [
     exhibitions[startIndex % exhibitions.length],
@@ -123,15 +156,15 @@ export default function InternationalExhibitions() {
     ],
   ];
 
-  // ==========================================
-  // CARD ANIMATION
-  // ==========================================
+  // ===================================================
+  // SLIDE ANIMATION
+  // ===================================================
 
   const cardVariants = {
     enter: (direction) => ({
       x: direction > 0 ? 420 : -420,
       opacity: 0,
-      scale: 0.94,
+      scale: 0.95,
     }),
 
     center: {
@@ -143,91 +176,162 @@ export default function InternationalExhibitions() {
     exit: (direction) => ({
       x: direction > 0 ? -420 : 420,
       opacity: 0,
-      scale: 0.94,
+      scale: 0.95,
     }),
   };
+
+  // ===================================================
+  // RETURN
+  // ===================================================
 
   return (
     <section
       id="exhibitions"
-      className="relative py-16 md:py-20 bg-gradient-to-b from-white via-[#F8FBFF] to-white overflow-hidden"
+      className="
+        relative
+        py-16
+        md:py-20
+        bg-gradient-to-b
+        from-white
+        via-[#F8FBFF]
+        to-white
+        overflow-hidden
+      "
     >
-
-      {/* ==========================================
+      {/* =================================================
           DECORATIVE BACKGROUND
-      ========================================== */}
+      ================================================= */}
 
-      <div className="absolute top-10 -left-24 w-72 h-72 bg-[#0057B8]/5 rounded-full blur-3xl pointer-events-none" />
+      <div
+        className="
+          absolute
+          top-10
+          -left-24
+          w-72
+          h-72
+          bg-[#0057B8]/5
+          rounded-full
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
-      <div className="absolute bottom-10 -right-24 w-72 h-72 bg-[#00A6A6]/5 rounded-full blur-3xl pointer-events-none" />
-
+      <div
+        className="
+          absolute
+          bottom-10
+          -right-24
+          w-72
+          h-72
+          bg-[#fc6602]/5
+          rounded-full
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
       <div className="relative max-w-7xl mx-auto px-6">
 
-        {/* ==========================================
+        {/* =================================================
             SECTION HEADING
-        ========================================== */}
+        ================================================= */}
 
         <Reveal>
-
-          <div className="text-center max-w-4xl mx-auto mb-10">
+          <div className="text-center max-w-4xl mx-auto mb-11">
 
             {/* Eyebrow */}
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EAF2FF] text-[#003DA5] text-xs md:text-sm font-bold uppercase tracking-[2px]">
-
+            <div
+              className="
+                inline-flex
+                items-center
+                gap-2
+                px-4
+                py-2
+                rounded-full
+                bg-[#EAF2FF]
+                text-[#003DA5]
+                text-xs
+                md:text-sm
+                font-bold
+                uppercase
+                tracking-[2px]
+              "
+            >
               <FaGlobeAsia />
 
               International Exhibitions
-
             </div>
-
 
             {/* Heading */}
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800 mt-4 leading-tight">
-
+            <h2
+              className="
+                text-3xl
+                sm:text-4xl
+                md:text-5xl
+                font-extrabold
+                text-gray-800
+                mt-4
+                leading-tight
+              "
+            >
               Your Gateway to
 
-              <span className="block text-[#003DA5] mt-1">
+              <span
+                className="
+                  block
+                  mt-1
+                  bg-gradient-to-r
+                  from-[#fc6602]
+                  via-[#fc6602]
+                  to-[#0057B8]
+                  bg-clip-text
+                  text-transparent
+                "
+              >
                 Global Exhibitions
               </span>
-
             </h2>
-
 
             {/* Description */}
 
-            <p className="mt-4 text-gray-600 max-w-3xl mx-auto leading-7 text-sm md:text-base">
-
+            <p
+              className="
+                mt-4
+                text-gray-600
+                max-w-3xl
+                mx-auto
+                leading-7
+                text-sm
+                md:text-base
+              "
+            >
               Discover leading international exhibitions and
               trade fairs with complete travel assistance from
               Sarathi NX. We make your business journey
               simple, comfortable and stress-free.
-
             </p>
-
           </div>
-
         </Reveal>
 
-
-        {/* ==========================================
-            CAROUSEL AREA
-        ========================================== */}
+        {/* =================================================
+            CAROUSEL
+        ================================================= */}
 
         <div className="relative">
 
-          {/* ==========================================
-              LEFT ARROW
-          ========================================== */}
+          {/* =================================================
+              LEFT DESKTOP ARROW
+          ================================================= */}
 
           <button
             type="button"
             onClick={handlePrevious}
             aria-label="Previous exhibitions"
             className="
-              hidden lg:flex
+              hidden
+              lg:flex
               absolute
               -left-6
               top-1/2
@@ -253,19 +357,23 @@ export default function InternationalExhibitions() {
             <FaChevronLeft />
           </button>
 
-
-          {/* ==========================================
+          {/* =================================================
               CARD VIEWPORT
-          ========================================== */}
+          ================================================= */}
 
-          <div className="relative overflow-hidden px-1 py-3">
-
+          <div
+            className="
+              relative
+              overflow-hidden
+              px-1
+              py-4
+            "
+          >
             <AnimatePresence
               initial={false}
               custom={direction}
               mode="popLayout"
             >
-
               <motion.div
                 key={startIndex}
                 custom={direction}
@@ -279,9 +387,11 @@ export default function InternationalExhibitions() {
                     stiffness: 180,
                     damping: 25,
                   },
+
                   opacity: {
                     duration: 0.35,
                   },
+
                   scale: {
                     duration: 0.35,
                   },
@@ -295,12 +405,15 @@ export default function InternationalExhibitions() {
                 "
               >
 
-                {visibleCards.map((item, index) => (
+                {/* =================================================
+                    CARDS
+                ================================================= */}
 
+                {visibleCards.map((item, index) => (
                   <motion.div
                     key={`${item.title}-${startIndex}-${index}`}
                     whileHover={{
-                      y: -8,
+                      y: -10,
                     }}
                     transition={{
                       duration: 0.3,
@@ -312,20 +425,19 @@ export default function InternationalExhibitions() {
                       rounded-3xl
                       border
                       border-gray-100
-                      shadow-[0_10px_35px_rgba(0,0,0,0.07)]
-                      hover:shadow-[0_20px_50px_rgba(0,61,165,0.16)]
-                      min-h-[330px]
+                      shadow-[0_10px_35px_rgba(0,0,0,0.08)]
+                      hover:shadow-[0_25px_55px_rgba(0,87,184,0.18)]
+                      overflow-hidden
                       flex
                       flex-col
-                      overflow-hidden
-                      transition-shadow
+                      transition-all
                       duration-500
                     "
                   >
 
-                    {/* ==================================
-                        TOP GRADIENT
-                    ================================== */}
+                    {/* =================================================
+                        TOP GRADIENT LINE
+                    ================================================= */}
 
                     <div
                       className="
@@ -334,193 +446,264 @@ export default function InternationalExhibitions() {
                         left-0
                         right-0
                         h-1.5
+                        z-30
                         bg-gradient-to-r
-                        from-[#003DA5]
-                        via-[#0084D6]
-                        to-[#00A6A6]
+                        from-[#fc6602]
+                        via-[#fc6602]
+                        to-[#0057B8]
                       "
                     />
 
-
-                    {/* ==================================
-                        DECORATIVE CIRCLE
-                    ================================== */}
+                    {/* =================================================
+                        IMAGE AREA
+                    ================================================= */}
 
                     <div
                       className="
-                        absolute
-                        -top-16
-                        -right-16
-                        w-36
-                        h-36
-                        rounded-full
-                        bg-[#EAF2FF]
-                        group-hover:bg-[#DDEBFF]
-                        transition-colors
-                        duration-500
+                        relative
+                        h-[205px]
+                        overflow-hidden
                       "
-                    />
+                    >
 
+                      {/* Image */}
 
-                    <div
-                      className="
-                        absolute
-                        -bottom-20
-                        -left-20
-                        w-40
-                        h-40
-                        rounded-full
-                        bg-[#F4FAFF]
-                        group-hover:bg-[#EAF2FF]
-                        transition-colors
-                        duration-500
-                      "
-                    />
-
-
-                    {/* ==================================
-                        CARD CONTENT
-                    ================================== */}
-
-                    <div className="relative z-10 p-6 md:p-7 flex flex-col h-full">
-
-                      {/* ==================================
-                          NUMBER + ICON
-                      ================================== */}
-
-                      <div className="flex items-center justify-between">
-
-                        {/* Icon */}
-
-                        <motion.div
-                          whileHover={{
-                            rotate: 8,
-                            scale: 1.08,
-                          }}
-                          className="
-                            w-14
-                            h-14
-                            rounded-2xl
-                            bg-gradient-to-br
-                            from-[#EAF2FF]
-                            to-[#DCEBFF]
-                            text-[#003DA5]
-                            flex
-                            items-center
-                            justify-center
-                            text-xl
-                            shadow-sm
-                            group-hover:bg-[#003DA5]
-                            group-hover:text-white
-                            transition-all
-                            duration-500
-                          "
-                        >
-                          <FaGlobeAsia />
-                        </motion.div>
-
-
-                        {/* Number */}
-
-                        <div
-                          className="
-                            text-4xl
-                            font-black
-                            text-gray-100
-                            group-hover:text-[#EAF2FF]
-                            transition-colors
-                            duration-500
-                          "
-                        >
-                          {String(
-                            (startIndex + index) %
-                              exhibitions.length +
-                              1
-                          ).padStart(2, "0")}
-                        </div>
-
-                      </div>
-
-
-                      {/* ==================================
-                          TITLE
-                      ================================== */}
-
-                      <h3
+                      <img
+                        src={item.image}
+                        alt={item.title}
                         className="
-                          mt-6
-                          text-xl
-                          md:text-2xl
-                          font-extrabold
-                          text-gray-800
-                          leading-tight
-                          group-hover:text-[#003DA5]
-                          transition-colors
-                          duration-300
+                          w-full
+                          h-full
+                          object-cover
+                          transition-transform
+                          duration-700
+                          ease-out
+                          group-hover:scale-110
                         "
-                      >
-                        {item.title}
-                      </h3>
+                      />
 
-
-                      {/* ==================================
-                          DESCRIPTION
-                      ================================== */}
-
-                      <p
-                        className="
-                          mt-3
-                          text-gray-600
-                          text-sm
-                          md:text-[15px]
-                          leading-6
-                        "
-                      >
-                        {item.description}
-                      </p>
-
-
-                      {/* ==================================
-                          LOCATION
-                      ================================== */}
+                      {/* Dark Gradient */}
 
                       <div
                         className="
-                          mt-5
-                          inline-flex
+                          absolute
+                          inset-0
+                          bg-gradient-to-t
+                          from-black/75
+                          via-black/20
+                          to-transparent
+                        "
+                      />
+
+                      {/* Orange / Blue overlay */}
+
+                      <div
+                        className="
+                          absolute
+                          inset-0
+                          bg-gradient-to-tr
+                          from-[#0057B8]/20
+                          via-transparent
+                          to-[#fc6602]/20
+                          opacity-70
+                        "
+                      />
+
+                      {/* =================================================
+                          NUMBER
+                      ================================================= */}
+
+                      <div
+                        className="
+                          absolute
+                          top-4
+                          right-4
+                          w-11
+                          h-11
+                          rounded-2xl
+                          bg-white/90
+                          backdrop-blur-md
+                          flex
+                          items-center
+                          justify-center
+                          text-[#003DA5]
+                          font-black
+                          text-sm
+                          shadow-lg
+                          group-hover:bg-[#fc6602]
+                          group-hover:text-white
+                          transition-all
+                          duration-500
+                        "
+                      >
+                        {String(
+                          (startIndex + index) %
+                            exhibitions.length +
+                            1
+                        ).padStart(2, "0")}
+                      </div>
+
+                      {/* =================================================
+                          LOCATION BADGE
+                      ================================================= */}
+
+                      <div
+                        className="
+                          absolute
+                          bottom-4
+                          left-4
+                          right-4
+                          flex
                           items-center
                           gap-2
-                          w-fit
-                          px-3
-                          py-2
-                          rounded-full
-                          bg-[#F3F7FC]
-                          text-[#003DA5]
+                          text-white
                           text-xs
                           md:text-sm
                           font-semibold
-                          group-hover:bg-[#EAF2FF]
+                        "
+                      >
+                        <div
+                          className="
+                            w-8
+                            h-8
+                            rounded-full
+                            bg-white/20
+                            backdrop-blur-md
+                            border
+                            border-white/30
+                            flex
+                            items-center
+                            justify-center
+                            shrink-0
+                          "
+                        >
+                          <FaMapMarkerAlt />
+                        </div>
+
+                        <span className="drop-shadow-md">
+                          {item.location}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* =================================================
+                        CARD CONTENT
+                    ================================================= */}
+
+                    <div
+                      className="
+                        relative
+                        p-6
+                        md:p-7
+                        flex
+                        flex-col
+                        flex-1
+                      "
+                    >
+
+                      {/* Decorative background */}
+
+                      <div
+                        className="
+                          absolute
+                          -right-10
+                          -bottom-10
+                          w-32
+                          h-32
+                          rounded-full
+                          bg-[#F1F7FF]
+                          group-hover:bg-[#E8F1FF]
                           transition-colors
-                          duration-300
+                          duration-500
+                          pointer-events-none
+                        "
+                      />
+
+                      <div className="relative z-10">
+
+                        {/* =================================================
+                            SMALL LABEL
+                        ================================================= */}
+
+                        <div
+                          className="
+                            inline-flex
+                            items-center
+                            gap-2
+                            text-[11px]
+                            font-bold
+                            uppercase
+                            tracking-[1.5px]
+                            text-[#fc6602]
+                            mb-2
+                          "
+                        >
+                          <span
+                            className="
+                              w-5
+                              h-[2px]
+                              bg-[#fc6602]
+                              rounded-full
+                            "
+                          />
+
+                          International Event
+                        </div>
+
+                        {/* =================================================
+                            TITLE
+                        ================================================= */}
+
+                        <h3
+                          className="
+                            text-xl
+                            md:text-2xl
+                            font-extrabold
+                            text-gray-800
+                            leading-tight
+                            group-hover:text-[#0057B8]
+                            transition-colors
+                            duration-300
+                          "
+                        >
+                          {item.title}
+                        </h3>
+
+                        {/* =================================================
+                            DESCRIPTION
+                        ================================================= */}
+
+                        <p
+                          className="
+                            mt-3
+                            text-gray-600
+                            text-sm
+                            leading-6
+                            line-clamp-3
+                          "
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+
+                      {/* =================================================
+                          BOTTOM
+                      ================================================= */}
+
+                      <div
+                        className="
+                          relative
+                          z-10
+                          mt-auto
+                          pt-6
+                          flex
+                          items-center
+                          justify-between
+                          gap-3
                         "
                       >
 
-                        <FaMapMarkerAlt />
-
-                        <span>
-                          {item.location}
-                        </span>
-
-                      </div>
-
-
-                      {/* ==================================
-                          BOTTOM
-                      ================================== */}
-
-                      <div className="mt-auto pt-6 flex items-center justify-between">
-
-                        {/* Exhibition type */}
+                        {/* Event */}
 
                         <div
                           className="
@@ -534,83 +717,87 @@ export default function InternationalExhibitions() {
                         >
                           <FaCalendarAlt />
 
-                          International Event
-
+                          <span>
+                            Global Exhibition
+                          </span>
                         </div>
 
-
-                        {/* Explore */}
+                        {/* =================================================
+                            EXPLORE BUTTON
+                        ================================================= */}
 
                         {item.link !== "#" ? (
-
                           <a
                             href={item.link}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="
+                              shrink-0
                               inline-flex
                               items-center
                               gap-2
-                              text-[#003DA5]
+                              px-4
+                              py-2.5
+                              rounded-full
+                              bg-gradient-to-r
+                              from-[#fc6602]
+                              via-[#fc6602]
+                              to-[#0057B8]
+                              text-white
                               font-bold
-                              text-sm
-                              group/link
-                              hover:text-[#002B73]
-                              transition
+                              text-xs
+                              shadow-md
+                              hover:shadow-lg
+                              hover:scale-105
+                              transition-all
+                              duration-300
                             "
                           >
-
                             Explore
 
                             <FaArrowRight
                               className="
-                                text-xs
-                                group-hover/link:translate-x-1
+                                text-[10px]
+                                group-hover:translate-x-1
                                 transition-transform
                               "
                             />
-
                           </a>
-
                         ) : (
-
                           <span
                             className="
+                              shrink-0
+                              px-4
+                              py-2.5
+                              rounded-full
+                              bg-gray-100
                               text-gray-400
-                              font-semibold
+                              font-bold
                               text-xs
                             "
                           >
                             Coming Soon
                           </span>
-
                         )}
-
                       </div>
-
                     </div>
-
                   </motion.div>
-
                 ))}
-
               </motion.div>
-
             </AnimatePresence>
-
           </div>
 
-
-          {/* ==========================================
-              RIGHT ARROW
-          ========================================== */}
+          {/* =================================================
+              RIGHT DESKTOP ARROW
+          ================================================= */}
 
           <button
             type="button"
             onClick={handleNext}
             aria-label="Next exhibitions"
             className="
-              hidden lg:flex
+              hidden
+              lg:flex
               absolute
               -right-6
               top-1/2
@@ -635,22 +822,27 @@ export default function InternationalExhibitions() {
           >
             <FaChevronRight />
           </button>
-
         </div>
 
-
-        {/* ==========================================
+        {/* =================================================
             MOBILE ARROWS
-        ========================================== */}
+        ================================================= */}
 
-        <div className="flex lg:hidden justify-center gap-3 mt-5">
-
+        <div
+          className="
+            flex
+            lg:hidden
+            justify-center
+            gap-3
+            mt-5
+          "
+        >
           <button
             type="button"
             onClick={handlePrevious}
             className="
-              w-10
-              h-10
+              w-11
+              h-11
               rounded-full
               bg-white
               text-[#003DA5]
@@ -668,13 +860,12 @@ export default function InternationalExhibitions() {
             <FaChevronLeft />
           </button>
 
-
           <button
             type="button"
             onClick={handleNext}
             className="
-              w-10
-              h-10
+              w-11
+              h-11
               rounded-full
               bg-white
               text-[#003DA5]
@@ -691,18 +882,21 @@ export default function InternationalExhibitions() {
           >
             <FaChevronRight />
           </button>
-
         </div>
 
-
-        {/* ==========================================
+        {/* =================================================
             DOTS
-        ========================================== */}
+        ================================================= */}
 
-        <div className="flex justify-center gap-2 mt-5">
-
+        <div
+          className="
+            flex
+            justify-center
+            gap-2
+            mt-5
+          "
+        >
           {exhibitions.map((_, index) => (
-
             <button
               key={index}
               type="button"
@@ -721,23 +915,19 @@ export default function InternationalExhibitions() {
                 duration-300
                 ${
                   startIndex === index
-                    ? "w-8 bg-[#003DA5]"
+                    ? "w-8 bg-gradient-to-r from-[#fc6602] to-[#0057B8]"
                     : "w-2 bg-gray-300 hover:bg-gray-400"
                 }
               `}
             />
-
           ))}
-
         </div>
 
-
-        {/* ==========================================
+        {/* =================================================
             CTA
-        ========================================== */}
+        ================================================= */}
 
         <Reveal delay={0.3}>
-
           <div
             className="
               mt-10
@@ -763,7 +953,7 @@ export default function InternationalExhibitions() {
             "
           >
 
-            {/* Decorative circle */}
+            {/* Decorative circles */}
 
             <div
               className="
@@ -777,16 +967,29 @@ export default function InternationalExhibitions() {
               "
             />
 
+            <div
+              className="
+                absolute
+                -left-20
+                -bottom-20
+                w-40
+                h-40
+                rounded-full
+                bg-white/10
+              "
+            />
+
+            {/* CTA Content */}
 
             <div className="relative z-10">
 
               <div className="flex items-center gap-2">
 
-                <FaPlaneDeparture className="text-blue-200" />
+                <FaPlaneDeparture className="text-blue-100" />
 
                 <p
                   className="
-                    text-blue-200
+                    text-blue-100
                     uppercase
                     tracking-[2px]
                     text-xs
@@ -795,9 +998,7 @@ export default function InternationalExhibitions() {
                 >
                   Exhibition Travel Made Easy
                 </p>
-
               </div>
-
 
               <h3
                 className="
@@ -810,13 +1011,12 @@ export default function InternationalExhibitions() {
                 Planning to attend an international exhibition?
               </h3>
 
-
-              <p className="text-blue-100 mt-1 text-sm">
+              <p className="text-blue-50 mt-1 text-sm">
                 Let Sarathi NX manage your complete travel requirements.
               </p>
-
             </div>
 
+            {/* CTA Button */}
 
             <a
               href="#contact"
@@ -828,7 +1028,7 @@ export default function InternationalExhibitions() {
                 items-center
                 gap-2
                 bg-white
-                text-[#a53400]
+                text-[#0057B8]
                 px-6
                 py-3
                 rounded-full
@@ -843,15 +1043,10 @@ export default function InternationalExhibitions() {
               Plan Exhibition Travel
 
               <FaArrowRight />
-
             </a>
-
           </div>
-
         </Reveal>
-
       </div>
-
     </section>
   );
 }

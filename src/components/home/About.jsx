@@ -114,7 +114,14 @@ export default function About() {
 
               <a
                 href="/sarathi-nx-official/about"
-                className="inline-flex items-center gap-2 mt-10 bg-[#0057B8] hover:bg-[#003DA5] text-white px-7 py-4 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 mt-10 bg-gradient-to-r
+                          from-[#fc6602]
+                          via-[#fc6602]
+                          to-[#0057B8]
+                          hover:from-[#e95500]
+                          hover:via-[#fc6602]
+                          hover:to-[#004494]
+                         text-white px-7 py-4 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 Discover More
 

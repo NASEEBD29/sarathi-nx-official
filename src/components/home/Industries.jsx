@@ -1,355 +1,954 @@
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import {
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
+  FaGlobeAsia,
   FaHeartbeat,
-  FaSeedling,
-  FaCar,
-  FaSpa,
-  FaHardHat,
+  FaCapsules,
   FaIndustry,
-  FaMicrochip,
-  FaLaptopCode,
-  FaBolt,
+  FaCar,
   FaCogs,
-  FaBoxOpen,
-  FaTshirt,
-  FaCouch,
-  FaGem,
-  FaHotel,
-  FaTruck,
-  FaLeaf,
-  FaFlask,
-  FaGraduationCap,
-  FaGlasses,
+  FaMicrochip,
+  FaUtensils,
+  FaSolarPanel,
 } from "react-icons/fa";
 
 import Reveal from "../common/Reveal";
 
+// =====================================================
+// INDUSTRY IMAGES
+// =====================================================
+
+import healthcareImage from "../../assets/images/industries/healthcare.jpg";
+import pharmaceuticalImage from "../../assets/images/industries/pharmaceutical.jpg";
+import textileImage from "../../assets/images/industries/textile.jpg";
+import automotiveImage from "../../assets/images/industries/automotive.jpg";
+import engineeringImage from "../../assets/images/industries/engineering.jpg";
+import electronicsImage from "../../assets/images/industries/electronics.jpg";
+import foodBeverageImage from "../../assets/images/industries/foodBeverage.jpg";
+import renewableEnergyImage from "../../assets/images/industries/renewableEnergy.jpg";
+
+// =====================================================
+// INDUSTRIES DATA
+// =====================================================
+
 const industries = [
   {
-    icon: <FaHeartbeat />,
-    title: "Medical, Healthcare & Pharmaceuticals",
+    title: "Healthcare & Medical",
+    description:
+      "Travel solutions for healthcare professionals, medical companies and global healthcare exhibitions.",
+    image: healthcareImage,
+    icon: FaHeartbeat,
   },
+
   {
-    icon: <FaSeedling />,
-    title: "Agriculture, Food & Beverage",
+    title: "Pharmaceuticals",
+    description:
+      "Complete business travel assistance for pharmaceutical companies and industry professionals.",
+    image: pharmaceuticalImage,
+    icon: FaCapsules,
   },
+
   {
-    icon: <FaCar />,
-    title: "Automotive & Mobility",
+    title: "Textile & Garments",
+    description:
+      "Specialized travel support for textile manufacturers, garment businesses and textile machinery companies.",
+    image: textileImage,
+    icon: FaIndustry,
   },
+
   {
-    icon: <FaSpa />,
-    title: "Beauty, Cosmetics & Personal Care",
+    title: "Automotive",
+    description:
+      "Business travel solutions for automotive manufacturers, suppliers and mobility professionals.",
+    image: automotiveImage,
+    icon: FaCar,
   },
+
   {
-    icon: <FaHardHat />,
-    title: "Construction, Building & Architecture",
+    title: "Engineering & Manufacturing",
+    description:
+      "Global travel assistance for engineering companies, manufacturers and industrial technology businesses.",
+    image: engineeringImage,
+    icon: FaCogs,
   },
+
   {
-    icon: <FaIndustry />,
-    title: "Industrial Manufacturing & Machinery",
+    title: "Electronics & Technology",
+    description:
+      "Travel support for technology companies, electronics manufacturers and innovation-driven businesses.",
+    image: electronicsImage,
+    icon: FaMicrochip,
   },
+
   {
-    icon: <FaMicrochip />,
-    title: "Electronics, Electrical & Semiconductors",
+    title: "Food & Beverage",
+    description:
+      "International travel solutions for food manufacturers, beverage companies and industry professionals.",
+    image: foodBeverageImage,
+    icon: FaUtensils,
   },
+
   {
-    icon: <FaLaptopCode />,
-    title: "Information Technology & AI",
-  },
-  {
-    icon: <FaBolt />,
-    title: "Energy & Renewable Energy",
-  },
-  {
-    icon: <FaCogs />,
-    title: "Metal, Steel & Engineering",
-  },
-  {
-    icon: <FaBoxOpen />,
-    title: "Packaging, Printing & Publishing",
-  },
-  {
-    icon: <FaTshirt />,
-    title: "Textiles, Apparel & Fashion",
-  },
-  {
-    icon: <FaCouch />,
-    title: "Furniture, Interior & Home Living",
-  },
-  {
-    icon: <FaGem />,
-    title: "Jewellery, Watches & Gifts",
-  },
-  {
-    icon: <FaHotel />,
-    title: "Tourism, Hospitality & Leisure",
-  },
-  {
-    icon: <FaTruck />,
-    title: "Logistics & Transportation",
-  },
-  {
-    icon: <FaLeaf />,
-    title: "Environment & Green Technology",
-  },
-  {
-    icon: <FaFlask />,
-    title: "Plastics, Rubber & Materials",
-  },
-  {
-    icon: <FaGraduationCap />,
-    title: "Education, Licensing & Business Services",
-  },
-  {
-    icon: <FaGlasses />,
-    title: "Optics & Precision Technology",
+    title: "Energy & Renewable",
+    description:
+      "Business travel support for renewable energy, solar, wind and energy technology companies.",
+    image: renewableEnergyImage,
+    icon: FaSolarPanel,
   },
 ];
 
-export default function Industries() {
-  // Duplicate cards for seamless infinite scrolling
-  const scrollingIndustries = [...industries, ...industries];
+// =====================================================
+// COMPONENT
+// =====================================================
+
+export default function IndustriesWeServe() {
+  const [startIndex, setStartIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  // ===================================================
+  // NEXT
+  // ===================================================
+
+  const handleNext = () => {
+    setDirection(1);
+
+    setStartIndex(
+      (prev) => (prev + 1) % industries.length
+    );
+  };
+
+  // ===================================================
+  // PREVIOUS
+  // ===================================================
+
+  const handlePrevious = () => {
+    setDirection(-1);
+
+    setStartIndex(
+      (prev) =>
+        (prev - 1 + industries.length) %
+        industries.length
+    );
+  };
+
+  // ===================================================
+  // AUTO SLIDER
+  // ===================================================
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // ===================================================
+  // 3 VISIBLE CARDS
+  // ===================================================
+
+  const visibleCards = [
+    industries[startIndex % industries.length],
+
+    industries[
+      (startIndex + 1) % industries.length
+    ],
+
+    industries[
+      (startIndex + 2) % industries.length
+    ],
+  ];
+
+  // ===================================================
+  // CARD ANIMATION
+  // ===================================================
+
+  const cardVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 420 : -420,
+      opacity: 0,
+      scale: 0.94,
+    }),
+
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+
+    exit: (direction) => ({
+      x: direction > 0 ? -420 : 420,
+      opacity: 0,
+      scale: 0.94,
+    }),
+  };
 
   return (
     <section
       id="industries"
-      className="relative py-10 bg-[#F8FBFF] overflow-hidden"
+      className="
+        relative
+        py-16
+        md:py-20
+        bg-white
+        overflow-hidden
+      "
     >
-      {/* ================= BACKGROUND DECORATION ================= */}
+      {/* =================================================
+          BACKGROUND DECORATION
+      ================================================= */}
 
-      <div className="absolute top-10 left-10 w-40 h-40 bg-[#003DA5]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-52 h-52 bg-[#00A6A6]/5 rounded-full blur-3xl" />
+      <div
+        className="
+          absolute
+          -top-24
+          -left-24
+          w-80
+          h-80
+          rounded-full
+          bg-[#0057B8]/5
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
-      <div className="relative max-w-7xl mx-auto">
+      <div
+        className="
+          absolute
+          -bottom-24
+          -right-24
+          w-80
+          h-80
+          rounded-full
+          bg-[#fc6602]/5
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
-        {/* ================= HEADING ================= */}
+      <div className="relative max-w-7xl mx-auto px-6">
+
+        {/* =================================================
+            SECTION HEADING
+        ================================================= */}
 
         <Reveal>
-          <div className="text-center mb-14 px-6">
+          <div
+            className="
+              text-center
+              max-w-4xl
+              mx-auto
+              mb-11
+            "
+          >
 
-            <span className="inline-flex items-center gap-2 text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
-              <span className="w-8 h-[2px] bg-[#003DA5]" />
+            {/* Eyebrow */}
+
+            <div
+              className="
+                inline-flex
+                items-center
+                gap-2
+                px-4
+                py-2
+                rounded-full
+                bg-[#FFF2EA]
+                text-[#fc6602]
+                text-xs
+                md:text-sm
+                font-bold
+                uppercase
+                tracking-[2px]
+              "
+            >
+              <FaGlobeAsia />
+
               Industries We Serve
-              <span className="w-8 h-[2px] bg-[#003DA5]" />
-            </span>
+            </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-5 leading-tight">
-              Travel Solutions Across
-              <span className="block text-[#003DA5] mt-2">
-                Global Industries
+            {/* Heading */}
+
+            <h2
+              className="
+                text-3xl
+                sm:text-4xl
+                md:text-5xl
+                font-extrabold
+                text-gray-800
+                mt-4
+                leading-tight
+              "
+            >
+              Travel Solutions For
+
+              <span
+                className="
+                  block
+                  mt-1
+                  bg-gradient-to-r
+                  from-[#fc6602]
+                  via-[#fc6602]
+                  to-[#0057B8]
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Every Industry
               </span>
             </h2>
 
-            <p className="mt-5 text-gray-600 max-w-3xl mx-auto leading-7">
-              From healthcare and technology to manufacturing, fashion
-              and renewable energy, we support professionals and
-              businesses attending exhibitions worldwide.
-            </p>
+            {/* Description */}
 
+            <p
+              className="
+                mt-4
+                text-gray-600
+                max-w-3xl
+                mx-auto
+                leading-7
+                text-sm
+                md:text-base
+              "
+            >
+              From healthcare and pharmaceuticals to
+              manufacturing and technology, Sarathi NX
+              provides reliable business travel solutions
+              for professionals across diverse industries.
+            </p>
           </div>
         </Reveal>
 
+        {/* =================================================
+            CAROUSEL
+        ================================================= */}
 
-        {/* ================= MOVING CARDS ================= */}
+        <div className="relative">
 
-        <div className="relative w-full overflow-hidden">
+          {/* =================================================
+              LEFT ARROW
+          ================================================= */}
 
-          {/* LEFT FADE */}
+          <button
+            type="button"
+            onClick={handlePrevious}
+            aria-label="Previous industries"
+            className="
+              hidden
+              lg:flex
+              absolute
+              -left-6
+              top-1/2
+              -translate-y-1/2
+              z-30
+              w-12
+              h-12
+              rounded-full
+              bg-white
+              text-[#0057B8]
+              shadow-xl
+              border
+              border-gray-100
+              items-center
+              justify-center
+              hover:bg-[#0057B8]
+              hover:text-white
+              hover:scale-110
+              transition-all
+              duration-300
+            "
+          >
+            <FaChevronLeft />
+          </button>
 
-          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#F8FBFF] to-transparent z-10 pointer-events-none" />
+          {/* =================================================
+              CARD VIEWPORT
+          ================================================= */}
 
-          {/* RIGHT FADE */}
+          <div
+            className="
+              relative
+              overflow-hidden
+              px-1
+              py-4
+            "
+          >
+            <AnimatePresence
+              initial={false}
+              custom={direction}
+              mode="popLayout"
+            >
+              <motion.div
+                key={startIndex}
+                custom={direction}
+                variants={cardVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: {
+                    type: "spring",
+                    stiffness: 180,
+                    damping: 25,
+                  },
 
-          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#F8FBFF] to-transparent z-10 pointer-events-none" />
+                  opacity: {
+                    duration: 0.35,
+                  },
 
-
-          {/* TRACK */}
-
-          <div className="flex w-max animate-industries-scroll hover:[animation-play-state:paused]">
-
-            {scrollingIndustries.map((industry, index) => (
-
-              <div
-                key={`${industry.title}-${index}`}
-                className="w-[230px] sm:w-[250px] md:w-[270px] px-2.5"
+                  scale: {
+                    duration: 0.35,
+                  },
+                }}
+                className="
+                  grid
+                  grid-cols-1
+                  md:grid-cols-3
+                  gap-6
+                  w-full
+                "
               >
 
-                <div
-                  className="
-                    group
-                    relative
-                    h-[235px]
-                    bg-white
-                    rounded-[26px]
-                    border border-gray-100
-                    p-6
-                    flex
-                    flex-col
-                    items-center
-                    justify-center
-                    text-center
-                    shadow-[0_8px_30px_rgba(0,61,165,0.07)]
-                    transition-all
-                    duration-500
-                    hover:-translate-y-3
-                    hover:shadow-[0_20px_45px_rgba(0,61,165,0.16)]
-                    hover:border-[#003DA5]/20
-                  "
-                >
+                {/* =================================================
+                    INDUSTRY CARDS
+                ================================================= */}
 
-                  {/* Top Accent */}
+                {visibleCards.map((item, index) => {
+                  const Icon = item.icon;
 
-                  <div
-                    className="
-                      absolute
-                      top-0
-                      left-1/2
-                      -translate-x-1/2
-                      w-16
-                      h-1
-                      bg-[#003DA5]
-                      rounded-b-full
-                      transition-all
-                      duration-500
-                      group-hover:w-28
-                    "
-                  />
+                  return (
+                    <motion.div
+                      key={`${item.title}-${startIndex}-${index}`}
+                      whileHover={{
+                        y: -10,
+                      }}
+                      transition={{
+                        duration: 0.3,
+                      }}
+                      className="
+                        group
+                        relative
+                        h-[390px]
+                        rounded-3xl
+                        overflow-hidden
+                        bg-gray-900
+                        shadow-[0_12px_40px_rgba(0,0,0,0.10)]
+                        hover:shadow-[0_25px_60px_rgba(0,87,184,0.20)]
+                        transition-shadow
+                        duration-500
+                      "
+                    >
 
+                      {/* =================================================
+                          IMAGE
+                      ================================================= */}
 
-                  {/* Glow */}
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="
+                          absolute
+                          inset-0
+                          w-full
+                          h-full
+                          object-cover
+                          transition-transform
+                          duration-700
+                          ease-out
+                          group-hover:scale-110
+                        "
+                      />
 
-                  <div
-                    className="
-                      absolute
-                      inset-0
-                      rounded-[26px]
-                      bg-gradient-to-br
-                      from-[#003DA5]/5
-                      via-transparent
-                      to-[#00A6A6]/5
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-500
-                    "
-                  />
+                      {/* =================================================
+                          DARK OVERLAY
+                      ================================================= */}
 
+                      <div
+                        className="
+                          absolute
+                          inset-0
+                          bg-gradient-to-t
+                          from-black/90
+                          via-black/45
+                          to-black/5
+                        "
+                      />
 
-                  {/* Icon */}
+                      {/* =================================================
+                          BRAND GRADIENT OVERLAY
+                      ================================================= */}
 
-                  <div
-                    className="
-                      relative
-                      w-16
-                      h-16
-                      rounded-2xl
-                      bg-[#EAF2FF]
-                      text-[#003DA5]
-                      flex
-                      items-center
-                      justify-center
-                      text-2xl
-                      shadow-sm
-                      transition-all
-                      duration-500
-                      group-hover:bg-[#003DA5]
-                      group-hover:text-white
-                      group-hover:scale-110
-                      group-hover:rotate-3
-                    "
-                  >
-                    {industry.icon}
-                  </div>
+                      <div
+                        className="
+                          absolute
+                          inset-0
+                          bg-gradient-to-br
+                          from-[#0057B8]/20
+                          via-transparent
+                          to-[#fc6602]/30
+                          opacity-80
+                          group-hover:opacity-100
+                          transition-opacity
+                          duration-500
+                        "
+                      />
 
+                      {/* =================================================
+                          TOP GRADIENT LINE
+                      ================================================= */}
 
-                  {/* Number */}
+                      <div
+                        className="
+                          absolute
+                          top-0
+                          left-0
+                          right-0
+                          h-1.5
+                          bg-gradient-to-r
+                          from-[#fc6602]
+                          via-[#fc6602]
+                          to-[#0057B8]
+                          z-20
+                        "
+                      />
 
-                  <span
-                    className="
-                      absolute
-                      top-5
-                      right-5
-                      text-[11px]
-                      font-bold
-                      text-gray-300
-                      group-hover:text-[#003DA5]/40
-                      transition-colors
-                    "
-                  >
-                    {String((index % industries.length) + 1).padStart(2, "0")}
-                  </span>
+                      {/* =================================================
+                          NUMBER
+                      ================================================= */}
 
+                      <div
+                        className="
+                          absolute
+                          top-5
+                          right-5
+                          z-20
+                          w-11
+                          h-11
+                          rounded-2xl
+                          bg-white/15
+                          backdrop-blur-md
+                          border
+                          border-white/25
+                          text-white
+                          flex
+                          items-center
+                          justify-center
+                          font-black
+                          text-sm
+                          group-hover:bg-[#fc6602]
+                          group-hover:border-[#fc6602]
+                          transition-all
+                          duration-500
+                        "
+                      >
+                        {String(
+                          (startIndex + index) %
+                            industries.length +
+                            1
+                        ).padStart(2, "0")}
+                      </div>
 
-                  {/* Title */}
+                      {/* =================================================
+                          CONTENT
+                      ================================================= */}
 
-                  <h3
-                    className="
-                      relative
-                      mt-5
-                      text-sm
-                      md:text-[15px]
-                      font-semibold
-                      text-gray-700
-                      leading-6
-                      group-hover:text-[#003DA5]
-                      transition-colors
-                      duration-300
-                    "
-                  >
-                    {industry.title}
-                  </h3>
+                      <div
+                        className="
+                          absolute
+                          inset-x-0
+                          bottom-0
+                          p-6
+                          md:p-7
+                          z-20
+                        "
+                      >
 
+                        {/* ICON */}
 
-                  {/* Bottom Line */}
+                        <motion.div
+                          whileHover={{
+                            rotate: 8,
+                            scale: 1.08,
+                          }}
+                          className="
+                            w-14
+                            h-14
+                            rounded-2xl
+                            bg-white/15
+                            backdrop-blur-md
+                            border
+                            border-white/25
+                            text-white
+                            flex
+                            items-center
+                            justify-center
+                            text-xl
+                            mb-4
+                            group-hover:bg-[#fc6602]
+                            group-hover:border-[#fc6602]
+                            transition-all
+                            duration-500
+                          "
+                        >
+                          <Icon />
+                        </motion.div>
 
-                  <div
-                    className="
-                      mt-4
-                      w-8
-                      h-[2px]
-                      bg-gray-200
-                      rounded-full
-                      group-hover:w-14
-                      group-hover:bg-[#003DA5]
-                      transition-all
-                      duration-500
-                    "
-                  />
+                        {/* TITLE */}
 
-                </div>
+                        <h3
+                          className="
+                            text-xl
+                            md:text-2xl
+                            font-extrabold
+                            text-white
+                            leading-tight
+                          "
+                        >
+                          {item.title}
+                        </h3>
 
-              </div>
+                        {/* DESCRIPTION */}
 
-            ))}
+                        <p
+                          className="
+                            mt-2
+                            text-white/80
+                            text-sm
+                            leading-6
+                            line-clamp-2
+                          "
+                        >
+                          {item.description}
+                        </p>
 
+                        {/* BUTTON */}
+
+                        <div className="mt-5">
+
+                          <a
+                            href="#contact"
+                            className="
+                              inline-flex
+                              items-center
+                              gap-2
+                              px-5
+                              py-2.5
+                              rounded-full
+                              bg-white
+                              text-[#0057B8]
+                              font-bold
+                              text-xs
+                              shadow-lg
+                              hover:bg-gradient-to-r
+                              hover:from-[#fc6602]
+                              hover:to-[#0057B8]
+                              hover:text-white
+                              hover:scale-105
+                              transition-all
+                              duration-300
+                            "
+                          >
+                            Explore Industry
+
+                            <FaArrowRight
+                              className="
+                                text-[10px]
+                                group-hover:translate-x-1
+                                transition-transform
+                              "
+                            />
+                          </a>
+
+                        </div>
+                      </div>
+
+                      {/* =================================================
+                          HOVER BORDER
+                      ================================================= */}
+
+                      <div
+                        className="
+                          absolute
+                          inset-0
+                          rounded-3xl
+                          border-2
+                          border-transparent
+                          group-hover:border-white/20
+                          transition-all
+                          duration-500
+                          pointer-events-none
+                        "
+                      />
+
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
+          {/* =================================================
+              RIGHT ARROW
+          ================================================= */}
+
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next industries"
+            className="
+              hidden
+              lg:flex
+              absolute
+              -right-6
+              top-1/2
+              -translate-y-1/2
+              z-30
+              w-12
+              h-12
+              rounded-full
+              bg-white
+              text-[#0057B8]
+              shadow-xl
+              border
+              border-gray-100
+              items-center
+              justify-center
+              hover:bg-[#0057B8]
+              hover:text-white
+              hover:scale-110
+              transition-all
+              duration-300
+            "
+          >
+            <FaChevronRight />
+          </button>
         </div>
 
+        {/* =================================================
+            MOBILE ARROWS
+        ================================================= */}
 
-        {/* ================= BOTTOM MESSAGE ================= */}
+        <div
+          className="
+            flex
+            lg:hidden
+            justify-center
+            gap-3
+            mt-5
+          "
+        >
+          <button
+            type="button"
+            onClick={handlePrevious}
+            className="
+              w-11
+              h-11
+              rounded-full
+              bg-white
+              text-[#0057B8]
+              border
+              border-gray-200
+              shadow-md
+              flex
+              items-center
+              justify-center
+              hover:bg-[#0057B8]
+              hover:text-white
+              transition-all
+            "
+          >
+            <FaChevronLeft />
+          </button>
 
-        <Reveal delay={0.4}>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="
+              w-11
+              h-11
+              rounded-full
+              bg-white
+              text-[#0057B8]
+              border
+              border-gray-200
+              shadow-md
+              flex
+              items-center
+              justify-center
+              hover:bg-[#0057B8]
+              hover:text-white
+              transition-all
+            "
+          >
+            <FaChevronRight />
+          </button>
+        </div>
 
-          <div className="mt-14 text-center px-6">
+        {/* =================================================
+            DOTS
+        ================================================= */}
 
-            <p className="text-gray-500">
-              Whatever your industry, we help you travel smarter,
-              connect globally and participate with confidence.
-            </p>
+        <div
+          className="
+            flex
+            justify-center
+            gap-2
+            mt-5
+          "
+        >
+          {industries.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => {
+                setDirection(
+                  index >= startIndex ? 1 : -1
+                );
 
-            <div className="mt-4 flex justify-center items-center gap-2">
+                setStartIndex(index);
+              }}
+              aria-label={`Go to industry ${index + 1}`}
+              className={`
+                h-2
+                rounded-full
+                transition-all
+                duration-300
+                ${
+                  startIndex === index
+                    ? "w-8 bg-gradient-to-r from-[#fc6602] to-[#0057B8]"
+                    : "w-2 bg-gray-300 hover:bg-gray-400"
+                }
+              `}
+            />
+          ))}
+        </div>
 
-              <span className="w-2 h-2 rounded-full bg-[#003DA5]" />
-              <span className="w-16 h-[2px] bg-[#003DA5]/20 rounded-full" />
-              <span className="w-2 h-2 rounded-full bg-[#00A6A6]" />
+        {/* =================================================
+            BOTTOM CTA
+        ================================================= */}
 
+        <Reveal delay={0.3}>
+          <div
+            className="
+              mt-10
+              rounded-3xl
+              bg-gradient-to-r
+              from-[#fc6602]
+              via-[#fc6602]
+              to-[#0057B8]
+              px-6
+              py-7
+              md:px-10
+              md:py-8
+              text-white
+              flex
+              flex-col
+              md:flex-row
+              items-center
+              justify-between
+              gap-5
+              shadow-xl
+              overflow-hidden
+              relative
+            "
+          >
+
+            {/* Decorative circle */}
+
+            <div
+              className="
+                absolute
+                -right-16
+                -top-16
+                w-40
+                h-40
+                rounded-full
+                bg-white/10
+              "
+            />
+
+            <div
+              className="
+                absolute
+                -left-16
+                -bottom-16
+                w-36
+                h-36
+                rounded-full
+                bg-white/10
+              "
+            />
+
+            {/* CTA TEXT */}
+
+            <div className="relative z-10">
+
+              <div className="flex items-center gap-2">
+
+                <FaGlobeAsia className="text-blue-100" />
+
+                <p
+                  className="
+                    text-blue-100
+                    uppercase
+                    tracking-[2px]
+                    text-xs
+                    font-bold
+                  "
+                >
+                  Global Business Travel
+                </p>
+              </div>
+
+              <h3
+                className="
+                  text-xl
+                  md:text-2xl
+                  font-extrabold
+                  mt-2
+                "
+              >
+                Your Industry. Our Global Travel Expertise.
+              </h3>
+
+              <p className="text-blue-50 mt-1 text-sm">
+                Let Sarathi NX take care of your business travel requirements.
+              </p>
             </div>
 
+            {/* CTA BUTTON */}
+
+            <a
+              href="#contact"
+              className="
+                relative
+                z-10
+                shrink-0
+                inline-flex
+                items-center
+                gap-2
+                bg-white
+                text-[#0057B8]
+                px-6
+                py-3
+                rounded-full
+                font-bold
+                hover:bg-blue-50
+                hover:scale-105
+                transition-all
+                duration-300
+                shadow-lg
+              "
+            >
+              Talk To Our Experts
+
+              <FaArrowRight />
+            </a>
           </div>
-
         </Reveal>
-
       </div>
     </section>
   );

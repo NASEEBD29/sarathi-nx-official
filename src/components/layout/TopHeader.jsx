@@ -59,7 +59,7 @@ export default function TopHeader() {
 
                 <span className="font-semibold">
                   Crystal Plaza CHS Ltd,
-                  Station Road, Mira Road East,
+                  Mira Road East,
                   Thane - 401107
                 </span>
               </span>
