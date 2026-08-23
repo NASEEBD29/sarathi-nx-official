@@ -752,12 +752,12 @@ export default function Hero() {
                       w-full
                       h-9
                        bg-gradient-to-r
-                          from-[#fc6602]
-                          via-[#fc6602]
-                          to-[#0057B8]
-                          hover:from-[#e95500]
-                          hover:via-[#fc6602]
-                          hover:to-[#004494]
+                          from-[#0057B8]
+                          via-[#0057B8]
+                          to-[#fc6602]
+                          hover:from-[#004494]
+                          hover:via-[#0057B8]
+                          hover:to-[#fc6602]
                           text-white
                       rounded-md
                       font-bold

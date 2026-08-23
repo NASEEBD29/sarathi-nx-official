@@ -1,7 +1,6 @@
 import {
   FaPhoneAlt,
   FaEnvelope,
-  FaClock,
   FaMapMarkerAlt,
   FaInstagram,
 } from "react-icons/fa";
@@ -21,29 +20,61 @@ export default function TopHeader() {
 
           <div className="min-h-[64px] flex items-center justify-between gap-6">
 
-            {/* ================= LEFT SIDE ================= */}
-            <div className="flex items-center gap-6 lg:gap-10 text-[16px] lg:text-[17px]">
+            {/* =================================================
+                LEFT SIDE
+            ================================================== */}
 
-              {/* Phone */}
+            <div
+              className="
+                flex
+                items-center
+                gap-6
+                lg:gap-10
+                text-[16px]
+                lg:text-[17px]
+              "
+            >
+
+              {/* ================= PHONE ================= */}
+
               <a
                 href="tel:+917666984626"
-                className="flex items-center gap-3 hover:text-blue-200 transition-colors duration-300 whitespace-nowrap"
+                className="
+                  flex
+                  items-center
+                  gap-3
+                  hover:text-blue-200
+                  transition-colors
+                  duration-300
+                  whitespace-nowrap
+                "
               >
                 <FaPhoneAlt className="text-[16px] lg:text-[17px]" />
 
                 <span className="font-semibold">
                   +91 766 698 4626
                 </span>
+
                 <span className="font-semibold">
                   +91 865786 7181
                 </span>
               </a>
 
 
-              {/* Email */}
+              {/* ================= EMAIL ================= */}
+
               <a
                 href="mailto:sajid@sarathinx.com"
-                className="hidden md:flex items-center gap-3 hover:text-blue-200 transition-colors duration-300 whitespace-nowrap"
+                className="
+                  hidden
+                  md:flex
+                  items-center
+                  gap-3
+                  hover:text-blue-200
+                  transition-colors
+                  duration-300
+                  whitespace-nowrap
+                "
               >
                 <FaEnvelope className="text-[17px]" />
 
@@ -53,8 +84,17 @@ export default function TopHeader() {
               </a>
 
 
-              {/* Address */}
-              <span className="hidden xl:flex items-center gap-3 whitespace-nowrap">
+              {/* ================= ADDRESS ================= */}
+
+              <span
+                className="
+                  hidden
+                  xl:flex
+                  items-center
+                  gap-3
+                  whitespace-nowrap
+                "
+              >
                 <FaMapMarkerAlt className="text-[17px]" />
 
                 <span className="font-semibold">
@@ -67,107 +107,201 @@ export default function TopHeader() {
             </div>
 
 
-            {/* ================= RIGHT SIDE ================= */}
-            <div className="flex items-center gap-4">
+            {/* =================================================
+                RIGHT SIDE - SOCIAL MEDIA
+            ================================================== */}
 
-              <span className="hidden sm:block text-[16px] font-semibold">
+            <div className="flex items-center gap-3">
+
+              {/* Follow Us */}
+
+              <span
+                className="
+                  hidden
+                  sm:block
+                  text-[16px]
+                  font-semibold
+                  mr-1
+                "
+              >
                 Follow Us
               </span>
 
 
-              {/* Instagram */}
+              {/* =================================================
+                  INSTAGRAM
+              ================================================== */}
+
               <a
                 href="https://www.instagram.com/sarathi_nx_travel/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
+                title="Instagram"
                 className="
+                  group
+                  relative
                   w-9
                   h-9
                   flex
                   items-center
                   justify-center
                   rounded-full
-                  border
-                  border-white/30
-                  hover:bg-white
-                  hover:text-[#003DA5]
+                  bg-white
                   transition-all
                   duration-300
+                  hover:scale-110
+                  hover:shadow-lg
+                  overflow-hidden
                 "
               >
-                <FaInstagram className="text-[16px]" />
+
+                {/* Instagram Gradient */}
+
+                <span
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-tr
+                    from-[#F58529]
+                    via-[#DD2A7B]
+                    to-[#8134AF]
+                  "
+                />
+
+                <FaInstagram
+                  className="
+                    relative
+                    z-10
+                    text-white
+                    text-[17px]
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+
               </a>
 
 
-              {/* LinkedIn */}
+              {/* =================================================
+                  LINKEDIN
+              ================================================== */}
+
               <a
                 href="#"
                 aria-label="LinkedIn"
+                title="LinkedIn"
                 className="
+                  group
                   w-9
                   h-9
                   flex
                   items-center
                   justify-center
                   rounded-full
+                  bg-[#0A66C2]
+                  text-white
                   border
-                  border-white/30
-                  hover:bg-white
-                  hover:text-[#003DA5]
+                  border-white/20
                   transition-all
                   duration-300
+                  hover:scale-110
+                  hover:bg-[#0A66C2]
+                  hover:shadow-lg
                 "
               >
-                <FaLinkedinIn className="text-[16px]" />
+
+                <FaLinkedinIn
+                  className="
+                    text-[16px]
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+
               </a>
 
-              {/* facebook */}
+
+              {/* =================================================
+                  FACEBOOK
+              ================================================== */}
+
               <a
                 href="#"
                 aria-label="Facebook"
+                title="Facebook"
                 className="
+                  group
                   w-9
                   h-9
                   flex
                   items-center
                   justify-center
                   rounded-full
+                  bg-[#1877F2]
+                  text-white
                   border
-                  border-white/30
-                  hover:bg-white
-                  hover:text-[#003DA5]
+                  border-white/20
                   transition-all
                   duration-300
+                  hover:scale-110
+                  hover:bg-[#1877F2]
+                  hover:shadow-lg
                 "
               >
-                <FaFacebookF className="text-[16px]" />
+
+                <FaFacebookF
+                  className="
+                    text-[16px]
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+
               </a>
 
-               {/* threads */}
+
+              {/* =================================================
+                  THREADS
+              ================================================== */}
+
               <a
                 href="#"
                 aria-label="Threads"
+                title="Threads"
                 className="
+                  group
                   w-9
                   h-9
                   flex
                   items-center
                   justify-center
                   rounded-full
+                  bg-black
+                  text-white
                   border
-                  border-white/30
-                  hover:bg-white
-                  hover:text-[#003DA5]
+                  border-white/20
                   transition-all
                   duration-300
+                  hover:scale-110
+                  hover:bg-black
+                  hover:shadow-lg
                 "
               >
-                <FaThreads className="text-[16px]" />
+
+                <FaThreads
+                  className="
+                    text-[16px]
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+
               </a>
-
-
-              
 
             </div>
 

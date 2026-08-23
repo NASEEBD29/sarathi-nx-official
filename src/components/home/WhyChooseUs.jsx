@@ -12,104 +12,227 @@ import {
 import { motion } from "framer-motion";
 import Reveal from "../common/Reveal";
 
+// ======================================================
+// FEATURES DATA
+// ======================================================
+
 const features = [
   {
-    number: "01",
     icon: FaCheckCircle,
-    title: "Complete Travel Management",
-    desc: "Flights, hotels, visas and travel assistance managed seamlessly under one roof.",
+    title: "Experienced Travel Experts",
+    desc: "Industry professionals with proven expertise.",
   },
+
   {
-    number: "02",
     icon: FaPlaneDeparture,
-    title: "Exhibition Travel Experts",
-    desc: "Specialized support for international exhibitions, business delegations and trade events.",
-  },
-  {
-    number: "03",
-    icon: FaGlobeAsia,
-    title: "Global Travel Network",
-    desc: "Strong international partnerships helping you travel confidently across destinations.",
-  },
-  {
-    number: "04",
-    icon: FaUserTie,
-    title: "Dedicated Travel Consultant",
-    desc: "A dedicated travel expert to understand your requirements and manage every detail.",
-  },
-  {
-    number: "05",
-    icon: FaPassport,
-    title: "Visa & Documentation Support",
-    desc: "Professional guidance for visa applications, documentation and international travel requirements.",
-  },
-  {
-    number: "06",
-    icon: FaHandshake,
     title: "Transparent Pricing",
-    desc: "Competitive and transparent pricing with clear communication and no hidden surprises.",
+    desc: "Honest pricing with no hidden charges.",
   },
+
   {
-    number: "07",
+    icon: FaGlobeAsia,
+    title: "Dedicated Travel Consultants",
+    desc: "Personalized guidance for every journey.",
+  },
+
+  {
+    icon: FaUserTie,
+    title: "Worldwide Network",
+    desc: "Reliable global travel partnerships.",
+  },
+
+  {
+    icon: FaPassport,
+    title: "Fast Visa Assistance",
+    desc: "Quick and hassle-free visa support.",
+  },
+
+  {
+    icon: FaHandshake,
+    title: "Personalized Travel Solutions",
+    desc: "Travel plans tailored to your needs.",
+  },
+
+  {
     icon: FaHeadset,
     title: "24×7 Travel Assistance",
-    desc: "Reliable assistance before, during and after your journey whenever you need us.",
+    desc: "Assistance whenever you need it.",
   },
+
   {
-    number: "08",
     icon: FaUsers,
     title: "Tailored Business Solutions",
     desc: "Customized travel solutions designed around your business, team and travel requirements.",
   },
 ];
 
+// ======================================================
+// WHY CHOOSE US
+// ======================================================
+
 export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="relative overflow-hidden bg-white py-24 md:py-28"
+      className="
+        relative
+        overflow-hidden
+        bg-white
+        py-10
+      "
     >
-      {/* ================= BACKGROUND DECORATION ================= */}
+      {/* ==================================================
+          BACKGROUND DECORATION
+      ================================================== */}
 
-      <div className="absolute top-20 -left-32 w-72 h-72 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+      <div
+        className="
+          absolute
+          -top-24
+          -left-24
+          w-72
+          h-72
+          rounded-full
+          bg-[#0057B8]/5
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
-      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-orange-100/40 rounded-full blur-3xl pointer-events-none" />
+      <div
+        className="
+          absolute
+          -bottom-24
+          -right-24
+          w-80
+          h-80
+          rounded-full
+          bg-[#fc6602]/5
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
 
-        {/* ================= SECTION HEADING ================= */}
+        {/* ==================================================
+            SECTION HEADING
+        ================================================== */}
 
         <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div
+            className="
+              text-center
+              max-w-3xl
+              mx-auto
+              mb-8
+            "
+          >
 
-            {/* Small Label */}
+            {/* TOP LABEL */}
 
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <span className="w-10 h-[2px] bg-[#fc6602]" />
+            <div className="flex items-center justify-center gap-3 mb-3">
 
-              <span className="uppercase tracking-[4px] text-sm font-bold text-[#0057B8]">
+              <span
+                className="
+                  w-8
+                  h-[2px]
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  to-[#fc6602]
+                "
+              />
+
+              <span
+                className="
+                  uppercase
+                  tracking-[3px]
+                  text-xs
+                  md:text-sm
+                  font-bold
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  via-[#0057B8]
+                  to-[#fc6602]
+                  bg-clip-text
+                  text-transparent
+                "
+              >
                 Why Choose Sarathi NX
               </span>
 
-              <span className="w-10 h-[2px] bg-[#0057B8]" />
+              <span
+                className="
+                  w-8
+                  h-[2px]
+                  bg-gradient-to-r
+                  from-[#fc6602]
+                  to-[#0057B8]
+                "
+              />
+
             </div>
 
-            {/* Heading */}
+            {/* MAIN HEADING */}
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
-              Travel With
-              <span className="text-[#0057B8]"> Confidence.</span>
+            <h2
+              className="
+                text-3xl
+                md:text-4xl
+                lg:text-5xl
+                font-extrabold
+                text-gray-900
+                leading-tight
+              "
+            >
+              Travel With{" "}
+
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  via-[#0057B8]
+                  to-[#fc6602]
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Confidence.
+              </span>
             </h2>
 
-            <h3 className="text-2xl md:text-3xl font-bold mt-3">
-              <span className="text-[#fc6602]">
-                We Take Care of Every Detail.
-              </span>
+            {/* SUB HEADING */}
+
+            <h3
+              className="
+                text-lg
+                md:text-xl
+                font-bold
+                mt-1
+                bg-gradient-to-r
+                from-[#fc6602]
+                via-[#fc6602]
+                to-[#0057B8]
+                bg-clip-text
+                text-transparent
+              "
+            >
+              End-to-End Travel Solutions
+Complete travel management under one roof.
+
             </h3>
 
-            {/* Description */}
+            {/* DESCRIPTION */}
 
-            <p className="mt-6 text-gray-600 leading-8 text-base md:text-lg">
+            <p
+              className="
+                mt-3
+                text-gray-600
+                leading-6
+                text-sm
+                md:text-base
+              "
+            >
               From business travel and international exhibitions to visas,
               hotels and complete travel management, Sarathi NX ensures a
               smooth, reliable and hassle-free journey.
@@ -119,9 +242,23 @@ export default function WhyChooseUs() {
         </Reveal>
 
 
-        {/* ================= FEATURE CARDS ================= */}
+        {/* ==================================================
+            FEATURES SINGLE ROW
+        ================================================== */}
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+        <div
+          className="
+            flex
+            gap-4
+            overflow-x-auto
+            pb-4
+            snap-x
+            snap-mandatory
+            scrollbar-thin
+            scrollbar-thumb-[#0057B8]/30
+            scrollbar-track-transparent
+          "
+        >
 
           {features.map((item, index) => {
             const Icon = item.icon;
@@ -129,11 +266,13 @@ export default function WhyChooseUs() {
             return (
               <Reveal
                 key={item.title}
-                delay={index * 0.08}
+                delay={index * 0.05}
               >
 
                 <motion.div
-                  whileHover={{ y: -10 }}
+                  whileHover={{
+                    y: -8,
+                  }}
                   transition={{
                     type: "spring",
                     stiffness: 250,
@@ -142,112 +281,87 @@ export default function WhyChooseUs() {
                   className="
                     group
                     relative
-                    h-full
-                    min-h-[300px]
+                    flex-shrink-0
+                    snap-start
+                    w-[230px]
+                    sm:w-[240px]
+                    lg:w-[245px]
+                    h-[245px]
                     overflow-hidden
-                    rounded-3xl
+                    rounded-2xl
                     bg-white
                     border
                     border-gray-100
-                    p-7
-                    shadow-[0_8px_30px_rgba(0,0,0,0.06)]
-                    hover:shadow-[0_20px_50px_rgba(0,87,184,0.15)]
+                    p-5
+                    shadow-[0_8px_25px_rgba(0,0,0,0.07)]
+                    hover:shadow-[0_18px_40px_rgba(0,87,184,0.16)]
                     transition-all
                     duration-500
                   "
                 >
 
-                  {/* ================= CARD DECORATION ================= */}
+                  {/* ==================================================
+                      TOP GRADIENT LINE
+                  ================================================== */}
 
                   <div
                     className="
                       absolute
-                      -top-16
-                      -right-16
-                      w-40
-                      h-40
+                      top-0
+                      left-0
+                      right-0
+                      h-1
+                      bg-gradient-to-r
+                      from-[#0057B8]
+                      via-[#0057B8]
+                      to-[#fc6602]
+                    "
+                  />
+
+
+                  {/* ==================================================
+                      DECORATIVE CIRCLE
+                  ================================================== */}
+
+                  <div
+                    className="
+                      absolute
+                      -top-14
+                      -right-14
+                      w-32
+                      h-32
                       rounded-full
                       bg-gradient-to-br
                       from-[#0057B8]/10
                       to-[#fc6602]/10
-                      group-hover:scale-[1.8]
+                      group-hover:scale-150
                       transition-transform
                       duration-700
                     "
                   />
 
-                  <div
-                    className="
-                      absolute
-                      bottom-0
-                      right-0
-                      w-24
-                      h-24
-                      bg-gradient-to-tl
-                      from-[#0057B8]/5
-                      to-transparent
-                      rounded-tl-full
-                    "
-                  />
 
+                  {/* ==================================================
+                      ICON
+                  ================================================== */}
 
-                  {/* ================= CARD NUMBER ================= */}
-
-                  <div className="relative flex items-center justify-between mb-7">
-
-                    <span
-                      className="
-                        text-sm
-                        font-extrabold
-                        tracking-[3px]
-                        text-gray-300
-                        group-hover:text-[#fc6602]
-                        transition-colors
-                        duration-300
-                      "
-                    >
-                      {item.number}
-                    </span>
-
-                    <span
-                      className="
-                        text-xs
-                        font-semibold
-                        uppercase
-                        tracking-widest
-                        text-gray-400
-                        group-hover:text-[#0057B8]
-                        transition-colors
-                      "
-                    >
-                      Sarathi NX
-                    </span>
-
-                  </div>
-
-
-                  {/* ================= ICON ================= */}
-
-                  <div className="relative mb-7">
+                  <div className="relative mb-4">
 
                     <div
                       className="
-                        w-16
-                        h-16
-                        rounded-2xl
+                        w-14
+                        h-14
+                        rounded-xl
                         flex
                         items-center
                         justify-center
-                        bg-gradient-to-br
+                        bg-gradient-to-r
                         from-[#0057B8]
-                        to-[#0074D9]
+                        via-[#0057B8]
+                        to-[#fc6602]
                         text-white
-                        text-2xl
+                        text-xl
                         shadow-lg
-                        shadow-blue-200
-                        group-hover:from-[#fc6602]
-                        group-hover:to-[#ff8a3d]
-                        group-hover:shadow-orange-200
                         group-hover:scale-110
                         group-hover:rotate-3
                         transition-all
@@ -257,37 +371,22 @@ export default function WhyChooseUs() {
                       <Icon />
                     </div>
 
-                    {/* Small Accent */}
-
-                    <div
-                      className="
-                        absolute
-                        -bottom-1
-                        -right-1
-                        w-5
-                        h-5
-                        rounded-full
-                        bg-[#fc6602]
-                        border-4
-                        border-white
-                        group-hover:scale-125
-                        transition-transform
-                      "
-                    />
-
                   </div>
 
 
-                  {/* ================= TITLE ================= */}
+                  {/* ==================================================
+                      TITLE
+                  ================================================== */}
 
                   <h3
                     className="
                       relative
-                      text-xl
+                      text-base
+                      md:text-lg
                       font-extrabold
                       text-gray-900
                       leading-snug
-                      mb-3
+                      mb-2
                       group-hover:text-[#0057B8]
                       transition-colors
                       duration-300
@@ -297,52 +396,27 @@ export default function WhyChooseUs() {
                   </h3>
 
 
-                  {/* ================= DESCRIPTION ================= */}
+                  {/* ==================================================
+                      DESCRIPTION
+                  ================================================== */}
 
                   <p
                     className="
                       relative
-                      text-sm
+                      text-xs
+                      md:text-sm
                       text-gray-600
-                      leading-7
+                      leading-5
+                      line-clamp-4
                     "
                   >
                     {item.desc}
                   </p>
 
 
-                  {/* ================= BOTTOM ARROW ================= */}
-
-                  <div
-                    className="
-                      relative
-                      mt-6
-                      flex
-                      items-center
-                      gap-2
-                      text-sm
-                      font-bold
-                      text-[#0057B8]
-                      group-hover:text-[#fc6602]
-                      transition-colors
-                    "
-                  >
-                    <span>Explore</span>
-
-                    <span
-                      className="
-                        inline-block
-                        group-hover:translate-x-2
-                        transition-transform
-                        duration-300
-                      "
-                    >
-                      →
-                    </span>
-                  </div>
-
-
-                  {/* ================= HOVER LINE ================= */}
+                  {/* ==================================================
+                      BOTTOM GRADIENT
+                  ================================================== */}
 
                   <div
                     className="
@@ -352,8 +426,9 @@ export default function WhyChooseUs() {
                       h-1
                       w-0
                       bg-gradient-to-r
-                      from-[#fc6602]
-                      to-[#0057B8]
+                      from-[#0057B8]
+                      via-[#0057B8]
+                      to-[#fc6602]
                       group-hover:w-full
                       transition-all
                       duration-500
@@ -369,105 +444,48 @@ export default function WhyChooseUs() {
         </div>
 
 
-        {/* ================= OUR PROMISE ================= */}
+        {/* ==================================================
+            SCROLL HINT - MOBILE
+        ================================================== */}
 
-        <Reveal delay={0.4}>
+        <div
+          className="
+            flex
+            lg:hidden
+            justify-center
+            items-center
+            gap-2
+            mt-3
+            text-xs
+            text-gray-400
+          "
+        >
 
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
+          <span
             className="
-              relative
-              overflow-hidden
-              mt-16
-              rounded-[2rem]
+              w-8
+              h-[2px]
+              bg-gradient-to-r
+              from-transparent
+              to-[#0057B8]
+            "
+          />
+
+          <span>
+            Swipe to explore
+          </span>
+
+          <span
+            className="
+              w-8
+              h-[2px]
               bg-gradient-to-r
               from-[#fc6602]
-              via-[#fc6602]
-              to-[#0057B8]
-              p-[1px]
-              shadow-xl
+              to-transparent
             "
-          >
+          />
 
-            <div
-              className="
-                relative
-                overflow-hidden
-                rounded-[2rem]
-                bg-gradient-to-r
-                from-[#fc6602]
-                to-[#0057B8]
-                px-8
-                py-12
-                md:px-14
-                md:py-14
-                text-center
-                text-white
-              "
-            >
-
-              {/* Decorative Circle */}
-
-              <div
-                className="
-                  absolute
-                  -top-20
-                  -left-20
-                  w-56
-                  h-56
-                  rounded-full
-                  bg-white/10
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  -bottom-24
-                  -right-16
-                  w-64
-                  h-64
-                  rounded-full
-                  bg-white/10
-                "
-              />
-
-              <div className="relative z-10">
-
-                <p className="uppercase tracking-[5px] text-xs md:text-sm font-bold text-white/80">
-                  Our Promise
-                </p>
-
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mt-4">
-                  We Plan. You Travel. We Care.
-                </h3>
-
-                <p className="max-w-2xl mx-auto mt-5 text-white/90 leading-7 text-sm md:text-base">
-                  Your journey is our responsibility. We take care of every
-                  detail so you can focus on your business, exhibition or
-                  travel experience.
-                </p>
-
-                {/* Bottom Accent */}
-
-                <div className="flex justify-center items-center gap-3 mt-7">
-
-                  <span className="w-12 h-[2px] bg-white/60" />
-
-                  <FaPlaneDeparture className="text-xl" />
-
-                  <span className="w-12 h-[2px] bg-white/60" />
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </motion.div>
-
-        </Reveal>
+        </div>
 
       </div>
     </section>

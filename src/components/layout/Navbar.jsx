@@ -195,9 +195,9 @@ export default function Navbar() {
                         ? `
                           text-white
                           bg-gradient-to-r
-                          from-[#fc6602]
-                          via-[#fc6602]
-                          to-[#0057B8]
+                           from-[#0057B8]
+                    via-[#0057B8]
+                    to-[#fc6602]
                           shadow-md
                         `
                         : `
@@ -290,7 +290,7 @@ export default function Navbar() {
             "
           >
 
-            <FaPhoneAlt className="text-[14px]" />
+            <FaPhoneAlt className="text-[24px]" />
 
           </a>
 
@@ -323,9 +323,9 @@ export default function Navbar() {
                   `
                   : `
                     bg-gradient-to-r
-                    from-[#fc6602]
-                    via-[#fc6602]
-                    to-[#0057B8]
+                    from-[#0057B8]
+                    via-[#0057B8]
+                    to-[#fc6602]
                     text-white
                     shadow-md
                     hover:bg-[#0057B8]

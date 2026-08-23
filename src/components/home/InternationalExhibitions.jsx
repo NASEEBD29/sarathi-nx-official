@@ -19,7 +19,7 @@ import Reveal from "../common/Reveal";
 
 import cmefImage from "../../assets/images/exhibitions/cmef.jpg";
 import medicaImage from "../../assets/images/exhibitions/medica.jpg";
-import arabHealthImage from "../../assets/images/exhibitions/arabHealth.jpg"; 
+import arabHealthImage from "../../assets/images/exhibitions/arabHealth.jpg";
 import weldingImage from "../../assets/images/exhibitions/welding.jpg";
 import medlabImage from "../../assets/images/exhibitions/medlab.jpg";
 import cantonFairImage from "../../assets/images/exhibitions/cantonFair.jpg";
@@ -200,7 +200,7 @@ export default function InternationalExhibitions() {
     >
       {/* =================================================
           DECORATIVE BACKGROUND
-      ================================================= */}
+      ================================================== */}
 
       <div
         className="
@@ -234,7 +234,7 @@ export default function InternationalExhibitions() {
 
         {/* =================================================
             SECTION HEADING
-        ================================================= */}
+        ================================================== */}
 
         <Reveal>
           <div className="text-center max-w-4xl mx-auto mb-11">
@@ -249,13 +249,17 @@ export default function InternationalExhibitions() {
                 px-4
                 py-2
                 rounded-full
-                bg-[#EAF2FF]
-                text-[#003DA5]
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#0057B8]
+                to-[#fc6602]
+                text-white
                 text-xs
                 md:text-sm
                 font-bold
                 uppercase
                 tracking-[2px]
+                shadow-md
               "
             >
               <FaGlobeAsia />
@@ -283,9 +287,9 @@ export default function InternationalExhibitions() {
                   block
                   mt-1
                   bg-gradient-to-r
-                  from-[#fc6602]
-                  via-[#fc6602]
-                  to-[#0057B8]
+                  from-[#0057B8]
+                  via-[#0057B8]
+                  to-[#fc6602]
                   bg-clip-text
                   text-transparent
                 "
@@ -317,13 +321,13 @@ export default function InternationalExhibitions() {
 
         {/* =================================================
             CAROUSEL
-        ================================================= */}
+        ================================================== */}
 
         <div className="relative">
 
           {/* =================================================
               LEFT DESKTOP ARROW
-          ================================================= */}
+          ================================================== */}
 
           <button
             type="button"
@@ -341,13 +345,16 @@ export default function InternationalExhibitions() {
               h-12
               rounded-full
               bg-white
-              text-[#003DA5]
+              text-[#0057B8]
               shadow-xl
               border
               border-gray-100
               items-center
               justify-center
-              hover:bg-[#003DA5]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               hover:scale-110
               transition-all
@@ -359,7 +366,7 @@ export default function InternationalExhibitions() {
 
           {/* =================================================
               CARD VIEWPORT
-          ================================================= */}
+          ================================================== */}
 
           <div
             className="
@@ -407,7 +414,7 @@ export default function InternationalExhibitions() {
 
                 {/* =================================================
                     CARDS
-                ================================================= */}
+                ================================================== */}
 
                 {visibleCards.map((item, index) => (
                   <motion.div
@@ -437,7 +444,7 @@ export default function InternationalExhibitions() {
 
                     {/* =================================================
                         TOP GRADIENT LINE
-                    ================================================= */}
+                    ================================================== */}
 
                     <div
                       className="
@@ -448,15 +455,15 @@ export default function InternationalExhibitions() {
                         h-1.5
                         z-30
                         bg-gradient-to-r
-                        from-[#fc6602]
-                        via-[#fc6602]
-                        to-[#0057B8]
+                        from-[#0057B8]
+                        via-[#0057B8]
+                        to-[#fc6602]
                       "
                     />
 
                     {/* =================================================
                         IMAGE AREA
-                    ================================================= */}
+                    ================================================== */}
 
                     <div
                       className="
@@ -495,7 +502,7 @@ export default function InternationalExhibitions() {
                         "
                       />
 
-                      {/* Orange / Blue overlay */}
+                      {/* Blue + Orange Overlay */}
 
                       <div
                         className="
@@ -510,42 +517,8 @@ export default function InternationalExhibitions() {
                       />
 
                       {/* =================================================
-                          NUMBER
-                      ================================================= */}
-
-                      <div
-                        className="
-                          absolute
-                          top-4
-                          right-4
-                          w-11
-                          h-11
-                          rounded-2xl
-                          bg-white/90
-                          backdrop-blur-md
-                          flex
-                          items-center
-                          justify-center
-                          text-[#003DA5]
-                          font-black
-                          text-sm
-                          shadow-lg
-                          group-hover:bg-[#fc6602]
-                          group-hover:text-white
-                          transition-all
-                          duration-500
-                        "
-                      >
-                        {String(
-                          (startIndex + index) %
-                            exhibitions.length +
-                            1
-                        ).padStart(2, "0")}
-                      </div>
-
-                      {/* =================================================
                           LOCATION BADGE
-                      ================================================= */}
+                      ================================================== */}
 
                       <div
                         className="
@@ -588,7 +561,7 @@ export default function InternationalExhibitions() {
 
                     {/* =================================================
                         CARD CONTENT
-                    ================================================= */}
+                    ================================================== */}
 
                     <div
                       className="
@@ -623,7 +596,7 @@ export default function InternationalExhibitions() {
 
                         {/* =================================================
                             SMALL LABEL
-                        ================================================= */}
+                        ================================================== */}
 
                         <div
                           className="
@@ -634,7 +607,7 @@ export default function InternationalExhibitions() {
                             font-bold
                             uppercase
                             tracking-[1.5px]
-                            text-[#fc6602]
+                            text-[#0057B8]
                             mb-2
                           "
                         >
@@ -642,7 +615,9 @@ export default function InternationalExhibitions() {
                             className="
                               w-5
                               h-[2px]
-                              bg-[#fc6602]
+                              bg-gradient-to-r
+                              from-[#0057B8]
+                              to-[#fc6602]
                               rounded-full
                             "
                           />
@@ -652,7 +627,7 @@ export default function InternationalExhibitions() {
 
                         {/* =================================================
                             TITLE
-                        ================================================= */}
+                        ================================================== */}
 
                         <h3
                           className="
@@ -671,7 +646,7 @@ export default function InternationalExhibitions() {
 
                         {/* =================================================
                             DESCRIPTION
-                        ================================================= */}
+                        ================================================== */}
 
                         <p
                           className="
@@ -688,7 +663,7 @@ export default function InternationalExhibitions() {
 
                       {/* =================================================
                           BOTTOM
-                      ================================================= */}
+                      ================================================== */}
 
                       <div
                         className="
@@ -723,62 +698,61 @@ export default function InternationalExhibitions() {
                         </div>
 
                         {/* =================================================
-                            EXPLORE BUTTON
-                        ================================================= */}
+                            EXPLORE BUTTON - EVERY CARD
+                        ================================================== */}
 
-                        {item.link !== "#" ? (
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <a
+                          href={item.link}
+                          target={
+                            item.link !== "#"
+                              ? "_blank"
+                              : undefined
+                          }
+                          rel={
+                            item.link !== "#"
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          onClick={(e) => {
+                            if (item.link === "#") {
+                              e.preventDefault();
+                            }
+                          }}
+                          className="
+                            group/explore
+                            shrink-0
+                            inline-flex
+                            items-center
+                            gap-2
+                            px-4
+                            py-2.5
+                            rounded-full
+                            bg-gradient-to-r
+                            from-[#0057B8]
+                            via-[#0057B8]
+                            to-[#fc6602]
+                            text-white
+                            font-bold
+                            text-xs
+                            shadow-md
+                            hover:shadow-xl
+                            hover:scale-105
+                            transition-all
+                            duration-300
+                          "
+                        >
+                          Explore
+
+                          <FaArrowRight
                             className="
-                              shrink-0
-                              inline-flex
-                              items-center
-                              gap-2
-                              px-4
-                              py-2.5
-                              rounded-full
-                              bg-gradient-to-r
-                              from-[#fc6602]
-                              via-[#fc6602]
-                              to-[#0057B8]
-                              text-white
-                              font-bold
-                              text-xs
-                              shadow-md
-                              hover:shadow-lg
-                              hover:scale-105
-                              transition-all
+                              text-[10px]
+                              transition-transform
                               duration-300
+                              group-hover/explore:translate-x-1
                             "
-                          >
-                            Explore
+                          />
+                        </a>
 
-                            <FaArrowRight
-                              className="
-                                text-[10px]
-                                group-hover:translate-x-1
-                                transition-transform
-                              "
-                            />
-                          </a>
-                        ) : (
-                          <span
-                            className="
-                              shrink-0
-                              px-4
-                              py-2.5
-                              rounded-full
-                              bg-gray-100
-                              text-gray-400
-                              font-bold
-                              text-xs
-                            "
-                          >
-                            Coming Soon
-                          </span>
-                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -789,7 +763,7 @@ export default function InternationalExhibitions() {
 
           {/* =================================================
               RIGHT DESKTOP ARROW
-          ================================================= */}
+          ================================================== */}
 
           <button
             type="button"
@@ -807,13 +781,16 @@ export default function InternationalExhibitions() {
               h-12
               rounded-full
               bg-white
-              text-[#003DA5]
+              text-[#0057B8]
               shadow-xl
               border
               border-gray-100
               items-center
               justify-center
-              hover:bg-[#003DA5]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               hover:scale-110
               transition-all
@@ -826,7 +803,7 @@ export default function InternationalExhibitions() {
 
         {/* =================================================
             MOBILE ARROWS
-        ================================================= */}
+        ================================================== */}
 
         <div
           className="
@@ -845,14 +822,17 @@ export default function InternationalExhibitions() {
               h-11
               rounded-full
               bg-white
-              text-[#003DA5]
+              text-[#0057B8]
               border
               border-gray-200
               shadow-md
               flex
               items-center
               justify-center
-              hover:bg-[#003DA5]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               transition-all
             "
@@ -868,14 +848,17 @@ export default function InternationalExhibitions() {
               h-11
               rounded-full
               bg-white
-              text-[#003DA5]
+              text-[#0057B8]
               border
               border-gray-200
               shadow-md
               flex
               items-center
               justify-center
-              hover:bg-[#003DA5]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               transition-all
             "
@@ -886,7 +869,7 @@ export default function InternationalExhibitions() {
 
         {/* =================================================
             DOTS
-        ================================================= */}
+        ================================================== */}
 
         <div
           className="
@@ -913,10 +896,21 @@ export default function InternationalExhibitions() {
                 rounded-full
                 transition-all
                 duration-300
+
                 ${
                   startIndex === index
-                    ? "w-8 bg-gradient-to-r from-[#fc6602] to-[#0057B8]"
-                    : "w-2 bg-gray-300 hover:bg-gray-400"
+                    ? `
+                      w-8
+                      bg-gradient-to-r
+                      from-[#0057B8]
+                      via-[#0057B8]
+                      to-[#fc6602]
+                    `
+                    : `
+                      w-2
+                      bg-gray-300
+                      hover:bg-[#0057B8]
+                    `
                 }
               `}
             />
@@ -925,7 +919,7 @@ export default function InternationalExhibitions() {
 
         {/* =================================================
             CTA
-        ================================================= */}
+        ================================================== */}
 
         <Reveal delay={0.3}>
           <div
@@ -933,9 +927,9 @@ export default function InternationalExhibitions() {
               mt-10
               rounded-3xl
               bg-gradient-to-r
-              from-[#fc6602]
-              via-[#fc6602]
-              to-[#0057B8]
+              from-[#0057B8]
+              via-[#0057B8]
+              to-[#fc6602]
               px-6
               py-7
               md:px-10
@@ -1046,6 +1040,7 @@ export default function InternationalExhibitions() {
             </a>
           </div>
         </Reveal>
+
       </div>
     </section>
   );

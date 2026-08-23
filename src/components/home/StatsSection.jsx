@@ -3,13 +3,16 @@ import {
   FaGlobeAsia,
   FaSuitcase,
   FaHeadset,
-  FaArrowRight,
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 
 import Reveal from "../common/Reveal";
 import AnimatedNumber from "../common/AnimatedNumber";
+
+// =====================================================
+// STATS DATA
+// =====================================================
 
 const stats = [
   {
@@ -42,33 +45,38 @@ const stats = [
   },
 ];
 
+// =====================================================
+// COMPONENT
+// =====================================================
+
 export default function StatsSection() {
   return (
     <section
       className="
         relative
         overflow-hidden
-        py-20
-        md:py-24
+        py-10
+        md:py-12
         bg-gradient-to-br
         from-[#003D8F]
         via-[#0057B8]
         to-[#00346F]
       "
     >
-
-      {/* ================= BACKGROUND DECORATION ================= */}
+      {/* =================================================
+          SOFT BACKGROUND DECORATION
+      ================================================= */}
 
       <div
         className="
           absolute
           -top-32
           -left-32
-          w-96
-          h-96
+          w-80
+          h-80
           rounded-full
           bg-white/5
-          blur-2xl
+          blur-3xl
           pointer-events-none
         "
       />
@@ -76,10 +84,10 @@ export default function StatsSection() {
       <div
         className="
           absolute
-          -bottom-40
+          -bottom-32
           -right-32
-          w-[450px]
-          h-[450px]
+          w-80
+          h-80
           rounded-full
           bg-[#fc6602]/10
           blur-3xl
@@ -87,69 +95,110 @@ export default function StatsSection() {
         "
       />
 
-      {/* Small decorative dots */}
-
-      <div className="absolute top-20 right-[12%] w-2 h-2 rounded-full bg-white/30" />
-      <div className="absolute bottom-20 left-[10%] w-3 h-3 rounded-full bg-[#fc6602]/60" />
-      <div className="absolute top-1/2 right-[5%] w-1.5 h-1.5 rounded-full bg-white/40" />
-
+      {/* =================================================
+          MAIN CONTAINER
+      ================================================= */}
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-        {/* ================= HEADING ================= */}
+        {/* =================================================
+            HEADING
+        ================================================= */}
 
         <Reveal>
+          <div
+            className="
+              text-center
+              max-w-3xl
+              mx-auto
+              mb-8
+              md:mb-9
+            "
+          >
+            {/* Label */}
 
-          <div className="text-center max-w-3xl mx-auto mb-14">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <span className="w-8 h-[2px] bg-[#fc6602]" />
 
-            <div className="flex items-center justify-center gap-3 mb-5">
-
-              <span className="w-10 h-[2px] bg-[#fc6602]" />
-
-              <span className="uppercase tracking-[4px] text-xs md:text-sm font-bold text-white/80">
+              <span
+                className="
+                  uppercase
+                  tracking-[3px]
+                  text-[11px]
+                  md:text-xs
+                  font-bold
+                  text-white/80
+                "
+              >
                 Sarathi NX At A Glance
               </span>
 
-              <span className="w-10 h-[2px] bg-white/50" />
-
+              <span className="w-8 h-[2px] bg-white/50" />
             </div>
 
+            {/* Heading */}
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            <h2
+              className="
+                text-2xl
+                md:text-3xl
+                lg:text-4xl
+                font-extrabold
+                text-white
+                leading-tight
+              "
+            >
               Trusted Travel.
               <span className="text-[#fc6602]">
                 {" "}Proven Experience.
               </span>
             </h2>
 
+            {/* Description */}
 
-            <p className="text-white/70 max-w-2xl mx-auto mt-5 text-sm md:text-base leading-7">
+            <p
+              className="
+                text-white/70
+                max-w-2xl
+                mx-auto
+                mt-2
+                text-xs
+                md:text-sm
+                leading-6
+              "
+            >
               Our experience, global network and dedicated team help
               businesses and travelers enjoy smooth, reliable and
               stress-free journeys worldwide.
             </p>
-
           </div>
-
         </Reveal>
 
+        {/* =================================================
+            STATS CARDS
+        ================================================= */}
 
-        {/* ================= STATS CARDS ================= */}
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-
+        <div
+          className="
+            grid
+            grid-cols-2
+            lg:grid-cols-4
+            gap-3
+            md:gap-4
+          "
+        >
           {stats.map((stat, index) => {
-
             const Icon = stat.icon;
 
             return (
               <Reveal
                 key={stat.label}
-                delay={index * 0.1}
+                delay={index * 0.08}
               >
-
                 <motion.div
-                  whileHover={{ y: -10 }}
+                  whileHover={{
+                    y: -5,
+                  }}
                   transition={{
                     type: "spring",
                     stiffness: 250,
@@ -160,30 +209,32 @@ export default function StatsSection() {
                     relative
                     overflow-hidden
                     h-full
-                    min-h-[245px]
-                    rounded-3xl
-                    bg-white/[0.97]
+                    min-h-[175px]
+                    md:min-h-[185px]
+                    rounded-2xl
+                    bg-white
                     border
                     border-white/20
-                    p-5
-                    md:p-7
+                    p-4
+                    md:p-5
                     text-center
-                    shadow-[0_15px_40px_rgba(0,0,0,0.12)]
-                    hover:shadow-[0_25px_60px_rgba(0,0,0,0.22)]
-                    transition-shadow
+                    shadow-[0_10px_30px_rgba(0,0,0,0.12)]
+                    hover:shadow-[0_18px_40px_rgba(0,0,0,0.20)]
+                    transition-all
                     duration-500
                   "
                 >
-
-                  {/* ================= CARD DECORATION ================= */}
+                  {/* =================================================
+                      CARD DECORATION
+                  ================================================= */}
 
                   <div
                     className="
                       absolute
-                      -top-16
-                      -right-16
-                      w-36
-                      h-36
+                      -top-12
+                      -right-12
+                      w-28
+                      h-28
                       rounded-full
                       bg-gradient-to-br
                       from-[#0057B8]/10
@@ -194,22 +245,23 @@ export default function StatsSection() {
                     "
                   />
 
-
-                  {/* ================= NUMBER ================= */}
+                  {/* =================================================
+                      CONTENT
+                  ================================================= */}
 
                   <div className="relative z-10">
 
-                    {/* Icon */}
+                    {/* ICON */}
 
                     <div
                       className="
                         relative
-                        w-14
-                        h-14
-                        md:w-16
-                        md:h-16
+                        w-11
+                        h-11
+                        md:w-12
+                        md:h-12
                         mx-auto
-                        rounded-2xl
+                        rounded-xl
                         bg-gradient-to-br
                         from-[#0057B8]
                         to-[#0074D9]
@@ -217,13 +269,10 @@ export default function StatsSection() {
                         flex
                         items-center
                         justify-center
-                        text-xl
-                        md:text-2xl
-                        shadow-lg
-                        shadow-blue-200
+                        text-lg
+                        shadow-md
                         group-hover:from-[#fc6602]
                         group-hover:to-[#ff8a3d]
-                        group-hover:shadow-orange-200
                         group-hover:scale-110
                         group-hover:rotate-3
                         transition-all
@@ -232,33 +281,31 @@ export default function StatsSection() {
                     >
                       <Icon />
 
-                      {/* Accent Dot */}
+                      {/* Orange Accent */}
 
                       <span
                         className="
                           absolute
                           -right-1
                           -bottom-1
-                          w-4
-                          h-4
+                          w-3.5
+                          h-3.5
                           rounded-full
                           bg-[#fc6602]
-                          border-[3px]
+                          border-2
                           border-white
                         "
                       />
-
                     </div>
 
-
-                    {/* Counter */}
+                    {/* COUNTER */}
 
                     <h3
                       className="
-                        mt-6
-                        text-3xl
-                        md:text-4xl
-                        lg:text-5xl
+                        mt-3
+                        text-2xl
+                        md:text-3xl
+                        lg:text-4xl
                         font-black
                         tracking-tight
                         text-[#0057B8]
@@ -269,22 +316,19 @@ export default function StatsSection() {
                     >
                       <AnimatedNumber
                         end={stat.number}
-                        duration={2000}
+                        duration={1800}
                       />
 
-                      <span>
-                        {stat.suffix}
-                      </span>
+                      <span>{stat.suffix}</span>
                     </h3>
 
-
-                    {/* Label */}
+                    {/* LABEL */}
 
                     <p
                       className="
-                        mt-2
-                        text-sm
-                        md:text-base
+                        mt-1
+                        text-xs
+                        md:text-sm
                         font-extrabold
                         text-gray-800
                       "
@@ -292,27 +336,26 @@ export default function StatsSection() {
                       {stat.label}
                     </p>
 
-
-                    {/* Description */}
+                    {/* DESCRIPTION */}
 
                     <p
                       className="
-                        mt-2
-                        text-[11px]
-                        md:text-xs
+                        mt-1
+                        text-[10px]
+                        md:text-[11px]
                         text-gray-500
-                        leading-5
-                        max-w-[190px]
+                        leading-4
+                        max-w-[180px]
                         mx-auto
                       "
                     >
                       {stat.description}
                     </p>
-
                   </div>
 
-
-                  {/* ================= BOTTOM LINE ================= */}
+                  {/* =================================================
+                      HOVER LINE
+                  ================================================= */}
 
                   <div
                     className="
@@ -329,82 +372,13 @@ export default function StatsSection() {
                       duration-500
                     "
                   />
-
                 </motion.div>
-
               </Reveal>
             );
           })}
-
         </div>
 
-
-        {/* ================= BOTTOM TRUST STRIP ================= */}
-
-        <Reveal delay={0.5}>
-
-          <div
-            className="
-              mt-10
-              flex
-              flex-col
-              sm:flex-row
-              items-center
-              justify-center
-              gap-3
-              text-center
-              text-white/70
-            "
-          >
-
-            <div className="flex items-center gap-2">
-
-              <span className="w-2 h-2 rounded-full bg-[#fc6602]" />
-
-              <span className="text-xs md:text-sm font-medium">
-                Business Travel
-              </span>
-
-            </div>
-
-
-            <span className="hidden sm:block text-white/30">
-              •
-            </span>
-
-
-            <div className="flex items-center gap-2">
-
-              <span className="w-2 h-2 rounded-full bg-white/70" />
-
-              <span className="text-xs md:text-sm font-medium">
-                International Exhibitions
-              </span>
-
-            </div>
-
-
-            <span className="hidden sm:block text-white/30">
-              •
-            </span>
-
-
-            <div className="flex items-center gap-2">
-
-              <span className="w-2 h-2 rounded-full bg-[#fc6602]" />
-
-              <span className="text-xs md:text-sm font-medium">
-                Corporate Travel
-              </span>
-
-            </div>
-
-          </div>
-
-        </Reveal>
-
       </div>
-
     </section>
   );
 }

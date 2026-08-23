@@ -22,15 +22,26 @@ export default function Contact() {
     const service = form.service.value;
     const message = form.message.value.trim();
 
+    // ================= VALIDATION =================
+
     if (!name || !phone || !email || !service || !message) {
       alert("Please fill in all the fields.");
       return;
     }
 
+    // Only 10 digits
     if (!/^[0-9]{10}$/.test(phone)) {
       alert("Please enter a valid 10-digit mobile number.");
       return;
     }
+
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    // ================= WHATSAPP =================
 
     const whatsappNumber = "917666984626";
 
@@ -59,6 +70,8 @@ Thank you.
     form.reset();
   };
 
+  // ================= CONTACT ITEMS =================
+
   const contactItems = [
     {
       icon: FaPhoneAlt,
@@ -81,6 +94,7 @@ Thank you.
         </>
       ),
     },
+
     {
       icon: FaEnvelope,
       label: "Email Us",
@@ -93,6 +107,7 @@ Thank you.
         </a>
       ),
     },
+
     {
       icon: FaMapMarkerAlt,
       label: "Visit Us",
@@ -108,6 +123,7 @@ Thank you.
         </>
       ),
     },
+
     {
       icon: FaClock,
       label: "Working Hours",
@@ -115,7 +131,9 @@ Thank you.
         <>
           Monday - Saturday
           <br />
-          <span className="text-white/70">9:30 AM - 7:00 PM</span>
+          <span className="text-white/70">
+            9:30 AM - 7:00 PM
+          </span>
         </>
       ),
     },
@@ -124,39 +142,99 @@ Thank you.
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[#F6F9FD] py-20 md:py-24"
+      className="
+        relative
+        overflow-hidden
+        bg-[#F6F9FD]
+        py-10
+        md:py-12
+      "
     >
-      {/* ================= BACKGROUND DECORATION ================= */}
+      {/* ================= BACKGROUND ================= */}
 
-      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" />
+      <div
+        className="
+          absolute
+          -top-24
+          -left-24
+          w-64
+          h-64
+          rounded-full
+          bg-blue-100/40
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
-      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-orange-100/40 blur-3xl pointer-events-none" />
+      <div
+        className="
+          absolute
+          -bottom-24
+          -right-24
+          w-64
+          h-64
+          rounded-full
+          bg-orange-100/40
+          blur-3xl
+          pointer-events-none
+        "
+      />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-5 md:px-6 relative z-10">
 
-        {/* ================= HEADING ================= */}
+        {/* =================================================
+            HEADING
+        ================================================= */}
 
         <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-7">
 
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#fc6602]" />
+            <div className="flex items-center justify-center gap-3 mb-2">
 
-              <span className="uppercase tracking-[4px] text-xs md:text-sm font-bold text-[#0057B8]">
+              <span className="w-7 h-[2px] bg-[#fc6602]" />
+
+              <span
+                className="
+                  uppercase
+                  tracking-[3px]
+                  text-[11px]
+                  md:text-xs
+                  font-bold
+                  text-[#0057B8]
+                "
+              >
                 Contact Us
               </span>
 
-              <span className="w-8 h-[2px] bg-[#0057B8]" />
+              <span className="w-7 h-[2px] bg-[#0057B8]" />
+
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900">
+            <h2
+              className="
+                text-2xl
+                md:text-3xl
+                lg:text-4xl
+                font-extrabold
+                text-gray-900
+                leading-tight
+              "
+            >
               Let's Plan Your{" "}
               <span className="text-[#0057B8]">
                 Journey
               </span>
             </h2>
 
-            <p className="mt-4 text-gray-600 text-sm md:text-base leading-7">
+            <p
+              className="
+                mt-2
+                text-gray-600
+                text-xs
+                md:text-sm
+                leading-6
+              "
+            >
               Planning an exhibition, business trip or corporate journey?
               Talk to our travel experts and let us take care of the details.
             </p>
@@ -165,11 +243,22 @@ Thank you.
         </Reveal>
 
 
-        {/* ================= MAIN CONTENT ================= */}
+        {/* =================================================
+            MAIN CONTENT
+        ================================================= */}
 
-        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-7 items-stretch">
+        <div
+          className="
+            grid
+            lg:grid-cols-2
+            gap-5
+            items-stretch
+          "
+        >
 
-          {/* ================= CONTACT INFO ================= */}
+          {/* =================================================
+              GET IN TOUCH
+          ================================================= */}
 
           <Reveal direction="left">
 
@@ -182,22 +271,22 @@ Thank you.
                 bg-gradient-to-br
                 from-[#0057B8]
                 to-[#003B80]
-                p-7
-                md:p-8
+                p-5
+                md:p-6
                 text-white
                 shadow-xl
               "
             >
 
-              {/* Decorative Circle */}
+              {/* Decorative circles */}
 
               <div
                 className="
                   absolute
-                  -top-20
-                  -right-20
-                  w-48
-                  h-48
+                  -top-16
+                  -right-16
+                  w-40
+                  h-40
                   rounded-full
                   bg-white/10
                 "
@@ -206,32 +295,55 @@ Thank you.
               <div
                 className="
                   absolute
-                  -bottom-24
-                  -left-20
-                  w-52
-                  h-52
+                  -bottom-20
+                  -left-16
+                  w-44
+                  h-44
                   rounded-full
                   bg-[#fc6602]/20
                 "
               />
 
-              <div className="relative z-10">
+              <div className="relative z-10 h-full flex flex-col">
 
-                {/* Small Heading */}
+                {/* Heading */}
 
-                <div className="flex items-center gap-2 mb-3">
-                  <FaPaperPlane className="text-[#fc6602]" />
+                <div className="flex items-center gap-2 mb-1">
 
-                  <span className="text-white/70 uppercase tracking-[3px] text-xs font-bold">
+                  <FaPaperPlane className="text-[#fc6602] text-sm" />
+
+                  <span
+                    className="
+                      text-white/70
+                      uppercase
+                      tracking-[3px]
+                      text-[10px]
+                      font-bold
+                    "
+                  >
                     Get In Touch
                   </span>
+
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-extrabold">
+                <h3
+                  className="
+                    text-xl
+                    md:text-2xl
+                    font-extrabold
+                  "
+                >
                   We're Here To Help
                 </h3>
 
-                <p className="text-white/70 text-sm leading-6 mt-3 max-w-md">
+                <p
+                  className="
+                    text-white/70
+                    text-xs
+                    leading-5
+                    mt-1.5
+                  "
+                >
                   Connect with our travel experts for exhibitions,
                   corporate trips, business travel and visa assistance.
                 </p>
@@ -239,7 +351,7 @@ Thank you.
 
                 {/* ================= CONTACT ITEMS ================= */}
 
-                <div className="mt-7 space-y-4">
+                <div className="mt-4 space-y-2.5">
 
                   {contactItems.map((item, index) => {
                     const Icon = item.icon;
@@ -250,9 +362,9 @@ Thank you.
                         className="
                           flex
                           items-start
-                          gap-4
-                          p-3.5
-                          rounded-2xl
+                          gap-3
+                          p-2.5
+                          rounded-xl
                           bg-white/[0.07]
                           border
                           border-white/10
@@ -264,23 +376,37 @@ Thank you.
 
                         <div
                           className="
-                            w-10
-                            h-10
+                            w-8
+                            h-8
                             shrink-0
-                            rounded-xl
+                            rounded-lg
                             bg-white/10
                             flex
                             items-center
                             justify-center
                             text-[#fc6602]
+                            text-sm
                           "
                         >
                           <Icon />
                         </div>
 
-                        <div className="text-sm leading-6">
+                        <div
+                          className="
+                            text-xs
+                            leading-5
+                          "
+                        >
 
-                          <p className="text-white/50 text-xs uppercase tracking-wider font-semibold">
+                          <p
+                            className="
+                              text-white/50
+                              text-[9px]
+                              uppercase
+                              tracking-wider
+                              font-semibold
+                            "
+                          >
                             {item.label}
                           </p>
 
@@ -297,34 +423,43 @@ Thank you.
                 </div>
 
 
-                {/* ================= WHATSAPP ================= */}
+                {/* =================================================
+                    WHATSAPP BUTTON
+                ================================================= */}
 
                 <a
                   href="https://wa.me/917666984626"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
-                    mt-6
+                    whatsapp-pulse
+                    mt-auto
+                    pt-4
                     inline-flex
                     items-center
                     justify-center
                     gap-2
                     w-full
-                    bg-white
-                    text-[#0057B8]
-                    py-3
+                    bg-[#25D366]
+                    text-white
+                    py-2.5
                     rounded-xl
                     font-bold
                     text-sm
-                    hover:bg-[#fc6602]
-                    hover:text-white
+                    shadow-[0_8px_25px_rgba(37,211,102,0.35)]
+                    hover:bg-[#20bd5a]
+                    hover:shadow-[0_10px_35px_rgba(37,211,102,0.50)]
                     transition-all
                     duration-300
-                    shadow-lg
                   "
                 >
                   <FaWhatsapp className="text-lg" />
+
                   Chat on WhatsApp
+
+                  <span className="text-xs">
+                    →
+                  </span>
                 </a>
 
               </div>
@@ -333,7 +468,9 @@ Thank you.
           </Reveal>
 
 
-          {/* ================= CONTACT FORM ================= */}
+          {/* =================================================
+              SEND ENQUIRY FORM
+          ================================================= */}
 
           <Reveal direction="right">
 
@@ -342,8 +479,8 @@ Thank you.
                 h-full
                 bg-white
                 rounded-3xl
-                p-7
-                md:p-8
+                p-5
+                md:p-6
                 border
                 border-gray-100
                 shadow-[0_10px_40px_rgba(0,0,0,0.06)]
@@ -352,73 +489,117 @@ Thank you.
 
               {/* Form Heading */}
 
-              <div className="flex items-start justify-between gap-4 mb-6">
+              <div
+                className="
+                  flex
+                  items-start
+                  justify-between
+                  gap-3
+                  mb-4
+                "
+              >
 
                 <div>
-                  <span className="uppercase tracking-[3px] text-xs font-bold text-[#fc6602]">
+
+                  <span
+                    className="
+                      uppercase
+                      tracking-[3px]
+                      text-[10px]
+                      font-bold
+                      text-[#fc6602]
+                    "
+                  >
                     Send Enquiry
                   </span>
 
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2">
+                  <h3
+                    className="
+                      text-xl
+                      md:text-2xl
+                      font-extrabold
+                      text-gray-900
+                      mt-1
+                    "
+                  >
                     Tell Us About Your Trip
                   </h3>
 
-                  <p className="text-gray-500 text-sm mt-2">
+                  <p
+                    className="
+                      text-gray-500
+                      text-xs
+                      mt-1
+                    "
+                  >
                     Share your requirements and our team will get back to you.
                   </p>
+
                 </div>
 
                 <div
                   className="
                     hidden
                     sm:flex
-                    w-12
-                    h-12
+                    w-10
+                    h-10
                     shrink-0
-                    rounded-2xl
+                    rounded-xl
                     bg-gradient-to-br
                     from-[#fc6602]
                     to-[#0057B8]
                     text-white
                     items-center
                     justify-center
-                    shadow-lg
+                    shadow-md
                   "
                 >
-                  <FaPaperPlane />
+                  <FaPaperPlane className="text-sm" />
                 </div>
 
               </div>
 
 
-              {/* ================= FORM ================= */}
+              {/* =================================================
+                  FORM
+              ================================================= */}
 
               <form
                 onSubmit={handleSubmit}
-                className="space-y-4"
+                className="space-y-2.5"
               >
 
                 {/* Name */}
 
                 <div>
 
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                  <label
+                    className="
+                      block
+                      text-[10px]
+                      font-bold
+                      text-gray-700
+                      mb-1
+                    "
+                  >
                     Full Name
                   </label>
 
                   <input
                     type="text"
                     name="name"
+                    required
+                    autoComplete="name"
                     placeholder="Enter your name"
                     className="
                       w-full
-                      px-4
-                      py-3
+                      px-3.5
+                      py-2.5
                       rounded-xl
                       bg-gray-50
                       border
                       border-gray-200
-                      text-sm
+                      text-xs
                       text-gray-700
                       outline-none
                       focus:border-[#0057B8]
@@ -433,28 +614,48 @@ Thank you.
 
                 {/* Phone + Email */}
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3">
+
+                  {/* Phone */}
 
                   <div>
 
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                    <label
+                      className="
+                        block
+                        text-[10px]
+                        font-bold
+                        text-gray-700
+                        mb-1
+                      "
+                    >
                       Phone Number
                     </label>
 
                     <input
                       type="tel"
                       name="phone"
-                      maxLength="10"
+                      required
+                      inputMode="numeric"
+                      pattern="[0-9]{10}"
+                      maxLength={10}
+                      minLength={10}
+                      autoComplete="tel"
                       placeholder="10-digit mobile"
+                      onInput={(e) => {
+                        e.target.value = e.target.value
+                          .replace(/\D/g, "")
+                          .slice(0, 10);
+                      }}
                       className="
                         w-full
-                        px-4
-                        py-3
+                        px-3.5
+                        py-2.5
                         rounded-xl
                         bg-gray-50
                         border
                         border-gray-200
-                        text-sm
+                        text-xs
                         text-gray-700
                         outline-none
                         focus:border-[#0057B8]
@@ -467,25 +668,37 @@ Thank you.
                   </div>
 
 
+                  {/* Email */}
+
                   <div>
 
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                    <label
+                      className="
+                        block
+                        text-[10px]
+                        font-bold
+                        text-gray-700
+                        mb-1
+                      "
+                    >
                       Email Address
                     </label>
 
                     <input
                       type="email"
                       name="email"
+                      required
+                      autoComplete="email"
                       placeholder="Enter your email"
                       className="
                         w-full
-                        px-4
-                        py-3
+                        px-3.5
+                        py-2.5
                         rounded-xl
                         bg-gray-50
                         border
                         border-gray-200
-                        text-sm
+                        text-xs
                         text-gray-700
                         outline-none
                         focus:border-[#0057B8]
@@ -504,22 +717,31 @@ Thank you.
 
                 <div>
 
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                  <label
+                    className="
+                      block
+                      text-[10px]
+                      font-bold
+                      text-gray-700
+                      mb-1
+                    "
+                  >
                     Service Required
                   </label>
 
                   <select
                     name="service"
+                    required
                     defaultValue=""
                     className="
                       w-full
-                      px-4
-                      py-3
+                      px-3.5
+                      py-2.5
                       rounded-xl
                       bg-gray-50
                       border
                       border-gray-200
-                      text-sm
+                      text-xs
                       text-gray-700
                       outline-none
                       focus:border-[#0057B8]
@@ -528,6 +750,7 @@ Thank you.
                       transition
                     "
                   >
+
                     <option value="" disabled>
                       Select a service
                     </option>
@@ -555,6 +778,7 @@ Thank you.
                     <option value="Group Tours">
                       Group Tours
                     </option>
+
                   </select>
 
                 </div>
@@ -564,23 +788,32 @@ Thank you.
 
                 <div>
 
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                  <label
+                    className="
+                      block
+                      text-[10px]
+                      font-bold
+                      text-gray-700
+                      mb-1
+                    "
+                  >
                     Message
                   </label>
 
                   <textarea
                     name="message"
-                    rows="3"
+                    required
+                    rows={2}
                     placeholder="Tell us about your travel requirements..."
                     className="
                       w-full
-                      px-4
-                      py-3
+                      px-3.5
+                      py-2.5
                       rounded-xl
                       bg-gray-50
                       border
                       border-gray-200
-                      text-sm
+                      text-xs
                       text-gray-700
                       outline-none
                       resize-none
@@ -594,7 +827,7 @@ Thank you.
                 </div>
 
 
-                {/* Submit Button */}
+                {/* Submit */}
 
                 <button
                   type="submit"
@@ -604,16 +837,16 @@ Thank you.
                     inline-flex
                     items-center
                     justify-center
-                    gap-3
+                    gap-2
                     bg-gradient-to-r
-                    from-[#fc6602]
-                    via-[#fc6602]
-                    to-[#0057B8]
+                    from-[#0057B8]
+                    via-[#0057B8]
+                    to-[#fc6602]
                     text-white
-                    py-3.5
+                    py-2.5
                     rounded-xl
                     font-bold
-                    text-sm
+                    text-xs
                     shadow-md
                     hover:shadow-xl
                     hover:-translate-y-0.5
@@ -621,14 +854,17 @@ Thank you.
                     duration-300
                   "
                 >
+
                   Send Enquiry
 
                   <FaArrowRight
                     className="
+                      text-[10px]
                       group-hover:translate-x-1
                       transition-transform
                     "
                   />
+
                 </button>
 
               </form>
@@ -640,6 +876,60 @@ Thank you.
         </div>
 
       </div>
+
+
+      {/* =====================================================
+          WHATSAPP ANIMATION
+      ===================================================== */}
+
+      <style>{`
+        @keyframes whatsappPulse {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+          }
+
+          50% {
+            transform: scale(1.025);
+            box-shadow:
+              0 8px 30px rgba(37, 211, 102, 0.55),
+              0 0 0 7px rgba(37, 211, 102, 0.10);
+          }
+        }
+
+        @keyframes whatsappWiggle {
+          0%, 85%, 100% {
+            transform: rotate(0deg);
+          }
+
+          88% {
+            transform: rotate(-2deg);
+          }
+
+          91% {
+            transform: rotate(2deg);
+          }
+
+          94% {
+            transform: rotate(-2deg);
+          }
+
+          97% {
+            transform: rotate(2deg);
+          }
+        }
+
+        .whatsapp-pulse {
+          animation:
+            whatsappPulse 2.2s ease-in-out infinite,
+            whatsappWiggle 4s ease-in-out infinite;
+        }
+
+        .whatsapp-pulse:hover {
+          animation-play-state: paused;
+          transform: scale(1.03);
+        }
+      `}</style>
     </section>
   );
 }

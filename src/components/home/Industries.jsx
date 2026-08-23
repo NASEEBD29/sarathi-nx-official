@@ -192,8 +192,10 @@ export default function IndustriesWeServe() {
       id="industries"
       className="
         relative
-        py-16
-        md:py-20
+        pt-10
+        md:pt-10
+        pb-16
+        md:pb-20
         bg-white
         overflow-hidden
       "
@@ -242,11 +244,11 @@ export default function IndustriesWeServe() {
               text-center
               max-w-4xl
               mx-auto
-              mb-11
+              mb-10
             "
           >
 
-            {/* Eyebrow */}
+            {/* EYEBROW */}
 
             <div
               className="
@@ -256,8 +258,11 @@ export default function IndustriesWeServe() {
                 px-4
                 py-2
                 rounded-full
-                bg-[#FFF2EA]
-                text-[#fc6602]
+                bg-gradient-to-r
+                from-[#0057B8]/10
+                via-[#0057B8]/10
+                to-[#fc6602]/10
+                text-[#0057B8]
                 text-xs
                 md:text-sm
                 font-bold
@@ -270,7 +275,7 @@ export default function IndustriesWeServe() {
               Industries We Serve
             </div>
 
-            {/* Heading */}
+            {/* HEADING */}
 
             <h2
               className="
@@ -290,9 +295,9 @@ export default function IndustriesWeServe() {
                   block
                   mt-1
                   bg-gradient-to-r
-                  from-[#fc6602]
-                  via-[#fc6602]
-                  to-[#0057B8]
+                  from-[#0057B8]
+                  via-[#0057B8]
+                  to-[#fc6602]
                   bg-clip-text
                   text-transparent
                 "
@@ -301,7 +306,7 @@ export default function IndustriesWeServe() {
               </span>
             </h2>
 
-            {/* Description */}
+            {/* DESCRIPTION */}
 
             <p
               className="
@@ -354,7 +359,10 @@ export default function IndustriesWeServe() {
               border-gray-100
               items-center
               justify-center
-              hover:bg-[#0057B8]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               hover:scale-110
               transition-all
@@ -376,11 +384,13 @@ export default function IndustriesWeServe() {
               py-4
             "
           >
+
             <AnimatePresence
               initial={false}
               custom={direction}
               mode="popLayout"
             >
+
               <motion.div
                 key={startIndex}
                 custom={direction}
@@ -486,9 +496,9 @@ export default function IndustriesWeServe() {
                           absolute
                           inset-0
                           bg-gradient-to-br
-                          from-[#0057B8]/20
+                          from-[#0057B8]/25
                           via-transparent
-                          to-[#fc6602]/30
+                          to-[#fc6602]/35
                           opacity-80
                           group-hover:opacity-100
                           transition-opacity
@@ -508,48 +518,12 @@ export default function IndustriesWeServe() {
                           right-0
                           h-1.5
                           bg-gradient-to-r
-                          from-[#fc6602]
-                          via-[#fc6602]
-                          to-[#0057B8]
+                          from-[#0057B8]
+                          via-[#0057B8]
+                          to-[#fc6602]
                           z-20
                         "
                       />
-
-                      {/* =================================================
-                          NUMBER
-                      ================================================= */}
-
-                      <div
-                        className="
-                          absolute
-                          top-5
-                          right-5
-                          z-20
-                          w-11
-                          h-11
-                          rounded-2xl
-                          bg-white/15
-                          backdrop-blur-md
-                          border
-                          border-white/25
-                          text-white
-                          flex
-                          items-center
-                          justify-center
-                          font-black
-                          text-sm
-                          group-hover:bg-[#fc6602]
-                          group-hover:border-[#fc6602]
-                          transition-all
-                          duration-500
-                        "
-                      >
-                        {String(
-                          (startIndex + index) %
-                            industries.length +
-                            1
-                        ).padStart(2, "0")}
-                      </div>
 
                       {/* =================================================
                           CONTENT
@@ -566,7 +540,9 @@ export default function IndustriesWeServe() {
                         "
                       >
 
-                        {/* ICON */}
+                        {/* =================================================
+                            ICON
+                        ================================================= */}
 
                         <motion.div
                           whileHover={{
@@ -577,18 +553,21 @@ export default function IndustriesWeServe() {
                             w-14
                             h-14
                             rounded-2xl
-                            bg-white/15
+                            bg-gradient-to-r
+                            from-[#0057B8]
+                            via-[#0057B8]
+                            to-[#fc6602]
                             backdrop-blur-md
                             border
-                            border-white/25
+                            border-white/30
                             text-white
                             flex
                             items-center
                             justify-center
                             text-xl
                             mb-4
-                            group-hover:bg-[#fc6602]
-                            group-hover:border-[#fc6602]
+                            shadow-lg
+                            group-hover:shadow-2xl
                             transition-all
                             duration-500
                           "
@@ -596,7 +575,9 @@ export default function IndustriesWeServe() {
                           <Icon />
                         </motion.div>
 
-                        {/* TITLE */}
+                        {/* =================================================
+                            TITLE
+                        ================================================= */}
 
                         <h3
                           className="
@@ -610,7 +591,9 @@ export default function IndustriesWeServe() {
                           {item.title}
                         </h3>
 
-                        {/* DESCRIPTION */}
+                        {/* =================================================
+                            DESCRIPTION
+                        ================================================= */}
 
                         <p
                           className="
@@ -624,7 +607,9 @@ export default function IndustriesWeServe() {
                           {item.description}
                         </p>
 
-                        {/* BUTTON */}
+                        {/* =================================================
+                            EXPLORE BUTTON
+                        ================================================= */}
 
                         <div className="mt-5">
 
@@ -637,15 +622,15 @@ export default function IndustriesWeServe() {
                               px-5
                               py-2.5
                               rounded-full
-                              bg-white
-                              text-[#0057B8]
+                              bg-gradient-to-r
+                              from-[#0057B8]
+                              via-[#0057B8]
+                              to-[#fc6602]
+                              text-white
                               font-bold
                               text-xs
                               shadow-lg
-                              hover:bg-gradient-to-r
-                              hover:from-[#fc6602]
-                              hover:to-[#0057B8]
-                              hover:text-white
+                              hover:shadow-2xl
                               hover:scale-105
                               transition-all
                               duration-300
@@ -663,6 +648,7 @@ export default function IndustriesWeServe() {
                           </a>
 
                         </div>
+
                       </div>
 
                       {/* =================================================
@@ -676,7 +662,7 @@ export default function IndustriesWeServe() {
                           rounded-3xl
                           border-2
                           border-transparent
-                          group-hover:border-white/20
+                          group-hover:border-white/30
                           transition-all
                           duration-500
                           pointer-events-none
@@ -686,8 +672,11 @@ export default function IndustriesWeServe() {
                     </motion.div>
                   );
                 })}
+
               </motion.div>
+
             </AnimatePresence>
+
           </div>
 
           {/* =================================================
@@ -716,7 +705,10 @@ export default function IndustriesWeServe() {
               border-gray-100
               items-center
               justify-center
-              hover:bg-[#0057B8]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               hover:scale-110
               transition-all
@@ -725,6 +717,7 @@ export default function IndustriesWeServe() {
           >
             <FaChevronRight />
           </button>
+
         </div>
 
         {/* =================================================
@@ -740,6 +733,7 @@ export default function IndustriesWeServe() {
             mt-5
           "
         >
+
           <button
             type="button"
             onClick={handlePrevious}
@@ -755,7 +749,10 @@ export default function IndustriesWeServe() {
               flex
               items-center
               justify-center
-              hover:bg-[#0057B8]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               transition-all
             "
@@ -778,13 +775,17 @@ export default function IndustriesWeServe() {
               flex
               items-center
               justify-center
-              hover:bg-[#0057B8]
+              hover:bg-gradient-to-r
+              hover:from-[#0057B8]
+              hover:via-[#0057B8]
+              hover:to-[#fc6602]
               hover:text-white
               transition-all
             "
           >
             <FaChevronRight />
           </button>
+
         </div>
 
         {/* =================================================
@@ -799,6 +800,7 @@ export default function IndustriesWeServe() {
             mt-5
           "
         >
+
           {industries.map((_, index) => (
             <button
               key={index}
@@ -818,12 +820,13 @@ export default function IndustriesWeServe() {
                 duration-300
                 ${
                   startIndex === index
-                    ? "w-8 bg-gradient-to-r from-[#fc6602] to-[#0057B8]"
+                    ? "w-8 bg-gradient-to-r from-[#0057B8] via-[#0057B8] to-[#fc6602]"
                     : "w-2 bg-gray-300 hover:bg-gray-400"
                 }
               `}
             />
           ))}
+
         </div>
 
         {/* =================================================
@@ -831,14 +834,15 @@ export default function IndustriesWeServe() {
         ================================================= */}
 
         <Reveal delay={0.3}>
+
           <div
             className="
               mt-10
               rounded-3xl
               bg-gradient-to-r
-              from-[#fc6602]
-              via-[#fc6602]
-              to-[#0057B8]
+              from-[#0057B8]
+              via-[#0057B8]
+              to-[#fc6602]
               px-6
               py-7
               md:px-10
@@ -856,7 +860,7 @@ export default function IndustriesWeServe() {
             "
           >
 
-            {/* Decorative circle */}
+            {/* DECORATIVE CIRCLES */}
 
             <div
               className="
@@ -901,6 +905,7 @@ export default function IndustriesWeServe() {
                 >
                   Global Business Travel
                 </p>
+
               </div>
 
               <h3
@@ -917,6 +922,7 @@ export default function IndustriesWeServe() {
               <p className="text-blue-50 mt-1 text-sm">
                 Let Sarathi NX take care of your business travel requirements.
               </p>
+
             </div>
 
             {/* CTA BUTTON */}
@@ -936,7 +942,11 @@ export default function IndustriesWeServe() {
                 py-3
                 rounded-full
                 font-bold
-                hover:bg-blue-50
+                hover:bg-gradient-to-r
+                hover:from-[#0057B8]
+                hover:via-[#0057B8]
+                hover:to-[#fc6602]
+                hover:text-white
                 hover:scale-105
                 transition-all
                 duration-300
@@ -946,9 +956,13 @@ export default function IndustriesWeServe() {
               Talk To Our Experts
 
               <FaArrowRight />
+
             </a>
+
           </div>
+
         </Reveal>
+
       </div>
     </section>
   );
