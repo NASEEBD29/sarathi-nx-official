@@ -51,11 +51,7 @@ export default function Navbar() {
   // =====================================================
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
 
     return () => {
       document.body.style.overflow = "auto";
@@ -78,7 +74,7 @@ export default function Navbar() {
 
         ${
           scrolled
-            ? "shadow-xl"
+            ? "shadow-lg"
             : "shadow-sm"
         }
       `}
@@ -97,10 +93,12 @@ export default function Navbar() {
             px-5
             sm:px-8
             lg:px-10
+
             flex
             items-center
             justify-between
             gap-6
+
             transition-all
             duration-300
 
@@ -175,39 +173,27 @@ export default function Navbar() {
                   className={({ isActive }) => `
                     group
                     relative
+
                     flex
                     items-center
                     justify-center
+
                     px-4
                     xl:px-5
                     py-3
-                    rounded-xl
+
                     text-[16px]
                     xl:text-[17px]
+
                     font-bold
                     whitespace-nowrap
+
+                    text-[#26364F]
+
                     transition-all
                     duration-300
-                    overflow-hidden
 
-                    ${
-                      isActive
-                        ? `
-                          text-white
-                          bg-gradient-to-r
-                           from-[#0057B8]
-                    via-[#0057B8]
-                    to-[#fc6602]
-                          shadow-md
-                        `
-                        : `
-                          text-gray-700
-                          bg-transparent
-                          hover:bg-[#0057B8]
-                          hover:text-white
-                          hover:shadow-md
-                        `
-                    }
+                    hover:text-[#0057B8]
                   `}
                 >
 
@@ -221,27 +207,32 @@ export default function Navbar() {
                       </span>
 
 
-                      {/* =====================================
-                          ACTIVE / HOVER UNDERLINE
-                      ====================================== */}
+                      {/* =================================================
+                          ORANGE ACTIVE / HOVER UNDERLINE
+                      ================================================= */}
 
                       <span
                         className={`
                           absolute
                           left-1/2
                           -translate-x-1/2
-                          bottom-[4px]
+
+                          bottom-[3px]
+
                           h-[3px]
+
                           rounded-full
-                          bg-white
+
+                          bg-[#fc6602]
+
                           transition-all
                           duration-300
                           ease-out
 
                           ${
                             isActive
-                              ? "w-[55%]"
-                              : "w-0 group-hover:w-[55%]"
+                              ? "w-[65%]"
+                              : "w-0 group-hover:w-[65%]"
                           }
                         `}
                       />
@@ -259,7 +250,7 @@ export default function Navbar() {
 
 
           {/* =================================================
-              PHONE CTA
+              DESKTOP CALL NOW BUTTON
           ================================================= */}
 
           <a
@@ -267,30 +258,45 @@ export default function Navbar() {
             className="
               hidden
               lg:flex
+
               items-center
               justify-center
-              gap-3
-              bg-[#003DA5]
-              hover:bg-[#002B73]
+              gap-2.5
+
+              bg-[#0057B8]
+              hover:bg-[#004694]
+
               text-white
+
               px-5
               xl:px-6
+
               py-3
               xl:py-3.5
+
               rounded-full
+
               text-[15px]
               xl:text-[16px]
+
               font-bold
               whitespace-nowrap
+
               shadow-md
-              hover:shadow-xl
+
+              hover:shadow-lg
               hover:-translate-y-0.5
+
               transition-all
               duration-300
             "
           >
 
-            <FaPhoneAlt className="text-[24px]" />
+            <FaPhoneAlt className="text-[16px]" />
+
+            <span>
+              Call Now
+            </span>
 
           </a>
 
@@ -302,36 +308,30 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
-            className={`
+            className="
               lg:hidden
+
               w-12
               h-12
+
               flex
               items-center
               justify-center
+
               rounded-xl
+
+              bg-gradient-to-r
+              from-[#0057B8]
+              to-[#fc6602]
+
+              text-white
               text-xl
+
+              shadow-md
+
               transition-all
               duration-300
-
-              ${
-                menuOpen
-                  ? `
-                    bg-[#0057B8]
-                    text-white
-                    shadow-lg
-                  `
-                  : `
-                    bg-gradient-to-r
-                    from-[#0057B8]
-                    via-[#0057B8]
-                    to-[#fc6602]
-                    text-white
-                    shadow-md
-                    hover:bg-[#0057B8]
-                  `
-              }
-            `}
+            "
             aria-label="Toggle Menu"
             aria-expanded={menuOpen}
           >
@@ -356,7 +356,9 @@ export default function Navbar() {
       <div
         className={`
           lg:hidden
+
           overflow-hidden
+
           transition-all
           duration-500
           ease-in-out
@@ -390,7 +392,7 @@ export default function Navbar() {
 
               <li
                 key={item.id}
-                className="px-3"
+                className="px-4"
               >
 
                 <NavLink
@@ -400,34 +402,23 @@ export default function Navbar() {
                   className={({ isActive }) => `
                     group
                     relative
+
                     flex
                     items-center
-                    px-5
-                    py-4
-                    rounded-xl
-                    text-[17px]
+
+                    px-3
+                    py-3
+
+                    text-[16px]
                     font-bold
+
                     transition-all
                     duration-300
-                    overflow-hidden
 
                     ${
                       isActive
-                        ? `
-                          bg-gradient-to-r
-                          from-[#fc6602]
-                          via-[#fc6602]
-                          to-[#0057B8]
-                          text-white
-                          shadow-md
-                        `
-                        : `
-                          text-gray-700
-                          bg-transparent
-                          hover:bg-[#0057B8]
-                          hover:text-white
-                          hover:shadow-md
-                        `
+                        ? "text-[#0057B8]"
+                        : "text-[#26364F]"
                     }
                   `}
                 >
@@ -435,56 +426,40 @@ export default function Navbar() {
                   {({ isActive }) => (
                     <>
 
-                      {/* =====================================
-                          LEFT ACTIVE BAR
-                      ====================================== */}
+                      {/* MENU TITLE */}
+
+                      <span>
+                        {item.title}
+                      </span>
+
+
+                      {/* =================================================
+                          MOBILE ORANGE UNDERLINE
+                      ================================================= */}
 
                       <span
                         className={`
                           absolute
-                          left-0
-                          top-1/2
-                          -translate-y-1/2
-                          w-[4px]
-                          rounded-r-full
-                          bg-white
+
+                          left-3
+                          bottom-[5px]
+
+                          h-[3px]
+
+                          rounded-full
+
+                          bg-[#fc6602]
+
                           transition-all
                           duration-300
 
                           ${
                             isActive
-                              ? "h-8"
-                              : "h-0"
+                              ? "w-[45px]"
+                              : "w-0 group-hover:w-[45px]"
                           }
                         `}
                       />
-
-
-                      {/* =====================================
-                          MENU TITLE
-                      ====================================== */}
-
-                      <span className="relative z-10">
-                        {item.title}
-                      </span>
-
-
-                      {/* =====================================
-                          ACTIVE DOT
-                      ====================================== */}
-
-                      {isActive && (
-                        <span
-                          className="
-                            ml-auto
-                            w-2
-                            h-2
-                            rounded-full
-                            bg-white
-                            shadow-sm
-                          "
-                        />
-                      )}
 
                     </>
                   )}
@@ -497,38 +472,45 @@ export default function Navbar() {
 
 
             {/* =================================================
-                MOBILE PHONE BUTTON
+                MOBILE CALL NOW
             ================================================= */}
 
-            <li className="px-3 pt-4 pb-3">
+            <li className="px-4 pt-3 pb-2">
 
               <a
                 href="tel:+917666984626"
                 onClick={() => setMenuOpen(false)}
                 className="
                   w-full
+
                   flex
                   items-center
                   justify-center
-                  gap-3
-                  bg-[#003DA5]
-                  hover:bg-[#002B73]
+                  gap-2.5
+
+                  bg-[#0057B8]
+                  hover:bg-[#004694]
+
                   text-white
-                  py-4
+
+                  py-3.5
+
                   rounded-xl
-                  text-[17px]
+
+                  text-[16px]
                   font-bold
+
                   shadow-md
-                  hover:shadow-xl
+
                   transition-all
                   duration-300
                 "
               >
 
-                <FaPhoneAlt />
+                <FaPhoneAlt className="text-[15px]" />
 
                 <span>
-                  +91 766 698 4626
+                  Call Now
                 </span>
 
               </a>

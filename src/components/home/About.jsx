@@ -1,6 +1,7 @@
 import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Reveal from "../common/Reveal";
+import sajid from "../../assets/images/about/sajid.jpeg";
 
 export default function About() {
   const features = [
@@ -68,7 +69,7 @@ export default function About() {
               <div className="relative overflow-hidden rounded-[2rem] shadow-[0_20px_50px_rgba(0,87,184,0.18)]">
 
                 <img
-                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1000"
+                  src={sajid}
                   alt="Sarathi NX Business Travel"
                   className="
                     w-full
@@ -302,7 +303,7 @@ export default function About() {
                 FEATURES
             ===================================================== */}
 
-            <div className="grid sm:grid-cols-2 gap-3 mt-7">
+            {/* <div className="grid sm:grid-cols-2 gap-3 mt-7">
 
               {features.map((feature, index) => (
 
@@ -366,7 +367,7 @@ export default function About() {
 
               ))}
 
-            </div>
+            </div> */}
 
 
             {/* =====================================================

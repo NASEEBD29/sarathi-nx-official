@@ -1,73 +1,53 @@
 import {
-  FaCheckCircle,
-  FaGlobeAsia,
+  FaPlane,
   FaHeadset,
-  FaHandshake,
-  FaUserTie,
+  FaGlobe,
   FaPassport,
-  FaPlaneDeparture,
-  FaUsers,
+  FaHandshake,
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 import Reveal from "../common/Reveal";
 
 // ======================================================
-// FEATURES DATA
+// EXACT CONTENT FROM REFERENCE IMAGE
 // ======================================================
 
 const features = [
   {
-    icon: FaCheckCircle,
-    title: "Experienced Travel Experts",
-    desc: "Industry professionals with proven expertise.",
-  },
-
-  {
-    icon: FaPlaneDeparture,
+    number: "01",
+    icon: FaPlane,
     title: "Transparent Pricing",
     desc: "Honest pricing with no hidden charges.",
   },
-
   {
-    icon: FaGlobeAsia,
+    number: "02",
+    icon: FaHeadset,
     title: "Dedicated Travel Consultants",
     desc: "Personalized guidance for every journey.",
   },
-
   {
-    icon: FaUserTie,
+    number: "03",
+    icon: FaGlobe,
     title: "Worldwide Network",
     desc: "Reliable global travel partnerships.",
   },
-
   {
+    number: "04",
     icon: FaPassport,
     title: "Fast Visa Assistance",
     desc: "Quick and hassle-free visa support.",
   },
-
   {
+    number: "05",
     icon: FaHandshake,
     title: "Personalized Travel Solutions",
     desc: "Travel plans tailored to your needs.",
   },
-
-  {
-    icon: FaHeadset,
-    title: "24×7 Travel Assistance",
-    desc: "Assistance whenever you need it.",
-  },
-
-  {
-    icon: FaUsers,
-    title: "Tailored Business Solutions",
-    desc: "Customized travel solutions designed around your business, team and travel requirements.",
-  },
 ];
 
 // ======================================================
-// WHY CHOOSE US
+// WHY CHOOSE SARATHI NX
 // ======================================================
 
 export default function WhyChooseUs() {
@@ -76,187 +56,190 @@ export default function WhyChooseUs() {
       id="why-choose-us"
       className="
         relative
+        w-full
         overflow-hidden
-        bg-white
-        py-10
+        bg-[#f8f9fc]
+        py-8
+        md:py-9
       "
     >
-      {/* ==================================================
-          BACKGROUND DECORATION
-      ================================================== */}
-
-      <div
-        className="
-          absolute
-          -top-24
-          -left-24
-          w-72
-          h-72
-          rounded-full
-          bg-[#0057B8]/5
-          blur-3xl
-          pointer-events-none
-        "
-      />
-
-      <div
-        className="
-          absolute
-          -bottom-24
-          -right-24
-          w-80
-          h-80
-          rounded-full
-          bg-[#fc6602]/5
-          blur-3xl
-          pointer-events-none
-        "
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6">
 
         {/* ==================================================
-            SECTION HEADING
+            TOP LABEL
         ================================================== */}
 
         <Reveal>
-          <div
-            className="
-              text-center
-              max-w-3xl
-              mx-auto
-              mb-8
-            "
-          >
+          <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
-            {/* TOP LABEL */}
-
-            <div className="flex items-center justify-center gap-3 mb-3">
-
-              <span
-                className="
-                  w-8
-                  h-[2px]
-                  bg-gradient-to-r
-                  from-[#0057B8]
-                  to-[#fc6602]
-                "
-              />
-
-              <span
-                className="
-                  uppercase
-                  tracking-[3px]
-                  text-xs
-                  md:text-sm
-                  font-bold
-                  bg-gradient-to-r
-                  from-[#0057B8]
-                  via-[#0057B8]
-                  to-[#fc6602]
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                Why Choose Sarathi NX
-              </span>
-
-              <span
-                className="
-                  w-8
-                  h-[2px]
-                  bg-gradient-to-r
-                  from-[#fc6602]
-                  to-[#0057B8]
-                "
-              />
-
-            </div>
-
-            {/* MAIN HEADING */}
-
-            <h2
+            <span
               className="
-                text-3xl
-                md:text-4xl
-                lg:text-5xl
-                font-extrabold
-                text-gray-900
-                leading-tight
-              "
-            >
-              Travel With{" "}
-
-              <span
-                className="
-                  bg-gradient-to-r
-                  from-[#0057B8]
-                  via-[#0057B8]
-                  to-[#fc6602]
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                Confidence.
-              </span>
-            </h2>
-
-            {/* SUB HEADING */}
-
-            <h3
-              className="
-                text-lg
-                md:text-xl
-                font-bold
-                mt-1
+                block
+                w-[49px]
+                h-[2px]
                 bg-gradient-to-r
-                from-[#fc6602]
-                via-[#fc6602]
-                to-[#0057B8]
+                from-[#0057B8]
+                to-[#F16A24]
+              "
+            />
+
+            <span
+              className="
+                text-[13px]
+                font-bold
+                tracking-[3px]
+                uppercase
+                leading-none
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#0057B8]
+                to-[#F16A24]
                 bg-clip-text
                 text-transparent
               "
             >
-              End-to-End Travel Solutions
-Complete travel management under one roof.
+              WHY CHOOSE SARATHI NX
+            </span>
 
-            </h3>
-
-            {/* DESCRIPTION */}
-
-            <p
+            <span
               className="
-                mt-3
-                text-gray-600
-                leading-6
-                text-sm
-                md:text-base
+                block
+                w-[49px]
+                h-[2px]
+                bg-gradient-to-r
+                from-[#F16A24]
+                to-[#0057B8]
               "
-            >
-              From business travel and international exhibitions to visas,
-              hotels and complete travel management, Sarathi NX ensures a
-              smooth, reliable and hassle-free journey.
-            </p>
+            />
 
           </div>
         </Reveal>
 
 
         {/* ==================================================
-            FEATURES SINGLE ROW
+            MAIN HEADING
+        ================================================== */}
+
+        <Reveal delay={0.05}>
+          <h2
+            className="
+              text-center
+              font-extrabold
+              tracking-[-1.8px]
+              leading-[1.02]
+              text-[48px]
+              md:text-[52px]
+              lg:text-[58px]
+              text-[#071B41]
+            "
+          >
+            Travel With{" "}
+
+            <span
+              className="
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#1454D8]
+                to-[#F16A24]
+                bg-clip-text
+                text-transparent
+              "
+            >
+              Confidence.
+            </span>
+          </h2>
+        </Reveal>
+
+
+        {/* ==================================================
+            SUB HEADING
+        ================================================== */}
+
+        <Reveal delay={0.08}>
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-[10px]
+              mt-[10px]
+              text-center
+            "
+          >
+
+            <span
+              className="
+                text-[20px]
+                font-bold
+                leading-none
+                text-[#E76624]
+              "
+            >
+              End-to-End Travel Solutions
+            </span>
+
+            <span
+              className="
+                text-[20px]
+                font-bold
+                leading-none
+                text-[#19396D]
+              "
+            >
+              |
+            </span>
+
+            <span
+              className="
+                text-[20px]
+                font-bold
+                leading-none
+                text-[#19396D]
+              "
+            >
+              Complete travel management under one roof.
+            </span>
+
+          </div>
+        </Reveal>
+
+
+        {/* ==================================================
+            DESCRIPTION
+        ================================================== */}
+
+        <Reveal delay={0.1}>
+          <p
+            className="
+              max-w-[970px]
+              mx-auto
+              mt-[14px]
+              mb-[34px]
+              text-center
+              text-[16px]
+              leading-[1.55]
+              font-normal
+              text-[#303846]
+            "
+          >
+            From business travel and international exhibitions to visas,
+            hotels and complete travel management,
+            <br className="hidden md:block" />
+            Sarathi NX ensures a smooth, reliable and hassle-free journey.
+          </p>
+        </Reveal>
+
+
+        {/* ==================================================
+            CARDS
         ================================================== */}
 
         <div
           className="
-            flex
-            gap-4
-            overflow-x-auto
-            pb-4
-            snap-x
-            snap-mandatory
-            scrollbar-thin
-            scrollbar-thumb-[#0057B8]/30
-            scrollbar-track-transparent
+            grid
+            grid-cols-5
+            gap-[14px]
+            w-full
           "
         >
 
@@ -266,42 +249,34 @@ Complete travel management under one roof.
             return (
               <Reveal
                 key={item.title}
-                delay={index * 0.05}
+                delay={0.12 + index * 0.05}
               >
 
                 <motion.div
                   whileHover={{
-                    y: -8,
+                    y: -4,
                   }}
                   transition={{
                     type: "spring",
-                    stiffness: 250,
-                    damping: 18,
+                    stiffness: 300,
+                    damping: 22,
                   }}
                   className="
                     group
                     relative
-                    flex-shrink-0
-                    snap-start
-                    w-[230px]
-                    sm:w-[240px]
-                    lg:w-[245px]
-                    h-[245px]
+                    w-full
+                    h-[435px]
                     overflow-hidden
-                    rounded-2xl
+                    rounded-[17px]
                     bg-white
                     border
-                    border-gray-100
-                    p-5
-                    shadow-[0_8px_25px_rgba(0,0,0,0.07)]
-                    hover:shadow-[0_18px_40px_rgba(0,87,184,0.16)]
-                    transition-all
-                    duration-500
+                    border-[#edf0f5]
+                    shadow-[0_4px_15px_rgba(25,50,90,0.055)]
                   "
                 >
 
                   {/* ==================================================
-                      TOP GRADIENT LINE
+                      BLUE TOP LINE
                   ================================================== */}
 
                   <div
@@ -309,113 +284,166 @@ Complete travel management under one roof.
                       absolute
                       top-0
                       left-0
-                      right-0
-                      h-1
-                      bg-gradient-to-r
-                      from-[#0057B8]
-                      via-[#0057B8]
-                      to-[#fc6602]
+                      w-[127px]
+                      h-[4px]
+                      rounded-br-full
+                      bg-[#0057B8]
                     "
                   />
 
 
                   {/* ==================================================
-                      DECORATIVE CIRCLE
+                      CARD NUMBER
                   ================================================== */}
 
                   <div
                     className="
                       absolute
-                      -top-14
-                      -right-14
-                      w-32
-                      h-32
-                      rounded-full
-                      bg-gradient-to-br
-                      from-[#0057B8]/10
-                      to-[#fc6602]/10
-                      group-hover:scale-150
-                      transition-transform
-                      duration-700
+                      top-[27px]
+                      right-[18px]
+                      text-[31px]
+                      leading-none
+                      font-extrabold
+                      tracking-[-1px]
+                      text-[#F1F3F7]
+                      select-none
                     "
-                  />
+                  >
+                    {item.number}
+                  </div>
 
 
                   {/* ==================================================
-                      ICON
+                      CIRCLE ICON
                   ================================================== */}
 
-                  <div className="relative mb-4">
+                  <div className="pt-[31px] pl-[35px]">
 
                     <div
                       className="
-                        w-14
-                        h-14
-                        rounded-xl
+                        relative
+                        w-[94px]
+                        h-[94px]
+                        rounded-full
+                        overflow-hidden
                         flex
                         items-center
                         justify-center
-                        bg-gradient-to-r
-                        from-[#0057B8]
-                        via-[#0057B8]
-                        to-[#fc6602]
-                        text-white
-                        text-xl
-                        shadow-lg
-                        group-hover:scale-110
-                        group-hover:rotate-3
-                        transition-all
-                        duration-500
+
+                        bg-gradient-to-br
+                        from-[#0754C8]
+                        via-[#1852C7]
+                        to-[#E85C0A]
+
+                        shadow-[0_5px_14px_rgba(0,70,180,0.12)]
                       "
                     >
-                      <Icon />
+
+                      {/* soft highlight */}
+
+                      <div
+                        className="
+                          absolute
+                          inset-0
+                          bg-[radial-gradient(circle_at_28%_25%,rgba(255,255,255,0.22),transparent_30%)]
+                        "
+                      />
+
+                      <Icon
+                        className="
+                          relative
+                          z-10
+                          text-white
+                          text-[42px]
+                        "
+                      />
+
                     </div>
 
                   </div>
 
 
                   {/* ==================================================
-                      TITLE
+                      CARD CONTENT
                   ================================================== */}
 
-                  <h3
-                    className="
-                      relative
-                      text-base
-                      md:text-lg
-                      font-extrabold
-                      text-gray-900
-                      leading-snug
-                      mb-2
-                      group-hover:text-[#0057B8]
-                      transition-colors
-                      duration-300
-                    "
-                  >
-                    {item.title}
-                  </h3>
+                  <div className="px-[35px] pt-[28px]">
+
+                    <h3
+                      className="
+                        max-w-[205px]
+                        min-h-[57px]
+                        text-[22px]
+                        font-extrabold
+                        leading-[1.28]
+                        tracking-[-0.35px]
+                        text-[#102C61]
+                      "
+                    >
+                      {item.title}
+                    </h3>
+
+
+                    {/* ORANGE DIVIDER */}
+
+                    <div
+                      className="
+                        mt-[15px]
+                        mb-[22px]
+                        w-[43px]
+                        h-[3px]
+                        rounded-full
+                        bg-[#F1783B]
+                      "
+                    />
+
+
+                    {/* DESCRIPTION */}
+
+                    <p
+                      className="
+                        max-w-[200px]
+                        text-[15px]
+                        leading-[1.65]
+                        font-normal
+                        text-[#303846]
+                      "
+                    >
+                      {item.desc}
+                    </p>
+
+                  </div>
 
 
                   {/* ==================================================
-                      DESCRIPTION
+                      FADED BOTTOM ICON
                   ================================================== */}
 
-                  <p
+                  <div
                     className="
-                      relative
-                      text-xs
-                      md:text-sm
-                      text-gray-600
-                      leading-5
-                      line-clamp-4
+                      absolute
+                      right-[17px]
+                      bottom-[19px]
+                      w-[76px]
+                      h-[76px]
+                      flex
+                      items-center
+                      justify-center
+                      text-[#DCE8FA]
+                      pointer-events-none
                     "
                   >
-                    {item.desc}
-                  </p>
+                    <Icon
+                      className="
+                        text-[68px]
+                        opacity-80
+                      "
+                    />
+                  </div>
 
 
                   {/* ==================================================
-                      BOTTOM GRADIENT
+                      VERY SUBTLE HOVER LINE
                   ================================================== */}
 
                   <div
@@ -423,12 +451,11 @@ Complete travel management under one roof.
                       absolute
                       bottom-0
                       left-0
-                      h-1
                       w-0
+                      h-[3px]
                       bg-gradient-to-r
                       from-[#0057B8]
-                      via-[#0057B8]
-                      to-[#fc6602]
+                      to-[#F16A24]
                       group-hover:w-full
                       transition-all
                       duration-500
@@ -440,50 +467,6 @@ Complete travel management under one roof.
               </Reveal>
             );
           })}
-
-        </div>
-
-
-        {/* ==================================================
-            SCROLL HINT - MOBILE
-        ================================================== */}
-
-        <div
-          className="
-            flex
-            lg:hidden
-            justify-center
-            items-center
-            gap-2
-            mt-3
-            text-xs
-            text-gray-400
-          "
-        >
-
-          <span
-            className="
-              w-8
-              h-[2px]
-              bg-gradient-to-r
-              from-transparent
-              to-[#0057B8]
-            "
-          />
-
-          <span>
-            Swipe to explore
-          </span>
-
-          <span
-            className="
-              w-8
-              h-[2px]
-              bg-gradient-to-r
-              from-[#fc6602]
-              to-transparent
-            "
-          />
 
         </div>
 

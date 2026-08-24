@@ -10,14 +10,17 @@ import {
   FaLinkedinIn,
   FaYoutube,
   FaArrowRight,
+  FaHeadset,
+  FaPaperPlane,
 } from "react-icons/fa";
 
 const quickLinks = [
   { title: "Home", href: "/" },
-  { title: "About", href: "/about" },
+  { title: "About Us", href: "/about" },
   { title: "Services", href: "/services" },
   { title: "Exhibitions", href: "/exhibitions" },
-  { title: "Contact", href: "/contact" },
+  { title: "Gallery", href: "/gallery" },
+  { title: "Contact Us", href: "/contact" },
 ];
 
 const services = [
@@ -27,6 +30,9 @@ const services = [
   "Visa Assistance",
   "MICE",
   "Group Tours",
+  "Hotel & Travel Assistance",
+  "Travel Insurance",
+  "Forex Assistance",
 ];
 
 export default function Footer() {
@@ -37,424 +43,651 @@ export default function Footer() {
   );
 
   return (
-    <footer className="bg-[#002B73] text-white border-t-4 border-[#fc6602]">
+    <footer
+      className="
+        relative
+        overflow-hidden
+        bg-[#031B4E]
+        text-white
+        rounded-t-[28px]
+      "
+    >
+      {/* =====================================================
+          DECORATIVE WORLD / NETWORK BACKGROUND
+      ===================================================== */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          pointer-events-none
+          overflow-hidden
+        "
+      >
+        {/* Glow */}
+
+        <div
+          className="
+            absolute
+            -left-32
+            -bottom-32
+            w-[520px]
+            h-[520px]
+            rounded-full
+            bg-[#0057B8]/20
+            blur-3xl
+          "
+        />
+
+        <div
+          className="
+            absolute
+            right-[-180px]
+            top-[-180px]
+            w-[500px]
+            h-[500px]
+            rounded-full
+            bg-[#0057B8]/10
+            blur-3xl
+          "
+        />
+
+        {/* Globe */}
+
+        <div
+          className="
+            absolute
+            left-[-70px]
+            bottom-[-220px]
+            w-[650px]
+            h-[650px]
+            rounded-full
+            border
+            border-[#0057B8]/20
+          "
+        />
+
+        <div
+          className="
+            absolute
+            left-[-10px]
+            bottom-[-160px]
+            w-[520px]
+            h-[520px]
+            rounded-full
+            border
+            border-[#fc6602]/15
+          "
+        />
+
+        <div
+          className="
+            absolute
+            left-[70px]
+            bottom-[-100px]
+            w-[380px]
+            h-[380px]
+            rounded-full
+            border
+            border-white/[0.04]
+          "
+        />
+
+        {/* Network lines */}
+
+        <div
+          className="
+            absolute
+            left-[50px]
+            bottom-[30px]
+            w-[500px]
+            h-[180px]
+            border-t
+            border-[#fc6602]/20
+            rounded-[50%]
+            rotate-[-12deg]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            left-[80px]
+            bottom-[60px]
+            w-[430px]
+            h-[150px]
+            border-t
+            border-[#0057B8]/30
+            rounded-[50%]
+            rotate-[8deg]
+          "
+        />
+      </div>
 
       {/* =====================================================
           MAIN FOOTER
       ===================================================== */}
 
-      <div className="max-w-7xl mx-auto px-6 py-10 md:py-12">
-
-        {/* =====================================================
-            FOUR EQUAL COLUMNS
-        ===================================================== */}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-
-          {/* =====================================================
+      <div
+        className="
+          relative
+          z-10
+          max-w-[1450px]
+          mx-auto
+          px-6
+          md:px-10
+          lg:px-14
+          py-12
+          md:py-14
+        "
+      >
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-[1.35fr_0.9fr_1.25fr_1fr]
+          "
+        >
+          {/* =================================================
               COMPANY
-          ===================================================== */}
+          ================================================= */}
 
-          <div className="w-full">
-
-            {/* Logo */}
+          <div
+            className="
+              pr-0
+              lg:pr-10
+              pb-10
+              lg:pb-0
+            "
+          >
+            {/* LOGO */}
 
             <Link
               to="/"
               className="
                 inline-flex
                 items-center
+                justify-center
                 bg-white
-                rounded-xl
-                px-3
-                py-2
-                shadow-lg
+                rounded-2xl
+                px-5
+                py-4
+                shadow-[0_10px_30px_rgba(0,0,0,0.20)]
+                hover:-translate-y-1
+                transition-all
+                duration-300
               "
             >
               <img
                 src={`${import.meta.env.BASE_URL}sarathi-logo.png`}
                 alt="Sarathi NX"
                 className="
-                  w-40
-                  md:w-44
+                  w-52
+                  md:w-56
                   h-auto
                   object-contain
                 "
               />
             </Link>
 
+            {/* TAGLINE */}
 
-            {/* Tagline */}
-
-            <p className="mt-4 text-[#60A5FA] font-semibold text-sm">
+            <h3
+              className="
+                mt-7
+                text-xl
+                md:text-2xl
+                font-extrabold
+                text-white
+              "
+            >
               We Plan. You Travel. We Care.
-            </p>
+            </h3>
 
+            {/* ORANGE LINE */}
 
-            {/* Description */}
+            <div
+              className="
+                mt-4
+                flex
+                items-center
+                gap-1
+              "
+            >
+              <span
+                className="
+                  w-9
+                  h-[3px]
+                  rounded-full
+                  bg-[#fc6602]
+                "
+              />
 
-            <p className="mt-3 text-gray-300 text-sm leading-6">
+              <span
+                className="
+                  w-5
+                  h-[3px]
+                  rounded-full
+                  bg-[#0057B8]
+                "
+              />
+            </div>
+
+            {/* DESCRIPTION */}
+
+            <p
+              className="
+                mt-5
+                max-w-[370px]
+                text-gray-300
+                text-sm
+                md:text-[15px]
+                leading-6
+              "
+            >
               Sarathi NX Pvt. Ltd. is a professionally managed travel
               company specializing in international exhibition travel,
               business travel, corporate travel, MICE, group tours
               and global tourism.
             </p>
 
+            {/* FOLLOW US */}
 
-            {/* =====================================================
-                SOCIAL MEDIA
-                ORIGINAL BRAND COLORS
-            ===================================================== */}
-
-            <div className="flex items-center gap-2.5 mt-5">
-
-              {/* Facebook */}
-
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Sarathi NX Facebook"
+            <div className="mt-7">
+              <h4
                 className="
-                  w-9
-                  h-9
-                  rounded-full
-                  bg-white
-                  flex
-                  items-center
-                  justify-center
-                  text-[#1877F2]
-                  shadow-sm
-                  hover:scale-110
-                  hover:-translate-y-1
-                  transition-all
-                  duration-300
+                  text-base
+                  font-bold
+                  text-white
+                  mb-4
                 "
               >
-                <FaFacebookF className="text-sm" />
-              </a>
+                Follow Us
+              </h4>
 
+              <div className="flex items-center gap-3">
+                {/* FACEBOOK */}
 
-              {/* Instagram */}
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="
+                    w-11
+                    h-11
+                    rounded-full
+                    bg-[#1877F2]
+                    flex
+                    items-center
+                    justify-center
+                    text-white
+                    shadow-lg
+                    hover:-translate-y-1
+                    hover:scale-110
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <FaFacebookF />
+                </a>
 
-              <a
-                href="https://www.instagram.com/sarathi_nx_travel/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Sarathi NX Instagram"
-                className="
-                  w-9
-                  h-9
-                  rounded-full
-                  bg-white
-                  flex
-                  items-center
-                  justify-center
-                  text-[#E4405F]
-                  shadow-sm
-                  hover:scale-110
-                  hover:-translate-y-1
-                  transition-all
-                  duration-300
-                "
-              >
-                <FaInstagram className="text-sm" />
-              </a>
+                {/* INSTAGRAM */}
 
+                <a
+                  href="https://www.instagram.com/sarathi_nx_travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="
+                    w-11
+                    h-11
+                    rounded-full
+                    bg-gradient-to-br
+                    from-[#F58529]
+                    via-[#DD2A7B]
+                    to-[#515BD4]
+                    flex
+                    items-center
+                    justify-center
+                    text-white
+                    shadow-lg
+                    hover:-translate-y-1
+                    hover:scale-110
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <FaInstagram />
+                </a>
 
-              {/* LinkedIn */}
+                {/* LINKEDIN */}
 
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Sarathi NX LinkedIn"
-                className="
-                  w-9
-                  h-9
-                  rounded-full
-                  bg-white
-                  flex
-                  items-center
-                  justify-center
-                  text-[#0A66C2]
-                  shadow-sm
-                  hover:scale-110
-                  hover:-translate-y-1
-                  transition-all
-                  duration-300
-                "
-              >
-                <FaLinkedinIn className="text-sm" />
-              </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="
+                    w-11
+                    h-11
+                    rounded-full
+                    bg-[#0A66C2]
+                    flex
+                    items-center
+                    justify-center
+                    text-white
+                    shadow-lg
+                    hover:-translate-y-1
+                    hover:scale-110
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <FaLinkedinIn />
+                </a>
 
+                {/* YOUTUBE */}
 
-              {/* YouTube */}
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="
+                    w-11
+                    h-11
+                    rounded-full
+                    bg-[#FF0000]
+                    flex
+                    items-center
+                    justify-center
+                    text-white
+                    shadow-lg
+                    hover:-translate-y-1
+                    hover:scale-110
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <FaYoutube />
+                </a>
 
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Sarathi NX YouTube"
-                className="
-                  w-9
-                  h-9
-                  rounded-full
-                  bg-white
-                  flex
-                  items-center
-                  justify-center
-                  text-[#FF0000]
-                  shadow-sm
-                  hover:scale-110
-                  hover:-translate-y-1
-                  transition-all
-                  duration-300
-                "
-              >
-                <FaYoutube className="text-sm" />
-              </a>
+                {/* WHATSAPP */}
 
-
-              {/* WhatsApp */}
-
-              <a
-                href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat with Sarathi NX on WhatsApp"
-                className="
-                  w-9
-                  h-9
-                  rounded-full
-                  bg-white
-                  flex
-                  items-center
-                  justify-center
-                  text-[#25D366]
-                  shadow-sm
-                  hover:scale-110
-                  hover:-translate-y-1
-                  transition-all
-                  duration-300
-                "
-              >
-                <FaWhatsapp className="text-sm" />
-              </a>
-
+                <a
+                  href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="
+                    w-11
+                    h-11
+                    rounded-full
+                    bg-[#25D366]
+                    flex
+                    items-center
+                    justify-center
+                    text-white
+                    shadow-lg
+                    hover:-translate-y-1
+                    hover:scale-110
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <FaWhatsapp />
+                </a>
+              </div>
             </div>
-
           </div>
 
-
-          {/* =====================================================
+          {/* =================================================
               QUICK LINKS
-          ===================================================== */}
+          ================================================= */}
 
-          <div className="w-full">
-
-            <h3 className="text-lg font-bold text-white">
+          <div
+            className="
+              lg:border-l
+              lg:border-white/15
+              px-0
+              sm:px-7
+              lg:px-10
+              pb-10
+              lg:pb-0
+            "
+          >
+            <h3
+              className="
+                text-xl
+                font-extrabold
+                text-white
+              "
+            >
               Quick Links
             </h3>
 
+            {/* ACCENT */}
 
-            {/* Accent */}
+            <div className="flex items-center gap-1 mt-4 mb-6">
+              <span className="w-8 h-[3px] rounded-full bg-[#fc6602]" />
+              <span className="w-5 h-[3px] rounded-full bg-[#0057B8]" />
+            </div>
 
-            <div
-              className="
-                w-10
-                h-1
-                bg-gradient-to-r
-                from-[#fc6602]
-                to-[#0057B8]
-                rounded-full
-                mt-3
-                mb-5
-              "
-            />
-
-
-            <ul className="space-y-2.5">
-
+            <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.title}>
-
                   <Link
                     to={link.href}
                     className="
+                      group
                       flex
                       items-center
-                      gap-2.5
+                      gap-3
                       text-gray-300
                       text-sm
+                      md:text-[15px]
                       hover:text-white
-                      hover:translate-x-1
                       transition-all
                       duration-300
                     "
                   >
-
                     <FaArrowRight
                       className="
-                        text-[10px]
                         text-[#fc6602]
-                        shrink-0
+                        text-xs
+                        group-hover:translate-x-1
+                        transition-transform
                       "
                     />
 
-                    {link.title}
-
+                    <span className="group-hover:text-white">
+                      {link.title}
+                    </span>
                   </Link>
-
                 </li>
               ))}
-
             </ul>
-
           </div>
 
-
-          {/* =====================================================
+          {/* =================================================
               SERVICES
-          ===================================================== */}
+          ================================================= */}
 
-          <div className="w-full">
-
-            <h3 className="text-lg font-bold text-white">
+          <div
+            className="
+              lg:border-l
+              lg:border-white/15
+              px-0
+              sm:px-7
+              lg:px-10
+              pb-10
+              lg:pb-0
+            "
+          >
+            <h3
+              className="
+                text-xl
+                font-extrabold
+                text-white
+              "
+            >
               Our Services
             </h3>
 
+            {/* ACCENT */}
 
-            {/* Accent */}
+            <div className="flex items-center gap-1 mt-4 mb-6">
+              <span className="w-8 h-[3px] rounded-full bg-[#fc6602]" />
+              <span className="w-5 h-[3px] rounded-full bg-[#0057B8]" />
+            </div>
 
-            <div
-              className="
-                w-10
-                h-1
-                bg-gradient-to-r
-                from-[#fc6602]
-                to-[#0057B8]
-                rounded-full
-                mt-3
-                mb-5
-              "
-            />
-
-
-            <ul className="space-y-2.5">
-
+            <ul className="space-y-3.5">
               {services.map((service) => (
-                <li
-                  key={service}
-                  className="
-                    flex
-                    items-start
-                    gap-2.5
-                    text-gray-300
-                    text-sm
-                  "
-                >
-
-                  <FaArrowRight
+                <li key={service}>
+                  <div
                     className="
-                      text-[10px]
-                      mt-1.5
-                      text-[#fc6602]
-                      shrink-0
+                      group
+                      flex
+                      items-start
+                      gap-3
+                      text-gray-300
+                      text-sm
+                      md:text-[15px]
                     "
-                  />
+                  >
+                    <FaArrowRight
+                      className="
+                        text-[#fc6602]
+                        text-xs
+                        mt-1
+                        shrink-0
+                        group-hover:translate-x-1
+                        transition-transform
+                      "
+                    />
 
-                  <span>
-                    {service}
-                  </span>
-
+                    <span className="group-hover:text-white transition">
+                      {service}
+                    </span>
+                  </div>
                 </li>
               ))}
-
             </ul>
-
           </div>
 
+          {/* =================================================
+              CONTACT US
+          ================================================= */}
 
-          {/* =====================================================
-              CONTACT
-          ===================================================== */}
-
-          <div className="w-full">
-
-            <h3 className="text-lg font-bold text-white">
+          <div
+            className="
+              lg:border-l
+              lg:border-white/15
+              px-0
+              sm:px-7
+              lg:px-10
+            "
+          >
+            <h3
+              className="
+                text-xl
+                font-extrabold
+                text-white
+              "
+            >
               Contact Us
             </h3>
 
+            {/* ACCENT */}
 
-            {/* Accent */}
+            <div className="flex items-center gap-1 mt-4 mb-7">
+              <span className="w-8 h-[3px] rounded-full bg-[#fc6602]" />
+              <span className="w-5 h-[3px] rounded-full bg-[#0057B8]" />
+            </div>
 
-            <div
-              className="
-                w-10
-                h-1
-                bg-gradient-to-r
-                from-[#fc6602]
-                to-[#0057B8]
-                rounded-full
-                mt-3
-                mb-5
-              "
-            />
+            <div className="space-y-7">
+              {/* ADDRESS */}
 
-
-            <div className="space-y-4">
-
-              {/* ================= ADDRESS ================= */}
-
-              <div className="flex gap-3">
-
-                <FaMapMarkerAlt
+              <div className="flex items-start gap-4">
+                <div
                   className="
-                    text-[#fc6602]
-                    mt-1
+                    w-12
+                    h-12
                     shrink-0
+                    rounded-full
+                    border
+                    border-[#fc6602]/40
+                    bg-white/[0.03]
+                    flex
+                    items-center
+                    justify-center
                   "
-                />
+                >
+                  <FaMapMarkerAlt
+                    className="
+                      text-[#fc6602]
+                      text-lg
+                    "
+                  />
+                </div>
 
-                <p className="text-gray-300 text-sm leading-5">
-
+                <p
+                  className="
+                    text-gray-300
+                    text-sm
+                    md:text-[15px]
+                    leading-6
+                  "
+                >
                   1st Floor, Office No. 026,
                   <br />
-
                   Crystal Plaza CHS Ltd,
                   <br />
-
                   Station Road, Mira Road East,
                   <br />
-
                   Thane - 401107
-
                 </p>
-
               </div>
 
+              {/* DIVIDER */}
 
-              {/* ================= PHONE ================= */}
+              <div className="h-px bg-white/10" />
 
-              <div className="flex gap-3">
+              {/* PHONE */}
 
-                <FaPhoneAlt
+              <div className="flex items-start gap-4">
+                <div
                   className="
-                    text-[#fc6602]
-                    mt-1
+                    w-12
+                    h-12
                     shrink-0
+                    rounded-full
+                    border
+                    border-[#fc6602]/40
+                    bg-white/[0.03]
+                    flex
+                    items-center
+                    justify-center
                   "
-                />
+                >
+                  <FaPhoneAlt
+                    className="
+                      text-[#fc6602]
+                      text-lg
+                    "
+                  />
+                </div>
 
-                <div className="space-y-1">
-
+                <div className="space-y-1.5 pt-1">
                   <a
                     href="tel:+917666984626"
                     className="
                       block
                       text-gray-300
                       text-sm
+                      md:text-[15px]
                       hover:text-white
                       transition
                     "
@@ -462,104 +695,233 @@ export default function Footer() {
                     +91 766 698 4626
                   </a>
 
-
                   <a
                     href="tel:+918657867181"
                     className="
                       block
                       text-gray-300
                       text-sm
+                      md:text-[15px]
                       hover:text-white
                       transition
                     "
                   >
                     +91 865 786 7181
                   </a>
-
                 </div>
-
               </div>
 
+              {/* DIVIDER */}
 
-              {/* ================= EMAIL ================= */}
+              <div className="h-px bg-white/10" />
 
-              <div className="flex gap-3">
+              {/* EMAIL */}
 
-                <FaEnvelope
+              <div className="flex items-start gap-4">
+                <div
                   className="
-                    text-[#fc6602]
-                    mt-1
+                    w-12
+                    h-12
                     shrink-0
+                    rounded-full
+                    border
+                    border-[#fc6602]/40
+                    bg-white/[0.03]
+                    flex
+                    items-center
+                    justify-center
                   "
-                />
+                >
+                  <FaEnvelope
+                    className="
+                      text-[#fc6602]
+                      text-lg
+                    "
+                  />
+                </div>
 
                 <a
                   href="mailto:sajid@sarathinx.com"
                   className="
                     text-gray-300
                     text-sm
+                    md:text-[15px]
                     hover:text-white
                     transition
                     break-all
+                    pt-3
                   "
                 >
                   sajid@sarathinx.com
                 </a>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
-
       {/* =====================================================
-          BOTTOM BAR
+          BOTTOM HELP BAR
       ===================================================== */}
 
       <div
         className="
-          bg-[#001F54]
-          border-t
-          border-white/10
+          relative
+          z-10
+          mx-6
+          md:mx-10
+          lg:mx-auto
+          max-w-[1350px]
+          border
+          border-white/15
+          rounded-2xl
+          bg-[#06265F]/70
+          backdrop-blur-sm
+          mb-0
         "
       >
-
         <div
           className="
-            max-w-7xl
-            mx-auto
-            px-6
-            py-3.5
-            flex
-            flex-col
-            md:flex-row
-            justify-between
+            grid
+            grid-cols-1
+            md:grid-cols-3
             items-center
-            gap-2
-            text-xs
-            md:text-sm
           "
         >
+          {/* LEFT */}
 
-          <p className="text-gray-400 text-center md:text-left">
-            © {new Date().getFullYear()} Sarathi NX Pvt. Ltd.
-            All Rights Reserved.
-          </p>
+          <div
+            className="
+              px-6
+              md:px-8
+              py-5
+              text-center
+              md:text-left
+              border-b
+              md:border-b-0
+              md:border-r
+              border-white/15
+            "
+          >
+            <p className="text-gray-300 text-sm">
+              © {new Date().getFullYear()} Sarathi NX Pvt. Ltd.
+              All Rights Reserved.
+            </p>
+          </div>
 
+          {/* CENTER */}
 
-          <p className="text-[#60A5FA] text-center">
-            We Plan. You Travel. We Care.
-          </p>
+          <div
+            className="
+              px-6
+              md:px-8
+              py-5
+              flex
+              items-center
+              justify-center
+              gap-4
+              border-b
+              md:border-b-0
+              md:border-r
+              border-white/15
+            "
+          >
+            <div
+              className="
+                w-11
+                h-11
+                rounded-full
+                flex
+                items-center
+                justify-center
+                bg-[#fc6602]/10
+                border
+                border-[#fc6602]/30
+              "
+            >
+              <FaHeadset
+                className="
+                  text-[#fc6602]
+                  text-lg
+                "
+              />
+            </div>
 
+            <div>
+              <p className="text-gray-300 text-xs">
+                Need Help? Call Us
+              </p>
+
+              <div
+                className="
+                  flex
+                  flex-wrap
+                  items-center
+                  gap-2
+                  mt-1
+                  text-sm
+                  font-bold
+                  text-white
+                "
+              >
+                <a
+                  href="tel:+917666984626"
+                  className="hover:text-[#fc6602] transition"
+                >
+                  +91 766 698 4626
+                </a>
+
+                <span className="text-gray-500">|</span>
+
+                <a
+                  href="tel:+918657867181"
+                  className="hover:text-[#fc6602] transition"
+                >
+                  +91 865 786 7181
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT */}
+
+          <div
+            className="
+              px-6
+              md:px-8
+              py-5
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            <FaPaperPlane
+              className="
+                text-[#fc6602]
+                text-xl
+              "
+            />
+
+            <span
+              className="
+                text-[#60A5FA]
+                text-sm
+                md:text-base
+                font-semibold
+              "
+            >
+              We Plan. You Travel. We Care.
+            </span>
+          </div>
         </div>
-
       </div>
 
+      {/* =====================================================
+          BOTTOM SPACING
+      ===================================================== */}
+
+      <div className="h-6" />
     </footer>
   );
 }
