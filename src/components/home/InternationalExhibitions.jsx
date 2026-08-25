@@ -236,88 +236,102 @@ export default function InternationalExhibitions() {
             SECTION HEADING
         ================================================== */}
 
-        <Reveal>
-          <div className="text-center max-w-4xl mx-auto mb-11">
+       <Reveal>
+  <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
-            {/* Eyebrow */}
+    <span
+      className="
+        block
+        w-[49px]
+        h-[2px]
+        bg-gradient-to-r
+        from-[#0057B8]
+        to-[#F16A24]
+      "
+    />
 
-            <div
-              className="
-                inline-flex
-                items-center
-                gap-2
-                px-4
-                py-2
-                rounded-full
-                bg-gradient-to-r
-                from-[#0057B8]
-                via-[#0057B8]
-                to-[#fc6602]
-                text-white
-                text-xs
-                md:text-sm
-                font-bold
-                uppercase
-                tracking-[2px]
-                shadow-md
-              "
-            >
-              <FaGlobeAsia />
+    <span
+      className="
+        text-[13px]
+        font-bold
+        tracking-[3px]
+        uppercase
+        leading-none
+        bg-gradient-to-r
+        from-[#0057B8]
+        via-[#0057B8]
+        to-[#F16A24]
+        bg-clip-text
+        text-transparent
+      "
+    >
+      International Exhibitions
+    </span>
 
-              International Exhibitions
-            </div>
+    <span
+      className="
+        block
+        w-[49px]
+        h-[2px]
+        bg-gradient-to-r
+        from-[#F16A24]
+        to-[#0057B8]
+      "
+    />
 
-            {/* Heading */}
+  </div>
+</Reveal>
 
-            <h2
-              className="
-                text-3xl
-                sm:text-4xl
-                md:text-5xl
-                font-extrabold
-                text-gray-800
-                mt-4
-                leading-tight
-              "
-            >
-              Your Gateway to
+{/* HEADING */}
+<Reveal delay={0.05}>
+  <h2
+    className="
+      text-center
+      font-extrabold
+      tracking-[-1.8px]
+      leading-[1.02]
+      text-[48px]
+      md:text-[52px]
+      lg:text-[58px]
+      text-[#071B41]
+    "
+  >
+    Your Gateway to{" "}
 
-              <span
-                className="
-                  block
-                  mt-1
-                  bg-gradient-to-r
-                  from-[#0057B8]
-                  via-[#0057B8]
-                  to-[#fc6602]
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                Global Exhibitions
-              </span>
-            </h2>
+    <span
+      className="
+        bg-gradient-to-r
+        from-[#0057B8]
+        via-[#1454D8]
+        to-[#F16A24]
+        bg-clip-text
+        text-transparent
+      "
+    >
+      Global Exhibitions
+    </span>
+  </h2>
+</Reveal>
 
-            {/* Description */}
-
-            <p
-              className="
-                mt-4
-                text-gray-600
-                max-w-3xl
-                mx-auto
-                leading-7
-                text-sm
-                md:text-base
-              "
-            >
-              Discover leading international exhibitions and
-              trade fairs with complete travel assistance from
-              Sarathi NX. We make your business journey
-              simple, comfortable and stress-free.
-            </p>
-          </div>
-        </Reveal>
+{/* DESCRIPTION */}
+<Reveal delay={0.1}>
+  <p
+    className="
+      text-center
+      max-w-3xl
+      mx-auto
+      mt-5
+      text-gray-600
+      leading-7
+      text-sm
+      md:text-base
+    "
+  >
+    Discover leading international exhibitions and trade fairs
+    with complete travel assistance from Sarathi NX. We make
+    your business journey simple, comfortable and stress-free.
+  </p>
+</Reveal>
 
         {/* =================================================
             CAROUSEL

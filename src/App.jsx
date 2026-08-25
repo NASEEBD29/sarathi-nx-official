@@ -14,10 +14,12 @@ import FloatingContact from "./components/common/FloatingContact";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter basename="/sarathi-nx-official">
+      <ScrollToTop />
 
       <TopHeader />
 

@@ -11,8 +11,20 @@ import { motion } from "framer-motion";
 import { testimonials } from "../../data/testimonials";
 
 export default function Testimonials() {
-  // Duplicate reviews for seamless infinite scrolling
-  const scrollingTestimonials = [...testimonials, ...testimonials];
+  /*
+   * IMPORTANT:
+   * We render the testimonials twice.
+   * The animation moves exactly by 50% of the track.
+   * Because both sets are identical, the second set starts
+   * exactly where the first set ends.
+   *
+   * No margin/padding is added between the two sets.
+   */
+
+  const scrollingTestimonials = [
+    ...testimonials,
+    ...testimonials,
+  ];
 
   return (
     <section
@@ -74,6 +86,7 @@ export default function Testimonials() {
           }}
           viewport={{
             once: true,
+            amount: 0.3,
           }}
           transition={{
             duration: 0.6,
@@ -81,76 +94,106 @@ export default function Testimonials() {
           className="
             text-center
             px-6
-            mb-6
+            mb-8
           "
         >
-          {/* BADGE */}
 
-          <div className="flex justify-center mb-3">
-            <div
-              className="
-                inline-flex
-                items-center
-                gap-2
-                px-4
-                py-1.5
-                rounded-full
-                bg-[#FFF2EA]
-                border
-                border-[#fc6602]/10
-                text-[#fc6602]
-                text-[11px]
-                md:text-xs
-                font-bold
-                uppercase
-                tracking-[2px]
-              "
-            >
-              <FaGoogle className="text-xs" />
+          {/* ==================================================
+              TOP LABEL
+          ================================================== */}
 
-              Client Reviews
-            </div>
-          </div>
-
-          {/* HEADING */}
-
-          <h2
-            className="
-              text-3xl
-              md:text-4xl
-              lg:text-5xl
-              font-extrabold
-              text-gray-800
-              leading-tight
-            "
-          >
-            What Our
+          <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
             <span
               className="
-                ml-2
+                block
+                w-[49px]
+                h-[2px]
                 bg-gradient-to-r
-                from-[#fc6602]
-                via-[#fc6602]
-                to-[#0057B8]
+                from-[#0057B8]
+                to-[#F16A24]
+              "
+            />
+
+            <span
+              className="
+                text-[13px]
+                font-bold
+                tracking-[3px]
+                uppercase
+                leading-none
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#0057B8]
+                to-[#F16A24]
                 bg-clip-text
                 text-transparent
               "
             >
-              Clients Say
+              Client Reviews
+            </span>
+
+            <span
+              className="
+                block
+                w-[49px]
+                h-[2px]
+                bg-gradient-to-r
+                from-[#F16A24]
+                to-[#0057B8]
+              "
+            />
+
+          </div>
+
+
+          {/* ==================================================
+              MAIN HEADING
+          ================================================== */}
+
+          <h2
+            className="
+              text-center
+              font-extrabold
+              tracking-[-1.8px]
+              leading-[1.02]
+              text-[48px]
+              md:text-[52px]
+              lg:text-[58px]
+              text-[#071B41]
+            "
+          >
+            What Our{" "}
+
+            <span
+              className="
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#1454D8]
+                to-[#F16A24]
+                bg-clip-text
+                text-transparent
+              "
+            >
+              Clients Say.
             </span>
           </h2>
 
-          {/* DESCRIPTION */}
+
+          {/* ==================================================
+              DESCRIPTION
+          ================================================== */}
 
           <p
             className="
-              mt-2
-              max-w-2xl
+              max-w-[970px]
               mx-auto
-              text-gray-600
-              leading-6
-              text-sm
+              mt-[12px]
+              text-center
+              text-[16px]
+              leading-[1.55]
+              font-normal
+              text-[#303846]
             "
           >
             Trusted by professionals and businesses for reliable
@@ -158,41 +201,37 @@ export default function Testimonials() {
             business journeys.
           </p>
 
-          {/* DECORATIVE LINE */}
-
-          <div
-            className="
-              flex
-              justify-center
-              items-center
-              gap-2
-              mt-3
-            "
-          >
-            <span className="w-8 h-[2px] bg-[#fc6602]/30 rounded-full" />
-
-            <span className="w-2 h-2 rounded-full bg-[#fc6602]" />
-
-            <span className="w-12 h-[3px] bg-gradient-to-r from-[#fc6602] to-[#0057B8] rounded-full" />
-
-            <span className="w-2 h-2 rounded-full bg-[#0057B8]" />
-
-            <span className="w-8 h-[2px] bg-[#0057B8]/30 rounded-full" />
-          </div>
         </motion.div>
+
 
         {/* =====================================================
             TRUST SUMMARY
         ===================================================== */}
 
-        <div
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.08,
+          }}
           className="
             flex
             justify-center
             px-6
-            mb-7
+            mb-8
           "
         >
+
           <div
             className="
               bg-white
@@ -210,9 +249,11 @@ export default function Testimonials() {
               md:gap-7
             "
           >
+
             {/* GOOGLE */}
 
             <div className="flex items-center gap-2">
+
               <div
                 className="
                   w-8
@@ -228,64 +269,90 @@ export default function Testimonials() {
               </div>
 
               <div>
+
                 <p className="font-bold text-gray-800 text-xs">
                   Client Reviews
                 </p>
 
                 <div className="flex gap-0.5 mt-0.5">
+
                   {[1, 2, 3, 4, 5].map((star) => (
                     <FaStar
                       key={star}
                       className="text-[#FBBF24] text-[9px]"
                     />
                   ))}
+
                 </div>
+
               </div>
+
             </div>
+
 
             {/* DIVIDER */}
 
             <div className="hidden md:block w-px h-7 bg-gray-200" />
 
+
             {/* RATING */}
 
             <div className="text-center">
+
               <div className="flex items-center gap-1">
+
                 <span className="text-xl font-extrabold text-gray-800">
                   5.0
                 </span>
 
                 <FaStar className="text-[#FBBF24] text-sm" />
+
               </div>
 
               <p className="text-[10px] text-gray-400">
                 Client satisfaction
               </p>
+
             </div>
+
 
             {/* DIVIDER */}
 
             <div className="hidden md:block w-px h-7 bg-gray-200" />
 
+
             {/* VERIFIED */}
 
             <div className="flex items-center gap-2">
+
               <FaCheckCircle className="text-[#0057B8] text-sm" />
 
               <span className="text-xs font-semibold text-gray-600">
                 Trusted Experiences
               </span>
+
             </div>
+
           </div>
-        </div>
+
+        </motion.div>
+
 
         {/* =====================================================
             MOVING TESTIMONIALS
         ===================================================== */}
 
-        <div className="relative w-full overflow-hidden">
+        <div
+          className="
+            relative
+            w-full
+            overflow-hidden
+          "
+        >
 
-          {/* LEFT FADE */}
+          {/* ==================================================
+              LEFT FADE
+          ================================================== */}
 
           <div
             className="
@@ -303,7 +370,10 @@ export default function Testimonials() {
             "
           />
 
-          {/* RIGHT FADE */}
+
+          {/* ==================================================
+              RIGHT FADE
+          ================================================== */}
 
           <div
             className="
@@ -321,17 +391,28 @@ export default function Testimonials() {
             "
           />
 
-          {/* TRACK */}
+
+          {/* ==================================================
+              SEAMLESS TRACK
+
+              IMPORTANT:
+              - gap is NOT used on parent track
+              - each card wrapper has padding-right
+              - duplicated list is identical
+              - animation moves exactly 50%
+          ================================================== */}
 
           <div
             className="
+              testimonials-marquee
               flex
               w-max
-              animate-testimonials-scroll
               hover:[animation-play-state:paused]
             "
           >
+
             {scrollingTestimonials.map((item, index) => {
+
               const initials = item.name
                 ?.split(" ")
                 .map((word) => word[0])
@@ -340,15 +421,18 @@ export default function Testimonials() {
                 .toUpperCase();
 
               return (
+
                 <div
                   key={`${item.id}-${index}`}
                   className="
+                    shrink-0
                     w-[300px]
                     sm:w-[340px]
                     md:w-[370px]
-                    px-2
+                    pr-3
                   "
                 >
+
                   <motion.div
                     whileHover={{
                       y: -5,
@@ -371,7 +455,10 @@ export default function Testimonials() {
                       duration-500
                     "
                   >
-                    {/* TOP LINE */}
+
+                    {/* ==================================================
+                        TOP LINE
+                    ================================================== */}
 
                     <div
                       className="
@@ -381,13 +468,16 @@ export default function Testimonials() {
                         right-5
                         h-[3px]
                         bg-gradient-to-r
-                        from-[#fc6602]
+                        from-[#F16A24]
                         to-[#0057B8]
                         rounded-b-full
                       "
                     />
 
-                    {/* HEADER */}
+
+                    {/* ==================================================
+                        HEADER
+                    ================================================== */}
 
                     <div className="flex items-center justify-between">
 
@@ -404,15 +494,18 @@ export default function Testimonials() {
                           transition-colors
                         "
                       >
+
                         <FaQuoteLeft
                           className="
-                            text-[#fc6602]
+                            text-[#F16A24]
                             group-hover:text-white
                             text-sm
                             transition-colors
                           "
                         />
+
                       </div>
+
 
                       {/* VERIFIED */}
 
@@ -425,15 +518,22 @@ export default function Testimonials() {
                           text-gray-400
                         "
                       >
+
                         <FaCheckCircle className="text-[#0057B8]" />
 
                         Verified Client
+
                       </div>
+
                     </div>
 
-                    {/* RATING */}
+
+                    {/* ==================================================
+                        RATING
+                    ================================================== */}
 
                     <div className="flex items-center gap-1 mt-3">
+
                       {[...Array(item.rating)].map((_, i) => (
                         <FaStar
                           key={i}
@@ -444,9 +544,13 @@ export default function Testimonials() {
                       <span className="text-[10px] text-gray-400 ml-1">
                         {item.rating}.0
                       </span>
+
                     </div>
 
-                    {/* REVIEW */}
+
+                    {/* ==================================================
+                        REVIEW
+                    ================================================== */}
 
                     <p
                       className="
@@ -460,7 +564,10 @@ export default function Testimonials() {
                       "{item.review}"
                     </p>
 
-                    {/* HELPFUL */}
+
+                    {/* ==================================================
+                        HELPFUL
+                    ================================================== */}
 
                     <div
                       className="
@@ -472,12 +579,17 @@ export default function Testimonials() {
                         mt-3
                       "
                     >
+
                       <FaRegThumbsUp />
 
                       Helpful experience
+
                     </div>
 
-                    {/* DIVIDER */}
+
+                    {/* ==================================================
+                        DIVIDER
+                    ================================================== */}
 
                     <div
                       className="
@@ -487,6 +599,7 @@ export default function Testimonials() {
                         pt-3
                       "
                     >
+
                       {/* PROFILE */}
 
                       <div className="flex items-center gap-2.5">
@@ -499,7 +612,7 @@ export default function Testimonials() {
                             h-9
                             rounded-full
                             bg-gradient-to-br
-                            from-[#fc6602]
+                            from-[#F16A24]
                             to-[#0057B8]
                             text-white
                             flex
@@ -513,11 +626,13 @@ export default function Testimonials() {
                           {initials}
                         </div>
 
+
                         {/* NAME */}
 
                         <div className="min-w-0">
 
                           <div className="flex items-center gap-1">
+
                             <h3
                               className="
                                 font-bold
@@ -536,6 +651,7 @@ export default function Testimonials() {
                                 flex-shrink-0
                               "
                             />
+
                           </div>
 
                           <p
@@ -548,11 +664,17 @@ export default function Testimonials() {
                           >
                             {item.company}
                           </p>
+
                         </div>
+
                       </div>
+
                     </div>
 
-                    {/* HOVER BORDER */}
+
+                    {/* ==================================================
+                        HOVER BORDER
+                    ================================================== */}
 
                     <div
                       className="
@@ -566,12 +688,19 @@ export default function Testimonials() {
                         transition-all
                       "
                     />
+
                   </motion.div>
+
                 </div>
+
               );
+
             })}
+
           </div>
+
         </div>
+
 
         {/* =====================================================
             BOTTOM CTA
@@ -594,13 +723,15 @@ export default function Testimonials() {
           }}
           className="
             text-center
-            mt-6
+            mt-7
             px-6
           "
         >
+
           <p className="text-gray-500 text-xs md:text-sm">
             Planning your next business trip or international exhibition?
           </p>
+
 
           <a
             href="#contact"
@@ -629,9 +760,68 @@ export default function Testimonials() {
           >
             Plan Your Journey
           </a>
+
         </motion.div>
 
       </div>
+
+
+      {/* =====================================================
+          SEAMLESS MARQUEE CSS
+      ===================================================== */}
+
+      <style>
+        {`
+          /*
+           * The track contains TWO identical sets.
+           *
+           * translateX(-50%) means:
+           * Set 1 completely leaves the screen
+           * Set 2 is now in exactly the same position
+           * Animation restarts from 0%
+           *
+           * Since both sets are identical there is NO visual jump
+           * and NO blank space between repetitions.
+           */
+
+          .testimonials-marquee {
+            animation: testimonialsSeamless 35s linear infinite;
+            will-change: transform;
+          }
+
+          @keyframes testimonialsSeamless {
+            0% {
+              transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+              transform: translate3d(-50%, 0, 0);
+            }
+          }
+
+          /*
+           * Mobile slightly slower because cards are narrower
+           * and screen movement otherwise feels too fast.
+           */
+
+          @media (max-width: 640px) {
+            .testimonials-marquee {
+              animation-duration: 28s;
+            }
+          }
+
+          /*
+           * Respect reduced-motion accessibility preference.
+           */
+
+          @media (prefers-reduced-motion: reduce) {
+            .testimonials-marquee {
+              animation-play-state: paused;
+            }
+          }
+        `}
+      </style>
+
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Reveal from "../common/Reveal";
 
 import {
   FaPlaneDeparture,
@@ -8,6 +9,7 @@ import {
   FaHotel,
   FaUsers,
   FaGlobeAsia,
+  FaGlobe,
   FaBriefcase,
   FaSuitcaseRolling,
   FaArrowRight,
@@ -25,6 +27,9 @@ import mice from "../../assets/images/services/mice.jpg";
 import group from "../../assets/images/services/group.jpg";
 import globalTourisam from "../../assets/images/services/globalTourisam.jpg";
 import hotel from "../../assets/images/services/hotel.jpg";
+
+// NEW IMAGE
+import otherInternationalTradeFairs from "../../assets/images/services/otherInternationalTradeFairs.jpg";
 
 // ======================================================
 // SERVICES DATA
@@ -102,6 +107,19 @@ const services = [
       "From comfortable hotel bookings to transfers and other travel arrangements, we take care of the details for a smooth journey.",
     image: hotel,
   },
+
+  // ======================================================
+  // NEW SERVICE
+  // ======================================================
+
+  {
+    icon: FaGlobe,
+    title: "Other International Trade Fairs",
+    shortTitle: "Other International Trade Fairs",
+    description:
+      "We manage travel for various international exhibitions worldwide.",
+    image: otherInternationalTradeFairs,
+  },
 ];
 
 // ======================================================
@@ -156,47 +174,83 @@ export default function Services() {
 
           {/* EYEBROW */}
 
-          <div
-            className="
-              inline-flex
-              items-center
-              gap-2
-              px-4
-              py-2
-              rounded-full
-              bg-gradient-to-r
-              from-[#0057B8]
-              via-[#0057B8]
-              to-[#fc6602]
-              text-white
-              text-xs
-              md:text-sm
-              font-bold
-              uppercase
-              tracking-[2px]
-              shadow-md
-            "
-          >
-            <FaGlobeAsia />
+          <Reveal>
+            <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
-            Our Services
-          </div>
+              <span
+                className="
+                  block
+                  w-[49px]
+                  h-[2px]
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  to-[#F16A24]
+                "
+              />
+
+              <span
+                className="
+                  text-[13px]
+                  font-bold
+                  tracking-[3px]
+                  uppercase
+                  leading-none
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  via-[#0057B8]
+                  to-[#F16A24]
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Our Services
+              </span>
+
+              <span
+                className="
+                  block
+                  w-[49px]
+                  h-[2px]
+                  bg-gradient-to-r
+                  from-[#F16A24]
+                  to-[#0057B8]
+                "
+              />
+
+            </div>
+          </Reveal>
 
           {/* HEADING */}
 
-          <h2
-            className="
-              text-3xl
-              md:text-4xl
-              lg:text-5xl
-              font-extrabold
-              text-gray-800
-              mt-4
-              leading-tight
-            "
-          >
-            Complete Travel Solutions
-          </h2>
+          <Reveal delay={0.05}>
+            <h2
+              className="
+                text-center
+                font-extrabold
+                tracking-[-1.8px]
+                leading-[1.02]
+                text-[48px]
+                md:text-[52px]
+                lg:text-[58px]
+                text-[#071B41]
+              "
+            >
+              Complete Travel{" "}
+
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  via-[#1454D8]
+                  to-[#F16A24]
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Solutions.
+              </span>
+            </h2>
+          </Reveal>
 
           {/* DESCRIPTION */}
 

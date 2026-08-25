@@ -1303,9 +1303,9 @@ export default function Hero() {
                     <p
                       className="
                         mt-1
-                        text-[7px]
+                        text-[15px]
                         sm:text-[9px]
-                        text-white/75
+                        text-[#f37005ea]
                         leading-3
                         max-w-[100px]
                       "
@@ -1340,6 +1340,7 @@ export default function Hero() {
           flex
           gap-1.5
           z-30
+          mb-2
         "
       >
 

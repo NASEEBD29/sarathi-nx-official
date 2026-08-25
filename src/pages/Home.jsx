@@ -29,7 +29,7 @@ export default function Home() {
       <InternationalExhibitions />
       <Industries/>
       <WhyChooseUs/>
-      <StatsSection />
+      {/* <StatsSection /> */}
       {/* <UpcomingEvents/> */}
       {/* <UpcomingExhibitions/> */}
       {/* <Industries/> */}

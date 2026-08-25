@@ -23,16 +23,22 @@ const quickLinks = [
   { title: "Contact Us", href: "/contact" },
 ];
 
+/* =========================================================
+   OUR SERVICES
+========================================================= */
+
 const services = [
-  "International Exhibition Travel",
-  "Corporate Travel",
-  "Business Travel",
-  "Visa Assistance",
-  "MICE",
-  "Group Tours",
-  "Hotel & Travel Assistance",
-  "Travel Insurance",
-  "Forex Assistance",
+  "Flights & Air Travel",
+  "Hotels & Accommodation",
+  "Visa & Travel Documentation",
+  "Travel Insurance & Forex",
+  "Transfers & Car Rentals",
+  "Domestic & International Holidays",
+  "Cruise & Ferry Bookings",
+  "Business & Corporate Travel",
+  "MICE & Exhibition Travel",
+  "Group & Customized Tours",
+  "Meet & Greet & Concierge Services",
 ];
 
 export default function Footer() {
@@ -186,7 +192,7 @@ export default function Footer() {
             grid
             grid-cols-1
             sm:grid-cols-2
-            lg:grid-cols-[1.35fr_0.9fr_1.25fr_1fr]
+            lg:grid-cols-[1.3fr_0.8fr_1.15fr_1.35fr]
           "
         >
           {/* =================================================
@@ -521,7 +527,7 @@ export default function Footer() {
               lg:border-white/15
               px-0
               sm:px-7
-              lg:px-10
+              lg:px-8
               pb-10
               lg:pb-0
             "
@@ -543,10 +549,11 @@ export default function Footer() {
               <span className="w-5 h-[3px] rounded-full bg-[#0057B8]" />
             </div>
 
-            <ul className="space-y-3.5">
+            <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <div
+                  <Link
+                    to="/services"
                     className="
                       group
                       flex
@@ -554,7 +561,10 @@ export default function Footer() {
                       gap-3
                       text-gray-300
                       text-sm
-                      md:text-[15px]
+                      md:text-[14px]
+                      hover:text-white
+                      transition-all
+                      duration-300
                     "
                   >
                     <FaArrowRight
@@ -568,10 +578,15 @@ export default function Footer() {
                       "
                     />
 
-                    <span className="group-hover:text-white transition">
+                    <span
+                      className="
+                        group-hover:text-white
+                        transition
+                      "
+                    >
                       {service}
                     </span>
-                  </div>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -587,7 +602,9 @@ export default function Footer() {
               lg:border-white/15
               px-0
               sm:px-7
-              lg:px-10
+              lg:px-8
+              xl:px-10
+              min-w-0
             "
           >
             <h3
@@ -608,9 +625,13 @@ export default function Footer() {
             </div>
 
             <div className="space-y-7">
-              {/* ADDRESS */}
+
+              {/* =================================================
+                  ADDRESS
+              ================================================= */}
 
               <div className="flex items-start gap-4">
+
                 <div
                   className="
                     w-12
@@ -633,31 +654,36 @@ export default function Footer() {
                   />
                 </div>
 
-                <p
-                  className="
-                    text-gray-300
-                    text-sm
-                    md:text-[15px]
-                    leading-6
-                  "
-                >
-                  1st Floor, Office No. 026,
-                  <br />
-                  Crystal Plaza CHS Ltd,
-                  <br />
-                  Station Road, Mira Road East,
-                  <br />
-                  Thane - 401107
-                </p>
+                <div className="min-w-0 flex-1">
+
+                  <p
+                    className="
+                      text-gray-300
+                      text-sm
+                      md:text-[14px]
+                      leading-6
+                      whitespace-nowrap
+                    "
+                  >
+                    1st Floor, Office No. 026, Crystal Plaza CHS Ltd,
+                    <br />
+                    Station Road, Mira Road East, Thane - 401107
+                  </p>
+
+                </div>
+
               </div>
 
               {/* DIVIDER */}
 
               <div className="h-px bg-white/10" />
 
-              {/* PHONE */}
+              {/* =================================================
+                  PHONE
+              ================================================= */}
 
               <div className="flex items-start gap-4">
+
                 <div
                   className="
                     w-12
@@ -681,6 +707,7 @@ export default function Footer() {
                 </div>
 
                 <div className="space-y-1.5 pt-1">
+
                   <a
                     href="tel:+917666984626"
                     className="
@@ -708,16 +735,21 @@ export default function Footer() {
                   >
                     +91 865 786 7181
                   </a>
+
                 </div>
+
               </div>
 
               {/* DIVIDER */}
 
               <div className="h-px bg-white/10" />
 
-              {/* EMAIL */}
+              {/* =================================================
+                  EMAIL
+              ================================================= */}
 
               <div className="flex items-start gap-4">
+
                 <div
                   className="
                     w-12
@@ -754,7 +786,9 @@ export default function Footer() {
                 >
                   sajid@sarathinx.com
                 </a>
+
               </div>
+
             </div>
           </div>
         </div>
@@ -788,7 +822,10 @@ export default function Footer() {
             items-center
           "
         >
-          {/* LEFT */}
+
+          {/* =================================================
+              LEFT
+          ================================================= */}
 
           <div
             className="
@@ -809,7 +846,9 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* CENTER */}
+          {/* =================================================
+              CENTER
+          ================================================= */}
 
           <div
             className="
@@ -848,6 +887,7 @@ export default function Footer() {
             </div>
 
             <div>
+
               <p className="text-gray-300 text-xs">
                 Need Help? Call Us
               </p>
@@ -864,6 +904,7 @@ export default function Footer() {
                   text-white
                 "
               >
+
                 <a
                   href="tel:+917666984626"
                   className="hover:text-[#fc6602] transition"
@@ -871,7 +912,9 @@ export default function Footer() {
                   +91 766 698 4626
                 </a>
 
-                <span className="text-gray-500">|</span>
+                <span className="text-gray-500">
+                  |
+                </span>
 
                 <a
                   href="tel:+918657867181"
@@ -879,11 +922,15 @@ export default function Footer() {
                 >
                   +91 865 786 7181
                 </a>
+
               </div>
+
             </div>
           </div>
 
-          {/* RIGHT */}
+          {/* =================================================
+              RIGHT
+          ================================================= */}
 
           <div
             className="
@@ -914,6 +961,7 @@ export default function Footer() {
               We Plan. You Travel. We Care.
             </span>
           </div>
+
         </div>
       </div>
 

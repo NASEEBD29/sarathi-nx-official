@@ -143,8 +143,14 @@ Thank you.
       content: (
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <span>Monday - Saturday</span>
-          <span className="hidden sm:inline text-white/40">|</span>
-          <span className="text-white/85">9:30 AM - 7:00 PM</span>
+
+          <span className="hidden sm:inline text-white/40">
+            |
+          </span>
+
+          <span className="text-white/85">
+            9:30 AM - 7:00 PM
+          </span>
         </div>
       ),
     },
@@ -189,6 +195,7 @@ Thank you.
         lg:py-20
       "
     >
+
       {/* =====================================================
           BACKGROUND DECORATION
       ===================================================== */}
@@ -221,6 +228,7 @@ Thank you.
         "
       />
 
+
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8">
 
         {/* =====================================================
@@ -228,56 +236,155 @@ Thank you.
         ===================================================== */}
 
         <Reveal>
+
           <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
 
-            <div className="flex items-center justify-center gap-3 mb-3">
+            {/* TOP LABEL */}
 
-              <span className="w-8 md:w-10 h-[2px] bg-[#fc6602]" />
+            <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
               <span
                 className="
-                  uppercase
-                  tracking-[3px]
-                  text-[11px]
-                  md:text-xs
+                  block
+                  w-[49px]
+                  h-[2px]
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  to-[#F16A24]
+                "
+              />
+
+              <span
+                className="
+                  text-[13px]
                   font-bold
-                  text-[#0057B8]
+                  tracking-[3px]
+                  uppercase
+                  leading-none
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  via-[#0057B8]
+                  to-[#F16A24]
+                  bg-clip-text
+                  text-transparent
                 "
               >
-                Contact Us
+                CONTACT US
               </span>
 
-              <span className="w-8 md:w-10 h-[2px] bg-[#0057B8]" />
+              <span
+                className="
+                  block
+                  w-[49px]
+                  h-[2px]
+                  bg-gradient-to-r
+                  from-[#F16A24]
+                  to-[#0057B8]
+                "
+              />
 
             </div>
 
+
+            {/* MAIN HEADING */}
+
             <h2
               className="
-                text-3xl
-                sm:text-4xl
-                md:text-5xl
+                text-center
                 font-extrabold
-                text-[#0A2144]
-                tracking-tight
-                leading-tight
+                tracking-[-1.8px]
+                leading-[1.02]
+                text-[42px]
+                sm:text-[46px]
+                md:text-[52px]
+                lg:text-[58px]
+                text-[#071B41]
               "
             >
               Let's Plan Your{" "}
-              <span className="text-[#0057B8]">
-                Journey
+
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-[#0057B8]
+                  via-[#1454D8]
+                  to-[#F16A24]
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Journey.
               </span>
+
             </h2>
+
+
+            {/* SUB HEADING */}
+
+            <div
+              className="
+                flex
+                flex-wrap
+                items-center
+                justify-center
+                gap-[10px]
+                mt-[10px]
+                text-center
+              "
+            >
+
+              <span
+                className="
+                  text-[18px]
+                  md:text-[20px]
+                  font-bold
+                  leading-none
+                  text-[#E76624]
+                "
+              >
+                Expert Travel Assistance
+              </span>
+
+              <span
+                className="
+                  text-[18px]
+                  md:text-[20px]
+                  font-bold
+                  leading-none
+                  text-[#19396D]
+                "
+              >
+                |
+              </span>
+
+              <span
+                className="
+                  text-[18px]
+                  md:text-[20px]
+                  font-bold
+                  leading-none
+                  text-[#19396D]
+                "
+              >
+                Let's make your journey simple.
+              </span>
+
+            </div>
+
+
+            {/* DESCRIPTION */}
 
             <p
               className="
-                mt-3
-                text-sm
-                md:text-base
-                text-[#40516D]
-                leading-6
-                md:leading-7
-                max-w-2xl
+                max-w-[850px]
                 mx-auto
+                mt-[14px]
+                text-center
+                text-[15px]
+                md:text-[16px]
+                leading-[1.55]
+                font-normal
+                text-[#40516D]
               "
             >
               Planning an exhibition, business trip or corporate journey?
@@ -285,6 +392,7 @@ Thank you.
             </p>
 
           </div>
+
         </Reveal>
 
 
@@ -328,31 +436,30 @@ Thank you.
               "
             >
 
-              {/* Decorative World Map Effect */}
+              {/* =================================================
+                  WORLD MAP BACKGROUND
+              ================================================= */}
 
-           {/* =================================================
-    WORLD MAP BACKGROUND
-================================================= */}
+              <img
+                src={worldMap}
+                alt=""
+                aria-hidden="true"
+                className="
+                  absolute
+                  top-0
+                  right-0
+                  w-[65%]
+                  md:w-[60%]
+                  lg:w-[58%]
+                  h-auto
+                  opacity-[0.18]
+                  pointer-events-none
+                  select-none
+                  object-contain
+                  object-right-top
+                "
+              />
 
-<img
-  src={worldMap}
-  alt=""
-  aria-hidden="true"
-  className="
-    absolute
-    top-0
-    right-0
-    w-[65%]
-    md:w-[60%]
-    lg:w-[58%]
-    h-auto
-    opacity-[0.18]
-    pointer-events-none
-    select-none
-    object-contain
-    object-right-top
-  "
-/>
 
               {/* Decorative circles */}
 
@@ -386,7 +493,7 @@ Thank you.
               <div className="relative z-10 h-full flex flex-col">
 
                 {/* =================================================
-                    LEFT HEADING
+                    LEFT HEADING — KEPT SAME
                 ================================================= */}
 
                 <div className="mb-6">
@@ -416,6 +523,7 @@ Thank you.
 
                   </div>
 
+
                   <h3
                     className="
                       text-3xl
@@ -430,6 +538,7 @@ Thank you.
                     Travel Experts
                   </h3>
 
+
                   <div
                     className="
                       mt-4
@@ -440,6 +549,7 @@ Thank you.
                       to-transparent
                     "
                   />
+
 
                   <p
                     className="
@@ -465,6 +575,7 @@ Thank you.
                 <div className="space-y-2.5">
 
                   {contactItems.map((item, index) => {
+
                     const Icon = item.icon;
 
                     return (
@@ -543,12 +654,7 @@ Thank you.
                             {item.label}
                           </p>
 
-                          <div
-                            className="
-                              font-medium
-                              text-white
-                            "
-                          >
+                          <div className="font-medium text-white">
                             {item.content}
                           </div>
 
@@ -562,7 +668,7 @@ Thank you.
 
 
                 {/* =================================================
-                    WHATSAPP
+                    WHATSAPP BUTTON
                 ================================================= */}
 
                 <a
@@ -610,6 +716,7 @@ Thank you.
                     </div>
 
                     <div>
+
                       <p className="font-bold text-sm">
                         Chat with us on WhatsApp
                       </p>
@@ -617,6 +724,7 @@ Thank you.
                       <p className="text-[11px] text-white/85">
                         Quick responses for your travel queries
                       </p>
+
                     </div>
 
                   </div>
@@ -669,7 +777,7 @@ Thank you.
                   items-start
                   justify-between
                   gap-4
-                  mb-6
+                  mb-7
                 "
               >
 
@@ -690,7 +798,7 @@ Thank you.
                   <h3
                     className="
                       text-2xl
-                      md:text-[28px]
+                      md:text-[30px]
                       font-extrabold
                       text-[#0A2144]
                       mt-1.5
@@ -707,6 +815,7 @@ Thank you.
                       md:text-sm
                       mt-2
                       leading-5
+                      max-w-[430px]
                     "
                   >
                     Share your requirements and our team will get back to you.
@@ -1115,8 +1224,8 @@ Thank you.
                   className="
                     group
                     w-full
-                    h-13
-                    mt-1
+                    h-[52px]
+                    mt-2
                     inline-flex
                     items-center
                     justify-center
@@ -1134,16 +1243,22 @@ Thank you.
                     hover:-translate-y-0.5
                     transition-all
                     duration-300
+                    overflow-hidden
                   "
                 >
 
-                  Send Enquiry
+                  <span>
+                    Send Enquiry
+                  </span>
 
-                  <FaArrowRight
+                  <FaPaperPlane
                     className="
-                      text-xs
-                      group-hover:translate-x-1
+                      text-sm
+                      rotate-[-8deg]
+                      group-hover:translate-x-2
+                      group-hover:-translate-y-1
                       transition-transform
+                      duration-500
                     "
                   />
 
@@ -1189,6 +1304,7 @@ Thank you.
             >
 
               {features.map((feature, index) => {
+
                 const Icon = feature.icon;
 
                 return (
@@ -1276,7 +1392,9 @@ Thank you.
       ===================================================== */}
 
       <style>{`
+
         @keyframes whatsappPulse {
+
           0%,
           100% {
             transform: scale(1);
@@ -1285,6 +1403,7 @@ Thank you.
           50% {
             transform: scale(1.015);
           }
+
         }
 
         .whatsapp-pulse {
@@ -1295,6 +1414,7 @@ Thank you.
           animation-play-state: paused;
           transform: scale(1.02);
         }
+
       `}</style>
 
     </section>

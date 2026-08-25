@@ -268,8 +268,8 @@ export default function Navbar() {
 
               text-white
 
-              px-5
-              xl:px-6
+              px-[48px]
+              
 
               py-3
               xl:py-3.5

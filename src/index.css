@@ -26,6 +26,43 @@ html {
   }
 }
 
-.animate-testimonials-scroll {
-  animation: testimonials-scroll 45s linear infinite;
+/* =====================================================
+   SEAMLESS TESTIMONIAL INFINITE SCROLL
+   ===================================================== */
+
+.testimonials-track {
+  animation: testimonialsInfiniteScroll 38s linear infinite;
+  will-change: transform;
+}
+
+@keyframes testimonialsInfiniteScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 640px) {
+  .testimonials-track {
+    animation-duration: 30s;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-track {
+    animation: none;
+  }
 }

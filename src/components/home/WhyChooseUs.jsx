@@ -4,13 +4,14 @@ import {
   FaGlobe,
   FaPassport,
   FaHandshake,
+  FaClock,
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 import Reveal from "../common/Reveal";
 
 // ======================================================
-// EXACT CONTENT FROM REFERENCE IMAGE
+// WHY CHOOSE SARATHI NX
 // ======================================================
 
 const features = [
@@ -20,34 +21,45 @@ const features = [
     title: "Transparent Pricing",
     desc: "Honest pricing with no hidden charges.",
   },
+
   {
     number: "02",
     icon: FaHeadset,
     title: "Dedicated Travel Consultants",
     desc: "Personalized guidance for every journey.",
   },
+
   {
     number: "03",
     icon: FaGlobe,
     title: "Worldwide Network",
     desc: "Reliable global travel partnerships.",
   },
+
   {
     number: "04",
     icon: FaPassport,
     title: "Fast Visa Assistance",
     desc: "Quick and hassle-free visa support.",
   },
+
   {
     number: "05",
     icon: FaHandshake,
     title: "Personalized Travel Solutions",
     desc: "Travel plans tailored to your needs.",
   },
+
+  {
+    number: "06",
+    icon: FaClock,
+    title: "24/7 Customer Support",
+    desc: "Assistance whenever you need us.",
+  },
 ];
 
 // ======================================================
-// WHY CHOOSE SARATHI NX
+// WHY CHOOSE US
 // ======================================================
 
 export default function WhyChooseUs() {
@@ -59,18 +71,37 @@ export default function WhyChooseUs() {
         w-full
         overflow-hidden
         bg-[#f8f9fc]
-        py-8
-        md:py-9
+        py-[10px]
+        md:py-[14px]
       "
     >
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6">
+
+      <div
+        className="
+          relative
+          z-10
+          w-full
+          max-w-[1240px]
+          mx-auto
+          px-5
+          md:px-6
+        "
+      >
 
         {/* ==================================================
             TOP LABEL
         ================================================== */}
 
         <Reveal>
-          <div className="flex items-center justify-center gap-[10px] mb-[7px]">
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-[10px]
+              mb-[7px]
+            "
+          >
 
             <span
               className="
@@ -127,7 +158,8 @@ export default function WhyChooseUs() {
               font-extrabold
               tracking-[-1.8px]
               leading-[1.02]
-              text-[48px]
+              text-[42px]
+              sm:text-[46px]
               md:text-[52px]
               lg:text-[58px]
               text-[#071B41]
@@ -159,17 +191,19 @@ export default function WhyChooseUs() {
           <div
             className="
               flex
+              flex-wrap
               items-center
               justify-center
-              gap-[10px]
-              mt-[10px]
+              gap-[9px]
+              mt-[9px]
               text-center
             "
           >
 
             <span
               className="
-                text-[20px]
+                text-[17px]
+                md:text-[20px]
                 font-bold
                 leading-none
                 text-[#E76624]
@@ -180,7 +214,8 @@ export default function WhyChooseUs() {
 
             <span
               className="
-                text-[20px]
+                text-[17px]
+                md:text-[20px]
                 font-bold
                 leading-none
                 text-[#19396D]
@@ -191,7 +226,8 @@ export default function WhyChooseUs() {
 
             <span
               className="
-                text-[20px]
+                text-[17px]
+                md:text-[20px]
                 font-bold
                 leading-none
                 text-[#19396D]
@@ -213,11 +249,12 @@ export default function WhyChooseUs() {
             className="
               max-w-[970px]
               mx-auto
-              mt-[14px]
-              mb-[34px]
+              mt-[12px]
+              mb-[27px]
               text-center
-              text-[16px]
-              leading-[1.55]
+              text-[14px]
+              md:text-[16px]
+              leading-[1.5]
               font-normal
               text-[#303846]
             "
@@ -237,8 +274,10 @@ export default function WhyChooseUs() {
         <div
           className="
             grid
-            grid-cols-5
-            gap-[14px]
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-6
+            gap-[12px]
             w-full
           "
         >
@@ -249,7 +288,7 @@ export default function WhyChooseUs() {
             return (
               <Reveal
                 key={item.title}
-                delay={0.12 + index * 0.05}
+                delay={0.12 + index * 0.04}
               >
 
                 <motion.div
@@ -265,9 +304,9 @@ export default function WhyChooseUs() {
                     group
                     relative
                     w-full
-                    h-[435px]
+                    h-[300px]
                     overflow-hidden
-                    rounded-[17px]
+                    rounded-[15px]
                     bg-white
                     border
                     border-[#edf0f5]
@@ -284,8 +323,8 @@ export default function WhyChooseUs() {
                       absolute
                       top-0
                       left-0
-                      w-[127px]
-                      h-[4px]
+                      w-[58px]
+                      h-[3px]
                       rounded-br-full
                       bg-[#0057B8]
                     "
@@ -299,9 +338,9 @@ export default function WhyChooseUs() {
                   <div
                     className="
                       absolute
-                      top-[27px]
-                      right-[18px]
-                      text-[31px]
+                      top-[18px]
+                      right-[13px]
+                      text-[22px]
                       leading-none
                       font-extrabold
                       tracking-[-1px]
@@ -317,35 +356,33 @@ export default function WhyChooseUs() {
                       CIRCLE ICON
                   ================================================== */}
 
-                  <div className="pt-[31px] pl-[35px]">
+                  <div className="pt-[18px] pl-[25px]">
 
                     <div
                       className="
                         relative
-                        w-[94px]
-                        h-[94px]
+                        w-[72px]
+                        h-[72px]
                         rounded-full
                         overflow-hidden
                         flex
                         items-center
                         justify-center
-
                         bg-gradient-to-br
                         from-[#0754C8]
                         via-[#1852C7]
                         to-[#E85C0A]
-
                         shadow-[0_5px_14px_rgba(0,70,180,0.12)]
                       "
                     >
 
-                      {/* soft highlight */}
+                      {/* SOFT HIGHLIGHT */}
 
                       <div
                         className="
                           absolute
                           inset-0
-                          bg-[radial-gradient(circle_at_28%_25%,rgba(255,255,255,0.22),transparent_30%)]
+                          bg-[radial-gradient(circle_at_28%_25%,rgba(255,255,255,0.25),transparent_30%)]
                         "
                       />
 
@@ -354,7 +391,7 @@ export default function WhyChooseUs() {
                           relative
                           z-10
                           text-white
-                          text-[42px]
+                          text-[31px]
                         "
                       />
 
@@ -367,16 +404,22 @@ export default function WhyChooseUs() {
                       CARD CONTENT
                   ================================================== */}
 
-                  <div className="px-[35px] pt-[28px]">
+                  <div
+                    className="
+                      px-[25px]
+                      pt-[20px]
+                    "
+                  >
 
                     <h3
                       className="
-                        max-w-[205px]
-                        min-h-[57px]
-                        text-[22px]
+                        max-w-[155px]
+                        min-h-[47px]
+                        text-[17px]
+                        md:text-[18px]
                         font-extrabold
-                        leading-[1.28]
-                        tracking-[-0.35px]
+                        leading-[1.25]
+                        tracking-[-0.25px]
                         text-[#102C61]
                       "
                     >
@@ -384,27 +427,32 @@ export default function WhyChooseUs() {
                     </h3>
 
 
-                    {/* ORANGE DIVIDER */}
+                    {/* ==================================================
+                        ORANGE DIVIDER
+                    ================================================== */}
 
                     <div
                       className="
-                        mt-[15px]
-                        mb-[22px]
-                        w-[43px]
-                        h-[3px]
+                        mt-[11px]
+                        mb-[14px]
+                        w-[34px]
+                        h-[2px]
                         rounded-full
                         bg-[#F1783B]
                       "
                     />
 
 
-                    {/* DESCRIPTION */}
+                    {/* ==================================================
+                        DESCRIPTION
+                    ================================================== */}
 
                     <p
                       className="
-                        max-w-[200px]
-                        text-[15px]
-                        leading-[1.65]
+                        max-w-[160px]
+                        text-[12px]
+                        md:text-[13px]
+                        leading-[1.55]
                         font-normal
                         text-[#303846]
                       "
@@ -422,10 +470,10 @@ export default function WhyChooseUs() {
                   <div
                     className="
                       absolute
-                      right-[17px]
-                      bottom-[19px]
-                      w-[76px]
-                      h-[76px]
+                      right-[12px]
+                      bottom-[12px]
+                      w-[55px]
+                      h-[55px]
                       flex
                       items-center
                       justify-center
@@ -433,17 +481,19 @@ export default function WhyChooseUs() {
                       pointer-events-none
                     "
                   >
+
                     <Icon
                       className="
-                        text-[68px]
+                        text-[50px]
                         opacity-80
                       "
                     />
+
                   </div>
 
 
                   {/* ==================================================
-                      VERY SUBTLE HOVER LINE
+                      SUBTLE HOVER LINE
                   ================================================== */}
 
                   <div
@@ -452,7 +502,7 @@ export default function WhyChooseUs() {
                       bottom-0
                       left-0
                       w-0
-                      h-[3px]
+                      h-[2px]
                       bg-gradient-to-r
                       from-[#0057B8]
                       to-[#F16A24]
