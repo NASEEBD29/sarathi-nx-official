@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   FaArrowRight,
   FaMapMarkerAlt,
-  FaGlobeAsia,
   FaChevronLeft,
   FaChevronRight,
   FaPlaneDeparture,
@@ -25,6 +24,9 @@ import medlabImage from "../../assets/images/exhibitions/medlab.jpg";
 import cantonFairImage from "../../assets/images/exhibitions/cantonFair.jpg";
 import itmaImage from "../../assets/images/exhibitions/itma.jpg";
 
+// NEW IMAGE
+import otherInternationalTradeFairsImage from "../../assets/images/exhibitions/otherInternationalTradeFairs.jpg";
+
 // =====================================================
 // EXHIBITION DATA
 // =====================================================
@@ -37,6 +39,7 @@ const exhibitions = [
     location: "Shanghai & Beijing, China",
     image: cmefImage,
     link: "https://www.cmef.com.cn/en",
+    external: true,
   },
 
   {
@@ -46,6 +49,7 @@ const exhibitions = [
     location: "Düsseldorf, Germany",
     image: medicaImage,
     link: "https://www.medica-tradefair.com/",
+    external: true,
   },
 
   {
@@ -55,6 +59,7 @@ const exhibitions = [
     location: "Dubai, UAE",
     image: arabHealthImage,
     link: "https://www.worldhealthexpo.com/events/labs/dubai/",
+    external: true,
   },
 
   {
@@ -64,6 +69,7 @@ const exhibitions = [
     location: "Beijing, China",
     image: weldingImage,
     link: "#",
+    external: false,
   },
 
   {
@@ -73,6 +79,7 @@ const exhibitions = [
     location: "Dubai, UAE",
     image: medlabImage,
     link: "https://www.worldhealthexpo.com/events/labs/dubai/",
+    external: true,
   },
 
   {
@@ -82,6 +89,7 @@ const exhibitions = [
     location: "Guangzhou, China",
     image: cantonFairImage,
     link: "#",
+    external: false,
   },
 
   {
@@ -91,6 +99,21 @@ const exhibitions = [
     location: "Shanghai, China",
     image: itmaImage,
     link: "#",
+    external: false,
+  },
+
+  // =====================================================
+  // NEW CARD
+  // =====================================================
+
+  {
+    title: "OTHER INTERNATIONAL TRADE FAIRS",
+    description:
+      "We manage travel for various international exhibitions worldwide.",
+    location: "International Exhibitions Worldwide",
+    image: otherInternationalTradeFairsImage,
+    link: "/exhibitions",
+    external: false,
   },
 ];
 
@@ -198,6 +221,7 @@ export default function InternationalExhibitions() {
         overflow-hidden
       "
     >
+
       {/* =================================================
           DECORATIVE BACKGROUND
       ================================================== */}
@@ -236,102 +260,108 @@ export default function InternationalExhibitions() {
             SECTION HEADING
         ================================================== */}
 
-       <Reveal>
-  <div className="flex items-center justify-center gap-[10px] mb-[7px]">
+        <Reveal>
+          <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
-    <span
-      className="
-        block
-        w-[49px]
-        h-[2px]
-        bg-gradient-to-r
-        from-[#0057B8]
-        to-[#F16A24]
-      "
-    />
+            <span
+              className="
+                block
+                w-[49px]
+                h-[2px]
+                bg-gradient-to-r
+                from-[#0057B8]
+                to-[#F16A24]
+              "
+            />
 
-    <span
-      className="
-        text-[13px]
-        font-bold
-        tracking-[3px]
-        uppercase
-        leading-none
-        bg-gradient-to-r
-        from-[#0057B8]
-        via-[#0057B8]
-        to-[#F16A24]
-        bg-clip-text
-        text-transparent
-      "
-    >
-      International Exhibitions
-    </span>
+            <span
+              className="
+                text-[13px]
+                font-bold
+                tracking-[3px]
+                uppercase
+                leading-none
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#0057B8]
+                to-[#F16A24]
+                bg-clip-text
+                text-transparent
+              "
+            >
+              International Exhibitions
+            </span>
 
-    <span
-      className="
-        block
-        w-[49px]
-        h-[2px]
-        bg-gradient-to-r
-        from-[#F16A24]
-        to-[#0057B8]
-      "
-    />
+            <span
+              className="
+                block
+                w-[49px]
+                h-[2px]
+                bg-gradient-to-r
+                from-[#F16A24]
+                to-[#0057B8]
+              "
+            />
 
-  </div>
-</Reveal>
+          </div>
+        </Reveal>
 
-{/* HEADING */}
-<Reveal delay={0.05}>
-  <h2
-    className="
-      text-center
-      font-extrabold
-      tracking-[-1.8px]
-      leading-[1.02]
-      text-[48px]
-      md:text-[52px]
-      lg:text-[58px]
-      text-[#071B41]
-    "
-  >
-    Your Gateway to{" "}
+        {/* =================================================
+            HEADING
+        ================================================== */}
 
-    <span
-      className="
-        bg-gradient-to-r
-        from-[#0057B8]
-        via-[#1454D8]
-        to-[#F16A24]
-        bg-clip-text
-        text-transparent
-      "
-    >
-      Global Exhibitions
-    </span>
-  </h2>
-</Reveal>
+        <Reveal delay={0.05}>
+          <h2
+            className="
+              text-center
+              font-extrabold
+              tracking-[-1.8px]
+              leading-[1.02]
+              text-[48px]
+              md:text-[52px]
+              lg:text-[58px]
+              text-[#071B41]
+            "
+          >
+            Your Gateway to{" "}
 
-{/* DESCRIPTION */}
-<Reveal delay={0.1}>
-  <p
-    className="
-      text-center
-      max-w-3xl
-      mx-auto
-      mt-5
-      text-gray-600
-      leading-7
-      text-sm
-      md:text-base
-    "
-  >
-    Discover leading international exhibitions and trade fairs
-    with complete travel assistance from Sarathi NX. We make
-    your business journey simple, comfortable and stress-free.
-  </p>
-</Reveal>
+            <span
+              className="
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#1454D8]
+                to-[#F16A24]
+                bg-clip-text
+                text-transparent
+              "
+            >
+              Global Exhibitions
+            </span>
+          </h2>
+        </Reveal>
+
+        {/* =================================================
+            DESCRIPTION
+        ================================================== */}
+
+        <Reveal delay={0.1}>
+          <p
+            className="
+              text-center
+              max-w-3xl
+              mx-auto
+              mt-5
+              text-gray-600
+              leading-7
+              text-sm
+              md:text-base
+            "
+          >
+            Discover leading international exhibitions and trade fairs
+            with complete travel assistance from Sarathi NX. We make
+            your business journey simple, comfortable and stress-free.
+          </p>
+        </Reveal>
 
         {/* =================================================
             CAROUSEL
@@ -390,11 +420,13 @@ export default function InternationalExhibitions() {
               py-4
             "
           >
+
             <AnimatePresence
               initial={false}
               custom={direction}
               mode="popLayout"
             >
+
               <motion.div
                 key={startIndex}
                 custom={direction}
@@ -431,6 +463,7 @@ export default function InternationalExhibitions() {
                 ================================================== */}
 
                 {visibleCards.map((item, index) => (
+
                   <motion.div
                     key={`${item.title}-${startIndex}-${index}`}
                     whileHover={{
@@ -487,7 +520,7 @@ export default function InternationalExhibitions() {
                       "
                     >
 
-                      {/* Image */}
+                      {/* IMAGE */}
 
                       <img
                         src={item.image}
@@ -503,7 +536,7 @@ export default function InternationalExhibitions() {
                         "
                       />
 
-                      {/* Dark Gradient */}
+                      {/* DARK GRADIENT */}
 
                       <div
                         className="
@@ -516,7 +549,7 @@ export default function InternationalExhibitions() {
                         "
                       />
 
-                      {/* Blue + Orange Overlay */}
+                      {/* BLUE + ORANGE OVERLAY */}
 
                       <div
                         className="
@@ -549,6 +582,7 @@ export default function InternationalExhibitions() {
                           font-semibold
                         "
                       >
+
                         <div
                           className="
                             w-8
@@ -570,7 +604,9 @@ export default function InternationalExhibitions() {
                         <span className="drop-shadow-md">
                           {item.location}
                         </span>
+
                       </div>
+
                     </div>
 
                     {/* =================================================
@@ -588,7 +624,7 @@ export default function InternationalExhibitions() {
                       "
                     >
 
-                      {/* Decorative background */}
+                      {/* Decorative Background */}
 
                       <div
                         className="
@@ -625,6 +661,7 @@ export default function InternationalExhibitions() {
                             mb-2
                           "
                         >
+
                           <span
                             className="
                               w-5
@@ -637,6 +674,7 @@ export default function InternationalExhibitions() {
                           />
 
                           International Event
+
                         </div>
 
                         {/* =================================================
@@ -673,6 +711,7 @@ export default function InternationalExhibitions() {
                         >
                           {item.description}
                         </p>
+
                       </div>
 
                       {/* =================================================
@@ -704,26 +743,28 @@ export default function InternationalExhibitions() {
                             font-medium
                           "
                         >
+
                           <FaCalendarAlt />
 
                           <span>
                             Global Exhibition
                           </span>
+
                         </div>
 
                         {/* =================================================
-                            EXPLORE BUTTON - EVERY CARD
+                            EXPLORE BUTTON
                         ================================================== */}
 
                         <a
                           href={item.link}
                           target={
-                            item.link !== "#"
+                            item.external
                               ? "_blank"
                               : undefined
                           }
                           rel={
-                            item.link !== "#"
+                            item.external
                               ? "noopener noreferrer"
                               : undefined
                           }
@@ -755,6 +796,7 @@ export default function InternationalExhibitions() {
                             duration-300
                           "
                         >
+
                           Explore
 
                           <FaArrowRight
@@ -765,14 +807,21 @@ export default function InternationalExhibitions() {
                               group-hover/explore:translate-x-1
                             "
                           />
+
                         </a>
 
                       </div>
+
                     </div>
+
                   </motion.div>
+
                 ))}
+
               </motion.div>
+
             </AnimatePresence>
+
           </div>
 
           {/* =================================================
@@ -813,6 +862,7 @@ export default function InternationalExhibitions() {
           >
             <FaChevronRight />
           </button>
+
         </div>
 
         {/* =================================================
@@ -828,6 +878,7 @@ export default function InternationalExhibitions() {
             mt-5
           "
         >
+
           <button
             type="button"
             onClick={handlePrevious}
@@ -879,6 +930,7 @@ export default function InternationalExhibitions() {
           >
             <FaChevronRight />
           </button>
+
         </div>
 
         {/* =================================================
@@ -893,7 +945,9 @@ export default function InternationalExhibitions() {
             mt-5
           "
         >
+
           {exhibitions.map((_, index) => (
+
             <button
               key={index}
               type="button"
@@ -928,7 +982,9 @@ export default function InternationalExhibitions() {
                 }
               `}
             />
+
           ))}
+
         </div>
 
         {/* =================================================
@@ -936,6 +992,7 @@ export default function InternationalExhibitions() {
         ================================================== */}
 
         <Reveal delay={0.3}>
+
           <div
             className="
               mt-10
@@ -1006,6 +1063,7 @@ export default function InternationalExhibitions() {
                 >
                   Exhibition Travel Made Easy
                 </p>
+
               </div>
 
               <h3
@@ -1022,6 +1080,7 @@ export default function InternationalExhibitions() {
               <p className="text-blue-50 mt-1 text-sm">
                 Let Sarathi NX manage your complete travel requirements.
               </p>
+
             </div>
 
             {/* CTA Button */}
@@ -1051,11 +1110,15 @@ export default function InternationalExhibitions() {
               Plan Exhibition Travel
 
               <FaArrowRight />
+
             </a>
+
           </div>
+
         </Reveal>
 
       </div>
+
     </section>
   );
 }

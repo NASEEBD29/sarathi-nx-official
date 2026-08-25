@@ -228,7 +228,6 @@ Thank you.
         "
       />
 
-
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8">
 
         {/* =====================================================
@@ -403,7 +402,7 @@ Thank you.
         <div
           className="
             grid
-            lg:grid-cols-[1.35fr_0.95fr]
+            lg:grid-cols-[1.215fr_1.045fr]
             gap-5
             lg:gap-6
             items-stretch
@@ -493,7 +492,7 @@ Thank you.
               <div className="relative z-10 h-full flex flex-col">
 
                 {/* =================================================
-                    LEFT HEADING — KEPT SAME
+                    LEFT HEADING
                 ================================================= */}
 
                 <div className="mb-6">
@@ -859,7 +858,9 @@ Thank you.
                 className="space-y-4"
               >
 
-                {/* FULL NAME */}
+                {/* =================================================
+                    FULL NAME
+                ================================================= */}
 
                 <div>
 
@@ -893,7 +894,16 @@ Thank you.
                       name="name"
                       required
                       autoComplete="name"
+                      maxLength={100}
                       placeholder="Enter your name"
+
+                      /* ONLY TEXT ALLOWED */
+                      onInput={(e) => {
+                        e.target.value = e.target.value
+                          .replace(/[^a-zA-Z\s.'-]/g, "")
+                          .slice(0, 100);
+                      }}
+
                       className="
                         w-full
                         h-12
@@ -919,9 +929,18 @@ Thank you.
                 </div>
 
 
-                {/* PHONE + EMAIL */}
+                {/* =================================================
+                    PHONE + EMAIL
+                    EMAIL WIDTH INCREASED
+                ================================================= */}
 
-                <div className="grid sm:grid-cols-2 gap-3">
+                <div
+                  className="
+                    grid
+                    sm:grid-cols-[0.85fr_1.15fr]
+                    gap-3
+                  "
+                >
 
                   {/* PHONE */}
 
@@ -1054,7 +1073,9 @@ Thank you.
                 </div>
 
 
-                {/* SERVICE */}
+                {/* =================================================
+                    SERVICE
+                ================================================= */}
 
                 <div>
 
@@ -1156,7 +1177,10 @@ Thank you.
                 </div>
 
 
-                {/* MESSAGE */}
+                {/* =================================================
+                    MESSAGE
+                    HEIGHT INCREASED
+                ================================================= */}
 
                 <div>
 
@@ -1187,7 +1211,7 @@ Thank you.
                     <textarea
                       name="message"
                       required
-                      rows={4}
+                      rows={5}
                       placeholder="Tell us about your travel requirements..."
                       className="
                         w-full

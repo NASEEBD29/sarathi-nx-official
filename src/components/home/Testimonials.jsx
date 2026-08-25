@@ -12,18 +12,25 @@ import { testimonials } from "../../data/testimonials";
 
 export default function Testimonials() {
   /*
-   * IMPORTANT:
-   * We render the testimonials twice.
-   * The animation moves exactly by 50% of the track.
-   * Because both sets are identical, the second set starts
-   * exactly where the first set ends.
+   * =====================================================
+   * SEAMLESS MARQUEE
+   * =====================================================
    *
-   * No margin/padding is added between the two sets.
+   * We create 3 identical sets.
+   *
+   * Set 1 -> Set 2 -> Set 3
+   *
+   * Animation moves exactly 1/3 of the complete track.
+   * So when animation restarts, the next identical set
+   * is already in the exact same position.
+   *
+   * This prevents blank space after the last card.
    */
 
-  const scrollingTestimonials = [
-    ...testimonials,
-    ...testimonials,
+  const testimonialSets = [
+    testimonials,
+    testimonials,
+    testimonials,
   ];
 
   return (
@@ -98,9 +105,7 @@ export default function Testimonials() {
           "
         >
 
-          {/* ==================================================
-              TOP LABEL
-          ================================================== */}
+          {/* TOP LABEL */}
 
           <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
@@ -147,9 +152,7 @@ export default function Testimonials() {
           </div>
 
 
-          {/* ==================================================
-              MAIN HEADING
-          ================================================== */}
+          {/* MAIN HEADING */}
 
           <h2
             className="
@@ -180,9 +183,7 @@ export default function Testimonials() {
           </h2>
 
 
-          {/* ==================================================
-              DESCRIPTION
-          ================================================== */}
+          {/* DESCRIPTION */}
 
           <p
             className="
@@ -396,10 +397,18 @@ export default function Testimonials() {
               SEAMLESS TRACK
 
               IMPORTANT:
-              - gap is NOT used on parent track
-              - each card wrapper has padding-right
-              - duplicated list is identical
-              - animation moves exactly 50%
+              3 IDENTICAL SETS
+
+              Track:
+              [SET 1][SET 2][SET 3]
+
+              Animation:
+              0%   = SET 1
+              33.333% = SET 2
+              66.666% = SET 3
+              100% = same visual position as 0%
+
+              This completely removes the blank gap.
           ================================================== */}
 
           <div
@@ -411,291 +420,308 @@ export default function Testimonials() {
             "
           >
 
-            {scrollingTestimonials.map((item, index) => {
+            {testimonialSets.map((testimonialSet, setIndex) => (
 
-              const initials = item.name
-                ?.split(" ")
-                .map((word) => word[0])
-                .join("")
-                .slice(0, 2)
-                .toUpperCase();
+              <div
+                key={`testimonial-set-${setIndex}`}
+                className="
+                  flex
+                  shrink-0
+                  w-max
+                "
+              >
 
-              return (
+                {testimonialSet.map((item, index) => {
 
-                <div
-                  key={`${item.id}-${index}`}
-                  className="
-                    shrink-0
-                    w-[300px]
-                    sm:w-[340px]
-                    md:w-[370px]
-                    pr-3
-                  "
-                >
+                  const initials = item.name
+                    ?.split(" ")
+                    .map((word) => word[0])
+                    .join("")
+                    .slice(0, 2)
+                    .toUpperCase();
 
-                  <motion.div
-                    whileHover={{
-                      y: -5,
-                    }}
-                    transition={{
-                      duration: 0.3,
-                    }}
-                    className="
-                      group
-                      relative
-                      bg-white
-                      rounded-2xl
-                      p-5
-                      h-[285px]
-                      border
-                      border-gray-100
-                      shadow-[0_7px_25px_rgba(15,23,42,0.06)]
-                      hover:shadow-[0_15px_40px_rgba(0,87,184,0.14)]
-                      transition-shadow
-                      duration-500
-                    "
-                  >
-
-                    {/* ==================================================
-                        TOP LINE
-                    ================================================== */}
+                  return (
 
                     <div
+                      key={`${setIndex}-${item.id}-${index}`}
                       className="
-                        absolute
-                        top-0
-                        left-5
-                        right-5
-                        h-[3px]
-                        bg-gradient-to-r
-                        from-[#F16A24]
-                        to-[#0057B8]
-                        rounded-b-full
+                        shrink-0
+                        w-[300px]
+                        sm:w-[340px]
+                        md:w-[370px]
+                        pr-3
                       "
-                    />
+                    >
 
-
-                    {/* ==================================================
-                        HEADER
-                    ================================================== */}
-
-                    <div className="flex items-center justify-between">
-
-                      <div
+                      <motion.div
+                        whileHover={{
+                          y: -5,
+                        }}
+                        transition={{
+                          duration: 0.3,
+                        }}
                         className="
-                          w-9
-                          h-9
-                          rounded-xl
-                          bg-[#FFF2EA]
-                          flex
-                          items-center
-                          justify-center
-                          group-hover:bg-[#0057B8]
-                          transition-colors
+                          group
+                          relative
+                          bg-white
+                          rounded-2xl
+                          p-5
+                          h-[285px]
+                          border
+                          border-gray-100
+                          shadow-[0_7px_25px_rgba(15,23,42,0.06)]
+                          hover:shadow-[0_15px_40px_rgba(0,87,184,0.14)]
+                          transition-shadow
+                          duration-500
                         "
                       >
 
-                        <FaQuoteLeft
-                          className="
-                            text-[#F16A24]
-                            group-hover:text-white
-                            text-sm
-                            transition-colors
-                          "
-                        />
-
-                      </div>
-
-
-                      {/* VERIFIED */}
-
-                      <div
-                        className="
-                          flex
-                          items-center
-                          gap-1
-                          text-[10px]
-                          text-gray-400
-                        "
-                      >
-
-                        <FaCheckCircle className="text-[#0057B8]" />
-
-                        Verified Client
-
-                      </div>
-
-                    </div>
-
-
-                    {/* ==================================================
-                        RATING
-                    ================================================== */}
-
-                    <div className="flex items-center gap-1 mt-3">
-
-                      {[...Array(item.rating)].map((_, i) => (
-                        <FaStar
-                          key={i}
-                          className="text-[#FBBF24] text-xs"
-                        />
-                      ))}
-
-                      <span className="text-[10px] text-gray-400 ml-1">
-                        {item.rating}.0
-                      </span>
-
-                    </div>
-
-
-                    {/* ==================================================
-                        REVIEW
-                    ================================================== */}
-
-                    <p
-                      className="
-                        text-gray-600
-                        leading-6
-                        text-[13px]
-                        mt-3
-                        line-clamp-3
-                      "
-                    >
-                      "{item.review}"
-                    </p>
-
-
-                    {/* ==================================================
-                        HELPFUL
-                    ================================================== */}
-
-                    <div
-                      className="
-                        flex
-                        items-center
-                        gap-1.5
-                        text-[10px]
-                        text-gray-400
-                        mt-3
-                      "
-                    >
-
-                      <FaRegThumbsUp />
-
-                      Helpful experience
-
-                    </div>
-
-
-                    {/* ==================================================
-                        DIVIDER
-                    ================================================== */}
-
-                    <div
-                      className="
-                        border-t
-                        border-gray-100
-                        mt-3
-                        pt-3
-                      "
-                    >
-
-                      {/* PROFILE */}
-
-                      <div className="flex items-center gap-2.5">
-
-                        {/* AVATAR */}
+                        {/* ==================================================
+                            TOP LINE
+                        ================================================== */}
 
                         <div
                           className="
-                            w-9
-                            h-9
-                            rounded-full
-                            bg-gradient-to-br
+                            absolute
+                            top-0
+                            left-5
+                            right-5
+                            h-[3px]
+                            bg-gradient-to-r
                             from-[#F16A24]
                             to-[#0057B8]
-                            text-white
-                            flex
-                            items-center
-                            justify-center
-                            font-bold
-                            text-xs
-                            shadow-sm
+                            rounded-b-full
                           "
-                        >
-                          {initials}
-                        </div>
+                        />
 
 
-                        {/* NAME */}
+                        {/* ==================================================
+                            HEADER
+                        ================================================== */}
 
-                        <div className="min-w-0">
+                        <div className="flex items-center justify-between">
 
-                          <div className="flex items-center gap-1">
+                          <div
+                            className="
+                              w-9
+                              h-9
+                              rounded-xl
+                              bg-[#FFF2EA]
+                              flex
+                              items-center
+                              justify-center
+                              group-hover:bg-[#0057B8]
+                              transition-colors
+                            "
+                          >
 
-                            <h3
+                            <FaQuoteLeft
                               className="
-                                font-bold
-                                text-gray-800
+                                text-[#F16A24]
+                                group-hover:text-white
                                 text-sm
-                                truncate
-                              "
-                            >
-                              {item.name}
-                            </h3>
-
-                            <FaCheckCircle
-                              className="
-                                text-[#0057B8]
-                                text-[9px]
-                                flex-shrink-0
+                                transition-colors
                               "
                             />
 
                           </div>
 
-                          <p
+
+                          {/* VERIFIED */}
+
+                          <div
                             className="
-                              text-[#0057B8]
-                              text-xs
-                              font-medium
-                              truncate
+                              flex
+                              items-center
+                              gap-1
+                              text-[10px]
+                              text-gray-400
                             "
                           >
-                            {item.company}
-                          </p>
+
+                            <FaCheckCircle className="text-[#0057B8]" />
+
+                            Verified Client
+
+                          </div>
 
                         </div>
 
-                      </div>
+
+                        {/* ==================================================
+                            RATING
+                        ================================================== */}
+
+                        <div className="flex items-center gap-1 mt-3">
+
+                          {[...Array(item.rating)].map((_, i) => (
+
+                            <FaStar
+                              key={i}
+                              className="text-[#FBBF24] text-xs"
+                            />
+
+                          ))}
+
+                          <span className="text-[10px] text-gray-400 ml-1">
+                            {item.rating}.0
+                          </span>
+
+                        </div>
+
+
+                        {/* ==================================================
+                            REVIEW
+                        ================================================== */}
+
+                        <p
+                          className="
+                            text-gray-600
+                            leading-6
+                            text-[13px]
+                            mt-3
+                            line-clamp-3
+                          "
+                        >
+                          "{item.review}"
+                        </p>
+
+
+                        {/* ==================================================
+                            HELPFUL
+                        ================================================== */}
+
+                        <div
+                          className="
+                            flex
+                            items-center
+                            gap-1.5
+                            text-[10px]
+                            text-gray-400
+                            mt-3
+                          "
+                        >
+
+                          <FaRegThumbsUp />
+
+                          Helpful experience
+
+                        </div>
+
+
+                        {/* ==================================================
+                            DIVIDER
+                        ================================================== */}
+
+                        <div
+                          className="
+                            border-t
+                            border-gray-100
+                            mt-3
+                            pt-3
+                          "
+                        >
+
+                          {/* PROFILE */}
+
+                          <div className="flex items-center gap-2.5">
+
+                            {/* AVATAR */}
+
+                            <div
+                              className="
+                                w-9
+                                h-9
+                                rounded-full
+                                bg-gradient-to-br
+                                from-[#F16A24]
+                                to-[#0057B8]
+                                text-white
+                                flex
+                                items-center
+                                justify-center
+                                font-bold
+                                text-xs
+                                shadow-sm
+                              "
+                            >
+                              {initials}
+                            </div>
+
+
+                            {/* NAME */}
+
+                            <div className="min-w-0">
+
+                              <div className="flex items-center gap-1">
+
+                                <h3
+                                  className="
+                                    font-bold
+                                    text-gray-800
+                                    text-sm
+                                    truncate
+                                  "
+                                >
+                                  {item.name}
+                                </h3>
+
+                                <FaCheckCircle
+                                  className="
+                                    text-[#0057B8]
+                                    text-[9px]
+                                    flex-shrink-0
+                                  "
+                                />
+
+                              </div>
+
+                              <p
+                                className="
+                                  text-[#0057B8]
+                                  text-xs
+                                  font-medium
+                                  truncate
+                                "
+                              >
+                                {item.company}
+                              </p>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+
+                        {/* ==================================================
+                            HOVER BORDER
+                        ================================================== */}
+
+                        <div
+                          className="
+                            absolute
+                            inset-0
+                            rounded-2xl
+                            border-2
+                            border-transparent
+                            group-hover:border-[#0057B8]/10
+                            pointer-events-none
+                            transition-all
+                          "
+                        />
+
+                      </motion.div>
 
                     </div>
 
+                  );
 
-                    {/* ==================================================
-                        HOVER BORDER
-                    ================================================== */}
+                })}
 
-                    <div
-                      className="
-                        absolute
-                        inset-0
-                        rounded-2xl
-                        border-2
-                        border-transparent
-                        group-hover:border-[#0057B8]/10
-                        pointer-events-none
-                        transition-all
-                      "
-                    />
+              </div>
 
-                  </motion.div>
-
-                </div>
-
-              );
-
-            })}
+            ))}
 
           </div>
 
@@ -773,15 +799,27 @@ export default function Testimonials() {
       <style>
         {`
           /*
-           * The track contains TWO identical sets.
+           * =====================================================
+           * SEAMLESS TESTIMONIAL MARQUEE
+           * =====================================================
            *
-           * translateX(-50%) means:
-           * Set 1 completely leaves the screen
-           * Set 2 is now in exactly the same position
-           * Animation restarts from 0%
+           * We have 3 EXACTLY IDENTICAL sets:
            *
-           * Since both sets are identical there is NO visual jump
-           * and NO blank space between repetitions.
+           * [SET 1][SET 2][SET 3]
+           *
+           * The complete track is 3 sets wide.
+           *
+           * Moving -33.333333% means exactly ONE complete
+           * testimonial set moves out.
+           *
+           * When animation restarts at 0%, the next identical
+           * set is already in exactly the same position.
+           *
+           * Therefore:
+           *
+           * LAST CARD -> FIRST CARD
+           *
+           * with NO blank space.
            */
 
           .testimonials-marquee {
@@ -789,36 +827,60 @@ export default function Testimonials() {
             will-change: transform;
           }
 
+
           @keyframes testimonialsSeamless {
+
             0% {
               transform: translate3d(0, 0, 0);
             }
 
             100% {
-              transform: translate3d(-50%, 0, 0);
+              transform: translate3d(-33.333333%, 0, 0);
             }
+
           }
 
+
           /*
-           * Mobile slightly slower because cards are narrower
-           * and screen movement otherwise feels too fast.
+           * =====================================================
+           * HOVER PAUSE
+           * =====================================================
+           */
+
+          .testimonials-marquee:hover {
+            animation-play-state: paused;
+          }
+
+
+          /*
+           * =====================================================
+           * MOBILE
+           * =====================================================
            */
 
           @media (max-width: 640px) {
+
             .testimonials-marquee {
               animation-duration: 28s;
             }
+
           }
 
+
           /*
-           * Respect reduced-motion accessibility preference.
+           * =====================================================
+           * REDUCED MOTION
+           * =====================================================
            */
 
           @media (prefers-reduced-motion: reduce) {
+
             .testimonials-marquee {
               animation-play-state: paused;
             }
+
           }
+
         `}
       </style>
 

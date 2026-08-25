@@ -67,6 +67,28 @@ export default function Hero() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // ===================================================
+    // NAME - TEXT ONLY
+    // Numbers and special characters are not allowed
+    // ===================================================
+
+    if (name === "name") {
+      const textOnlyValue = value.replace(/[^a-zA-Z\s]/g, "");
+
+      setFormData((prev) => ({
+        ...prev,
+        name: textOnlyValue,
+      }));
+
+      setSuccess("");
+      setError("");
+      return;
+    }
+
+    // ===================================================
+    // OTHER INPUTS
+    // ===================================================
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -114,10 +136,27 @@ export default function Hero() {
       return;
     }
 
+    // ===================================================
+    // NAME VALIDATION - TEXT ONLY
+    // ===================================================
+
+    if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      setError("Please enter a valid name using letters only.");
+      return;
+    }
+
+    // ===================================================
+    // PHONE VALIDATION
+    // ===================================================
+
     if (!/^[0-9]{10}$/.test(formData.phone)) {
       setError("Please enter a valid 10-digit mobile number.");
       return;
     }
+
+    // ===================================================
+    // EMAIL VALIDATION
+    // ===================================================
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       setError("Please enter a valid email address.");
@@ -827,7 +866,9 @@ export default function Hero() {
                     className="space-y-2.5"
                   >
 
-                    {/* NAME */}
+                    {/* =================================================
+                        NAME - TEXT ONLY
+                    ================================================= */}
 
                     <div className="relative">
 
@@ -850,6 +891,9 @@ export default function Hero() {
                         onChange={handleChange}
                         placeholder="Your Name"
                         required
+                        autoComplete="name"
+                        inputMode="text"
+                        pattern="[A-Za-z\s]+"
                         className="
                           w-full
                           h-10
@@ -873,7 +917,9 @@ export default function Hero() {
                     </div>
 
 
-                    {/* PHONE */}
+                    {/* =================================================
+                        PHONE
+                    ================================================= */}
 
                     <div className="relative">
 
@@ -922,7 +968,9 @@ export default function Hero() {
                     </div>
 
 
-                    {/* EMAIL */}
+                    {/* =================================================
+                        EMAIL
+                    ================================================= */}
 
                     <div className="relative">
 
@@ -968,7 +1016,9 @@ export default function Hero() {
                     </div>
 
 
-                    {/* SERVICE */}
+                    {/* =================================================
+                        SERVICE
+                    ================================================= */}
 
                     <div className="relative">
 
@@ -1056,7 +1106,9 @@ export default function Hero() {
                     </div>
 
 
-                    {/* MESSAGE */}
+                    {/* =================================================
+                        MESSAGE
+                    ================================================= */}
 
                     <div className="relative">
 
@@ -1100,7 +1152,9 @@ export default function Hero() {
                     </div>
 
 
-                    {/* SUCCESS */}
+                    {/* =================================================
+                        SUCCESS
+                    ================================================= */}
 
                     {success && (
                       <p
@@ -1116,7 +1170,9 @@ export default function Hero() {
                     )}
 
 
-                    {/* ERROR */}
+                    {/* =================================================
+                        ERROR
+                    ================================================= */}
 
                     {error && (
                       <p
@@ -1132,7 +1188,9 @@ export default function Hero() {
                     )}
 
 
-                    {/* SUBMIT */}
+                    {/* =================================================
+                        SUBMIT
+                    ================================================= */}
 
                     <button
                       type="submit"
@@ -1304,6 +1362,7 @@ export default function Hero() {
                       className="
                         mt-1
                         text-[15px]
+                        md:text-[13px]
                         sm:text-[9px]
                         text-[#f37005ea]
                         leading-3

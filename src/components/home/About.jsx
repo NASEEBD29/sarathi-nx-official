@@ -79,182 +79,7 @@ export default function About() {
             SECTION HEADING
         ===================================================== */}
 
-        <Reveal>
-          <div
-            className="
-              text-center
-              max-w-3xl
-              mx-auto
-              mb-10
-              md:mb-12
-            "
-          >
-
-            {/* BADGE */}
-
-            <Reveal>
-          <div className="flex items-center justify-center gap-[10px] mb-[7px]">
-
-            <span
-              className="
-                block
-                w-[49px]
-                h-[2px]
-                bg-gradient-to-r
-                from-[#0057B8]
-                to-[#F16A24]
-              "
-            />
-
-            <span
-              className="
-                text-[13px]
-                font-bold
-                tracking-[3px]
-                uppercase
-                leading-none
-                bg-gradient-to-r
-                from-[#0057B8]
-                via-[#0057B8]
-                to-[#F16A24]
-                bg-clip-text
-                text-transparent
-              "
-            >
-              Who We Are
-            </span>
-
-            <span
-              className="
-                block
-                w-[49px]
-                h-[2px]
-                bg-gradient-to-r
-                from-[#F16A24]
-                to-[#0057B8]
-              "
-            />
-
-          </div>
-        </Reveal>
-
-
-
-            {/* MAIN HEADING */}
-
-            <h2
-              className="
-                text-3xl
-                sm:text-4xl
-                md:text-5xl
-                lg:text-[52px]
-                font-extrabold
-                text-gray-800
-                leading-[1.1]
-                tracking-tight
-              "
-            >
-              Connecting People,
-
-              <span
-                className="
-                  ml-2
-                  bg-gradient-to-r
-                  from-[#fc6602]
-                  via-[#fc6602]
-                  to-[#0057B8]
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                Business & Destinations
-              </span>
-            </h2>
-
-
-            {/* DESCRIPTION */}
-
-            <p
-              className="
-                mt-3
-                max-w-2xl
-                mx-auto
-                text-gray-600
-                text-sm
-                md:text-base
-                leading-6
-                md:leading-7
-              "
-            >
-              Your trusted travel partner for business journeys,
-              international exhibitions, corporate travel, holidays
-              and experiences across the globe.
-            </p>
-
-
-            {/* DECORATIVE LINE */}
-
-            <div
-              className="
-                flex
-                justify-center
-                items-center
-                gap-2
-                mt-4
-              "
-            >
-
-              <span
-                className="
-                  w-8
-                  h-[2px]
-                  bg-[#fc6602]/30
-                  rounded-full
-                "
-              />
-
-              <span
-                className="
-                  w-2
-                  h-2
-                  rounded-full
-                  bg-[#fc6602]
-                "
-              />
-
-              <span
-                className="
-                  w-12
-                  h-[3px]
-                  bg-gradient-to-r
-                  from-[#fc6602]
-                  to-[#0057B8]
-                  rounded-full
-                "
-              />
-
-              <span
-                className="
-                  w-2
-                  h-2
-                  rounded-full
-                  bg-[#0057B8]
-                "
-              />
-
-              <span
-                className="
-                  w-8
-                  h-[2px]
-                  bg-[#0057B8]/30
-                  rounded-full
-                "
-              />
-
-            </div>
-
-          </div>
-        </Reveal>
+        
 
 
         {/* =====================================================
@@ -489,7 +314,10 @@ export default function About() {
                           mb-1
                         "
                       >
-                        Your Journey, Our Expertise
+                       
+We Plan.
+You Travel.
+We Care.
                       </p>
 
                       <h3
@@ -668,30 +496,52 @@ export default function About() {
 
               {/* SMALL LABEL */}
 
-              <div
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  px-3.5
-                  py-1.5
-                  rounded-full
-                  bg-[#FFF2EA]
-                  border
-                  border-[#fc6602]/10
-                  text-[#fc6602]
-                  text-[10px]
-                  md:text-[11px]
-                  font-bold
-                  uppercase
-                  tracking-[2px]
-                  mb-4
-                "
-              >
-                <FaCheckCircle className="text-[10px]" />
+             <Reveal>
+          <div className="flex items-center gap-[10px] mb-[7px]">
 
-                About Sarathi NX
-              </div>
+            <span
+              className="
+                block
+                w-[49px]
+                h-[2px]
+                bg-gradient-to-r
+                from-[#0057B8]
+                to-[#F16A24]
+              "
+            />
+
+            <span
+              className="
+                text-[13px]
+                font-bold
+                tracking-[3px]
+                uppercase
+                leading-none
+                bg-gradient-to-r
+                from-[#0057B8]
+                via-[#0057B8]
+                to-[#F16A24]
+                bg-clip-text
+                text-transparent
+              "
+            >
+              Who we are
+            </span>
+
+            <span
+              className="
+                block
+                w-[49px]
+                h-[2px]
+                bg-gradient-to-r
+                from-[#F16A24]
+                to-[#0057B8]
+              "
+            />
+
+          </div>
+        </Reveal>
+
 
 
               {/* HEADING */}

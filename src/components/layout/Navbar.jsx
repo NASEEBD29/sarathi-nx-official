@@ -88,7 +88,7 @@ export default function Navbar() {
 
         <div
           className={`
-            max-w-[1440px]
+            max-w-[1800px]
             mx-auto
             px-5
             sm:px-8

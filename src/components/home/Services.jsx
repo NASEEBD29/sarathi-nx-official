@@ -13,6 +13,12 @@ import {
   FaBriefcase,
   FaSuitcaseRolling,
   FaArrowRight,
+  FaShieldAlt,
+  FaCar,
+  FaUmbrellaBeach,
+  FaShip,
+  FaHandshake,
+  FaUserTie,
 } from "react-icons/fa";
 
 // ======================================================
@@ -27,8 +33,6 @@ import mice from "../../assets/images/services/mice.jpg";
 import group from "../../assets/images/services/group.jpg";
 import globalTourisam from "../../assets/images/services/globalTourisam.jpg";
 import hotel from "../../assets/images/services/hotel.jpg";
-
-// NEW IMAGE
 import otherInternationalTradeFairs from "../../assets/images/services/otherInternationalTradeFairs.jpg";
 
 // ======================================================
@@ -38,87 +42,101 @@ import otherInternationalTradeFairs from "../../assets/images/services/otherInte
 const services = [
   {
     icon: FaPlaneDeparture,
-    title: "International Exhibition Travel",
-    shortTitle: "Exhibition Travel",
+    title: "Flights & Air Travel",
+    shortTitle: "Flights & Air Travel",
     description:
-      "Travel confidently to international exhibitions, trade fairs and business events with complete planning, documentation and travel assistance.",
+      "Book domestic and international flights with reliable travel planning, flexible options and professional assistance for a smooth journey.",
     image: internationalExhibition,
   },
 
   {
-    icon: FaBriefcase,
-    title: "Business Travel",
-    shortTitle: "Business Travel",
+    icon: FaHotel,
+    title: "Hotels & Accommodation",
+    shortTitle: "Hotels & Accommodation",
     description:
-      "Make every business trip simple and efficient with carefully planned flights, hotels, transfers and personalized travel support.",
-    image: bussnies,
-  },
-
-  {
-    icon: FaBuilding,
-    title: "Corporate Travel",
-    shortTitle: "Corporate Travel",
-    description:
-      "Customized corporate travel solutions designed around your company's requirements, schedules and business objectives.",
-    image: corporateTravel,
+      "Find comfortable and convenient accommodation options carefully selected around your destination, budget and travel requirements.",
+    image: hotel,
   },
 
   {
     icon: FaPassport,
-    title: "Visa Assistance",
-    shortTitle: "Visa Assistance",
+    title: "Visa & Travel Documentation",
+    shortTitle: "Visa & Travel Documentation",
     description:
-      "Get professional guidance with visa documentation, application requirements and travel-related formalities for international destinations.",
+      "Get professional guidance with visa applications, documentation requirements and other essential travel formalities.",
     image: visa,
   },
 
   {
-    icon: FaUsers,
-    title: "MICE",
-    shortTitle: "MICE",
+    icon: FaShieldAlt,
+    title: "Travel Insurance & Forex",
+    shortTitle: "Travel Insurance & Forex",
     description:
-      "From meetings and conferences to incentive programs and corporate events, we manage travel arrangements with professional attention.",
-    image: mice,
-  },
-
-  {
-    icon: FaSuitcaseRolling,
-    title: "Group Tours",
-    shortTitle: "Group Tours",
-    description:
-      "Enjoy well-organized group journeys with customized itineraries, accommodation, transportation and complete travel assistance.",
-    image: group,
-  },
-
-  {
-    icon: FaGlobeAsia,
-    title: "Global Tourism",
-    shortTitle: "Global Tourism",
-    description:
-      "Discover destinations around the world through thoughtfully planned leisure travel experiences designed around your preferences.",
+      "Travel with greater confidence through travel insurance assistance and convenient foreign exchange support for your journey.",
     image: globalTourisam,
   },
 
   {
-    icon: FaHotel,
-    title: "Hotel & Travel Assistance",
-    shortTitle: "Hotel & Assistance",
+    icon: FaCar,
+    title: "Transfers & Car Rentals",
+    shortTitle: "Transfers & Car Rentals",
     description:
-      "From comfortable hotel bookings to transfers and other travel arrangements, we take care of the details for a smooth journey.",
-    image: hotel,
+      "Arrange airport transfers, private transportation and car rentals for convenient and comfortable travel at your destination.",
+    image: bussnies,
   },
 
-  // ======================================================
-  // NEW SERVICE
-  // ======================================================
+  {
+    icon: FaUmbrellaBeach,
+    title: "Domestic & International Holidays",
+    shortTitle: "Domestic & International Holidays",
+    description:
+      "Explore memorable destinations with thoughtfully planned holiday packages, customized itineraries, hotels and complete travel support.",
+    image: group,
+  },
 
   {
-    icon: FaGlobe,
-    title: "Other International Trade Fairs",
-    shortTitle: "Other International Trade Fairs",
+    icon: FaShip,
+    title: "Cruise & Ferry Bookings",
+    shortTitle: "Cruise & Ferry Bookings",
     description:
-      "We manage travel for various international exhibitions worldwide.",
+      "Plan your cruise and ferry journeys with booking assistance and travel arrangements designed for a comfortable experience.",
     image: otherInternationalTradeFairs,
+  },
+
+  {
+    icon: FaBriefcase,
+    title: "Business & Corporate Travel",
+    shortTitle: "Business & Corporate Travel",
+    description:
+      "Make every business trip simple and efficient with carefully planned flights, hotels, transfers and personalized corporate travel support.",
+    image: corporateTravel,
+  },
+
+  {
+    icon: FaBuilding,
+    title: "MICE & Exhibition Travel",
+    shortTitle: "MICE & Exhibition Travel",
+    description:
+      "From meetings and conferences to exhibitions and incentive programs, we manage professional travel arrangements with complete attention to detail.",
+    image: mice,
+  },
+
+  {
+    icon: FaUsers,
+    title: "Group & Customized Tours",
+    shortTitle: "Group & Customized Tours",
+    description:
+      "Enjoy well-organized group journeys and customized tours with personalized itineraries, accommodation, transportation and complete travel assistance.",
+    image: group,
+  },
+
+  {
+    icon: FaUserTie,
+    title: "Meet & Greet & Concierge Services",
+    shortTitle: "Meet & Greet & Concierge",
+    description:
+      "Enjoy personalized meet and greet, concierge and destination assistance designed to make every part of your journey more comfortable and convenient.",
+    image: internationalExhibition,
   },
 ];
 
@@ -297,7 +315,9 @@ export default function Services() {
               border-gray-100
               shadow-lg
               overflow-hidden
-              h-fit
+              lg:h-[500px]
+              flex
+              flex-col
             "
           >
 
@@ -307,6 +327,7 @@ export default function Services() {
               className="
                 px-5
                 py-4
+                shrink-0
                 bg-gradient-to-r
                 from-[#0057B8]
                 via-[#0057B8]
@@ -333,9 +354,20 @@ export default function Services() {
 
             </div>
 
-            {/* MENU ITEMS */}
+            {/* ==================================================
+                SCROLLABLE MENU ITEMS
+            ================================================== */}
 
-            <div className="p-2">
+            <div
+              className="
+                p-2
+                flex-1
+                overflow-y-auto
+                overscroll-contain
+                [scrollbar-width:thin]
+                [scrollbar-color:#0057B8_transparent]
+              "
+            >
 
               {services.map((item, index) => {
 
@@ -417,6 +449,7 @@ export default function Services() {
                       className={`
                         text-sm
                         font-semibold
+                        leading-5
 
                         ${
                           activeService === index
@@ -441,7 +474,12 @@ export default function Services() {
               MAIN SERVICE CARD
           ================================================== */}
 
-          <div className="relative min-h-[520px] lg:min-h-0">
+          <div
+            className="
+              relative
+              h-[500px]
+            "
+          >
 
             <AnimatePresence mode="wait">
 
@@ -477,8 +515,6 @@ export default function Services() {
                   className="
                     relative
                     h-full
-                    min-h-[520px]
-                    lg:min-h-0
                     rounded-2xl
                     overflow-hidden
                     shadow-xl
@@ -600,9 +636,9 @@ export default function Services() {
                       flex
                       flex-col
                       justify-center
-                      p-8
-                      md:p-10
-                      lg:p-12
+                      p-6
+                      md:p-8
+                      lg:p-10
                     "
                   >
 
@@ -612,8 +648,8 @@ export default function Services() {
 
                     <div
                       className="
-                        w-20
-                        h-20
+                        w-16
+                        h-16
                         rounded-2xl
                         bg-gradient-to-br
                         from-[#0057B8]/70
@@ -625,9 +661,9 @@ export default function Services() {
                         flex
                         items-center
                         justify-center
-                        text-3xl
+                        text-2xl
                         shadow-xl
-                        mb-7
+                        mb-4
                         group-hover:scale-105
                         transition-transform
                         duration-300
@@ -643,7 +679,7 @@ export default function Services() {
                     <span
                       className="
                         text-[#fc6602]
-                        text-sm
+                        text-xs
                         font-bold
                         uppercase
                         tracking-[2px]
@@ -658,12 +694,12 @@ export default function Services() {
 
                     <h3
                       className="
-                        text-3xl
-                        md:text-4xl
-                        lg:text-5xl
+                        text-2xl
+                        md:text-3xl
+                        lg:text-4xl
                         font-extrabold
                         text-white
-                        mt-3
+                        mt-2
                         max-w-2xl
                         leading-tight
                         drop-shadow-lg
@@ -679,12 +715,13 @@ export default function Services() {
                     <p
                       className="
                         text-white/90
-                        text-base
-                        md:text-lg
-                        leading-8
-                        mt-5
+                        text-sm
+                        md:text-base
+                        leading-6
+                        mt-3
                         max-w-2xl
                         drop-shadow-md
+                        line-clamp-2
                       "
                     >
                       {service.description}
@@ -699,8 +736,8 @@ export default function Services() {
                         flex
                         flex-wrap
                         items-center
-                        gap-5
-                        mt-8
+                        gap-4
+                        mt-5
                       "
                     >
 
@@ -720,10 +757,11 @@ export default function Services() {
                           via-[#0057B8]
                           to-[#fc6602]
                           text-white
-                          px-6
-                          py-3.5
+                          px-5
+                          py-3
                           rounded-full
                           font-semibold
+                          text-sm
                           transition-all
                           duration-300
                           shadow-lg
@@ -753,7 +791,8 @@ export default function Services() {
                           flex
                           items-center
                           gap-2
-                          text-sm
+                          text-xs
+                          md:text-sm
                           text-white/90
                         "
                       >
@@ -778,7 +817,7 @@ export default function Services() {
                         SLIDER INDICATORS
                     ================================================== */}
 
-                    <div className="flex gap-2 mt-9">
+                    <div className="flex gap-2 mt-5">
 
                       {services.map((_, index) => (
 
