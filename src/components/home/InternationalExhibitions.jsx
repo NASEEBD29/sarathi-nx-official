@@ -23,8 +23,6 @@ import weldingImage from "../../assets/images/exhibitions/welding.jpg";
 import medlabImage from "../../assets/images/exhibitions/medlab.jpg";
 import cantonFairImage from "../../assets/images/exhibitions/cantonFair.jpg";
 import itmaImage from "../../assets/images/exhibitions/itma.jpg";
-
-// NEW IMAGE
 import otherInternationalTradeFairsImage from "../../assets/images/exhibitions/otherInternationalTradeFairs.jpg";
 
 // =====================================================
@@ -101,10 +99,6 @@ const exhibitions = [
     link: "#",
     external: false,
   },
-
-  // =====================================================
-  // NEW CARD
-  // =====================================================
 
   {
     title: "OTHER INTERNATIONAL TRADE FAIRS",
@@ -221,7 +215,6 @@ export default function InternationalExhibitions() {
         overflow-hidden
       "
     >
-
       {/* =================================================
           DECORATIVE BACKGROUND
       ================================================== */}
@@ -520,8 +513,6 @@ export default function InternationalExhibitions() {
                       "
                     >
 
-                      {/* IMAGE */}
-
                       <img
                         src={item.image}
                         alt={item.title}
@@ -563,9 +554,7 @@ export default function InternationalExhibitions() {
                         "
                       />
 
-                      {/* =================================================
-                          LOCATION BADGE
-                      ================================================== */}
+                      {/* LOCATION BADGE */}
 
                       <div
                         className="
@@ -644,9 +633,7 @@ export default function InternationalExhibitions() {
 
                       <div className="relative z-10">
 
-                        {/* =================================================
-                            SMALL LABEL
-                        ================================================== */}
+                        {/* SMALL LABEL */}
 
                         <div
                           className="
@@ -677,9 +664,7 @@ export default function InternationalExhibitions() {
 
                         </div>
 
-                        {/* =================================================
-                            TITLE
-                        ================================================== */}
+                        {/* TITLE */}
 
                         <h3
                           className="
@@ -696,9 +681,7 @@ export default function InternationalExhibitions() {
                           {item.title}
                         </h3>
 
-                        {/* =================================================
-                            DESCRIPTION
-                        ================================================== */}
+                        {/* DESCRIPTION */}
 
                         <p
                           className="
@@ -752,9 +735,7 @@ export default function InternationalExhibitions() {
 
                         </div>
 
-                        {/* =================================================
-                            EXPLORE BUTTON
-                        ================================================== */}
+                        {/* EXPLORE BUTTON */}
 
                         <a
                           href={item.link}
@@ -882,6 +863,7 @@ export default function InternationalExhibitions() {
           <button
             type="button"
             onClick={handlePrevious}
+            aria-label="Previous exhibitions"
             className="
               w-11
               h-11
@@ -908,6 +890,7 @@ export default function InternationalExhibitions() {
           <button
             type="button"
             onClick={handleNext}
+            aria-label="Next exhibitions"
             className="
               w-11
               h-11

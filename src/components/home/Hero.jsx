@@ -58,7 +58,7 @@ export default function Hero() {
     }, 9000);
 
     return () => clearInterval(slider);
-  }, []);
+  }, [slideImages.length]);
 
   // =====================================================
   // HANDLE INPUT
@@ -67,11 +67,7 @@ export default function Hero() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // ===================================================
     // NAME - TEXT ONLY
-    // Numbers and special characters are not allowed
-    // ===================================================
-
     if (name === "name") {
       const textOnlyValue = value.replace(/[^a-zA-Z\s]/g, "");
 
@@ -84,10 +80,6 @@ export default function Hero() {
       setError("");
       return;
     }
-
-    // ===================================================
-    // OTHER INPUTS
-    // ===================================================
 
     setFormData((prev) => ({
       ...prev,
@@ -136,28 +128,19 @@ export default function Hero() {
       return;
     }
 
-    // ===================================================
-    // NAME VALIDATION - TEXT ONLY
-    // ===================================================
-
+    // NAME VALIDATION
     if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
       setError("Please enter a valid name using letters only.");
       return;
     }
 
-    // ===================================================
     // PHONE VALIDATION
-    // ===================================================
-
     if (!/^[0-9]{10}$/.test(formData.phone)) {
       setError("Please enter a valid 10-digit mobile number.");
       return;
     }
 
-    // ===================================================
     // EMAIL VALIDATION
-    // ===================================================
-
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       setError("Please enter a valid email address.");
       return;
@@ -206,12 +189,6 @@ export default function Hero() {
       setLoading(false);
     }
   };
-
-  // =====================================================
-  // CURRENT SLIDE
-  // =====================================================
-
-  const currentSlide = heroSlides[current];
 
   // =====================================================
   // SERVICES
@@ -282,8 +259,9 @@ export default function Hero() {
       className="
         relative
         overflow-hidden
-        min-h-[700px]
-        md:min-h-[730px]
+        min-h-[1050px]
+        sm:min-h-[980px]
+        md:min-h-[900px]
         lg:min-h-[750px]
       "
     >
@@ -332,40 +310,39 @@ export default function Hero() {
             "
           />
 
-          {/* Dark Overall Overlay */}
+          {/* OVERALL OVERLAY */}
 
           <div
             className="
               absolute
               inset-0
-              bg-[#001A42]/30
+              bg-[#001A42]/35
             "
           />
 
-          {/* Left Dark Gradient */}
+          {/* LEFT DARK GRADIENT */}
 
           <div
             className="
               absolute
               inset-0
               bg-gradient-to-r
-              from-[#001331]/90
-              via-[#00295D]/65
-              via-50%
-              to-[#001F4C]/20
+              from-[#001331]/95
+              via-[#00295D]/70
+              to-[#001F4C]/25
             "
           />
 
-          {/* Bottom Gradient */}
+          {/* BOTTOM GRADIENT */}
 
           <div
             className="
               absolute
               inset-x-0
               bottom-0
-              h-56
+              h-64
               bg-gradient-to-t
-              from-[#001B3F]/80
+              from-[#001B3F]/90
               to-transparent
             "
           />
@@ -383,26 +360,34 @@ export default function Hero() {
         className="
           relative
           z-10
+          w-full
           max-w-[1400px]
           mx-auto
-          px-5
-          sm:px-8
-          lg:px-12
-          pt-14
-          md:pt-16
-          lg:pt-20
-          pb-32
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-10
+          xl:px-12
+          pt-10
+          sm:pt-12
+          md:pt-14
+          lg:pt-16
+          xl:pt-20
+          pb-40
         "
       >
 
         <div
           className="
             grid
-            lg:grid-cols-[1fr_350px]
-            xl:grid-cols-[1fr_370px]
-            gap-8
-            lg:gap-10
-            items-center
+            grid-cols-1
+            lg:grid-cols-[minmax(0,1fr)_350px]
+            xl:grid-cols-[minmax(0,1fr)_370px]
+            gap-10
+            lg:gap-8
+            xl:gap-12
+            items-start
+            lg:items-center
           "
         >
 
@@ -413,9 +398,10 @@ export default function Hero() {
           <div
             className="
               text-white
-              max-w-[760px]
-              pt-3
-              lg:pt-5
+              w-full
+              max-w-[780px]
+              pt-2
+              lg:pt-0
             "
           >
 
@@ -436,14 +422,18 @@ export default function Hero() {
               }}
               className="
                 flex
+                flex-wrap
                 items-center
-                gap-2
-                text-[11px]
-                sm:text-xs
-                md:text-sm
+                gap-x-2
+                gap-y-1
+                text-[9px]
+                sm:text-[11px]
+                md:text-xs
+                lg:text-sm
                 font-semibold
                 uppercase
-                tracking-[1.5px]
+                tracking-[1px]
+                sm:tracking-[1.5px]
                 text-white/90
                 mb-3
               "
@@ -481,10 +471,11 @@ export default function Hero() {
                 ease: "easeOut",
               }}
               className="
-                text-5xl
+                text-[42px]
+                xs:text-5xl
                 sm:text-6xl
                 md:text-7xl
-                lg:text-[70px]
+                lg:text-[66px]
                 xl:text-[78px]
                 font-extrabold
                 leading-[0.98]
@@ -589,20 +580,24 @@ export default function Hero() {
               }}
               className="
                 mt-4
-                inline-flex
+                flex
                 flex-wrap
                 items-center
-                gap-2
+                gap-x-2
+                gap-y-1.5
+                w-fit
+                max-w-full
                 bg-gradient-to-r
                 from-[#FFB000]
                 via-[#FF9900]
                 to-[#F46B0A]
                 text-[#14233C]
-                px-4
+                px-3
+                sm:px-4
                 py-2
                 rounded-sm
                 font-bold
-                text-[10px]
+                text-[9px]
                 sm:text-xs
                 shadow-[0_8px_20px_rgba(255,153,0,0.25)]
               "
@@ -649,10 +644,13 @@ export default function Hero() {
                 duration: 0.7,
               }}
               className="
-                mt-7
+                mt-6
+                sm:mt-7
                 grid
                 grid-cols-3
                 sm:grid-cols-6
+                gap-y-4
+                sm:gap-y-0
                 max-w-[720px]
               "
             >
@@ -669,13 +667,14 @@ export default function Hero() {
                       flex-col
                       items-center
                       justify-center
-                      px-2
+                      px-1
+                      sm:px-2
                       py-1
                       group
                     "
                   >
 
-                    {/* Vertical Divider */}
+                    {/* DIVIDER */}
 
                     {index !== services.length - 1 && (
                       <span
@@ -693,12 +692,12 @@ export default function Hero() {
                       />
                     )}
 
-                    {/* Icon */}
+                    {/* ICON */}
 
                     <div
                       className="
-                        w-10
-                        h-10
+                        w-9
+                        h-9
                         sm:w-11
                         sm:h-11
                         rounded-full
@@ -714,10 +713,10 @@ export default function Hero() {
                         duration-300
                       "
                     >
-                      <Icon className="text-base sm:text-lg" />
+                      <Icon className="text-sm sm:text-lg" />
                     </div>
 
-                    {/* Title */}
+                    {/* TITLE */}
 
                     <p
                       className="
@@ -763,8 +762,7 @@ export default function Hero() {
             }}
             className="
               w-full
-              max-w-[350px]
-              xl:max-w-[370px]
+              max-w-[370px]
               mx-auto
               lg:mx-0
               lg:justify-self-end
@@ -802,7 +800,8 @@ export default function Hero() {
                     from-[#003F9E]
                     via-[#0057B8]
                     to-[#003A8D]
-                    px-5
+                    px-4
+                    sm:px-5
                     py-4
                     text-white
                   "
@@ -821,12 +820,19 @@ export default function Hero() {
                         flex
                         items-center
                         justify-center
+                        shrink-0
                       "
                     >
-                      <FaPlane className="text-white text-sm rotate-[-15deg]" />
+                      <FaPlane
+                        className="
+                          text-white
+                          text-sm
+                          rotate-[-15deg]
+                        "
+                      />
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
 
                       <h2
                         className="
@@ -859,16 +865,14 @@ export default function Hero() {
                     FORM BODY
                 ================================================= */}
 
-                <div className="px-4 py-4">
+                <div className="px-3.5 sm:px-4 py-4">
 
                   <form
                     onSubmit={handleEnquiry}
                     className="space-y-2.5"
                   >
 
-                    {/* =================================================
-                        NAME - TEXT ONLY
-                    ================================================= */}
+                    {/* NAME */}
 
                     <div className="relative">
 
@@ -917,9 +921,7 @@ export default function Hero() {
                     </div>
 
 
-                    {/* =================================================
-                        PHONE
-                    ================================================= */}
+                    {/* PHONE */}
 
                     <div className="relative">
 
@@ -968,9 +970,7 @@ export default function Hero() {
                     </div>
 
 
-                    {/* =================================================
-                        EMAIL
-                    ================================================= */}
+                    {/* EMAIL */}
 
                     <div className="relative">
 
@@ -1016,9 +1016,7 @@ export default function Hero() {
                     </div>
 
 
-                    {/* =================================================
-                        SERVICE
-                    ================================================= */}
+                    {/* SERVICE */}
 
                     <div className="relative">
 
@@ -1106,9 +1104,7 @@ export default function Hero() {
                     </div>
 
 
-                    {/* =================================================
-                        MESSAGE
-                    ================================================= */}
+                    {/* MESSAGE */}
 
                     <div className="relative">
 
@@ -1152,9 +1148,7 @@ export default function Hero() {
                     </div>
 
 
-                    {/* =================================================
-                        SUCCESS
-                    ================================================= */}
+                    {/* SUCCESS */}
 
                     {success && (
                       <p
@@ -1170,9 +1164,7 @@ export default function Hero() {
                     )}
 
 
-                    {/* =================================================
-                        ERROR
-                    ================================================= */}
+                    {/* ERROR */}
 
                     {error && (
                       <p
@@ -1188,9 +1180,7 @@ export default function Hero() {
                     )}
 
 
-                    {/* =================================================
-                        SUBMIT
-                    ================================================= */}
+                    {/* SUBMIT */}
 
                     <button
                       type="submit"
@@ -1273,12 +1263,13 @@ export default function Hero() {
         }}
         className="
           absolute
-          bottom-3
-          md:bottom-5
+          bottom-4
+          sm:bottom-5
           left-1/2
           -translate-x-1/2
           z-20
-          w-[calc(100%-30px)]
+          w-[calc(100%-20px)]
+          sm:w-[calc(100%-30px)]
           max-w-[1220px]
         "
       >
@@ -1290,9 +1281,11 @@ export default function Hero() {
             border
             border-white/20
             rounded-[18px]
-            px-3
-            sm:px-5
-            py-3
+            px-2
+            sm:px-4
+            md:px-5
+            py-2.5
+            sm:py-3
             shadow-[0_15px_40px_rgba(0,0,0,0.30)]
           "
         >
@@ -1301,9 +1294,12 @@ export default function Hero() {
             className="
               grid
               grid-cols-2
+              sm:grid-cols-3
               md:grid-cols-5
               divide-x
               divide-white/20
+              divide-y
+              sm:divide-y-0
             "
           >
 
@@ -1322,6 +1318,7 @@ export default function Hero() {
                     px-2
                     sm:px-3
                     py-2
+                    min-w-0
                   "
                 >
 
@@ -1344,11 +1341,11 @@ export default function Hero() {
                     <Icon className="text-xs sm:text-sm" />
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
 
                     <p
                       className="
-                        text-xl
+                        text-lg
                         sm:text-2xl
                         font-extrabold
                         text-white
@@ -1361,10 +1358,10 @@ export default function Hero() {
                     <p
                       className="
                         mt-1
-                        text-[15px]
-                        md:text-[13px]
+                        text-[8px]
                         sm:text-[9px]
-                        text-[#f37005ea]
+                        md:text-[10px]
+                        text-[#f37005]
                         leading-3
                         max-w-[100px]
                       "
@@ -1392,14 +1389,13 @@ export default function Hero() {
       <div
         className="
           absolute
-          bottom-1
+          bottom-0
           left-1/2
           -translate-x-1/2
-          translate-y-full
           flex
           gap-1.5
           z-30
-          mb-2
+          pb-1
         "
       >
 

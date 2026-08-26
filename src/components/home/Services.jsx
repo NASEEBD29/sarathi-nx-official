@@ -8,17 +8,12 @@ import {
   FaPassport,
   FaHotel,
   FaUsers,
-  FaGlobeAsia,
-  FaGlobe,
   FaBriefcase,
-  FaSuitcaseRolling,
   FaArrowRight,
   FaShieldAlt,
   FaCar,
   FaUmbrellaBeach,
   FaShip,
-  FaHandshake,
-  FaUserTie,
 } from "react-icons/fa";
 
 // ======================================================
@@ -129,15 +124,6 @@ const services = [
       "Enjoy well-organized group journeys and customized tours with personalized itineraries, accommodation, transportation and complete travel assistance.",
     image: group,
   },
-
-  {
-    icon: FaUserTie,
-    title: "Meet & Greet & Concierge Services",
-    shortTitle: "Meet & Greet & Concierge",
-    description:
-      "Enjoy personalized meet and greet, concierge and destination assistance designed to make every part of your journey more comfortable and convenient.",
-    image: internationalExhibition,
-  },
 ];
 
 // ======================================================
@@ -160,7 +146,6 @@ export default function Services() {
   }, []);
 
   const service = services[activeService];
-
   const Icon = service.icon;
 
   // ====================================================
@@ -175,30 +160,33 @@ export default function Services() {
         from-white
         via-[#F8FBFF]
         to-white
-        pt-10
+        pt-8
         pb-10
+        sm:pt-10
+        sm:pb-10
         lg:pt-10
         lg:pb-12
         overflow-hidden
       "
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* ==================================================
             HEADING
         ================================================== */}
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-7 sm:mb-8">
 
           {/* EYEBROW */}
 
           <Reveal>
-            <div className="flex items-center justify-center gap-[10px] mb-[7px]">
+            <div className="flex items-center justify-center gap-2 sm:gap-[10px] mb-[7px]">
 
               <span
                 className="
                   block
-                  w-[49px]
+                  w-8
+                  sm:w-[49px]
                   h-[2px]
                   bg-gradient-to-r
                   from-[#0057B8]
@@ -208,9 +196,11 @@ export default function Services() {
 
               <span
                 className="
-                  text-[13px]
+                  text-[10px]
+                  sm:text-[13px]
                   font-bold
-                  tracking-[3px]
+                  tracking-[2px]
+                  sm:tracking-[3px]
                   uppercase
                   leading-none
                   bg-gradient-to-r
@@ -227,7 +217,8 @@ export default function Services() {
               <span
                 className="
                   block
-                  w-[49px]
+                  w-8
+                  sm:w-[49px]
                   h-[2px]
                   bg-gradient-to-r
                   from-[#F16A24]
@@ -245,9 +236,12 @@ export default function Services() {
               className="
                 text-center
                 font-extrabold
-                tracking-[-1.8px]
-                leading-[1.02]
-                text-[48px]
+                tracking-[-1.2px]
+                sm:tracking-[-1.5px]
+                lg:tracking-[-1.8px]
+                leading-[1.05]
+                text-[36px]
+                sm:text-[42px]
                 md:text-[52px]
                 lg:text-[58px]
                 text-[#071B41]
@@ -278,9 +272,12 @@ export default function Services() {
               max-w-2xl
               mx-auto
               mt-3
-              text-sm
+              text-xs
+              sm:text-sm
               md:text-base
-              leading-6
+              leading-5
+              sm:leading-6
+              px-2
             "
           >
             From international exhibitions and corporate journeys to visas,
@@ -297,8 +294,10 @@ export default function Services() {
         <div
           className="
             grid
+            grid-cols-1
             lg:grid-cols-[270px_1fr]
-            gap-5
+            gap-4
+            lg:gap-5
             items-stretch
           "
         >
@@ -325,7 +324,8 @@ export default function Services() {
 
             <div
               className="
-                px-5
+                px-4
+                sm:px-5
                 py-4
                 shrink-0
                 bg-gradient-to-r
@@ -338,9 +338,11 @@ export default function Services() {
 
               <p
                 className="
-                  text-xs
+                  text-[10px]
+                  sm:text-xs
                   uppercase
-                  tracking-[2px]
+                  tracking-[1.5px]
+                  sm:tracking-[2px]
                   text-blue-100
                   font-semibold
                 "
@@ -348,7 +350,7 @@ export default function Services() {
                 What We Offer
               </p>
 
-              <h3 className="text-lg font-bold mt-1">
+              <h3 className="text-base sm:text-lg font-bold mt-1">
                 Our Services
               </h3>
 
@@ -384,7 +386,8 @@ export default function Services() {
                       flex
                       items-center
                       gap-3
-                      px-4
+                      px-3
+                      sm:px-4
                       py-3
                       rounded-xl
                       text-left
@@ -447,7 +450,8 @@ export default function Services() {
 
                     <span
                       className={`
-                        text-sm
+                        text-xs
+                        sm:text-sm
                         font-semibold
                         leading-5
 
@@ -477,7 +481,11 @@ export default function Services() {
           <div
             className="
               relative
-              h-[500px]
+              h-[420px]
+              sm:h-[450px]
+              md:h-[480px]
+              lg:h-[500px]
+              min-w-0
             "
           >
 
@@ -552,15 +560,11 @@ export default function Services() {
                     }}
                   />
 
-                  {/* ==================================================
-                      DARK OVERLAY
-                  ================================================== */}
+                  {/* DARK OVERLAY */}
 
                   <div className="absolute inset-0 bg-black/35" />
 
-                  {/* ==================================================
-                      LEFT DARK GRADIENT
-                  ================================================== */}
+                  {/* LEFT DARK GRADIENT */}
 
                   <div
                     className="
@@ -573,9 +577,7 @@ export default function Services() {
                     "
                   />
 
-                  {/* ==================================================
-                      BLUE + ORANGE COLOR OVERLAY
-                  ================================================== */}
+                  {/* BLUE + ORANGE COLOR OVERLAY */}
 
                   <div
                     className="
@@ -588,9 +590,7 @@ export default function Services() {
                     "
                   />
 
-                  {/* ==================================================
-                      BOTTOM GRADIENT
-                  ================================================== */}
+                  {/* BOTTOM GRADIENT */}
 
                   <div
                     className="
@@ -605,9 +605,7 @@ export default function Services() {
                     "
                   />
 
-                  {/* ==================================================
-                      TOP COLOR LINE
-                  ================================================== */}
+                  {/* TOP COLOR LINE */}
 
                   <div
                     className="
@@ -636,21 +634,25 @@ export default function Services() {
                       flex
                       flex-col
                       justify-center
-                      p-6
+                      p-5
+                      sm:p-6
                       md:p-8
                       lg:p-10
                     "
                   >
 
-                    {/* ==================================================
-                        ICON
-                    ================================================== */}
+                    {/* ICON */}
 
                     <div
                       className="
-                        w-16
-                        h-16
-                        rounded-2xl
+                        w-12
+                        h-12
+                        sm:w-14
+                        sm:h-14
+                        lg:w-16
+                        lg:h-16
+                        rounded-xl
+                        sm:rounded-2xl
                         bg-gradient-to-br
                         from-[#0057B8]/70
                         to-[#fc6602]/70
@@ -661,9 +663,11 @@ export default function Services() {
                         flex
                         items-center
                         justify-center
-                        text-2xl
+                        text-xl
+                        sm:text-2xl
                         shadow-xl
-                        mb-4
+                        mb-3
+                        sm:mb-4
                         group-hover:scale-105
                         transition-transform
                         duration-300
@@ -672,29 +676,28 @@ export default function Services() {
                       <Icon />
                     </div>
 
-                    {/* ==================================================
-                        LABEL
-                    ================================================== */}
+                    {/* LABEL */}
 
                     <span
                       className="
                         text-[#fc6602]
-                        text-xs
+                        text-[10px]
+                        sm:text-xs
                         font-bold
                         uppercase
-                        tracking-[2px]
+                        tracking-[1.5px]
+                        sm:tracking-[2px]
                       "
                     >
                       Sarathi NX
                     </span>
 
-                    {/* ==================================================
-                        TITLE
-                    ================================================== */}
+                    {/* TITLE */}
 
                     <h3
                       className="
-                        text-2xl
+                        text-xl
+                        sm:text-2xl
                         md:text-3xl
                         lg:text-4xl
                         font-extrabold
@@ -708,20 +711,22 @@ export default function Services() {
                       {service.title}
                     </h3>
 
-                    {/* ==================================================
-                        DESCRIPTION
-                    ================================================== */}
+                    {/* DESCRIPTION */}
 
                     <p
                       className="
                         text-white/90
-                        text-sm
+                        text-xs
+                        sm:text-sm
                         md:text-base
-                        leading-6
-                        mt-3
+                        leading-5
+                        sm:leading-6
+                        mt-2
+                        sm:mt-3
                         max-w-2xl
                         drop-shadow-md
-                        line-clamp-2
+                        line-clamp-3
+                        sm:line-clamp-2
                       "
                     >
                       {service.description}
@@ -736,14 +741,14 @@ export default function Services() {
                         flex
                         flex-wrap
                         items-center
-                        gap-4
-                        mt-5
+                        gap-3
+                        sm:gap-4
+                        mt-4
+                        sm:mt-5
                       "
                     >
 
-                      {/* ==================================================
-                          EXPLORE BUTTON
-                      ================================================== */}
+                      {/* EXPLORE BUTTON */}
 
                       <a
                         href="#contact"
@@ -751,17 +756,21 @@ export default function Services() {
                           group/explore
                           inline-flex
                           items-center
-                          gap-3
+                          gap-2
+                          sm:gap-3
                           bg-gradient-to-r
                           from-[#0057B8]
                           via-[#0057B8]
                           to-[#fc6602]
                           text-white
-                          px-5
-                          py-3
+                          px-4
+                          sm:px-5
+                          py-2.5
+                          sm:py-3
                           rounded-full
                           font-semibold
-                          text-sm
+                          text-xs
+                          sm:text-sm
                           transition-all
                           duration-300
                           shadow-lg
@@ -774,7 +783,8 @@ export default function Services() {
 
                         <FaArrowRight
                           className="
-                            text-sm
+                            text-xs
+                            sm:text-sm
                             transition-transform
                             duration-300
                             group-hover/explore:translate-x-1
@@ -782,16 +792,15 @@ export default function Services() {
                         />
                       </a>
 
-                      {/* ==================================================
-                          SUPPORT TEXT
-                      ================================================== */}
+                      {/* SUPPORT TEXT */}
 
                       <div
                         className="
                           flex
                           items-center
                           gap-2
-                          text-xs
+                          text-[11px]
+                          sm:text-xs
                           md:text-sm
                           text-white/90
                         "
@@ -817,16 +826,14 @@ export default function Services() {
                         SLIDER INDICATORS
                     ================================================== */}
 
-                    <div className="flex gap-2 mt-5">
+                    <div className="flex gap-1.5 sm:gap-2 mt-4 sm:mt-5">
 
                       {services.map((_, index) => (
 
                         <button
                           key={index}
                           type="button"
-                          onClick={() =>
-                            setActiveService(index)
-                          }
+                          onClick={() => setActiveService(index)}
                           aria-label={`Show service ${index + 1}`}
                           className={`
                             h-1.5
@@ -837,13 +844,15 @@ export default function Services() {
                             ${
                               activeService === index
                                 ? `
-                                  w-10
+                                  w-8
+                                  sm:w-10
                                   bg-gradient-to-r
                                   from-[#0057B8]
                                   to-[#fc6602]
                                 `
                                 : `
-                                  w-5
+                                  w-4
+                                  sm:w-5
                                   bg-white/40
                                   hover:bg-white/70
                                 `

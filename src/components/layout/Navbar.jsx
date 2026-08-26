@@ -71,12 +71,7 @@ export default function Navbar() {
         border-gray-100
         transition-all
         duration-300
-
-        ${
-          scrolled
-            ? "shadow-lg"
-            : "shadow-sm"
-        }
+        ${scrolled ? "shadow-lg" : "shadow-sm"}
       `}
     >
 
@@ -90,22 +85,27 @@ export default function Navbar() {
           className={`
             max-w-[1800px]
             mx-auto
-            px-5
-            sm:px-8
+
+            px-3
+            sm:px-5
+            md:px-8
             lg:px-10
 
             flex
             items-center
             justify-between
-            gap-6
+
+            gap-3
+            sm:gap-5
+            xl:gap-6
 
             transition-all
             duration-300
 
             ${
               scrolled
-                ? "h-[72px]"
-                : "h-[84px]"
+                ? "h-[64px] sm:h-[68px] lg:h-[72px]"
+                : "h-[72px] sm:h-[78px] lg:h-[84px]"
             }
           `}
         >
@@ -130,13 +130,17 @@ export default function Navbar() {
               src={`${import.meta.env.BASE_URL}sarathi-logo.png`}
               alt="Sarathi NX"
               className="
-                w-[135px]
-                sm:w-[150px]
+                w-[118px]
+                sm:w-[135px]
+                md:w-[150px]
                 lg:w-[165px]
+
                 h-auto
                 object-contain
+
                 transition-all
                 duration-300
+
                 group-hover:scale-[1.03]
               "
             />
@@ -152,11 +156,17 @@ export default function Navbar() {
             className="
               hidden
               lg:flex
+
               items-center
               justify-center
-              gap-1
-              xl:gap-2
+
+              gap-0
+              xl:gap-1
+              2xl:gap-2
+
               flex-1
+
+              min-w-0
             "
           >
 
@@ -170,7 +180,7 @@ export default function Navbar() {
                 <NavLink
                   to={item.href}
                   end={item.href === "/"}
-                  className={({ isActive }) => `
+                  className="
                     group
                     relative
 
@@ -178,12 +188,15 @@ export default function Navbar() {
                     items-center
                     justify-center
 
-                    px-4
-                    xl:px-5
+                    px-2.5
+                    xl:px-4
+                    2xl:px-5
+
                     py-3
 
-                    text-[16px]
-                    xl:text-[17px]
+                    text-[14px]
+                    xl:text-[16px]
+                    2xl:text-[17px]
 
                     font-bold
                     whitespace-nowrap
@@ -194,7 +207,7 @@ export default function Navbar() {
                     duration-300
 
                     hover:text-[#0057B8]
-                  `}
+                  "
                 >
 
                   {({ isActive }) => (
@@ -214,6 +227,7 @@ export default function Navbar() {
                       <span
                         className={`
                           absolute
+
                           left-1/2
                           -translate-x-1/2
 
@@ -261,26 +275,32 @@ export default function Navbar() {
 
               items-center
               justify-center
-              gap-2.5
+
+              gap-2
 
               bg-[#0057B8]
               hover:bg-[#004694]
 
               text-white
 
-              px-[48px]
-              
+              px-5
+              xl:px-7
+              2xl:px-10
 
-              py-3
-              xl:py-3.5
+              py-2.5
+              xl:py-3
+              2xl:py-3.5
 
               rounded-full
 
-              text-[15px]
-              xl:text-[16px]
+              text-[13px]
+              xl:text-[15px]
+              2xl:text-[16px]
 
               font-bold
               whitespace-nowrap
+
+              shrink-0
 
               shadow-md
 
@@ -292,7 +312,13 @@ export default function Navbar() {
             "
           >
 
-            <FaPhoneAlt className="text-[16px]" />
+            <FaPhoneAlt
+              className="
+                text-[14px]
+                xl:text-[15px]
+                2xl:text-[16px]
+              "
+            />
 
             <span>
               Call Now
@@ -311,8 +337,12 @@ export default function Navbar() {
             className="
               lg:hidden
 
-              w-12
-              h-12
+              w-11
+              h-11
+              sm:w-12
+              sm:h-12
+
+              shrink-0
 
               flex
               items-center
@@ -325,12 +355,16 @@ export default function Navbar() {
               to-[#fc6602]
 
               text-white
-              text-xl
+
+              text-lg
+              sm:text-xl
 
               shadow-md
 
               transition-all
               duration-300
+
+              hover:shadow-lg
             "
             aria-label="Toggle Menu"
             aria-expanded={menuOpen}
@@ -365,7 +399,7 @@ export default function Navbar() {
 
           ${
             menuOpen
-              ? "max-h-[800px] opacity-100"
+              ? "max-h-[90vh] opacity-100"
               : "max-h-0 opacity-0"
           }
         `}
@@ -377,6 +411,9 @@ export default function Navbar() {
             border-t
             border-gray-100
             shadow-xl
+
+            max-h-[90vh]
+            overflow-y-auto
           "
         >
 
@@ -384,6 +421,7 @@ export default function Navbar() {
             className="
               flex
               flex-col
+
               py-3
             "
           >
@@ -392,7 +430,10 @@ export default function Navbar() {
 
               <li
                 key={item.id}
-                className="px-4"
+                className="
+                  px-3
+                  sm:px-4
+                "
               >
 
                 <NavLink
@@ -409,7 +450,9 @@ export default function Navbar() {
                     px-3
                     py-3
 
-                    text-[16px]
+                    text-[15px]
+                    sm:text-[16px]
+
                     font-bold
 
                     transition-all
@@ -475,7 +518,15 @@ export default function Navbar() {
                 MOBILE CALL NOW
             ================================================= */}
 
-            <li className="px-4 pt-3 pb-2">
+            <li
+              className="
+                px-3
+                sm:px-4
+
+                pt-3
+                pb-2
+              "
+            >
 
               <a
                 href="tel:+917666984626"
@@ -486,6 +537,7 @@ export default function Navbar() {
                   flex
                   items-center
                   justify-center
+
                   gap-2.5
 
                   bg-[#0057B8]
@@ -497,7 +549,9 @@ export default function Navbar() {
 
                   rounded-xl
 
-                  text-[16px]
+                  text-[15px]
+                  sm:text-[16px]
+
                   font-bold
 
                   shadow-md

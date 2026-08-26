@@ -79,7 +79,7 @@ export default function About() {
             SECTION HEADING
         ===================================================== */}
 
-        
+
 
 
         {/* =====================================================
@@ -241,28 +241,28 @@ export default function About() {
 
                 <div
                   className="
-                    absolute
-                    top-5
-                    left-5
-                    sm:top-6
-                    sm:left-6
-                    inline-flex
-                    items-center
-                    gap-2
-                    px-4
-                    py-2
-                    rounded-full
-                    bg-white/95
-                    backdrop-blur-md
-                    border
-                    border-white/60
-                    text-[#0057B8]
-                    text-[10px]
-                    sm:text-xs
-                    font-extrabold
-                    uppercase
-                    tracking-[2px]
-                    shadow-[0_8px_25px_rgba(0,0,0,0.15)]
+                     absolute
+                      top-5
+                      right-5
+                      sm:top-6
+                      sm:right-6
+                      inline-flex
+                      items-center
+                      gap-2
+                      px-4
+                      py-2
+                      rounded-full
+                      bg-white/95
+                      backdrop-blur-md
+                      border
+                      border-white/60
+                      text-[#0057B8]
+                      text-[10px]
+                      sm:text-xs
+                      font-extrabold
+                      uppercase
+                      tracking-[2px]
+                      shadow-[0_8px_25px_rgba(0,0,0,0.15)]
                   "
                 >
                   <span
@@ -314,10 +314,10 @@ export default function About() {
                           mb-1
                         "
                       >
-                       
-We Plan.
-You Travel.
-We Care.
+
+                        We Plan.
+                        You Travel.
+                        We Care.
                       </p>
 
                       <h3
@@ -496,11 +496,11 @@ We Care.
 
               {/* SMALL LABEL */}
 
-             <Reveal>
-          <div className="flex items-center gap-[10px] mb-[7px]">
+              <Reveal>
+                <div className="flex items-center gap-[10px] mb-[7px]">
 
-            <span
-              className="
+                  <span
+                    className="
                 block
                 w-[49px]
                 h-[2px]
@@ -508,10 +508,10 @@ We Care.
                 from-[#0057B8]
                 to-[#F16A24]
               "
-            />
+                  />
 
-            <span
-              className="
+                  <span
+                    className="
                 text-[13px]
                 font-bold
                 tracking-[3px]
@@ -524,12 +524,12 @@ We Care.
                 bg-clip-text
                 text-transparent
               "
-            >
-              Who we are
-            </span>
+                  >
+                    Who we are
+                  </span>
 
-            <span
-              className="
+                  <span
+                    className="
                 block
                 w-[49px]
                 h-[2px]
@@ -537,10 +537,10 @@ We Care.
                 from-[#F16A24]
                 to-[#0057B8]
               "
-            />
+                  />
 
-          </div>
-        </Reveal>
+                </div>
+              </Reveal>
 
 
 

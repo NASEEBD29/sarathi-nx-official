@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -6,17 +5,14 @@ import {
   FaArrowRight,
   FaGlobeAsia,
   FaHeartbeat,
-  FaCapsules,
-  FaIndustry,
+  FaUtensils,
   FaCar,
   FaCogs,
   FaMicrochip,
-  FaUtensils,
   FaSolarPanel,
   FaLaptopCode,
   FaHardHat,
   FaPaintBrush,
-  FaBuilding,
   FaTshirt,
   FaCouch,
   FaGem,
@@ -25,6 +21,7 @@ import {
   FaLeaf,
   FaGraduationCap,
   FaEye,
+  FaIndustry,
 } from "react-icons/fa";
 
 import Reveal from "../common/Reveal";
@@ -34,15 +31,11 @@ import Reveal from "../common/Reveal";
 // =====================================================
 
 import healthcareImage from "../../assets/images/industries/healthcare.jpg";
-// import pharmaceuticalImage from "../../assets/images/industries/pharmaceutical.jpg";
 import textileImage from "../../assets/images/industries/textile.jpg";
 import automotiveImage from "../../assets/images/industries/automotive.jpg";
-// import engineeringImage from "../../assets/images/industries/engineering.jpg";
 import electronicsImage from "../../assets/images/industries/electronics.jpg";
-// import foodBeverageImage from "../../assets/images/industries/foodBeverage.jpg";
 import renewableEnergyImage from "../../assets/images/industries/renewableEnergy.jpg";
 
-// NEW IMAGES
 import agricultureImage from "../../assets/images/industries/agriculture.jpg";
 import beautyCosmeticsImage from "../../assets/images/industries/beautyCosmetics.jpg";
 import construction from "../../assets/images/industries/construction.jpg";
@@ -204,8 +197,11 @@ export default function IndustriesWeServe() {
       className="
         relative
         pt-10
+        sm:pt-11
         md:pt-12
-        pb-16
+        lg:pt-12
+        pb-14
+        sm:pb-16
         md:pb-20
         bg-white
         overflow-hidden
@@ -221,8 +217,12 @@ export default function IndustriesWeServe() {
           absolute
           -top-24
           -left-24
-          w-80
-          h-80
+          w-64
+          h-64
+          sm:w-72
+          sm:h-72
+          md:w-80
+          md:h-80
           rounded-full
           bg-[#0057B8]/5
           blur-3xl
@@ -235,8 +235,12 @@ export default function IndustriesWeServe() {
           absolute
           -bottom-24
           -right-24
-          w-80
-          h-80
+          w-64
+          h-64
+          sm:w-72
+          sm:h-72
+          md:w-80
+          md:h-80
           rounded-full
           bg-[#F16A24]/5
           blur-3xl
@@ -251,26 +255,45 @@ export default function IndustriesWeServe() {
         ================================================= */}
 
         <Reveal>
-          <div className="flex items-center justify-center gap-[10px] mb-[7px]">
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-[6px]
+              sm:gap-[8px]
+              md:gap-[10px]
+              mb-[7px]
+              px-4
+            "
+          >
 
             <span
               className="
                 block
-                w-[49px]
+                w-[28px]
+                sm:w-[38px]
+                md:w-[49px]
                 h-[2px]
                 bg-gradient-to-r
                 from-[#0057B8]
                 to-[#F16A24]
+                shrink-0
               "
             />
 
             <span
               className="
-                text-[13px]
+                text-[10px]
+                sm:text-[11px]
+                md:text-[13px]
                 font-bold
-                tracking-[3px]
+                tracking-[2px]
+                sm:tracking-[2.5px]
+                md:tracking-[3px]
                 uppercase
                 leading-none
+                text-center
                 bg-gradient-to-r
                 from-[#0057B8]
                 via-[#0057B8]
@@ -285,11 +308,14 @@ export default function IndustriesWeServe() {
             <span
               className="
                 block
-                w-[49px]
+                w-[28px]
+                sm:w-[38px]
+                md:w-[49px]
                 h-[2px]
                 bg-gradient-to-r
                 from-[#F16A24]
                 to-[#0057B8]
+                shrink-0
               "
             />
 
@@ -305,11 +331,15 @@ export default function IndustriesWeServe() {
             className="
               text-center
               font-extrabold
-              tracking-[-1.8px]
-              leading-[1.02]
-              text-[48px]
-              md:text-[52px]
+              tracking-[-1px]
+              sm:tracking-[-1.3px]
+              md:tracking-[-1.8px]
+              leading-[1.05]
+              text-[32px]
+              sm:text-[40px]
+              md:text-[48px]
               lg:text-[58px]
+              px-4
               text-[#071B41]
             "
           >
@@ -340,11 +370,15 @@ export default function IndustriesWeServe() {
               text-center
               max-w-3xl
               mx-auto
-              mt-5
-              px-6
+              mt-4
+              sm:mt-5
+              px-5
+              sm:px-6
               text-gray-600
-              leading-7
-              text-sm
+              leading-6
+              sm:leading-7
+              text-xs
+              sm:text-sm
               md:text-base
             "
           >
@@ -355,7 +389,6 @@ export default function IndustriesWeServe() {
           </p>
         </Reveal>
 
-
         {/* =================================================
             INFINITE INDUSTRY FLOW
         ================================================= */}
@@ -363,7 +396,8 @@ export default function IndustriesWeServe() {
         <div
           className="
             relative
-            mt-10
+            mt-8
+            sm:mt-10
             md:mt-12
             overflow-hidden
             w-full
@@ -380,7 +414,8 @@ export default function IndustriesWeServe() {
               left-0
               top-0
               bottom-0
-              w-16
+              w-10
+              sm:w-16
               md:w-28
               bg-gradient-to-r
               from-white
@@ -398,7 +433,8 @@ export default function IndustriesWeServe() {
               right-0
               top-0
               bottom-0
-              w-16
+              w-10
+              sm:w-16
               md:w-28
               bg-gradient-to-l
               from-white
@@ -415,10 +451,12 @@ export default function IndustriesWeServe() {
           <motion.div
             className="
               flex
-              gap-4
+              gap-3
+              sm:gap-4
               md:gap-5
               w-max
-              px-4
+              px-3
+              sm:px-4
             "
             animate={{
               x: paused ? undefined : ["0%", "-50%"],
@@ -449,17 +487,25 @@ export default function IndustriesWeServe() {
                     group
                     relative
                     shrink-0
-                    w-[240px]
-                    sm:w-[260px]
+
+                    w-[220px]
+                    sm:w-[250px]
                     md:w-[280px]
                     lg:w-[300px]
-                    h-[260px]
+
+                    h-[250px]
+                    sm:h-[260px]
                     md:h-[275px]
-                    rounded-[22px]
+
+                    rounded-[20px]
+                    md:rounded-[22px]
+
                     overflow-hidden
                     bg-gray-900
+
                     shadow-[0_10px_35px_rgba(0,0,0,0.10)]
                     hover:shadow-[0_20px_45px_rgba(0,87,184,0.20)]
+
                     transition-shadow
                     duration-500
                   "
@@ -545,10 +591,16 @@ export default function IndustriesWeServe() {
                   <div
                     className="
                       absolute
-                      top-4
-                      right-4
-                      w-10
-                      h-10
+                      top-3
+                      right-3
+                      sm:top-4
+                      sm:right-4
+
+                      w-9
+                      h-9
+                      sm:w-10
+                      sm:h-10
+
                       rounded-full
                       bg-white/90
                       backdrop-blur-sm
@@ -564,7 +616,7 @@ export default function IndustriesWeServe() {
                       duration-300
                     "
                   >
-                    <Icon className="text-base" />
+                    <Icon className="text-sm sm:text-base" />
                   </div>
 
                   {/* =================================================
@@ -576,14 +628,16 @@ export default function IndustriesWeServe() {
                       absolute
                       inset-x-0
                       bottom-0
-                      p-5
+                      p-4
+                      sm:p-5
                       z-20
                     "
                   >
 
                     <h3
                       className="
-                        text-lg
+                        text-base
+                        sm:text-lg
                         md:text-xl
                         font-extrabold
                         text-white
@@ -596,7 +650,8 @@ export default function IndustriesWeServe() {
 
                     <div
                       className="
-                        mt-3
+                        mt-2
+                        sm:mt-3
                         w-10
                         h-[2px]
                         bg-gradient-to-r
@@ -614,9 +669,11 @@ export default function IndustriesWeServe() {
                         inline-flex
                         items-center
                         gap-2
-                        mt-3
+                        mt-2
+                        sm:mt-3
                         text-white/90
-                        text-xs
+                        text-[11px]
+                        sm:text-xs
                         font-bold
                         hover:text-white
                         transition-colors
@@ -626,7 +683,8 @@ export default function IndustriesWeServe() {
 
                       <FaArrowRight
                         className="
-                          text-[10px]
+                          text-[9px]
+                          sm:text-[10px]
                           group-hover:translate-x-1
                           transition-transform
                         "
@@ -643,7 +701,8 @@ export default function IndustriesWeServe() {
                     className="
                       absolute
                       inset-0
-                      rounded-[22px]
+                      rounded-[20px]
+                      md:rounded-[22px]
                       border
                       border-white/20
                       group-hover:border-white/50
@@ -660,31 +719,34 @@ export default function IndustriesWeServe() {
           </motion.div>
         </div>
 
-
         {/* =================================================
             FLOW INDICATOR
         ================================================= */}
 
         <Reveal delay={0.2}>
-          <div className="flex justify-center mt-7">
+          <div className="flex justify-center mt-6 sm:mt-7 px-4">
 
             <div
               className="
                 flex
                 items-center
                 gap-2
-                px-4
+                px-3
+                sm:px-4
                 py-2
                 rounded-full
                 bg-[#071B41]/5
                 text-[#071B41]
-                text-[11px]
+                text-[9px]
+                sm:text-[11px]
                 font-bold
                 uppercase
-                tracking-[2px]
+                tracking-[1.5px]
+                sm:tracking-[2px]
+                text-center
               "
             >
-              <FaGlobeAsia className="text-[#0057B8]" />
+              <FaGlobeAsia className="text-[#0057B8] shrink-0" />
 
               Connecting Industries Globally
 
@@ -692,7 +754,6 @@ export default function IndustriesWeServe() {
 
           </div>
         </Reveal>
-
 
         {/* =================================================
             BOTTOM CTA
@@ -704,25 +765,44 @@ export default function IndustriesWeServe() {
             className="
               max-w-7xl
               mx-auto
-              mt-10
-              mx-5
+
+              mt-8
+              sm:mt-9
+              md:mt-10
+
+              mx-4
+              sm:mx-5
               md:mx-8
-              rounded-3xl
+
+              rounded-2xl
+              sm:rounded-3xl
+
               bg-gradient-to-r
               from-[#0057B8]
               via-[#0057B8]
               to-[#F16A24]
-              px-6
-              py-7
+
+              px-5
+              sm:px-6
               md:px-10
+
+              py-6
+              sm:py-7
               md:py-8
+
               text-white
+
               flex
               flex-col
               md:flex-row
+
               items-center
+              md:items-center
+
               justify-between
+
               gap-5
+
               shadow-xl
               overflow-hidden
               relative
@@ -736,8 +816,10 @@ export default function IndustriesWeServe() {
                 absolute
                 -right-16
                 -top-16
-                w-40
-                h-40
+                w-36
+                h-36
+                sm:w-40
+                sm:h-40
                 rounded-full
                 bg-white/10
               "
@@ -748,8 +830,10 @@ export default function IndustriesWeServe() {
                 absolute
                 -left-16
                 -bottom-16
-                w-36
-                h-36
+                w-32
+                h-32
+                sm:w-36
+                sm:h-36
                 rounded-full
                 bg-white/10
               "
@@ -757,9 +841,16 @@ export default function IndustriesWeServe() {
 
             {/* CTA TEXT */}
 
-            <div className="relative z-10">
+            <div
+              className="
+                relative
+                z-10
+                text-center
+                md:text-left
+              "
+            >
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center md:justify-start gap-2">
 
                 <FaGlobeAsia className="text-blue-100" />
 
@@ -767,8 +858,10 @@ export default function IndustriesWeServe() {
                   className="
                     text-blue-100
                     uppercase
-                    tracking-[2px]
-                    text-xs
+                    tracking-[1.5px]
+                    sm:tracking-[2px]
+                    text-[10px]
+                    sm:text-xs
                     font-bold
                   "
                 >
@@ -779,16 +872,18 @@ export default function IndustriesWeServe() {
 
               <h3
                 className="
-                  text-xl
+                  text-lg
+                  sm:text-xl
                   md:text-2xl
                   font-extrabold
                   mt-2
+                  leading-tight
                 "
               >
                 Your Industry. Our Global Travel Expertise.
               </h3>
 
-              <p className="text-blue-50 mt-1 text-sm">
+              <p className="text-blue-50 mt-1 text-xs sm:text-sm">
                 Let Sarathi NX take care of your business travel requirements.
               </p>
 
@@ -804,19 +899,32 @@ export default function IndustriesWeServe() {
                 shrink-0
                 inline-flex
                 items-center
+                justify-center
                 gap-2
+
                 bg-white
                 text-[#0057B8]
-                px-6
-                py-3
+
+                px-5
+                sm:px-6
+
+                py-2.5
+                sm:py-3
+
                 rounded-full
+
                 font-bold
+                text-xs
+                sm:text-sm
+
                 hover:bg-gradient-to-r
                 hover:from-[#0057B8]
                 hover:via-[#0057B8]
                 hover:to-[#F16A24]
+
                 hover:text-white
                 hover:scale-105
+
                 transition-all
                 duration-300
                 shadow-lg
@@ -836,4 +944,3 @@ export default function IndustriesWeServe() {
     </section>
   );
 }
-
