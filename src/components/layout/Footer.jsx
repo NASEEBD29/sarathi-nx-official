@@ -38,7 +38,7 @@ const services = [
   "Business & Corporate Travel",
   "MICE & Exhibition Travel",
   "Group & Customized Tours",
-  "Meet & Greet & Concierge Services",
+  
 ];
 
 export default function Footer() {
@@ -841,7 +841,7 @@ export default function Footer() {
             "
           >
             <p className="text-gray-300 text-sm">
-              © {new Date().getFullYear()} Sarathi NX Pvt. Ltd.
+              © 2020 Sarathi NX Pvt. Ltd.
               All Rights Reserved.
             </p>
           </div>

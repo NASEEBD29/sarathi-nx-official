@@ -1,48 +1,122 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import {
   FaBars,
   FaTimes,
+  FaHome,
+  FaPlane,
+  FaHotel,
+  FaPassport,
+  FaHandshake,
+  FaUmbrellaBeach,
+  FaUsers,
   FaPhoneAlt,
+  FaThLarge,
+  FaChevronDown,
 } from "react-icons/fa";
 
 import { navLinks } from "../../data/navLinks";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   // =====================================================
-  // SCROLL EFFECT
+  // NORMAL MENU = FIRST 8 ITEMS
+  // MORE SERVICE = LAST ITEM
   // =====================================================
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
+  const mainNavLinks = navLinks.filter(
+    (item) =>
+      item.title !== "More Service"
+  );
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const moreService = navLinks.find(
+    (item) =>
+      item.title === "More Service"
+  );
 
   // =====================================================
-  // CLOSE MOBILE MENU ON RESIZE
+  // ICONS
+  // =====================================================
+
+  const getMenuIcon = (title = "") => {
+    const text = title.toLowerCase();
+
+    if (text.includes("home")) {
+      return FaHome;
+    }
+
+    if (
+      text.includes("flight") ||
+      text.includes("air")
+    ) {
+      return FaPlane;
+    }
+
+    if (
+      text.includes("hotel") ||
+      text.includes("accommodation")
+    ) {
+      return FaHotel;
+    }
+
+    if (
+      text.includes("visa") ||
+      text.includes("documentation")
+    ) {
+      return FaPassport;
+    }
+
+    if (
+      text.includes("trade") ||
+      text.includes("fair") ||
+      text.includes("exhibition")
+    ) {
+      return FaHandshake;
+    }
+
+    if (
+      text.includes("holiday") ||
+      text.includes("package")
+    ) {
+      return FaUmbrellaBeach;
+    }
+
+    if (text.includes("about")) {
+      return FaUsers;
+    }
+
+    if (text.includes("contact")) {
+      return FaPhoneAlt;
+    }
+
+    return FaThLarge;
+  };
+
+  // =====================================================
+  // CLOSE MOBILE MENU ON DESKTOP
   // =====================================================
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setMenuOpen(false);
+        setMoreOpen(false);
       }
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener(
+      "resize",
+      handleResize
+    );
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener(
+        "resize",
+        handleResize
+      );
     };
   }, []);
 
@@ -51,337 +125,500 @@ export default function Navbar() {
   // =====================================================
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+    document.body.style.overflow =
+      menuOpen ? "hidden" : "";
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
   return (
     <nav
-      className={`
-        sticky
-        top-0
-        left-0
-        w-full
-        z-50
-        bg-white
-        border-b
-        border-gray-100
-        transition-all
-        duration-300
-        ${scrolled ? "shadow-lg" : "shadow-sm"}
-      `}
-    >
+      className="
+        relative
+        z-[60]
 
+        w-full
+
+        bg-[#03182B]
+
+        border-b
+        border-white/[0.10]
+      "
+    >
       {/* =====================================================
-          NAVBAR MAIN
+          DESKTOP NAVBAR
       ====================================================== */}
 
-      <div className="w-full">
+      <div
+        className="
+          w-full
+          max-w-[1600px]
+          mx-auto
 
+          px-4
+          sm:px-5
+          lg:px-6
+          xl:px-7
+        "
+      >
         <div
-          className={`
-            max-w-[1800px]
-            mx-auto
-
-            px-3
-            sm:px-5
-            md:px-8
-            lg:px-10
+          className="
+            h-[142px]
 
             flex
-            items-center
-            justify-between
-
-            gap-3
-            sm:gap-5
-            xl:gap-6
-
-            transition-all
-            duration-300
-
-            ${
-              scrolled
-                ? "h-[64px] sm:h-[68px] lg:h-[72px]"
-                : "h-[72px] sm:h-[78px] lg:h-[84px]"
-            }
-          `}
+            items-stretch
+          "
         >
-
           {/* =================================================
               LOGO
           ================================================= */}
 
-          <NavLink
-            to="/"
-            end
+          <div
             className="
+              shrink-0
+
+              w-[250px]
+              xl:w-[285px]
+
               flex
               items-center
-              shrink-0
-              group
+
+              pr-5
+              xl:pr-8
             "
-            onClick={() => setMenuOpen(false)}
           >
-
-            <img
-              src={`${import.meta.env.BASE_URL}sarathi-logo.png`}
-              alt="Sarathi NX"
+            <NavLink
+              to="/"
+              end
+              onClick={() => {
+                setMenuOpen(false);
+                setMoreOpen(false);
+              }}
               className="
-                w-[118px]
-                sm:w-[135px]
-                md:w-[150px]
-                lg:w-[165px]
-
-                h-auto
-                object-contain
-
-                transition-all
-                duration-300
-
-                group-hover:scale-[1.03]
+                flex
+                items-center
+                justify-center
               "
-            />
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}sarathi-logo.png`}
+                alt="Sarathi NX"
+                className="
+                  w-[220px]
+                  xl:w-[235px]
+                  2xl:w-[240px]
 
-          </NavLink>
+                  h-auto
 
+                  object-contain
+                "
+              />
+            </NavLink>
+          </div>
 
           {/* =================================================
               DESKTOP MENU
           ================================================= */}
 
-          <ul
+          <div
             className="
               hidden
               lg:flex
 
-              items-center
-              justify-center
-
-              gap-0
-              xl:gap-1
-              2xl:gap-2
-
               flex-1
-
               min-w-0
+
+              h-full
+
+              items-stretch
             "
           >
+            {/* =================================================
+                1 - 8 NORMAL MENU
+            ================================================= */}
 
-            {navLinks.map((item) => (
+            {mainNavLinks.map((item) => {
+              const Icon = getMenuIcon(
+                item.title
+              );
 
-              <li
-                key={item.id}
-                className="relative"
-              >
-
-                <NavLink
-                  to={item.href}
-                  end={item.href === "/"}
+              return (
+                <div
+                  key={item.id}
                   className="
-                    group
                     relative
+
+                    flex-1
+                    min-w-0
+
+                    h-full
+
+                    border-l
+                    border-white/[0.12]
 
                     flex
                     items-center
                     justify-center
-
-                    px-2.5
-                    xl:px-4
-                    2xl:px-5
-
-                    py-3
-
-                    text-[14px]
-                    xl:text-[16px]
-                    2xl:text-[17px]
-
-                    font-bold
-                    whitespace-nowrap
-
-                    text-[#26364F]
-
-                    transition-all
-                    duration-300
-
-                    hover:text-[#0057B8]
                   "
                 >
+                  <NavLink
+                    to={item.href}
+                    end={item.href === "/"}
+                    className="
+                      group
 
-                  {({ isActive }) => (
-                    <>
+                      relative
 
-                      {/* MENU TITLE */}
+                      w-full
+                      h-full
 
-                      <span className="relative z-10">
-                        {item.title}
-                      </span>
+                      flex
+                      flex-col
 
+                      items-center
+                      justify-center
 
-                      {/* =================================================
-                          ORANGE ACTIVE / HOVER UNDERLINE
-                      ================================================= */}
+                      gap-[9px]
 
-                      <span
-                        className={`
-                          absolute
+                      px-1
 
-                          left-1/2
-                          -translate-x-1/2
+                      text-center
+                    "
+                  >
+                    {({ isActive }) => (
+                      <>
+                        {/* ICON */}
 
-                          bottom-[3px]
+                        <Icon
+                          className={`
+                            text-[28px]
+                            xl:text-[30px]
 
-                          h-[3px]
+                            transition-colors
+                            duration-200
 
-                          rounded-full
+                            ${
+                              isActive
+                                ? "text-[#9CCB42]"
+                                : "text-[#83A941]"
+                            }
 
-                          bg-[#fc6602]
+                            group-hover:text-[#9CCB42]
+                          `}
+                        />
 
-                          transition-all
-                          duration-300
-                          ease-out
+                        {/* TITLE */}
 
-                          ${
-                            isActive
-                              ? "w-[65%]"
-                              : "w-0 group-hover:w-[65%]"
-                          }
-                        `}
-                      />
+                        <span
+                          className={`
+                            text-[9px]
+                            xl:text-[10px]
+                            2xl:text-[11px]
 
-                    </>
-                  )}
+                            font-medium
 
-                </NavLink>
+                            leading-[1.25]
 
-              </li>
+                            whitespace-nowrap
 
-            ))}
+                            transition-colors
+                            duration-200
 
-          </ul>
+                            ${
+                              isActive
+                                ? "text-[#9CCB42]"
+                                : "text-[#91B34E]"
+                            }
 
+                            group-hover:text-[#A4CD55]
+                          `}
+                        >
+                          {item.title}
+                        </span>
+
+                        {/* ACTIVE LINE */}
+
+                        <span
+                          className={`
+                            absolute
+
+                            bottom-[17px]
+
+                            left-1/2
+                            -translate-x-1/2
+
+                            h-[3px]
+
+                            rounded-full
+
+                            bg-[#9CCB42]
+
+                            transition-all
+                            duration-200
+
+                            ${
+                              isActive
+                                ? "w-[46px]"
+                                : "w-0 group-hover:w-[35px]"
+                            }
+                          `}
+                        />
+                      </>
+                    )}
+                  </NavLink>
+                </div>
+              );
+            })}
+
+            {/* =================================================
+                9 - MORE SERVICE
+            ================================================= */}
+
+            {moreService && (
+              <div
+                className="
+                  relative
+
+                  shrink-0
+
+                  w-[115px]
+                  xl:w-[125px]
+
+                  h-full
+
+                  border-l
+                  border-white/[0.12]
+
+                  flex
+                  items-center
+                  justify-center
+                "
+                onMouseEnter={() =>
+                  setMoreOpen(true)
+                }
+                onMouseLeave={() =>
+                  setMoreOpen(false)
+                }
+              >
+                <button
+                  type="button"
+                  onClick={() =>
+                    setMoreOpen(
+                      (prev) => !prev
+                    )
+                  }
+                  className="
+                    group
+
+                    relative
+
+                    w-full
+                    h-full
+
+                    flex
+                    flex-col
+
+                    items-center
+                    justify-center
+
+                    gap-[9px]
+
+                    px-1
+                  "
+                >
+                  {/* MORE ICON */}
+
+                  <FaThLarge
+                    className="
+                      text-[28px]
+                      xl:text-[30px]
+
+                      text-[#83A941]
+
+                      group-hover:text-[#9CCB42]
+
+                      transition-colors
+                      duration-200
+                    "
+                  />
+
+                  {/* MORE TEXT */}
+
+                  <span
+                    className="
+                      flex
+                      items-center
+
+                      gap-1
+
+                      text-[9px]
+                      xl:text-[10px]
+                      2xl:text-[11px]
+
+                      font-medium
+
+                      leading-[1.25]
+
+                      text-[#91B34E]
+
+                      group-hover:text-[#A4CD55]
+
+                      whitespace-nowrap
+                    "
+                  >
+                    More Service
+
+                    <FaChevronDown
+                      className={`
+                        text-[7px]
+
+                        transition-transform
+                        duration-200
+
+                        ${
+                          moreOpen
+                            ? "rotate-180"
+                            : ""
+                        }
+                      `}
+                    />
+                  </span>
+
+                  {/* LINE */}
+
+                  <span
+                    className={`
+                      absolute
+
+                      bottom-[17px]
+
+                      left-1/2
+                      -translate-x-1/2
+
+                      h-[3px]
+
+                      rounded-full
+
+                      bg-[#9CCB42]
+
+                      transition-all
+                      duration-200
+
+                      ${
+                        moreOpen
+                          ? "w-[50px]"
+                          : "w-0 group-hover:w-[38px]"
+                      }
+                    `}
+                  />
+                </button>
+
+                {/* =================================================
+                    MORE DROPDOWN
+                ================================================= */}
+
+                <div
+                  className={`
+                    absolute
+
+                    top-full
+                    right-0
+
+                    w-[260px]
+
+                    bg-[#03182B]
+
+                    border
+                    border-white/[0.12]
+
+                    shadow-[0_18px_45px_rgba(0,0,0,0.45)]
+
+                    overflow-hidden
+
+                    transition-all
+                    duration-200
+
+                    ${
+                      moreOpen
+                        ? "opacity-100 translate-y-0 visible"
+                        : "opacity-0 -translate-y-2 invisible"
+                    }
+                  `}
+                >
+                  {/* Future More Services
+                      yahan apne additional services
+                      add kar sakte ho
+                  */}
+
+                  <div
+                    className="
+                      px-5
+                      py-4
+
+                      text-[13px]
+
+                      text-white/70
+                    "
+                  >
+                    More Services
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* =================================================
-              DESKTOP CALL NOW BUTTON
+              MOBILE BUTTON
           ================================================= */}
 
-          <a
-            href="tel:+917666984626"
-            className="
-              hidden
-              lg:flex
-
-              items-center
-              justify-center
-
-              gap-2
-
-              bg-[#0057B8]
-              hover:bg-[#004694]
-
-              text-white
-
-              px-5
-              xl:px-7
-              2xl:px-10
-
-              py-2.5
-              xl:py-3
-              2xl:py-3.5
-
-              rounded-full
-
-              text-[13px]
-              xl:text-[15px]
-              2xl:text-[16px]
-
-              font-bold
-              whitespace-nowrap
-
-              shrink-0
-
-              shadow-md
-
-              hover:shadow-lg
-              hover:-translate-y-0.5
-
-              transition-all
-              duration-300
-            "
-          >
-
-            <FaPhoneAlt
-              className="
-                text-[14px]
-                xl:text-[15px]
-                2xl:text-[16px]
-              "
-            />
-
-            <span>
-              Call Now
-            </span>
-
-          </a>
-
-
-          {/* =================================================
-              MOBILE MENU BUTTON
-          ================================================= */}
-
-          <button
-            type="button"
-            onClick={() => setMenuOpen((prev) => !prev)}
+          <div
             className="
               lg:hidden
 
-              w-11
-              h-11
-              sm:w-12
-              sm:h-12
-
-              shrink-0
+              ml-auto
 
               flex
               items-center
-              justify-center
-
-              rounded-xl
-
-              bg-gradient-to-r
-              from-[#0057B8]
-              to-[#fc6602]
-
-              text-white
-
-              text-lg
-              sm:text-xl
-
-              shadow-md
-
-              transition-all
-              duration-300
-
-              hover:shadow-lg
             "
-            aria-label="Toggle Menu"
-            aria-expanded={menuOpen}
           >
+            <button
+              type="button"
+              onClick={() =>
+                setMenuOpen(
+                  (prev) => !prev
+                )
+              }
+              aria-label="Toggle Menu"
+              aria-expanded={menuOpen}
+              className="
+                w-11
+                h-11
 
-            {menuOpen ? (
-              <FaTimes />
-            ) : (
-              <FaBars />
-            )}
+                flex
+                items-center
+                justify-center
 
-          </button>
+                border
+                border-[#91C63F]/60
 
+                text-[#91C63F]
+
+                text-xl
+
+                rounded-sm
+              "
+            >
+              {menuOpen ? (
+                <FaTimes />
+              ) : (
+                <FaBars />
+              )}
+            </button>
+          </div>
         </div>
-
       </div>
-
 
       {/* =====================================================
           MOBILE MENU
@@ -391,192 +628,158 @@ export default function Navbar() {
         className={`
           lg:hidden
 
+          absolute
+
+          top-full
+          left-0
+          right-0
+
+          bg-[#03182B]
+
+          border-t
+          border-white/[0.10]
+
+          shadow-[0_20px_40px_rgba(0,0,0,0.45)]
+
           overflow-hidden
 
           transition-all
-          duration-500
-          ease-in-out
+          duration-300
 
           ${
             menuOpen
-              ? "max-h-[90vh] opacity-100"
-              : "max-h-0 opacity-0"
+              ? "max-h-[85vh] opacity-100 visible"
+              : "max-h-0 opacity-0 invisible"
           }
         `}
       >
-
         <div
           className="
-            bg-white
-            border-t
-            border-gray-100
-            shadow-xl
-
-            max-h-[90vh]
+            max-h-[85vh]
             overflow-y-auto
+
+            px-3
+            py-3
           "
         >
+          {/* 1 - 8 */}
 
-          <ul
-            className="
-              flex
-              flex-col
+          {mainNavLinks.map((item) => {
+            const Icon = getMenuIcon(
+              item.title
+            );
 
-              py-3
-            "
-          >
-
-            {navLinks.map((item) => (
-
-              <li
+            return (
+              <NavLink
                 key={item.id}
-                className="
-                  px-3
-                  sm:px-4
-                "
-              >
-
-                <NavLink
-                  to={item.href}
-                  end={item.href === "/"}
-                  onClick={() => setMenuOpen(false)}
-                  className={({ isActive }) => `
-                    group
-                    relative
-
-                    flex
-                    items-center
-
-                    px-3
-                    py-3
-
-                    text-[15px]
-                    sm:text-[16px]
-
-                    font-bold
-
-                    transition-all
-                    duration-300
-
-                    ${
-                      isActive
-                        ? "text-[#0057B8]"
-                        : "text-[#26364F]"
-                    }
-                  `}
-                >
-
-                  {({ isActive }) => (
-                    <>
-
-                      {/* MENU TITLE */}
-
-                      <span>
-                        {item.title}
-                      </span>
-
-
-                      {/* =================================================
-                          MOBILE ORANGE UNDERLINE
-                      ================================================= */}
-
-                      <span
-                        className={`
-                          absolute
-
-                          left-3
-                          bottom-[5px]
-
-                          h-[3px]
-
-                          rounded-full
-
-                          bg-[#fc6602]
-
-                          transition-all
-                          duration-300
-
-                          ${
-                            isActive
-                              ? "w-[45px]"
-                              : "w-0 group-hover:w-[45px]"
-                          }
-                        `}
-                      />
-
-                    </>
-                  )}
-
-                </NavLink>
-
-              </li>
-
-            ))}
-
-
-            {/* =================================================
-                MOBILE CALL NOW
-            ================================================= */}
-
-            <li
-              className="
-                px-3
-                sm:px-4
-
-                pt-3
-                pb-2
-              "
-            >
-
-              <a
-                href="tel:+917666984626"
-                onClick={() => setMenuOpen(false)}
-                className="
-                  w-full
-
+                to={item.href}
+                end={item.href === "/"}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setMoreOpen(false);
+                }}
+                className={({ isActive }) => `
                   flex
                   items-center
-                  justify-center
 
-                  gap-2.5
+                  gap-4
 
-                  bg-[#0057B8]
-                  hover:bg-[#004694]
+                  px-4
+                  py-[15px]
 
-                  text-white
+                  border-b
+                  border-white/[0.08]
 
-                  py-3.5
+                  ${
+                    isActive
+                      ? "text-[#9CCB42] bg-[#9CCB42]/10"
+                      : "text-white/80 hover:text-[#9CCB42]"
+                  }
+                `}
+              >
+                <Icon
+                  className="
+                    text-[19px]
+                    shrink-0
+                  "
+                />
 
-                  rounded-xl
+                <span
+                  className="
+                    text-[13px]
+                    font-medium
+                  "
+                >
+                  {item.title}
+                </span>
+              </NavLink>
+            );
+          })}
 
-                  text-[15px]
-                  sm:text-[16px]
+          {/* 9 - MORE SERVICE */}
 
-                  font-bold
+          <button
+            type="button"
+            onClick={() =>
+              setMoreOpen(
+                (prev) => !prev
+              )
+            }
+            className="
+              w-full
 
-                  shadow-md
+              flex
+              items-center
+              justify-between
 
-                  transition-all
-                  duration-300
+              px-4
+              py-[15px]
+
+              text-white/80
+
+              border-b
+              border-white/[0.08]
+            "
+          >
+            <span
+              className="
+                flex
+                items-center
+                gap-4
+              "
+            >
+              <FaThLarge
+                className="
+                  text-[19px]
+                "
+              />
+
+              <span
+                className="
+                  text-[13px]
+                  font-medium
                 "
               >
+                More Service
+              </span>
+            </span>
 
-                <FaPhoneAlt className="text-[15px]" />
+            <FaChevronDown
+              className={`
+                text-[9px]
 
-                <span>
-                  Call Now
-                </span>
+                transition-transform
 
-              </a>
-
-            </li>
-
-          </ul>
-
+                ${
+                  moreOpen
+                    ? "rotate-180"
+                    : ""
+                }
+              `}
+            />
+          </button>
         </div>
-
       </div>
-
     </nav>
   );
 }

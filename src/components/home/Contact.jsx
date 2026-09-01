@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -12,6 +14,8 @@ import {
   FaThumbsUp,
   FaComments,
   FaThLarge,
+  FaCheckCircle,
+  FaExclamationCircle,
 } from "react-icons/fa";
 
 import Reveal from "../common/Reveal";
@@ -19,68 +23,325 @@ import worldMap from "../../assets/images/contact/world-map.png";
 
 export default function Contact() {
   // =========================================================
-  // FORM SUBMIT
+  // API URL
   // =========================================================
 
-  const handleSubmit = (e) => {
+  const API_URL = "https://www.sarathinx.com/api/enquiries";
+
+  // =========================================================
+  // FORM STATE
+  // =========================================================
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    service: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  // =========================================================
+  // WHATSAPP STATE
+  // =========================================================
+
+  const [submittedData, setSubmittedData] = useState(null);
+
+  // =========================================================
+  // HANDLE INPUT
+  // =========================================================
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Remove old messages while user is typing
+    setSuccess("");
+    setError("");
+  };
+
+  // =========================================================
+  // NAME INPUT
+  // =========================================================
+
+  const handleNameChange = (e) => {
+    const value = e.target.value
+      .replace(/[^a-zA-Z\s.'-]/g, "")
+      .slice(0, 100);
+
+    setFormData((prev) => ({
+      ...prev,
+      name: value,
+    }));
+
+    setSuccess("");
+    setError("");
+  };
+
+  // =========================================================
+  // PHONE INPUT
+  // =========================================================
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value
+      .replace(/\D/g, "")
+      .slice(0, 10);
+
+    setFormData((prev) => ({
+      ...prev,
+      phone: value,
+    }));
+
+    setSuccess("");
+    setError("");
+  };
+
+  // =========================================================
+  // VALIDATION
+  // =========================================================
+
+  const validateForm = () => {
+    const name = formData.name.trim();
+    const phone = formData.phone.trim();
+    const email = formData.email.trim();
+    const service = formData.service.trim();
+    const message = formData.message.trim();
+
+    // Required fields
+    if (!name || !phone || !email || !service || !message) {
+      return "Please fill in all the required fields.";
+    }
+
+    // Name
+    if (!/^[a-zA-Z\s.'-]+$/.test(name)) {
+      return "Please enter a valid name using letters only.";
+    }
+
+    // Phone
+    if (!/^[0-9]{10}$/.test(phone)) {
+      return "Please enter a valid 10-digit mobile number.";
+    }
+
+    // Email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return "Please enter a valid email address.";
+    }
+
+    // Message
+    if (message.length < 5) {
+      return "Please enter a little more detail in your message.";
+    }
+
+    return "";
+  };
+
+  // =========================================================
+  // SUBMIT FORM
+  // =========================================================
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const form = e.target;
+    setSuccess("");
+    setError("");
+    setSubmittedData(null);
 
-    const name = form.name.value.trim();
-    const phone = form.phone.value.trim();
-    const email = form.email.value.trim();
-    const service = form.service.value;
-    const message = form.message.value.trim();
+    // Validate
+    const validationError = validateForm();
 
-    // ================= VALIDATION =================
-
-    if (!name || !phone || !email || !service || !message) {
-      alert("Please fill in all the fields.");
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
-    // Only 10 digits
-    if (!/^[0-9]{10}$/.test(phone)) {
-      alert("Please enter a valid 10-digit mobile number.");
+    setLoading(true);
+
+    try {
+      // Create clean payload
+      const payload = {
+        name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        service: formData.service.trim(),
+        message: formData.message.trim(),
+      };
+
+      console.log("Sending enquiry:", payload);
+
+      // =====================================================
+      // API REQUEST
+      // =====================================================
+
+      const response = await fetch(API_URL, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+
+        body: JSON.stringify(payload),
+      });
+
+      console.log("API Status:", response.status);
+
+      // =====================================================
+      // HANDLE ERROR RESPONSE
+      // =====================================================
+
+      if (!response.ok) {
+        let serverMessage = "";
+
+        try {
+          const errorData = await response.json();
+
+          serverMessage =
+            errorData?.message ||
+            errorData?.error ||
+            "";
+        } catch {
+          // Response may not contain JSON
+        }
+
+        if (response.status === 400) {
+          throw new Error(
+            serverMessage ||
+              "Invalid enquiry details. Please check your information."
+          );
+        }
+
+        if (response.status === 401) {
+          throw new Error(
+            "You are not authorized to submit this enquiry."
+          );
+        }
+
+        if (response.status === 403) {
+          throw new Error(
+            "Enquiry submission is blocked by the server. Please check the backend security configuration."
+          );
+        }
+
+        if (response.status === 404) {
+          throw new Error(
+            "Enquiry API was not found. Please check the backend URL."
+          );
+        }
+
+        if (response.status >= 500) {
+          throw new Error(
+            "Server error. Please try again after some time."
+          );
+        }
+
+        throw new Error(
+          serverMessage ||
+            `Server returned ${response.status}.`
+        );
+      }
+
+      // =====================================================
+      // READ SUCCESS RESPONSE
+      // =====================================================
+
+      let data = null;
+
+      try {
+        data = await response.json();
+      } catch {
+        // Backend may return empty response
+        data = null;
+      }
+
+      console.log("Enquiry saved successfully:", data);
+
+      // =====================================================
+      // SAVE SUBMITTED DATA FOR WHATSAPP
+      // =====================================================
+
+      setSubmittedData(payload);
+
+      // =====================================================
+      // SUCCESS MESSAGE
+      // =====================================================
+
+      setSuccess(
+        "Thank you! Your enquiry has been submitted successfully. Our team will contact you shortly."
+      );
+
+      // =====================================================
+      // RESET FORM
+      // =====================================================
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        service: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error("Enquiry submission error:", err);
+
+      // =====================================================
+      // NETWORK ERROR
+      // =====================================================
+
+      if (err instanceof TypeError && err.message === "Failed to fetch") {
+        setError(
+          "Unable to connect to the server. Please make sure the Spring Boot backend is running on port 8080."
+        );
+      } else {
+        setError(
+          err?.message ||
+            "Unable to submit enquiry. Please try again."
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // =========================================================
+  // WHATSAPP AFTER SUCCESS
+  // =========================================================
+
+  const handleWhatsApp = () => {
+    if (!submittedData) {
       return;
     }
-
-    // Email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    // =========================================================
-    // WHATSAPP
-    // =========================================================
 
     const whatsappNumber = "917666984626";
 
     const whatsappMessage = `
 Hello Sarathi NX,
 
-I would like to make a travel enquiry.
+I have submitted a travel enquiry through your website.
 
-Name: ${name}
-Mobile: ${phone}
-Email: ${email}
-Interested In: ${service}
+Name: ${submittedData.name}
+Mobile: ${submittedData.phone}
+Email: ${submittedData.email}
+Interested In: ${submittedData.service}
 
 Message:
-${message}
+${submittedData.message}
 
 Thank you.
     `.trim();
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
+    const whatsappUrl =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`;
 
-    window.open(whatsappUrl, "_blank");
-
-    form.reset();
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   // =========================================================
@@ -100,7 +361,9 @@ Thank you.
             +91 766 698 4626
           </a>
 
-          <span className="hidden sm:inline text-white/40">|</span>
+          <span className="hidden sm:inline text-white/40">
+            |
+          </span>
 
           <a
             href="tel:+918657867181"
@@ -183,6 +446,10 @@ Thank you.
     },
   ];
 
+  // =========================================================
+  // RETURN
+  // =========================================================
+
   return (
     <section
       id="contact"
@@ -195,7 +462,6 @@ Thank you.
         lg:py-20
       "
     >
-
       {/* =====================================================
           BACKGROUND DECORATION
       ===================================================== */}
@@ -235,10 +501,7 @@ Thank you.
         ===================================================== */}
 
         <Reveal>
-
           <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
-
-            {/* TOP LABEL */}
 
             <div className="flex items-center justify-center gap-[10px] mb-[7px]">
 
@@ -284,9 +547,6 @@ Thank you.
 
             </div>
 
-
-            {/* MAIN HEADING */}
-
             <h2
               className="
                 text-center
@@ -314,11 +574,7 @@ Thank you.
               >
                 Journey.
               </span>
-
             </h2>
-
-
-            {/* SUB HEADING */}
 
             <div
               className="
@@ -370,9 +626,6 @@ Thank you.
 
             </div>
 
-
-            {/* DESCRIPTION */}
-
             <p
               className="
                 max-w-[850px]
@@ -391,9 +644,7 @@ Thank you.
             </p>
 
           </div>
-
         </Reveal>
-
 
         {/* =====================================================
             MAIN CONTACT + FORM
@@ -435,10 +686,6 @@ Thank you.
               "
             >
 
-              {/* =================================================
-                  WORLD MAP BACKGROUND
-              ================================================= */}
-
               <img
                 src={worldMap}
                 alt=""
@@ -458,9 +705,6 @@ Thank you.
                   object-right-top
                 "
               />
-
-
-              {/* Decorative circles */}
 
               <div
                 className="
@@ -488,12 +732,9 @@ Thank you.
                 "
               />
 
-
               <div className="relative z-10 h-full flex flex-col">
 
-                {/* =================================================
-                    LEFT HEADING
-                ================================================= */}
+                {/* LEFT HEADING */}
 
                 <div className="mb-6">
 
@@ -522,7 +763,6 @@ Thank you.
 
                   </div>
 
-
                   <h3
                     className="
                       text-3xl
@@ -537,7 +777,6 @@ Thank you.
                     Travel Experts
                   </h3>
 
-
                   <div
                     className="
                       mt-4
@@ -548,7 +787,6 @@ Thank you.
                       to-transparent
                     "
                   />
-
 
                   <p
                     className="
@@ -566,10 +804,7 @@ Thank you.
 
                 </div>
 
-
-                {/* =================================================
-                    CONTACT ITEMS
-                ================================================= */}
+                {/* CONTACT ITEMS */}
 
                 <div className="space-y-2.5">
 
@@ -601,8 +836,6 @@ Thank you.
                         "
                       >
 
-                        {/* Icon */}
-
                         <div
                           className="
                             w-11
@@ -626,9 +859,6 @@ Thank you.
                         >
                           <Icon className="text-base md:text-lg" />
                         </div>
-
-
-                        {/* Content */}
 
                         <div
                           className="
@@ -665,10 +895,7 @@ Thank you.
 
                 </div>
 
-
-                {/* =================================================
-                    WHATSAPP BUTTON
-                ================================================= */}
+                {/* WHATSAPP BUTTON */}
 
                 <a
                   href="https://wa.me/917666984626"
@@ -744,7 +971,6 @@ Thank you.
 
           </Reveal>
 
-
           {/* ===================================================
               RIGHT ENQUIRY FORM
           =================================================== */}
@@ -766,9 +992,7 @@ Thank you.
               "
             >
 
-              {/* =================================================
-                  FORM HEADING
-              ================================================= */}
+              {/* FORM HEADING */}
 
               <div
                 className="
@@ -822,9 +1046,6 @@ Thank you.
 
                 </div>
 
-
-                {/* Paper Plane */}
-
                 <div
                   className="
                     hidden
@@ -848,6 +1069,117 @@ Thank you.
 
               </div>
 
+              {/* =================================================
+                  SUCCESS MESSAGE
+              ================================================= */}
+
+              {success && (
+                <div
+                  className="
+                    mb-5
+                    rounded-xl
+                    border
+                    border-green-200
+                    bg-green-50
+                    px-4
+                    py-3
+                    flex
+                    items-start
+                    gap-3
+                  "
+                >
+
+                  <FaCheckCircle
+                    className="
+                      text-green-600
+                      mt-0.5
+                      shrink-0
+                    "
+                  />
+
+                  <div>
+
+                    <p
+                      className="
+                        text-sm
+                        font-bold
+                        text-green-700
+                      "
+                    >
+                      Enquiry Submitted
+                    </p>
+
+                    <p
+                      className="
+                        mt-0.5
+                        text-xs
+                        leading-5
+                        text-green-700
+                      "
+                    >
+                      {success}
+                    </p>
+
+                  </div>
+
+                </div>
+              )}
+
+              {/* =================================================
+                  ERROR MESSAGE
+              ================================================= */}
+
+              {error && (
+                <div
+                  className="
+                    mb-5
+                    rounded-xl
+                    border
+                    border-red-200
+                    bg-red-50
+                    px-4
+                    py-3
+                    flex
+                    items-start
+                    gap-3
+                  "
+                >
+
+                  <FaExclamationCircle
+                    className="
+                      text-red-600
+                      mt-0.5
+                      shrink-0
+                    "
+                  />
+
+                  <div>
+
+                    <p
+                      className="
+                        text-sm
+                        font-bold
+                        text-red-700
+                      "
+                    >
+                      Submission Failed
+                    </p>
+
+                    <p
+                      className="
+                        mt-0.5
+                        text-xs
+                        leading-5
+                        text-red-700
+                      "
+                    >
+                      {error}
+                    </p>
+
+                  </div>
+
+                </div>
+              )}
 
               {/* =================================================
                   FORM
@@ -858,9 +1190,7 @@ Thank you.
                 className="space-y-4"
               >
 
-                {/* =================================================
-                    FULL NAME
-                ================================================= */}
+                {/* FULL NAME */}
 
                 <div>
 
@@ -886,24 +1216,19 @@ Thank you.
                         -translate-y-1/2
                         text-[#52637C]
                         text-sm
+                        pointer-events-none
                       "
                     />
 
                     <input
                       type="text"
                       name="name"
+                      value={formData.name}
+                      onChange={handleNameChange}
                       required
                       autoComplete="name"
                       maxLength={100}
                       placeholder="Enter your name"
-
-                      /* ONLY TEXT ALLOWED */
-                      onInput={(e) => {
-                        e.target.value = e.target.value
-                          .replace(/[^a-zA-Z\s.'-]/g, "")
-                          .slice(0, 100);
-                      }}
-
                       className="
                         w-full
                         h-12
@@ -928,11 +1253,7 @@ Thank you.
 
                 </div>
 
-
-                {/* =================================================
-                    PHONE + EMAIL
-                    EMAIL WIDTH INCREASED
-                ================================================= */}
+                {/* PHONE + EMAIL */}
 
                 <div
                   className="
@@ -968,12 +1289,15 @@ Thank you.
                           -translate-y-1/2
                           text-[#52637C]
                           text-sm
+                          pointer-events-none
                         "
                       />
 
                       <input
                         type="tel"
                         name="phone"
+                        value={formData.phone}
+                        onChange={handlePhoneChange}
                         required
                         inputMode="numeric"
                         pattern="[0-9]{10}"
@@ -981,11 +1305,6 @@ Thank you.
                         minLength={10}
                         autoComplete="tel"
                         placeholder="10-digit mobile"
-                        onInput={(e) => {
-                          e.target.value = e.target.value
-                            .replace(/\D/g, "")
-                            .slice(0, 10);
-                        }}
                         className="
                           w-full
                           h-12
@@ -1009,7 +1328,6 @@ Thank you.
                     </div>
 
                   </div>
-
 
                   {/* EMAIL */}
 
@@ -1037,12 +1355,15 @@ Thank you.
                           -translate-y-1/2
                           text-[#52637C]
                           text-sm
+                          pointer-events-none
                         "
                       />
 
                       <input
                         type="email"
                         name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         required
                         autoComplete="email"
                         placeholder="Enter your email"
@@ -1072,10 +1393,7 @@ Thank you.
 
                 </div>
 
-
-                {/* =================================================
-                    SERVICE
-                ================================================= */}
+                {/* SERVICE */}
 
                 <div>
 
@@ -1102,13 +1420,15 @@ Thank you.
                         text-[#52637C]
                         text-sm
                         pointer-events-none
+                        z-10
                       "
                     />
 
                     <select
                       name="service"
+                      value={formData.service}
+                      onChange={handleChange}
                       required
-                      defaultValue=""
                       className="
                         appearance-none
                         w-full
@@ -1176,11 +1496,7 @@ Thank you.
 
                 </div>
 
-
-                {/* =================================================
-                    MESSAGE
-                    HEIGHT INCREASED
-                ================================================= */}
+                {/* MESSAGE */}
 
                 <div>
 
@@ -1205,13 +1521,17 @@ Thank you.
                         top-4
                         text-[#52637C]
                         text-sm
+                        pointer-events-none
                       "
                     />
 
                     <textarea
                       name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       required
                       rows={5}
+                      maxLength={1000}
                       placeholder="Tell us about your travel requirements..."
                       className="
                         w-full
@@ -1238,13 +1558,13 @@ Thank you.
 
                 </div>
 
-
                 {/* =================================================
                     SUBMIT BUTTON
                 ================================================= */}
 
                 <button
                   type="submit"
+                  disabled={loading}
                   className="
                     group
                     w-full
@@ -1268,25 +1588,102 @@ Thank you.
                     transition-all
                     duration-300
                     overflow-hidden
+                    disabled:opacity-60
+                    disabled:cursor-not-allowed
+                    disabled:hover:translate-y-0
                   "
                 >
 
-                  <span>
-                    Send Enquiry
-                  </span>
+                  {loading ? (
+                    <>
+                      <span
+                        className="
+                          w-4
+                          h-4
+                          border-2
+                          border-white/30
+                          border-t-white
+                          rounded-full
+                          animate-spin
+                        "
+                      />
 
-                  <FaPaperPlane
-                    className="
-                      text-sm
-                      rotate-[-8deg]
-                      group-hover:translate-x-2
-                      group-hover:-translate-y-1
-                      transition-transform
-                      duration-500
-                    "
-                  />
+                      <span>
+                        Submitting...
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span>
+                        Send Enquiry
+                      </span>
+
+                      <FaPaperPlane
+                        className="
+                          text-sm
+                          rotate-[-8deg]
+                          group-hover:translate-x-2
+                          group-hover:-translate-y-1
+                          transition-transform
+                          duration-500
+                        "
+                      />
+                    </>
+                  )}
 
                 </button>
+
+                {/* =================================================
+                    WHATSAPP AFTER SUCCESS
+                ================================================= */}
+
+                {submittedData && !loading && (
+                  <button
+                    type="button"
+                    onClick={handleWhatsApp}
+                    className="
+                      group
+                      w-full
+                      h-[48px]
+                      inline-flex
+                      items-center
+                      justify-center
+                      gap-3
+                      bg-[#25D366]
+                      hover:bg-[#1ebe5d]
+                      text-white
+                      rounded-xl
+                      font-bold
+                      text-sm
+                      shadow-[0_8px_20px_rgba(37,211,102,0.20)]
+                      hover:shadow-[0_12px_25px_rgba(37,211,102,0.28)]
+                      transition-all
+                      duration-300
+                    "
+                  >
+
+                    <FaWhatsapp
+                      className="
+                        text-lg
+                        group-hover:scale-110
+                        transition-transform
+                      "
+                    />
+
+                    <span>
+                      Continue on WhatsApp
+                    </span>
+
+                    <FaArrowRight
+                      className="
+                        text-xs
+                        group-hover:translate-x-1
+                        transition-transform
+                      "
+                    />
+
+                  </button>
+                )}
 
               </form>
 
@@ -1295,7 +1692,6 @@ Thank you.
           </Reveal>
 
         </div>
-
 
         {/* =====================================================
             BOTTOM FEATURE STRIP
@@ -1349,8 +1745,6 @@ Thank you.
                     `}
                   >
 
-                    {/* Icon */}
-
                     <div
                       className="
                         w-12
@@ -1367,9 +1761,6 @@ Thank you.
                     >
                       <Icon className="text-lg" />
                     </div>
-
-
-                    {/* Text */}
 
                     <div>
 
@@ -1409,7 +1800,6 @@ Thank you.
         </Reveal>
 
       </div>
-
 
       {/* =====================================================
           WHATSAPP ANIMATION

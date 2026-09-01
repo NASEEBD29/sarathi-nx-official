@@ -899,7 +899,7 @@ export default function IndustriesWeServe() {
                 shrink-0
                 inline-flex
                 items-center
-                justify-center
+                
                 gap-2
 
                 bg-white

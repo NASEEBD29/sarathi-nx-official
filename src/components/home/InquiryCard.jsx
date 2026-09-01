@@ -46,7 +46,8 @@ export default function InquiryCard() {
       // ==============================
 
       const response = await fetch(
-        "http://localhost:8080/api/enquiries",
+        "https://sarathinx.com/api/enquiries",
+
         {
           method: "POST",
 

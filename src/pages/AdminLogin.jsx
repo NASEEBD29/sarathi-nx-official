@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = "https://sarathinx.com/api";
+
 function AdminLogin() {
   const navigate = useNavigate();
 
@@ -16,21 +18,14 @@ function AdminLogin() {
     setLoading(true);
 
     try {
-      const formData = new URLSearchParams();
+      const url =
+        `${API_URL}/admin/login` +
+        `?username=${encodeURIComponent(username)}` +
+        `&password=${encodeURIComponent(password)}`;
 
-      formData.append("username", username);
-      formData.append("password", password);
-
-      const response = await fetch(
-        "http://localhost:8080/api/admin/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData,
-        }
-      );
+      const response = await fetch(url, {
+        method: "POST",
+      });
 
       const data = await response.json();
 
@@ -38,22 +33,32 @@ function AdminLogin() {
         throw new Error(
           typeof data === "string"
             ? data
-            : "Invalid username or password"
+            : data?.message || "Invalid username or password"
         );
+      }
+
+      if (!data.token) {
+        throw new Error("Login successful, but token was not received.");
       }
 
       // Save JWT token
       localStorage.setItem("adminToken", data.token);
 
       // Save username
-      localStorage.setItem("adminUsername", data.username);
+      localStorage.setItem(
+        "adminUsername",
+        data.username || username
+      );
 
-      // Go to dashboard
-      navigate("/admin");
-
+      // Go to admin dashboard
+      navigate("/admin", { replace: true });
     } catch (error) {
-      console.error(error);
-      setError(error.message);
+      console.error("Admin login error:", error);
+
+      setError(
+        error.message ||
+          "Unable to login. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -61,11 +66,9 @@ function AdminLogin() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
-
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
 
         <div className="mb-8 text-center">
-
           <h1 className="text-3xl font-bold text-gray-800">
             Admin Login
           </h1>
@@ -73,11 +76,10 @@ function AdminLogin() {
           <p className="mt-2 text-gray-500">
             Sarathi NX Admin Panel
           </p>
-
         </div>
 
         {error && (
-          <div className="mb-4 rounded-lg bg-red-100 px-4 py-3 text-sm text-red-600">
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
@@ -85,9 +87,7 @@ function AdminLogin() {
         <form onSubmit={handleLogin}>
 
           {/* Username */}
-
           <div className="mb-5">
-
             <label className="mb-2 block text-sm font-medium text-gray-700">
               Username
             </label>
@@ -97,16 +97,15 @@ function AdminLogin() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter username"
+              autoComplete="username"
               required
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-teal-500"
+              disabled={loading}
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-100 disabled:bg-gray-100"
             />
-
           </div>
 
           {/* Password */}
-
           <div className="mb-6">
-
             <label className="mb-2 block text-sm font-medium text-gray-700">
               Password
             </label>
@@ -116,14 +115,14 @@ function AdminLogin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter password"
+              autoComplete="current-password"
               required
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-teal-500"
+              disabled={loading}
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-100 disabled:bg-gray-100"
             />
-
           </div>
 
           {/* Login button */}
-
           <button
             type="submit"
             disabled={loading}
@@ -133,9 +132,7 @@ function AdminLogin() {
           </button>
 
         </form>
-
       </div>
-
     </div>
   );
 }

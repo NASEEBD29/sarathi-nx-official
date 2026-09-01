@@ -11,9 +11,11 @@ import TopHeader from "./components/layout/TopHeader";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import FloatingContact from "./components/common/FloatingContact";
+
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+
 import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
@@ -21,41 +23,141 @@ function App() {
     <BrowserRouter basename="/sarathi-nx-official">
       <ScrollToTop />
 
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
+
       <TopHeader />
 
       <Navbar />
 
+      {/* =====================================================
+          ROUTES
+      ===================================================== */}
+
       <Routes>
+        {/* ===================================================
+            HOME
+        =================================================== */}
 
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
-        <Route path="/about" element={<About />} />
+        {/* ===================================================
+            NEW NAVBAR ROUTES
+        =================================================== */}
 
-        <Route path="/services" element={<Services />} />
+        <Route
+          path="/flight-air-travel"
+          element={<Services />}
+        />
 
-        <Route path="/exhibitions" element={<Exhibitions />} />
+        <Route
+          path="/hotel-accommodation"
+          element={<Services />}
+        />
 
-        <Route path="/gallery" element={<Gallery />} />
+        <Route
+          path="/visa-documentation"
+          element={<Services />}
+        />
 
-         <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/trade-fair"
+          element={<Exhibitions />}
+        />
 
-         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/premium-holiday-packages"
+          element={<Services />}
+        />
 
-         <Route
-  path="/admin"
-  element={
-    <ProtectedRoute>
-      <AdminDashboard />
-    </ProtectedRoute>
-  }
-/>
+        <Route
+          path="/about-us"
+          element={<About />}
+        />
 
+        <Route
+          path="/contact-us"
+          element={<Contact />}
+        />
+
+        {/* ===================================================
+            OLD ROUTES
+            Existing links/bookmarks won't break
+        =================================================== */}
+
+        <Route
+          path="/about"
+          element={<About />}
+        />
+
+        <Route
+          path="/services"
+          element={<Services />}
+        />
+
+        <Route
+          path="/exhibitions"
+          element={<Exhibitions />}
+        />
+
+        <Route
+          path="/gallery"
+          element={<Gallery />}
+        />
+
+        <Route
+          path="/contact"
+          element={<Contact />}
+        />
+
+        {/* ===================================================
+            ADMIN LOGIN
+        =================================================== */}
+
+        <Route
+          path="/admin/login"
+          element={<AdminLogin />}
+        />
+
+        {/* ===================================================
+            PROTECTED ADMIN DASHBOARD
+        =================================================== */}
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ===================================================
+            FALLBACK
+            Unknown URL -> Home
+        =================================================== */}
+
+        <Route
+          path="*"
+          element={<Home />}
+        />
       </Routes>
+
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
 
       <Footer />
 
-      <FloatingContact />
+      {/* =====================================================
+          FLOATING CONTACT
+      ===================================================== */}
 
+      <FloatingContact />
     </BrowserRouter>
   );
 }
