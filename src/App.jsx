@@ -20,7 +20,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
-    <BrowserRouter basename="/sarathi-nx-official">
+    <BrowserRouter basename="/sarathi-nx-official/">
       <ScrollToTop />
 
       {/* =====================================================
