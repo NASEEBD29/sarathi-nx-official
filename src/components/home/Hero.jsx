@@ -30,6 +30,8 @@ export default function Hero() {
       ],
 
       position: "left",
+
+      imageFit: "cover",
     },
 
     {
@@ -50,8 +52,10 @@ export default function Hero() {
 
       position: "center",
 
-      // Hero 2 = 20px right
       shift: 20,
+
+      // Full width — no side gap
+      imageFit: "cover",
     },
 
     {
@@ -72,8 +76,10 @@ export default function Hero() {
 
       position: "center",
 
-      // Hero 3 = 35px right
       shift: 35,
+
+      // Full width — no side gap
+      imageFit: "cover",
     },
   ];
 
@@ -104,10 +110,12 @@ export default function Hero() {
         w-full
         overflow-hidden
 
-        h-[500px]
-        sm:h-[520px]
-        md:h-[540px]
-        lg:h-[560px]
+       h-[550px]
+sm:h-[570px]
+md:h-[600px]
+lg:h-[625px]
+xl:h-[645px]
+
 
         bg-[#03182B]
       "
@@ -119,10 +127,20 @@ export default function Hero() {
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          className="absolute inset-0"
+          className="
+            absolute
+            inset-0
+
+            w-full
+            h-full
+
+            overflow-hidden
+
+            bg-[#03182B]
+          "
           initial={{
             opacity: 0,
-            scale: 1.02,
+            scale: 1.01,
           }}
           animate={{
             opacity: 1,
@@ -136,7 +154,9 @@ export default function Hero() {
             ease: "easeInOut",
           }}
         >
-          {/* HERO IMAGE */}
+          {/* =================================================
+              HERO IMAGE
+          ================================================= */}
 
           <img
             src={activeSlide.image}
@@ -150,17 +170,23 @@ export default function Hero() {
 
               object-cover
               object-center
+
+              select-none
             "
           />
 
-          {/* BASE OVERLAY */}
+          {/* =================================================
+              BASE OVERLAY
+          ================================================= */}
 
           <div
             className="
               absolute
               inset-0
 
-              bg-[#03182B]/25
+              bg-[#03182B]/20
+
+              pointer-events-none
             "
           />
 
@@ -176,9 +202,11 @@ export default function Hero() {
 
                 bg-gradient-to-r
 
-                from-[#03182B]/95
-                via-[#03182B]/65
+                from-[#03182B]/90
+                via-[#03182B]/55
                 to-transparent
+
+                pointer-events-none
               "
             />
           )}
@@ -195,14 +223,18 @@ export default function Hero() {
 
                 bg-gradient-to-r
 
-                from-[#03182B]/30
+                from-[#03182B]/25
                 via-transparent
-                to-[#03182B]/30
+                to-[#03182B]/25
+
+                pointer-events-none
               "
             />
           )}
 
-          {/* BOTTOM OVERLAY */}
+          {/* =================================================
+              BOTTOM OVERLAY
+          ================================================= */}
 
           <div
             className="
@@ -210,11 +242,13 @@ export default function Hero() {
               inset-x-0
               bottom-0
 
-              h-[130px]
+              h-[150px]
 
               bg-gradient-to-t
-              from-[#03182B]/65
+              from-[#03182B]/70
               to-transparent
+
+              pointer-events-none
             "
           />
         </motion.div>
@@ -284,13 +318,15 @@ export default function Hero() {
               }
 
               ${
-                isCenter && activeSlide.shift === 20
+                isCenter &&
+                activeSlide.shift === 20
                   ? "translate-x-0 lg:translate-x-[20px]"
                   : ""
               }
 
               ${
-                isCenter && activeSlide.shift === 35
+                isCenter &&
+                activeSlide.shift === 35
                   ? "translate-x-0 lg:translate-x-[35px]"
                   : ""
               }
@@ -492,7 +528,8 @@ export default function Hero() {
                     </span>
 
                     {index <
-                      activeSlide.description.length - 1 && (
+                      activeSlide.description.length -
+                        1 && (
                       <span
                         className="
                           mx-3

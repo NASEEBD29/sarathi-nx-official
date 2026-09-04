@@ -1,132 +1,156 @@
 import {
-  FaPlaneDeparture,
-  FaBuilding,
   FaPassport,
-  FaHotel,
-  FaUsers,
-  FaGlobeAsia,
+  FaFileAlt,
   FaCheckCircle,
+  FaGlobeAsia,
+  FaUserTie,
+  FaClipboardCheck,
   FaArrowRight,
-  FaSuitcaseRolling,
-  FaHeadset,
+  FaPlaneDeparture,
+  FaHotel,
+  FaStamp,
 } from "react-icons/fa";
 
 import Reveal from "../components/common/Reveal";
-import flightImage from "../assets/images/gallery/flight.jpeg";
+import visaImage from "../assets/images/gallery/visa.jpg";
 
-const services = [
-  {
-    icon: FaPlaneDeparture,
-    title: "International Flight Booking",
-    description:
-      "Reliable international flight booking solutions for business travellers, exhibition visitors and corporate groups.",
-    points: [
-      "International flight reservations",
-      "Flexible travel options",
-      "Group flight coordination",
-      "Complete itinerary assistance",
-    ],
-  },
-  {
-    icon: FaBuilding,
-    title: "Corporate Travel",
-    description:
-      "Professional corporate travel solutions designed around your company's schedule, budget and business requirements.",
-    points: [
-      "Corporate flight bookings",
-      "Business travel planning",
-      "Customized itineraries",
-      "Dedicated travel assistance",
-    ],
-  },
-  {
-    icon: FaGlobeAsia,
-    title: "Business Travel",
-    description:
-      "Smooth and well-planned business journeys that allow you to focus on meetings, networking and growing your business.",
-    points: [
-      "International business trips",
-      "Customized travel plans",
-      "Airport assistance",
-      "Flexible travel solutions",
-    ],
-  },
+
+/* =========================================================
+   VISA SERVICES
+========================================================= */
+
+const visaServices = [
   {
     icon: FaPassport,
-    title: "Visa Assistance",
+    title: "Business Visa Assistance",
     description:
-      "Professional guidance for visa documentation and application requirements for your international journey.",
+      "Professional guidance for business travellers attending meetings, exhibitions, conferences and corporate events.",
     points: [
-      "Documentation guidance",
-      "Application assistance",
-      "Business visa support",
+      "Business visa documentation",
+      "Application guidance",
+      "Invitation letter guidance",
       "Travel document checklist",
     ],
   },
   {
-    icon: FaHotel,
-    title: "Hotel Booking",
+    icon: FaFileAlt,
+    title: "Documentation Support",
     description:
-      "Comfortable and convenient accommodation options near airports, exhibition venues and business destinations.",
+      "We help you understand and prepare the documents required for your international visa application.",
     points: [
-      "Corporate hotel bookings",
-      "Exhibition-area hotels",
-      "Group accommodation",
-      "Special stay requirements",
+      "Document requirement guidance",
+      "Application form assistance",
+      "Supporting document checklist",
+      "Document organization",
     ],
   },
   {
-    icon: FaUsers,
-    title: "MICE & Group Travel",
+    icon: FaGlobeAsia,
+    title: "International Visa Support",
     description:
-      "Complete group travel management for meetings, incentives, conferences, exhibitions and corporate events.",
+      "Visa assistance for travellers visiting international destinations for business, exhibitions and other travel purposes.",
     points: [
-      "Group travel planning",
-      "Corporate events",
-      "Meetings & conferences",
-      "Customized group itineraries",
+      "Destination-specific guidance",
+      "International travel support",
+      "Visa process information",
+      "Application preparation",
+    ],
+  },
+  {
+    icon: FaClipboardCheck,
+    title: "Application Assistance",
+    description:
+      "Step-by-step assistance to help you understand the visa application process and required formalities.",
+    points: [
+      "Application form guidance",
+      "Document verification support",
+      "Appointment guidance",
+      "Application preparation",
+    ],
+  },
+  {
+    icon: FaUserTie,
+    title: "Corporate Visa Support",
+    description:
+      "Dedicated visa assistance for companies, executives and teams travelling internationally for business.",
+    points: [
+      "Corporate traveller support",
+      "Employee travel documentation",
+      "Group visa coordination",
+      "Business travel assistance",
+    ],
+  },
+  {
+    icon: FaStamp,
+    title: "Travel Documentation",
+    description:
+      "Complete guidance for important travel documents required before your international journey.",
+    points: [
+      "Passport guidance",
+      "Visa documentation",
+      "Invitation documents",
+      "Travel paperwork checklist",
     ],
   },
 ];
 
-const advantages = [
+
+/* =========================================================
+   WHY CHOOSE US
+========================================================= */
+
+const benefits = [
+  {
+    icon: FaClipboardCheck,
+    title: "Clear Guidance",
+    text: "Understand the documentation and application requirements before starting your visa process.",
+  },
+  {
+    icon: FaUserTie,
+    title: "Professional Support",
+    text: "Get assistance from our travel team throughout your documentation preparation.",
+  },
   {
     icon: FaGlobeAsia,
-    title: "Global Travel Network",
-    text: "Travel support across major international business, exhibition and corporate destinations.",
-  },
-  {
-    icon: FaHeadset,
-    title: "Dedicated Assistance",
-    text: "Our team stays connected with you throughout the planning process and your journey.",
-  },
-  {
-    icon: FaSuitcaseRolling,
-    title: "Complete Travel Support",
-    text: "Flights, hotels, visas and group travel solutions managed under one roof.",
+    title: "International Destinations",
+    text: "Support for business and travel requirements across major international destinations.",
   },
   {
     icon: FaCheckCircle,
-    title: "Reliable Service",
-    text: "Professional and transparent travel solutions focused on convenience and customer satisfaction.",
+    title: "Organized Process",
+    text: "A structured approach helps keep your application documents organized and ready.",
   },
 ];
 
-export default function Services() {
+
+/* =========================================================
+   MAIN COMPONENT
+========================================================= */
+
+export default function VisaDocumentation() {
   return (
     <main className="bg-white overflow-hidden">
 
+
       {/* =====================================================
-          HERO BANNER
+          HERO
       ===================================================== */}
 
-      <section className="relative min-h-[560px] md:min-h-[630px] overflow-hidden bg-[#dce6f0]">
+      <section
+        className="
+          relative
+          min-h-[560px]
+          md:min-h-[630px]
+          overflow-hidden
+          bg-[#dce5ed]
+        "
+      >
 
-        {/* Flight Image */}
+        {/* Banner Image */}
 
         <img
-          src={flightImage}
-          alt="Flight and Air Travel"
+          src={visaImage}
+          alt="Visa and Documentation Assistance"
           className="
             absolute
             inset-0
@@ -137,32 +161,35 @@ export default function Services() {
           "
         />
 
-        {/* Dark blue gradient */}
+
+        {/* Overlay */}
 
         <div
           className="
             absolute
             inset-0
             bg-gradient-to-r
-            from-[#062f5f]/75
-            via-[#073e76]/40
+            from-[#062f5f]/80
+            via-[#073e76]/45
             to-transparent
           "
         />
 
-        {/* Additional subtle bottom gradient */}
+
+        {/* Bottom Gradient */}
 
         <div
           className="
             absolute
             inset-x-0
             bottom-0
-            h-40
+            h-44
             bg-gradient-to-t
-            from-black/25
+            from-black/30
             to-transparent
           "
         />
+
 
         {/* Hero Content */}
 
@@ -182,9 +209,9 @@ export default function Services() {
 
           <Reveal>
 
-            <div className="max-w-[650px]">
+            <div className="max-w-[680px]">
 
-              {/* Small heading */}
+              {/* Label */}
 
               <div className="flex items-center gap-3 mb-5">
 
@@ -199,13 +226,13 @@ export default function Services() {
                     tracking-[3px]
                   "
                 >
-                  FLIGHT & AIR TRAVEL
+                  VISA & DOCUMENTATION
                 </span>
 
               </div>
 
 
-              {/* Main heading */}
+              {/* Heading */}
 
               <h1
                 className="
@@ -219,11 +246,11 @@ export default function Services() {
                   drop-shadow-lg
                 "
               >
-                Fly Smarter.
+                Travel With
                 <br />
 
                 <span className="text-orange-500">
-                  Travel Better.
+                  Confidence.
                 </span>
               </h1>
 
@@ -237,13 +264,13 @@ export default function Services() {
                   text-base
                   md:text-lg
                   leading-7
-                  max-w-[560px]
+                  max-w-[570px]
                   drop-shadow-md
                 "
               >
-                Complete flight and travel solutions for business,
-                corporate and international travellers. From booking
-                to destination support, we make your journey simple.
+                Reliable visa and documentation assistance for
+                international business travel, exhibitions,
+                corporate visits and global journeys.
               </p>
 
 
@@ -269,7 +296,7 @@ export default function Services() {
                   hover:-translate-y-1
                 "
               >
-                Plan Your Journey
+                Get Visa Assistance
 
                 <span
                   className="
@@ -296,7 +323,7 @@ export default function Services() {
 
 
         {/* =================================================
-            HERO FEATURE BAR
+            FEATURE BAR
         ================================================= */}
 
         <div className="absolute bottom-0 left-0 right-0 z-20">
@@ -316,6 +343,7 @@ export default function Services() {
             >
 
               <div className="grid grid-cols-1 sm:grid-cols-3">
+
 
                 {/* Feature 1 */}
 
@@ -341,20 +369,19 @@ export default function Services() {
                       items-center
                       justify-center
                       text-xl
-                      shrink-0
                     "
                   >
-                    <FaPlaneDeparture />
+                    <FaPassport />
                   </div>
 
                   <div>
 
                     <h4 className="text-[#153764] font-bold text-sm">
-                      Global Flights
+                      Visa Assistance
                     </h4>
 
                     <p className="text-[#153764] text-xs mt-0.5">
-                      Worldwide Connections
+                      Professional Guidance
                     </p>
 
                   </div>
@@ -389,20 +416,19 @@ export default function Services() {
                       items-center
                       justify-center
                       text-xl
-                      shrink-0
                     "
                   >
-                    <FaGlobeAsia />
+                    <FaFileAlt />
                   </div>
 
                   <div>
 
                     <h4 className="text-[#153764] font-bold text-sm">
-                      International Travel
+                      Documentation
                     </h4>
 
                     <p className="text-[#153764] text-xs mt-0.5">
-                      Business & Leisure
+                      Organized Support
                     </p>
 
                   </div>
@@ -437,20 +463,19 @@ export default function Services() {
                       items-center
                       justify-center
                       text-xl
-                      shrink-0
                     "
                   >
-                    <FaHeadset />
+                    <FaGlobeAsia />
                   </div>
 
                   <div>
 
                     <h4 className="text-[#153764] font-bold text-sm">
-                      Dedicated Support
+                      Global Destinations
                     </h4>
 
                     <p className="text-[#153764] text-xs mt-0.5">
-                      Travel Assistance
+                      International Travel
                     </p>
 
                   </div>
@@ -469,7 +494,7 @@ export default function Services() {
 
 
       {/* =====================================================
-          INTRODUCTION
+          INTRO
       ===================================================== */}
 
       <section className="py-16 md:py-20 bg-white">
@@ -496,7 +521,7 @@ export default function Services() {
                 uppercase
               "
             >
-              Our Travel Services
+              Visa Support
             </span>
 
 
@@ -510,9 +535,9 @@ export default function Services() {
                 text-[#102f59]
               "
             >
-              Everything You Need for
+              Your Documents,
               <span className="text-[#1556bd]">
-                {" "}Seamless Travel
+                {" "}Handled With Care
               </span>
             </h2>
 
@@ -526,9 +551,10 @@ export default function Services() {
                 leading-7
               "
             >
-              Whether you are travelling for an international exhibition,
-              corporate meeting or business trip, our team takes care of
-              the important details so you can travel with confidence.
+              International travel often requires careful preparation.
+              Our visa and documentation assistance helps you understand
+              the requirements and prepare your travel documents in an
+              organized and convenient way.
             </p>
 
           </Reveal>
@@ -539,7 +565,7 @@ export default function Services() {
 
 
       {/* =====================================================
-          SERVICES
+          VISA SERVICES
       ===================================================== */}
 
       <section className="py-16 md:py-20 bg-[#f6f9fd]">
@@ -553,8 +579,6 @@ export default function Services() {
             lg:px-10
           "
         >
-
-          {/* Section Heading */}
 
           <Reveal>
 
@@ -570,7 +594,7 @@ export default function Services() {
                   uppercase
                 "
               >
-                What We Do
+                Our Visa Services
               </span>
 
               <h2
@@ -582,15 +606,29 @@ export default function Services() {
                   text-[#102f59]
                 "
               >
-                Complete Travel Solutions
+                Complete Documentation Support
               </h2>
+
+              <p
+                className="
+                  mt-4
+                  text-gray-600
+                  text-sm
+                  md:text-base
+                  leading-7
+                "
+              >
+                From business visa assistance to travel documentation,
+                we help make your international travel preparation
+                simpler and more organized.
+              </p>
 
             </div>
 
           </Reveal>
 
 
-          {/* Service Cards */}
+          {/* Cards */}
 
           <div
             className="
@@ -603,7 +641,7 @@ export default function Services() {
             "
           >
 
-            {services.map((service, index) => {
+            {visaServices.map((service, index) => {
 
               const Icon = service.icon;
 
@@ -716,7 +754,7 @@ export default function Services() {
                     </div>
 
 
-                    {/* Bottom CTA */}
+                    {/* CTA */}
 
                     <a
                       href="/sarathi-nx-official/#contact"
@@ -751,10 +789,183 @@ export default function Services() {
 
 
       {/* =====================================================
-          WHY CHOOSE US
+          DOCUMENT CHECKLIST SECTION
       ===================================================== */}
 
       <section className="py-16 md:py-20 bg-white">
+
+        <div
+          className="
+            max-w-[1100px]
+            mx-auto
+            px-5
+            sm:px-8
+          "
+        >
+
+          <Reveal>
+
+            <div
+              className="
+                rounded-[28px]
+                bg-[#063b73]
+                overflow-hidden
+                relative
+              "
+            >
+
+              {/* Decorative Circle */}
+
+              <div
+                className="
+                  absolute
+                  -right-24
+                  -top-24
+                  w-72
+                  h-72
+                  rounded-full
+                  bg-blue-400/10
+                "
+              />
+
+
+              <div
+                className="
+                  relative
+                  z-10
+                  grid
+                  md:grid-cols-2
+                  gap-10
+                  p-8
+                  md:p-12
+                "
+              >
+
+                {/* Left */}
+
+                <div>
+
+                  <span
+                    className="
+                      text-orange-400
+                      text-xs
+                      font-bold
+                      tracking-[2px]
+                      uppercase
+                    "
+                  >
+                    Prepare Before You Travel
+                  </span>
+
+
+                  <h2
+                    className="
+                      mt-3
+                      text-3xl
+                      md:text-4xl
+                      font-bold
+                      text-white
+                      leading-tight
+                    "
+                  >
+                    Keep Your
+                    <br />
+                    Documents Ready.
+                  </h2>
+
+
+                  <p
+                    className="
+                      mt-4
+                      text-blue-100
+                      text-sm
+                      md:text-base
+                      leading-7
+                    "
+                  >
+                    Every destination can have different visa and
+                    documentation requirements. Our team helps you
+                    understand what needs to be prepared for your trip.
+                  </p>
+
+
+                  <a
+                    href="/sarathi-nx-official/#contact"
+                    className="
+                      inline-flex
+                      items-center
+                      gap-2
+                      mt-7
+                      text-white
+                      font-semibold
+                      text-sm
+                      hover:gap-3
+                      transition-all
+                    "
+                  >
+                    Speak With Our Team
+                    <FaArrowRight className="text-xs" />
+                  </a>
+
+                </div>
+
+
+                {/* Right Checklist */}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                  {[
+                    "Valid Passport",
+                    "Visa Application",
+                    "Invitation Documents",
+                    "Travel Itinerary",
+                    "Accommodation Details",
+                    "Supporting Documents",
+                  ].map((item) => (
+
+                    <div
+                      key={item}
+                      className="
+                        flex
+                        items-center
+                        gap-3
+                        bg-white/10
+                        border
+                        border-white/10
+                        rounded-xl
+                        px-4
+                        py-4
+                      "
+                    >
+
+                      <FaCheckCircle className="text-orange-400 shrink-0" />
+
+                      <span className="text-white text-sm">
+                        {item}
+                      </span>
+
+                    </div>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </Reveal>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          WHY CHOOSE US
+      ===================================================== */}
+
+      <section className="py-16 md:py-20 bg-[#f6f9fd]">
 
         <div
           className="
@@ -783,6 +994,7 @@ export default function Services() {
                 Why Choose Us
               </span>
 
+
               <h2
                 className="
                   mt-2
@@ -792,32 +1004,16 @@ export default function Services() {
                   text-[#102f59]
                 "
               >
-                Your Journey,
+                Visa Preparation,
                 <span className="text-[#1556bd]">
-                  {" "}Our Responsibility
+                  {" "}Made Easier
                 </span>
               </h2>
-
-              <p
-                className="
-                  mt-4
-                  text-gray-600
-                  text-sm
-                  md:text-base
-                  leading-7
-                "
-              >
-                We combine travel expertise, personalized service and
-                international destination knowledge to make every journey
-                more convenient.
-              </p>
 
             </div>
 
           </Reveal>
 
-
-          {/* Advantages */}
 
           <div
             className="
@@ -830,7 +1026,7 @@ export default function Services() {
             "
           >
 
-            {advantages.map((item, index) => {
+            {benefits.map((item, index) => {
 
               const Icon = item.icon;
 
@@ -843,13 +1039,13 @@ export default function Services() {
                   <div
                     className="
                       h-full
-                      bg-[#f6f9fd]
+                      bg-white
                       border
                       border-gray-100
                       rounded-2xl
                       p-7
                       text-center
-                      hover:bg-white
+                      shadow-sm
                       hover:shadow-lg
                       transition-all
                       duration-300
@@ -914,15 +1110,23 @@ export default function Services() {
           FINAL CTA
       ===================================================== */}
 
-      <section className="relative py-20 md:py-24 bg-[#063b73] overflow-hidden">
+      <section
+        className="
+          relative
+          py-20
+          md:py-24
+          bg-[#063b73]
+          overflow-hidden
+        "
+      >
 
-        {/* Decorative circles */}
+        {/* Decorative Elements */}
 
         <div
           className="
             absolute
             -top-24
-            -right-24
+            -right-20
             w-72
             h-72
             rounded-full
@@ -967,7 +1171,7 @@ export default function Services() {
                 uppercase
               "
             >
-              Ready to Travel?
+              Start Your Application
             </span>
 
 
@@ -980,9 +1184,9 @@ export default function Services() {
                 text-white
               "
             >
-              Let's Plan Your
+              Planning an International
               <span className="text-orange-400">
-                {" "}Next Journey
+                {" "}Business Trip?
               </span>
             </h2>
 
@@ -998,9 +1202,8 @@ export default function Services() {
                 mx-auto
               "
             >
-              Tell us about your travel requirements and our team
-              will help you create a smooth, comfortable and
-              well-planned journey.
+              Let our travel team help you understand the visa and
+              documentation requirements for your upcoming journey.
             </p>
 
 
@@ -1025,9 +1228,7 @@ export default function Services() {
               "
             >
               Contact Our Team
-
               <FaArrowRight className="text-sm" />
-
             </a>
 
           </Reveal>

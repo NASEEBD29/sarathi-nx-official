@@ -1,134 +1,223 @@
 import {
-  FaArrowRight,
   FaMapMarkerAlt,
   FaCalendarAlt,
-  FaGlobeAsia,
+  FaArrowRight,
+  FaPlane,
+  FaGlobe,
+  FaShieldAlt,
 } from "react-icons/fa";
 
 import Reveal from "../components/common/Reveal";
+import tradeFairImage from "../assets/images/exhibitions/tredfair.jpg";
+import image1 from "../assets/images/gallery/gallery1.jpg";
+import image2 from "../assets/images/gallery/gallery2.jpg";
 
 const exhibitions = [
   {
-    title: "CMEF",
+    title: "CMEF 2026",
     subtitle: "China International Medical Equipment Fair",
-    location: "Shanghai & Beijing, China",
-    category: "Medical & Healthcare",
+    location: "Shanghai, China",
+    date: "21 - 24 October 2026",
+    price: "₹1,24,500",
+    image: tradeFairImage,
     link: "https://www.cmef.com.cn/en",
   },
   {
-    title: "MEDICA",
-    subtitle: "World's Leading Trade Fair for the Medical Sector",
+    title: "MEDICA 2026",
+    subtitle: "World Forum for Medicine",
     location: "Düsseldorf, Germany",
-    category: "Medical & Healthcare",
+    date: "16 - 19 November 2026",
+    price: "₹1,35,000",
+    image: tradeFairImage,
     link: "https://www.medica-tradefair.com/",
   },
   {
-    title: "ARAB HEALTH",
-    subtitle: "Leading Healthcare Exhibition in the Middle East",
+    title: "ARAB HEALTH 2027",
+    subtitle: "Healthcare Exhibition & Medical Conference",
     location: "Dubai, UAE",
-    category: "Medical & Healthcare",
-    link: "https://www.worldhealthexpo.com/events/labs/dubai/",
+    date: "January 2027",
+    price: "Coming Soon",
+    image: tradeFairImage,
+    link: "#",
   },
   {
-    title: "MEDLAB",
+    title: "MEDLAB 2027",
     subtitle: "Laboratory & Diagnostics Exhibition",
     location: "Dubai, UAE",
-    category: "Laboratory & Diagnostics",
-    link: "https://www.worldhealthexpo.com/events/labs/dubai/",
+    date: "February 2027",
+    price: "Coming Soon",
+    image: tradeFairImage,
+    link: "#",
   },
   {
-    title: "WELDING & CUTTING",
+    title: "CANTON FAIR 2026",
+    subtitle: "China Import and Export Fair",
+    location: "Guangzhou, China",
+    date: "October 2026",
+    price: "₹1,12,000",
+    image: tradeFairImage,
+    link: "https://www.cantonfair.org.cn/",
+  },
+  {
+    title: "WELDING & CUTTING 2026",
     subtitle: "Beijing Essen Welding & Cutting Fair",
     location: "Beijing, China",
-    category: "Industrial",
+    date: "November 2026",
+    price: "Coming Soon",
+    image: tradeFairImage,
     link: "#",
   },
   {
-    title: "CANTON FAIR",
-    subtitle: "China Import & Export Fair",
-    location: "Guangzhou, China",
-    category: "Trade & Business",
-    link: "#",
-  },
-  {
-    title: "ITMA ASIA + CITME",
-    subtitle: "Asia's Leading Textile Machinery Exhibition",
+    title: "ITMA ASIA + CITME 2026",
+    subtitle: "International Textile Machinery Exhibition",
     location: "Shanghai, China",
-    category: "Textile & Machinery",
+    date: "20 - 24 November 2026",
+    price: "₹1,15,000",
+    image: tradeFairImage,
+    link: "#",
+  },
+  {
+    title: "CHINA GLASS 2027",
+    subtitle: "China International Glass Industrial Exhibition",
+    location: "Shanghai, China",
+    date: "April 2027",
+    price: "Coming Soon",
+    image: tradeFairImage,
     link: "#",
   },
 ];
 
+const journeyImages = [
+  tradeFairImage,
+  image1,
+  image2,
+  
+];
+
 export default function Exhibitions() {
   return (
-    <main className="bg-white">
+    <main className="bg-white overflow-hidden">
 
       {/* ================= HERO ================= */}
-      <section className="relative bg-[#003DA5] text-white pt-36 pb-24">
 
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative min-h-[560px] md:min-h-[620px] overflow-hidden bg-[#dfe7ef]">
+
+        {/* Banner Image */}
+        <img
+          src={tradeFairImage}
+          alt="International Trade Fair"
+          className="absolute inset-0 w-full h-full object-contain object-center"
+        />
+
+        {/* Dark overlay - image ko visible rakhega */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#052f62]/55 via-[#073b73]/20 to-transparent" />
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10 pt-20 md:pt-24">
 
           <Reveal>
-            <div className="max-w-4xl">
 
-              <span className="text-blue-200 uppercase tracking-[4px] font-semibold text-sm">
-                International Exhibitions
-              </span>
+            <div className="max-w-[570px]">
 
-              <h1 className="text-4xl md:text-6xl font-bold mt-5 leading-tight">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-10 h-[2px] bg-orange-500" />
+
+                <span className="text-white text-xs md:text-sm font-bold tracking-[3px]">
+                  INTERNATIONAL EXHIBITIONS
+                </span>
+              </div>
+
+              <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[62px] font-extrabold leading-[1.05]">
                 Explore Leading
-                <span className="block text-blue-200">
+                <br />
+                <span className="text-orange-500">
                   Global Exhibitions
                 </span>
               </h1>
 
-              <p className="mt-6 text-blue-100 text-lg leading-8 max-w-3xl">
+              <p className="mt-6 text-white text-base md:text-lg leading-7 max-w-[510px]">
                 Discover the world's leading trade fairs and exhibitions.
-                Sarathi NX provides complete travel assistance for
-                businesses attending international exhibitions.
+                We provide complete travel assistance for businesses
+                attending international exhibitions.
               </p>
 
               <a
-                href="/sarathi-nx-official/#contact"
-                className="inline-flex items-center gap-3 mt-8 bg-white text-[#003DA5] px-7 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105"
+                href="#exhibitions"
+                className="inline-flex items-center gap-3 mt-7 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3.5 rounded-full shadow-lg transition-all duration-300"
               >
                 Plan Exhibition Travel
-                <FaArrowRight />
+
+                <span className="w-8 h-8 rounded-full bg-white text-orange-500 flex items-center justify-center">
+                  <FaArrowRight className="text-xs" />
+                </span>
               </a>
 
             </div>
+
           </Reveal>
 
         </div>
 
-      </section>
+        {/* ================= HERO FEATURES ================= */}
 
+        <div className="absolute bottom-0 left-0 right-0 z-20">
 
-      {/* ================= INTRO ================= */}
-      <section className="py-20 bg-[#F5F9FF]">
+          <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10">
 
-        <div className="max-w-4xl mx-auto px-6 text-center">
+            <div className="bg-white/95 backdrop-blur-sm rounded-t-[30px] px-5 md:px-8 py-5 shadow-lg">
 
-          <Reveal>
+              <div className="grid grid-cols-1 sm:grid-cols-3">
 
-            <span className="text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
-              Global Opportunities
-            </span>
+                <div className="flex items-center justify-center sm:justify-start gap-4 py-3">
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#0754bd] flex items-center justify-center text-xl">
+                    <FaPlane />
+                  </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4">
-              Connect With
-              <span className="text-[#003DA5]">
-                {" "}Global Markets
-              </span>
-            </h2>
+                  <div>
+                    <h4 className="text-[#153764] font-bold text-sm">
+                      End-to-End
+                    </h4>
+                    <p className="text-[#153764] text-xs">
+                      Travel Support
+                    </p>
+                  </div>
+                </div>
 
-            <p className="mt-5 text-gray-600 leading-8">
-              International exhibitions provide businesses with valuable
-              opportunities to discover new markets, meet industry
-              leaders, showcase products and build global partnerships.
-            </p>
+                <div className="flex items-center justify-center sm:justify-start gap-4 py-3 sm:border-l border-gray-200 sm:pl-8">
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#0754bd] flex items-center justify-center text-xl">
+                    <FaGlobe />
+                  </div>
 
-          </Reveal>
+                  <div>
+                    <h4 className="text-[#153764] font-bold text-sm">
+                      Global Exhibition
+                    </h4>
+                    <p className="text-[#153764] text-xs">
+                      Expertise
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-center sm:justify-start gap-4 py-3 sm:border-l border-gray-200 sm:pl-8">
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#0754bd] flex items-center justify-center text-xl">
+                    <FaShieldAlt />
+                  </div>
+
+                  <div>
+                    <h4 className="text-[#153764] font-bold text-sm">
+                      Seamless & Hassle-free
+                    </h4>
+                    <p className="text-[#153764] text-xs">
+                      Experience
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -136,103 +225,161 @@ export default function Exhibitions() {
 
 
       {/* ================= EXHIBITIONS ================= */}
-      <section className="py-24 bg-white">
 
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="exhibitions" className="py-14 md:py-20 bg-white">
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10">
+
+          {/* Heading */}
+
+          <Reveal>
+
+            <div className="text-center max-w-[800px] mx-auto">
+
+              <span className="text-orange-500 text-xs md:text-sm font-bold tracking-[2.5px] uppercase">
+                Upcoming Trade Fairs
+              </span>
+
+              <h2 className="mt-2 text-3xl md:text-4xl font-bold text-[#102f59]">
+                Explore Leading Exhibitions
+              </h2>
+
+              <p className="mt-4 text-gray-600 text-sm md:text-base leading-7">
+                Explore the world's most important exhibitions and
+                international trade fairs. Plan your business journey
+                with complete travel, accommodation and visa assistance.
+              </p>
+
+            </div>
+
+          </Reveal>
+
+
+          {/* ================= CARDS ================= */}
+
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
 
             {exhibitions.map((item, index) => (
 
-              <Reveal
-                key={item.title}
-                delay={index * 0.08}
-              >
+              <Reveal key={item.title} delay={index * 0.04}>
 
-                <div className="group bg-white border border-blue-100 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+                <article className="group bg-white border border-gray-200 rounded-xl overflow-hidden h-full flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                  {/* Top Banner */}
-                  <div className="bg-[#003DA5] p-7 text-white">
+                  {/* Image */}
 
-                    <div className="flex items-center justify-between">
+                  <div className="relative w-full h-[215px] overflow-hidden">
 
-                      <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center text-xl">
-                        <FaGlobeAsia />
-                      </div>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
 
-                      <span className="text-xs font-semibold bg-white/15 px-3 py-2 rounded-full">
-                        {item.category}
-                      </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
-                    </div>
-
-                    <h3 className="text-2xl font-bold mt-6">
-                      {item.title}
-                    </h3>
+                    <span className="absolute top-4 left-4 bg-white text-[#1556bd] px-3 py-1.5 rounded-full text-[11px] font-bold shadow">
+                      TRADE FAIR
+                    </span>
 
                   </div>
 
 
                   {/* Content */}
-                  <div className="p-7 flex flex-col flex-1">
 
-                    <p className="text-gray-700 font-medium leading-7">
+                  <div className="p-5 flex flex-col flex-1">
+
+                    <h3 className="text-xl font-bold leading-6 text-[#17375f] group-hover:text-[#1556bd] transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-5 text-gray-500 min-h-[40px]">
                       {item.subtitle}
                     </p>
 
 
+                    {/* Date */}
+
+                    <div className="mt-5 flex items-center gap-3 text-sm text-gray-600">
+
+                      <span className="w-8 h-8 rounded-full bg-blue-50 text-[#1556bd] flex items-center justify-center shrink-0">
+                        <FaCalendarAlt className="text-xs" />
+                      </span>
+
+                      <span>
+                        {item.date}
+                      </span>
+
+                    </div>
+
+
                     {/* Location */}
-                    <div className="flex items-start gap-3 mt-6">
 
-                      <FaMapMarkerAlt className="text-[#003DA5] mt-1 shrink-0" />
+                    <div className="mt-2 flex items-center gap-3 text-sm text-gray-600">
 
-                      <span className="text-gray-600">
+                      <span className="w-8 h-8 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center shrink-0">
+                        <FaMapMarkerAlt className="text-xs" />
+                      </span>
+
+                      <span>
                         {item.location}
                       </span>
 
                     </div>
 
 
-                    {/* Event Type */}
-                    <div className="flex items-center gap-3 mt-4">
+                    {/* Price */}
 
-                      <FaCalendarAlt className="text-[#003DA5]" />
+                    <div className="mt-5 pt-4 border-t border-gray-100">
 
-                      <span className="text-gray-600">
-                        International Exhibition
+                      <span className="block text-xs text-gray-400 mb-1">
+                        Package Starting From
+                      </span>
+
+                      <span className="text-xl font-bold text-[#17375f]">
+                        {item.price}
                       </span>
 
                     </div>
 
 
-                    {/* Button */}
-                    <div className="mt-auto pt-7">
+                    {/* Buttons */}
+
+                    <div className="mt-5 flex gap-3">
 
                       {item.link !== "#" ? (
+
                         <a
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-[#003DA5] font-semibold hover:gap-3 transition-all"
+                          className="flex-1 text-center border border-[#1556bd] text-[#1556bd] hover:bg-[#1556bd] hover:text-white py-2.5 rounded-md text-sm font-semibold transition-all duration-300"
                         >
-                          Visit Exhibition
-                          <FaArrowRight className="text-sm" />
+                          Read More
                         </a>
+
                       ) : (
-                        <a
-                          href="/sarathi-nx-official/#contact"
-                          className="inline-flex items-center gap-2 text-[#003DA5] font-semibold hover:gap-3 transition-all"
+
+                        <button
+                          type="button"
+                          className="flex-1 border border-gray-300 text-gray-500 py-2.5 rounded-md text-sm font-semibold"
                         >
-                          Enquire Now
-                          <FaArrowRight className="text-sm" />
-                        </a>
+                          Read More
+                        </button>
+
                       )}
+
+                      <a
+                        href="#contact"
+                        className="flex-1 text-center bg-orange-500 hover:bg-orange-600 text-white py-2.5 rounded-md text-sm font-semibold transition-colors duration-300"
+                      >
+                        Enquire Now
+                      </a>
 
                     </div>
 
                   </div>
 
-                </div>
+                </article>
 
               </Reveal>
 
@@ -245,73 +392,57 @@ export default function Exhibitions() {
       </section>
 
 
-      {/* ================= TRAVEL SUPPORT ================= */}
-      <section className="py-24 bg-[#F5F9FF]">
+      {/* ================= RUNNING IMAGES ================= */}
 
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-14 md:py-20 bg-[#f6f9fd] overflow-hidden">
 
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10">
 
-            <Reveal>
+          <Reveal>
 
-              <div>
+            <div className="text-center max-w-[750px] mx-auto">
 
-                <span className="text-[#003DA5] uppercase tracking-[4px] font-semibold text-sm">
-                  Exhibition Travel Support
-                </span>
+              <span className="text-orange-500 text-xs md:text-sm font-bold tracking-[2.5px] uppercase">
+                Our Exhibition Journeys
+              </span>
 
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4 leading-tight">
-                  We Take Care of Your
-                  <span className="text-[#003DA5]">
-                    {" "}Complete Journey
-                  </span>
-                </h2>
+              <h2 className="mt-2 text-3xl md:text-4xl font-bold text-[#102f59]">
+                Successful Corporate Journeys
+              </h2>
 
-                <p className="text-gray-600 leading-8 mt-6">
-                  From flight bookings and hotel reservations to visa
-                  assistance and destination support, our team helps
-                  businesses travel confidently for international
-                  exhibitions.
-                </p>
+              <p className="mt-3 text-gray-500 text-sm md:text-base">
+                Supporting businesses across leading international exhibitions.
+              </p>
 
-              </div>
+            </div>
 
-            </Reveal>
+          </Reveal>
+
+        </div>
 
 
-            <Reveal direction="right">
+        {/* Running Images */}
 
-              <div className="grid sm:grid-cols-2 gap-5">
+        <div className="mt-10 relative w-full overflow-hidden">
 
-                {[
-                  "Flight Booking",
-                  "Hotel Reservation",
-                  "Visa Assistance",
-                  "Airport Transfers",
-                  "Exhibition Travel",
-                  "Group Coordination",
-                ].map((item) => (
+          <div className="flex w-max gap-5 trade-marquee">
 
-                  <div
-                    key={item}
-                    className="bg-white rounded-2xl p-5 shadow-md border border-blue-50 flex items-center gap-3"
-                  >
+            {[...journeyImages, ...journeyImages].map((image, index) => (
 
-                    <div className="w-9 h-9 rounded-full bg-[#EAF2FF] text-[#003DA5] flex items-center justify-center">
-                      ✓
-                    </div>
+              <div
+                key={index}
+                className="w-[280px] sm:w-[330px] lg:w-[390px] h-[200px] rounded-2xl overflow-hidden shrink-0 shadow-md"
+              >
 
-                    <span className="font-medium text-gray-700">
-                      {item}
-                    </span>
-
-                  </div>
-
-                ))}
+                <img
+                  src={image}
+                  alt={`Exhibition journey ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
 
               </div>
 
-            </Reveal>
+            ))}
 
           </div>
 
@@ -320,35 +451,27 @@ export default function Exhibitions() {
       </section>
 
 
-      {/* ================= CTA ================= */}
-      <section className="py-20 bg-[#003DA5] text-white">
+      {/* ================= MARQUEE CSS ================= */}
 
-        <div className="max-w-5xl mx-auto px-6 text-center">
+      <style>{`
+        @keyframes tradeMarquee {
+          from {
+            transform: translateX(0);
+          }
 
-          <Reveal>
+          to {
+            transform: translateX(-50%);
+          }
+        }
 
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Planning to Attend an Exhibition?
-            </h2>
+        .trade-marquee {
+          animation: tradeMarquee 35s linear infinite;
+        }
 
-            <p className="text-blue-100 text-lg mt-5 max-w-2xl mx-auto leading-7">
-              Tell us about your exhibition and travel requirements.
-              Our team will help you plan your complete journey.
-            </p>
-
-            <a
-              href="/sarathi-nx-official/#contact"
-              className="inline-flex items-center gap-3 mt-8 bg-white text-[#003DA5] px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105"
-            >
-              Plan Your Exhibition Trip
-              <FaArrowRight />
-            </a>
-
-          </Reveal>
-
-        </div>
-
-      </section>
+        .trade-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
     </main>
   );

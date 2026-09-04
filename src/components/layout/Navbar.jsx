@@ -14,6 +14,10 @@ import {
   FaPhoneAlt,
   FaThLarge,
   FaChevronDown,
+  FaBriefcase,
+  FaShieldAlt,
+  FaCar,
+  FaShip,
 } from "react-icons/fa";
 
 import { navLinks } from "../../data/navLinks";
@@ -23,19 +27,49 @@ export default function Navbar() {
   const [moreOpen, setMoreOpen] = useState(false);
 
   // =====================================================
-  // NORMAL MENU = FIRST 8 ITEMS
-  // MORE SERVICE = LAST ITEM
+  // NORMAL MENU
   // =====================================================
 
   const mainNavLinks = navLinks.filter(
-    (item) =>
-      item.title !== "More Service"
+    (item) => item.title !== "More Service"
   );
 
-  const moreService = navLinks.find(
-    (item) =>
-      item.title === "More Service"
-  );
+  // =====================================================
+  // MORE SERVICES
+  // =====================================================
+
+  const moreServices = [
+    {
+      title: "Business & Corporate Travel",
+      href: "/business-corporate-travel",
+      icon: FaBriefcase,
+    },
+    {
+      title: "MICE & Exhibition Travel",
+      href: "/mice-exhibition-travel",
+      icon: FaHandshake,
+    },
+    {
+      title: "Travel Insurance",
+      href: "/travel-insurance",
+      icon: FaShieldAlt,
+    },
+    {
+      title: "Transfer & Car Rental",
+      href: "/transfer-car-rental",
+      icon: FaCar,
+    },
+    {
+      title: "Cruise & Ferry Booking",
+      href: "/cruise-ferry-booking",
+      icon: FaShip,
+    },
+    {
+      title: "Group & Customized Tours",
+      href: "/group-customized-tours",
+      icon: FaUsers,
+    },
+  ];
 
   // =====================================================
   // ICONS
@@ -44,9 +78,7 @@ export default function Navbar() {
   const getMenuIcon = (title = "") => {
     const text = title.toLowerCase();
 
-    if (text.includes("home")) {
-      return FaHome;
-    }
+    if (text.includes("home")) return FaHome;
 
     if (
       text.includes("flight") ||
@@ -84,13 +116,9 @@ export default function Navbar() {
       return FaUmbrellaBeach;
     }
 
-    if (text.includes("about")) {
-      return FaUsers;
-    }
+    if (text.includes("about")) return FaUsers;
 
-    if (text.includes("contact")) {
-      return FaPhoneAlt;
-    }
+    if (text.includes("contact")) return FaPhoneAlt;
 
     return FaThLarge;
   };
@@ -107,10 +135,7 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener(
-      "resize",
-      handleResize
-    );
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener(
@@ -137,18 +162,20 @@ export default function Navbar() {
     <nav
       className="
         relative
-        z-[60]
+        z-[100]
 
         w-full
 
-        bg-[#03182B]
+        bg-[#F5F7F2]
 
         border-b
-        border-white/[0.10]
+        border-[#03182B]/10
+
+        shadow-[0_4px_18px_rgba(3,24,43,0.10)]
       "
     >
       {/* =====================================================
-          DESKTOP NAVBAR
+          MAIN NAVBAR
       ====================================================== */}
 
       <div
@@ -165,27 +192,31 @@ export default function Navbar() {
       >
         <div
           className="
-            h-[142px]
+            h-[78px]
 
             flex
-            items-stretch
+            items-center
           "
         >
           {/* =================================================
-              LOGO
+              LOGO COLUMN
           ================================================= */}
 
           <div
             className="
               shrink-0
 
-              w-[250px]
-              xl:w-[285px]
+              w-[260px]
+              sm:w-[285px]
+              lg:w-[310px]
+              xl:w-[340px]
+
+              h-full
 
               flex
               items-center
 
-              pr-5
+              pr-6
               xl:pr-8
             "
           >
@@ -199,20 +230,26 @@ export default function Navbar() {
               className="
                 flex
                 items-center
-                justify-center
+
+                w-full
+                h-full
               "
             >
               <img
                 src={`${import.meta.env.BASE_URL}sarathi-logo.png`}
                 alt="Sarathi NX"
                 className="
-                  w-[220px]
-                  xl:w-[235px]
-                  2xl:w-[240px]
+                  block
 
+                  w-auto
                   h-auto
 
+                  max-w-full
+                  max-h-[150px]
+
                   object-contain
+
+                  object-left
                 "
               />
             </NavLink>
@@ -235,14 +272,8 @@ export default function Navbar() {
               items-stretch
             "
           >
-            {/* =================================================
-                1 - 8 NORMAL MENU
-            ================================================= */}
-
             {mainNavLinks.map((item) => {
-              const Icon = getMenuIcon(
-                item.title
-              );
+              const Icon = getMenuIcon(item.title);
 
               return (
                 <div
@@ -250,13 +281,12 @@ export default function Navbar() {
                   className="
                     relative
 
-                    flex-1
-                    min-w-0
-
                     h-full
 
+                    min-w-0
+
                     border-l
-                    border-white/[0.12]
+                    border-[#03182B]/10
 
                     flex
                     items-center
@@ -271,8 +301,8 @@ export default function Navbar() {
 
                       relative
 
-                      w-full
                       h-full
+                      w-full
 
                       flex
                       flex-col
@@ -280,9 +310,10 @@ export default function Navbar() {
                       items-center
                       justify-center
 
-                      gap-[9px]
+                      gap-[5px]
 
-                      px-1
+                      px-4
+                      xl:px-5
 
                       text-center
                     "
@@ -293,19 +324,21 @@ export default function Navbar() {
 
                         <Icon
                           className={`
-                            text-[28px]
-                            xl:text-[30px]
+                            shrink-0
+
+                            text-[25px]
+                            xl:text-[27px]
 
                             transition-colors
                             duration-200
 
                             ${
                               isActive
-                                ? "text-[#9CCB42]"
-                                : "text-[#83A941]"
+                                ? "text-[#76A82D]"
+                                : "text-[#668F2C]"
                             }
 
-                            group-hover:text-[#9CCB42]
+                            group-hover:text-[#76A82D]
                           `}
                         />
 
@@ -313,11 +346,15 @@ export default function Navbar() {
 
                         <span
                           className={`
+                            block
+
+                            w-full
+
                             text-[9px]
                             xl:text-[10px]
                             2xl:text-[11px]
 
-                            font-medium
+                            font-semibold
 
                             leading-[1.25]
 
@@ -328,11 +365,11 @@ export default function Navbar() {
 
                             ${
                               isActive
-                                ? "text-[#9CCB42]"
-                                : "text-[#91B34E]"
+                                ? "text-[#03182B]"
+                                : "text-[#33495A]"
                             }
 
-                            group-hover:text-[#A4CD55]
+                            group-hover:text-[#03182B]
                           `}
                         >
                           {item.title}
@@ -344,7 +381,7 @@ export default function Navbar() {
                           className={`
                             absolute
 
-                            bottom-[17px]
+                            bottom-[8px]
 
                             left-1/2
                             -translate-x-1/2
@@ -353,15 +390,15 @@ export default function Navbar() {
 
                             rounded-full
 
-                            bg-[#9CCB42]
+                            bg-[#8BC63E]
 
                             transition-all
                             duration-200
 
                             ${
                               isActive
-                                ? "w-[46px]"
-                                : "w-0 group-hover:w-[35px]"
+                                ? "w-[42px]"
+                                : "w-0 group-hover:w-[32px]"
                             }
                           `}
                         />
@@ -373,200 +410,308 @@ export default function Navbar() {
             })}
 
             {/* =================================================
-                9 - MORE SERVICE
+                MORE SERVICE
             ================================================= */}
 
-            {moreService && (
-              <div
+            <div
+              className="
+                relative
+
+                shrink-0
+
+                w-[125px]
+                xl:w-[135px]
+
+                h-full
+
+                border-l
+                border-[#03182B]/10
+
+                flex
+                items-center
+                justify-center
+              "
+              onMouseEnter={() => setMoreOpen(true)}
+              onMouseLeave={() => setMoreOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() =>
+                  setMoreOpen((prev) => !prev)
+                }
                 className="
+                  group
+
                   relative
 
-                  shrink-0
-
-                  w-[115px]
-                  xl:w-[125px]
-
                   h-full
-
-                  border-l
-                  border-white/[0.12]
+                  w-full
 
                   flex
+                  flex-col
+
                   items-center
                   justify-center
+
+                  gap-[5px]
+
+                  px-4
                 "
-                onMouseEnter={() =>
-                  setMoreOpen(true)
-                }
-                onMouseLeave={() =>
-                  setMoreOpen(false)
-                }
               >
-                <button
-                  type="button"
-                  onClick={() =>
-                    setMoreOpen(
-                      (prev) => !prev
-                    )
-                  }
+                {/* ICON */}
+
+                <FaThLarge
                   className="
-                    group
+                    text-[25px]
+                    xl:text-[27px]
 
-                    relative
+                    text-[#668F2C]
 
-                    w-full
-                    h-full
+                    group-hover:text-[#76A82D]
 
+                    transition-colors
+                    duration-200
+                  "
+                />
+
+                {/* TEXT */}
+
+                <span
+                  className="
                     flex
-                    flex-col
-
                     items-center
-                    justify-center
 
-                    gap-[9px]
+                    gap-1
 
-                    px-1
+                    text-[9px]
+                    xl:text-[10px]
+                    2xl:text-[11px]
+
+                    font-semibold
+
+                    leading-[1.2]
+
+                    text-[#33495A]
+
+                    group-hover:text-[#03182B]
+
+                    whitespace-nowrap
                   "
                 >
-                  {/* MORE ICON */}
+                  More Service
 
-                  <FaThLarge
-                    className="
-                      text-[28px]
-                      xl:text-[30px]
-
-                      text-[#83A941]
-
-                      group-hover:text-[#9CCB42]
-
-                      transition-colors
-                      duration-200
-                    "
-                  />
-
-                  {/* MORE TEXT */}
-
-                  <span
-                    className="
-                      flex
-                      items-center
-
-                      gap-1
-
-                      text-[9px]
-                      xl:text-[10px]
-                      2xl:text-[11px]
-
-                      font-medium
-
-                      leading-[1.25]
-
-                      text-[#91B34E]
-
-                      group-hover:text-[#A4CD55]
-
-                      whitespace-nowrap
-                    "
-                  >
-                    More Service
-
-                    <FaChevronDown
-                      className={`
-                        text-[7px]
-
-                        transition-transform
-                        duration-200
-
-                        ${
-                          moreOpen
-                            ? "rotate-180"
-                            : ""
-                        }
-                      `}
-                    />
-                  </span>
-
-                  {/* LINE */}
-
-                  <span
+                  <FaChevronDown
                     className={`
-                      absolute
+                      text-[7px]
 
-                      bottom-[17px]
-
-                      left-1/2
-                      -translate-x-1/2
-
-                      h-[3px]
-
-                      rounded-full
-
-                      bg-[#9CCB42]
-
-                      transition-all
+                      transition-transform
                       duration-200
 
                       ${
                         moreOpen
-                          ? "w-[50px]"
-                          : "w-0 group-hover:w-[38px]"
+                          ? "rotate-180"
+                          : ""
                       }
                     `}
                   />
-                </button>
+                </span>
 
-                {/* =================================================
-                    MORE DROPDOWN
-                ================================================= */}
+                {/* ACTIVE LINE */}
 
-                <div
+                <span
                   className={`
                     absolute
 
-                    top-full
-                    right-0
+                    bottom-[8px]
 
-                    w-[260px]
+                    left-1/2
+                    -translate-x-1/2
 
-                    bg-[#03182B]
+                    h-[3px]
 
-                    border
-                    border-white/[0.12]
+                    rounded-full
 
-                    shadow-[0_18px_45px_rgba(0,0,0,0.45)]
-
-                    overflow-hidden
+                    bg-[#8BC63E]
 
                     transition-all
                     duration-200
 
                     ${
                       moreOpen
-                        ? "opacity-100 translate-y-0 visible"
-                        : "opacity-0 -translate-y-2 invisible"
+                        ? "w-[48px]"
+                        : "w-0 group-hover:w-[36px]"
                     }
                   `}
+                />
+              </button>
+
+              {/* =================================================
+                  MORE SERVICES DROPDOWN
+              ================================================= */}
+
+              <div
+                className={`
+                  absolute
+
+                  top-[calc(100%+1px)]
+                  right-0
+
+                  w-[315px]
+
+                  overflow-hidden
+
+                  rounded-b-[6px]
+
+                  bg-[#FFFFFF]
+
+                  border
+                  border-[#03182B]/10
+
+                  shadow-[0_22px_55px_rgba(3,24,43,0.18)]
+
+                  transition-all
+                  duration-200
+
+                  ${
+                    moreOpen
+                      ? "opacity-100 translate-y-0 visible pointer-events-auto"
+                      : "opacity-0 -translate-y-2 invisible pointer-events-none"
+                  }
+                `}
+              >
+                {/* DROPDOWN HEADER */}
+
+                <div
+                  className="
+                    px-5
+                    py-4
+
+                    border-b
+                    border-[#03182B]/10
+
+                    bg-[#F5F7F2]
+                  "
                 >
-                  {/* Future More Services
-                      yahan apne additional services
-                      add kar sakte ho
-                  */}
-
-                  <div
+                  <p
                     className="
-                      px-5
-                      py-4
+                      m-0
 
-                      text-[13px]
+                      text-[12px]
 
-                      text-white/70
+                      uppercase
+                      tracking-[1.2px]
+
+                      font-bold
+
+                      text-[#668F2C]
                     "
                   >
                     More Services
-                  </div>
+                  </p>
+
+                  <p
+                    className="
+                      mt-1
+
+                      text-[11px]
+
+                      text-[#536474]
+                    "
+                  >
+                    Explore our additional travel services
+                  </p>
+                </div>
+
+                {/* SERVICE ITEMS */}
+
+                <div className="py-2">
+                  {moreServices.map((service) => {
+                    const ServiceIcon = service.icon;
+
+                    return (
+                      <NavLink
+                        key={service.title}
+                        to={service.href}
+                        onClick={() => {
+                          setMoreOpen(false);
+                          setMenuOpen(false);
+                        }}
+                        className="
+                          group
+
+                          flex
+                          items-center
+
+                          gap-3
+
+                          w-full
+
+                          px-5
+                          py-[13px]
+
+                          text-[#33495A]
+
+                          transition-all
+                          duration-200
+
+                          hover:bg-[#8BC63E]/10
+                          hover:text-[#03182B]
+                        "
+                      >
+                        <span
+                          className="
+                            shrink-0
+
+                            w-[32px]
+                            h-[32px]
+
+                            rounded-full
+
+                            flex
+                            items-center
+                            justify-center
+
+                            bg-[#8BC63E]/10
+
+                            border
+                            border-[#8BC63E]/20
+
+                            group-hover:bg-[#8BC63E]/20
+                          "
+                        >
+                          <ServiceIcon
+                            className="
+                              text-[13px]
+
+                              text-[#668F2C]
+
+                              group-hover:text-[#527C20]
+                            "
+                          />
+                        </span>
+
+                        <span
+                          className="
+                            min-w-0
+
+                            text-[12px]
+                            xl:text-[13px]
+
+                            font-semibold
+
+                            leading-[1.35]
+
+                            whitespace-normal
+                          "
+                        >
+                          {service.title}
+                        </span>
+                      </NavLink>
+                    );
+                  })}
                 </div>
               </div>
-            )}
+            </div>
           </div>
 
           {/* =================================================
@@ -585,36 +730,38 @@ export default function Navbar() {
           >
             <button
               type="button"
-              onClick={() =>
-                setMenuOpen(
-                  (prev) => !prev
-                )
-              }
+              onClick={() => {
+                setMenuOpen((prev) => !prev);
+                setMoreOpen(false);
+              }}
               aria-label="Toggle Menu"
               aria-expanded={menuOpen}
               className="
-                w-11
-                h-11
+                w-[42px]
+                h-[42px]
 
                 flex
                 items-center
                 justify-center
 
+                rounded-[4px]
+
                 border
-                border-[#91C63F]/60
+                border-[#668F2C]
 
-                text-[#91C63F]
+                bg-[#8BC63E]/5
 
-                text-xl
+                text-[#668F2C]
 
-                rounded-sm
+                text-[18px]
+
+                transition-all
+                duration-200
+
+                hover:bg-[#8BC63E]/10
               "
             >
-              {menuOpen ? (
-                <FaTimes />
-              ) : (
-                <FaBars />
-              )}
+              {menuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
         </div>
@@ -634,40 +781,41 @@ export default function Navbar() {
           left-0
           right-0
 
-          bg-[#03182B]
+          z-[110]
+
+          bg-[#F5F7F2]
 
           border-t
-          border-white/[0.10]
+          border-[#03182B]/10
 
-          shadow-[0_20px_40px_rgba(0,0,0,0.45)]
-
-          overflow-hidden
+          shadow-[0_20px_45px_rgba(3,24,43,0.18)]
 
           transition-all
           duration-300
 
           ${
             menuOpen
-              ? "max-h-[85vh] opacity-100 visible"
-              : "max-h-0 opacity-0 invisible"
+              ? "opacity-100 visible"
+              : "opacity-0 invisible pointer-events-none"
           }
         `}
       >
         <div
           className="
-            max-h-[85vh]
+            max-h-[calc(100vh-78px)]
+
             overflow-y-auto
+
+            overscroll-contain
 
             px-3
             py-3
           "
         >
-          {/* 1 - 8 */}
+          {/* NORMAL MOBILE LINKS */}
 
           {mainNavLinks.map((item) => {
-            const Icon = getMenuIcon(
-              item.title
-            );
+            const Icon = getMenuIcon(item.title);
 
             return (
               <NavLink
@@ -684,22 +832,26 @@ export default function Navbar() {
 
                   gap-4
 
+                  min-h-[52px]
+
                   px-4
-                  py-[15px]
+                  py-3
+
+                  rounded-[4px]
 
                   border-b
-                  border-white/[0.08]
+                  border-[#03182B]/10
 
                   ${
                     isActive
-                      ? "text-[#9CCB42] bg-[#9CCB42]/10"
-                      : "text-white/80 hover:text-[#9CCB42]"
+                      ? "text-[#527C20] bg-[#8BC63E]/10"
+                      : "text-[#33495A] hover:text-[#527C20] hover:bg-[#8BC63E]/5"
                   }
                 `}
               >
                 <Icon
                   className="
-                    text-[19px]
+                    text-[18px]
                     shrink-0
                   "
                 />
@@ -707,7 +859,9 @@ export default function Navbar() {
                 <span
                   className="
                     text-[13px]
-                    font-medium
+                    font-semibold
+
+                    leading-[1.3]
                   "
                 >
                   {item.title}
@@ -716,29 +870,29 @@ export default function Navbar() {
             );
           })}
 
-          {/* 9 - MORE SERVICE */}
+          {/* MOBILE MORE SERVICE */}
 
           <button
             type="button"
             onClick={() =>
-              setMoreOpen(
-                (prev) => !prev
-              )
+              setMoreOpen((prev) => !prev)
             }
             className="
               w-full
+
+              min-h-[54px]
 
               flex
               items-center
               justify-between
 
               px-4
-              py-[15px]
+              py-3
 
-              text-white/80
+              text-[#33495A]
 
               border-b
-              border-white/[0.08]
+              border-[#03182B]/10
             "
           >
             <span
@@ -750,14 +904,17 @@ export default function Navbar() {
             >
               <FaThLarge
                 className="
-                  text-[19px]
+                  text-[18px]
+                  shrink-0
+
+                  text-[#668F2C]
                 "
               />
 
               <span
                 className="
                   text-[13px]
-                  font-medium
+                  font-semibold
                 "
               >
                 More Service
@@ -778,6 +935,116 @@ export default function Navbar() {
               `}
             />
           </button>
+
+          {/* MOBILE MORE SERVICES */}
+
+          <div
+            className={`
+              overflow-hidden
+
+              transition-all
+              duration-300
+
+              ${
+                moreOpen
+                  ? "max-h-[500px] opacity-100"
+                  : "max-h-0 opacity-0"
+              }
+            `}
+          >
+            <div
+              className="
+                mt-2
+                mb-1
+                mx-1
+
+                rounded-[5px]
+
+                bg-white
+
+                border
+                border-[#03182B]/10
+
+                overflow-hidden
+              "
+            >
+              {moreServices.map((service) => {
+                const ServiceIcon = service.icon;
+
+                return (
+                  <NavLink
+                    key={service.title}
+                    to={service.href}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setMoreOpen(false);
+                    }}
+                    className="
+                      flex
+                      items-center
+
+                      gap-3
+
+                      min-h-[52px]
+
+                      px-4
+                      py-3
+
+                      border-b
+                      border-[#03182B]/10
+
+                      last:border-b-0
+
+                      text-[#33495A]
+
+                      hover:text-[#527C20]
+                      hover:bg-[#8BC63E]/10
+
+                      transition-colors
+                      duration-200
+                    "
+                  >
+                    <span
+                      className="
+                        shrink-0
+
+                        w-[30px]
+                        h-[30px]
+
+                        rounded-full
+
+                        flex
+                        items-center
+                        justify-center
+
+                        bg-[#8BC63E]/10
+                      "
+                    >
+                      <ServiceIcon
+                        className="
+                          text-[12px]
+
+                          text-[#668F2C]
+                        "
+                      />
+                    </span>
+
+                    <span
+                      className="
+                        text-[12px]
+
+                        font-semibold
+
+                        leading-[1.35]
+                      "
+                    >
+                      {service.title}
+                    </span>
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </nav>

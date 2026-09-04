@@ -16,11 +16,11 @@ export default function TopHeader() {
     <header
       className="
         w-full
-        h-[86px]
+        h-[58px]
         bg-[#03182B]
         text-white
         border-b
-        border-white/15
+        border-white/10
       "
     >
       <div
@@ -98,7 +98,7 @@ export default function TopHeader() {
                 mx-5
                 h-[28px]
                 w-px
-                bg-white/30
+                bg-white/20
               "
             />
 
@@ -146,7 +146,7 @@ export default function TopHeader() {
                 mx-5
                 h-[28px]
                 w-px
-                bg-white/30
+                bg-white/20
               "
             />
 

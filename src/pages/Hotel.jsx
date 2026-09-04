@@ -1,132 +1,156 @@
 import {
-  FaPlaneDeparture,
-  FaBuilding,
-  FaPassport,
   FaHotel,
+  FaMapMarkerAlt,
+  FaBed,
   FaUsers,
   FaGlobeAsia,
   FaCheckCircle,
   FaArrowRight,
-  FaSuitcaseRolling,
-  FaHeadset,
+  FaConciergeBell,
+  FaPlane,
+  FaBuilding,
 } from "react-icons/fa";
 
 import Reveal from "../components/common/Reveal";
-import flightImage from "../assets/images/gallery/flight.jpeg";
+import hotelImage from "../assets/images/gallery/hotel.jpg";
 
-const services = [
-  {
-    icon: FaPlaneDeparture,
-    title: "International Flight Booking",
-    description:
-      "Reliable international flight booking solutions for business travellers, exhibition visitors and corporate groups.",
-    points: [
-      "International flight reservations",
-      "Flexible travel options",
-      "Group flight coordination",
-      "Complete itinerary assistance",
-    ],
-  },
-  {
-    icon: FaBuilding,
-    title: "Corporate Travel",
-    description:
-      "Professional corporate travel solutions designed around your company's schedule, budget and business requirements.",
-    points: [
-      "Corporate flight bookings",
-      "Business travel planning",
-      "Customized itineraries",
-      "Dedicated travel assistance",
-    ],
-  },
-  {
-    icon: FaGlobeAsia,
-    title: "Business Travel",
-    description:
-      "Smooth and well-planned business journeys that allow you to focus on meetings, networking and growing your business.",
-    points: [
-      "International business trips",
-      "Customized travel plans",
-      "Airport assistance",
-      "Flexible travel solutions",
-    ],
-  },
-  {
-    icon: FaPassport,
-    title: "Visa Assistance",
-    description:
-      "Professional guidance for visa documentation and application requirements for your international journey.",
-    points: [
-      "Documentation guidance",
-      "Application assistance",
-      "Business visa support",
-      "Travel document checklist",
-    ],
-  },
+
+/* =========================================================
+   HOTEL SERVICES
+========================================================= */
+
+const hotelServices = [
   {
     icon: FaHotel,
-    title: "Hotel Booking",
+    title: "Corporate Hotel Booking",
     description:
-      "Comfortable and convenient accommodation options near airports, exhibition venues and business destinations.",
+      "Comfortable and professionally selected hotels for business travellers, corporate teams and executives.",
     points: [
-      "Corporate hotel bookings",
-      "Exhibition-area hotels",
-      "Group accommodation",
-      "Special stay requirements",
+      "Business-friendly hotels",
+      "Flexible accommodation options",
+      "Corporate stay arrangements",
+      "Special travel requirements",
+    ],
+  },
+  {
+    icon: FaMapMarkerAlt,
+    title: "Exhibition Area Hotels",
+    description:
+      "Stay close to your exhibition or trade fair venue with carefully selected accommodation options.",
+    points: [
+      "Hotels near exhibition centres",
+      "Easy venue access",
+      "Convenient transportation",
+      "Location-based hotel selection",
     ],
   },
   {
     icon: FaUsers,
-    title: "MICE & Group Travel",
+    title: "Group Accommodation",
     description:
-      "Complete group travel management for meetings, incentives, conferences, exhibitions and corporate events.",
+      "Complete accommodation planning for corporate groups, exhibition teams and business delegations.",
     points: [
-      "Group travel planning",
-      "Corporate events",
-      "Meetings & conferences",
-      "Customized group itineraries",
+      "Group room coordination",
+      "Multiple-room bookings",
+      "Corporate group stays",
+      "Customized accommodation plans",
+    ],
+  },
+  {
+    icon: FaGlobeAsia,
+    title: "International Accommodation",
+    description:
+      "Hotel arrangements across major international business and exhibition destinations.",
+    points: [
+      "Worldwide hotel options",
+      "International destinations",
+      "Business travel assistance",
+      "Destination-specific support",
+    ],
+  },
+  {
+    icon: FaBed,
+    title: "Comfortable Stays",
+    description:
+      "We help you find accommodation that matches your location, comfort, schedule and travel requirements.",
+    points: [
+      "Quality accommodation",
+      "Convenient locations",
+      "Comfort-focused options",
+      "Personalized hotel selection",
+    ],
+  },
+  {
+    icon: FaConciergeBell,
+    title: "Travel Stay Assistance",
+    description:
+      "From selecting the right property to coordinating your stay, our team supports you throughout.",
+    points: [
+      "Hotel selection assistance",
+      "Booking coordination",
+      "Check-in support",
+      "Travel stay guidance",
     ],
   },
 ];
 
-const advantages = [
+
+/* =========================================================
+   WHY CHOOSE US
+========================================================= */
+
+const benefits = [
   {
-    icon: FaGlobeAsia,
-    title: "Global Travel Network",
-    text: "Travel support across major international business, exhibition and corporate destinations.",
+    icon: FaMapMarkerAlt,
+    title: "Prime Locations",
+    text: "Hotel options selected around exhibition venues, business districts, airports and important city locations.",
   },
   {
-    icon: FaHeadset,
-    title: "Dedicated Assistance",
-    text: "Our team stays connected with you throughout the planning process and your journey.",
+    icon: FaHotel,
+    title: "Curated Hotels",
+    text: "We help identify accommodation based on comfort, location, convenience and your travel requirements.",
   },
   {
-    icon: FaSuitcaseRolling,
-    title: "Complete Travel Support",
-    text: "Flights, hotels, visas and group travel solutions managed under one roof.",
+    icon: FaUsers,
+    title: "Group Expertise",
+    text: "Professional coordination for corporate teams, exhibition groups and business delegations.",
   },
   {
     icon: FaCheckCircle,
-    title: "Reliable Service",
-    text: "Professional and transparent travel solutions focused on convenience and customer satisfaction.",
+    title: "Hassle-Free Planning",
+    text: "One team to coordinate your accommodation requirements along with your complete travel plans.",
   },
 ];
 
-export default function Services() {
+
+/* =========================================================
+   MAIN COMPONENT
+========================================================= */
+
+export default function HotelAccommodation() {
   return (
     <main className="bg-white overflow-hidden">
 
+
       {/* =====================================================
-          HERO BANNER
+          HERO
       ===================================================== */}
 
-      <section className="relative min-h-[560px] md:min-h-[630px] overflow-hidden bg-[#dce6f0]">
+      <section
+        className="
+          relative
+          min-h-[560px]
+          md:min-h-[630px]
+          overflow-hidden
+          bg-[#dce5ed]
+        "
+      >
 
-        {/* Flight Image */}
+        {/* Hotel Image */}
 
         <img
-          src={flightImage}
-          alt="Flight and Air Travel"
+          src={hotelImage}
+          alt="Hotel and Accommodation"
           className="
             absolute
             inset-0
@@ -137,7 +161,8 @@ export default function Services() {
           "
         />
 
-        {/* Dark blue gradient */}
+
+        {/* Main Overlay */}
 
         <div
           className="
@@ -150,19 +175,21 @@ export default function Services() {
           "
         />
 
-        {/* Additional subtle bottom gradient */}
+
+        {/* Bottom Overlay */}
 
         <div
           className="
             absolute
             inset-x-0
             bottom-0
-            h-40
+            h-44
             bg-gradient-to-t
-            from-black/25
+            from-black/30
             to-transparent
           "
         />
+
 
         {/* Hero Content */}
 
@@ -184,7 +211,7 @@ export default function Services() {
 
             <div className="max-w-[650px]">
 
-              {/* Small heading */}
+              {/* Small Label */}
 
               <div className="flex items-center gap-3 mb-5">
 
@@ -199,13 +226,13 @@ export default function Services() {
                     tracking-[3px]
                   "
                 >
-                  FLIGHT & AIR TRAVEL
+                  HOTEL & ACCOMMODATION
                 </span>
 
               </div>
 
 
-              {/* Main heading */}
+              {/* Heading */}
 
               <h1
                 className="
@@ -219,12 +246,14 @@ export default function Services() {
                   drop-shadow-lg
                 "
               >
-                Fly Smarter.
+
+                Stay Comfortably.
                 <br />
 
                 <span className="text-orange-500">
-                  Travel Better.
+                  Travel Confidently.
                 </span>
+
               </h1>
 
 
@@ -241,9 +270,9 @@ export default function Services() {
                   drop-shadow-md
                 "
               >
-                Complete flight and travel solutions for business,
-                corporate and international travellers. From booking
-                to destination support, we make your journey simple.
+                Carefully planned accommodation for business trips,
+                international exhibitions, corporate travel and group
+                journeys — with comfort, convenience and location in mind.
               </p>
 
 
@@ -269,7 +298,8 @@ export default function Services() {
                   hover:-translate-y-1
                 "
               >
-                Plan Your Journey
+
+                Find Your Stay
 
                 <span
                   className="
@@ -296,7 +326,7 @@ export default function Services() {
 
 
         {/* =================================================
-            HERO FEATURE BAR
+            FEATURE BAR
         ================================================= */}
 
         <div className="absolute bottom-0 left-0 right-0 z-20">
@@ -316,6 +346,7 @@ export default function Services() {
             >
 
               <div className="grid grid-cols-1 sm:grid-cols-3">
+
 
                 {/* Feature 1 */}
 
@@ -341,20 +372,19 @@ export default function Services() {
                       items-center
                       justify-center
                       text-xl
-                      shrink-0
                     "
                   >
-                    <FaPlaneDeparture />
+                    <FaHotel />
                   </div>
 
                   <div>
 
                     <h4 className="text-[#153764] font-bold text-sm">
-                      Global Flights
+                      Quality Hotels
                     </h4>
 
                     <p className="text-[#153764] text-xs mt-0.5">
-                      Worldwide Connections
+                      Carefully Selected
                     </p>
 
                   </div>
@@ -389,20 +419,19 @@ export default function Services() {
                       items-center
                       justify-center
                       text-xl
-                      shrink-0
                     "
                   >
-                    <FaGlobeAsia />
+                    <FaMapMarkerAlt />
                   </div>
 
                   <div>
 
                     <h4 className="text-[#153764] font-bold text-sm">
-                      International Travel
+                      Prime Locations
                     </h4>
 
                     <p className="text-[#153764] text-xs mt-0.5">
-                      Business & Leisure
+                      Near Venues & Business Hubs
                     </p>
 
                   </div>
@@ -437,20 +466,19 @@ export default function Services() {
                       items-center
                       justify-center
                       text-xl
-                      shrink-0
                     "
                   >
-                    <FaHeadset />
+                    <FaUsers />
                   </div>
 
                   <div>
 
                     <h4 className="text-[#153764] font-bold text-sm">
-                      Dedicated Support
+                      Group Stays
                     </h4>
 
                     <p className="text-[#153764] text-xs mt-0.5">
-                      Travel Assistance
+                      Corporate & Exhibition Teams
                     </p>
 
                   </div>
@@ -469,7 +497,7 @@ export default function Services() {
 
 
       {/* =====================================================
-          INTRODUCTION
+          INTRO
       ===================================================== */}
 
       <section className="py-16 md:py-20 bg-white">
@@ -496,7 +524,7 @@ export default function Services() {
                 uppercase
               "
             >
-              Our Travel Services
+              Accommodation Solutions
             </span>
 
 
@@ -510,9 +538,9 @@ export default function Services() {
                 text-[#102f59]
               "
             >
-              Everything You Need for
+              The Right Stay for
               <span className="text-[#1556bd]">
-                {" "}Seamless Travel
+                {" "}Every Journey
               </span>
             </h2>
 
@@ -526,9 +554,10 @@ export default function Services() {
                 leading-7
               "
             >
-              Whether you are travelling for an international exhibition,
-              corporate meeting or business trip, our team takes care of
-              the important details so you can travel with confidence.
+              Whether you are attending an international exhibition,
+              travelling for business or managing accommodation for
+              a corporate group, we help you find a stay that fits
+              your plans.
             </p>
 
           </Reveal>
@@ -554,8 +583,6 @@ export default function Services() {
           "
         >
 
-          {/* Section Heading */}
-
           <Reveal>
 
             <div className="text-center max-w-[760px] mx-auto">
@@ -570,7 +597,7 @@ export default function Services() {
                   uppercase
                 "
               >
-                What We Do
+                Our Accommodation Services
               </span>
 
               <h2
@@ -582,15 +609,28 @@ export default function Services() {
                   text-[#102f59]
                 "
               >
-                Complete Travel Solutions
+                Accommodation Made Simple
               </h2>
+
+              <p
+                className="
+                  mt-4
+                  text-gray-600
+                  text-sm
+                  md:text-base
+                "
+              >
+                From individual business stays to large corporate
+                groups, our accommodation services are designed
+                around your travel requirements.
+              </p>
 
             </div>
 
           </Reveal>
 
 
-          {/* Service Cards */}
+          {/* Cards */}
 
           <div
             className="
@@ -603,7 +643,7 @@ export default function Services() {
             "
           >
 
-            {services.map((service, index) => {
+            {hotelServices.map((service, index) => {
 
               const Icon = service.icon;
 
@@ -716,7 +756,7 @@ export default function Services() {
                     </div>
 
 
-                    {/* Bottom CTA */}
+                    {/* CTA */}
 
                     <a
                       href="/sarathi-nx-official/#contact"
@@ -751,10 +791,228 @@ export default function Services() {
 
 
       {/* =====================================================
-          WHY CHOOSE US
+          BUSINESS + EXHIBITION STAY
       ===================================================== */}
 
       <section className="py-16 md:py-20 bg-white">
+
+        <div
+          className="
+            max-w-[1100px]
+            mx-auto
+            px-5
+            sm:px-8
+          "
+        >
+
+          <Reveal>
+
+            <div
+              className="
+                rounded-[28px]
+                bg-[#063b73]
+                overflow-hidden
+                relative
+              "
+            >
+
+              {/* Decorative circle */}
+
+              <div
+                className="
+                  absolute
+                  -right-24
+                  -top-24
+                  w-72
+                  h-72
+                  rounded-full
+                  bg-blue-400/10
+                "
+              />
+
+
+              <div
+                className="
+                  relative
+                  z-10
+                  grid
+                  md:grid-cols-2
+                  gap-8
+                  p-8
+                  md:p-12
+                "
+              >
+
+                {/* Left */}
+
+                <div>
+
+                  <span
+                    className="
+                      text-orange-400
+                      text-xs
+                      font-bold
+                      tracking-[2px]
+                      uppercase
+                    "
+                  >
+                    Business & Exhibition Stays
+                  </span>
+
+
+                  <h2
+                    className="
+                      mt-3
+                      text-3xl
+                      md:text-4xl
+                      font-bold
+                      text-white
+                      leading-tight
+                    "
+                  >
+                    Stay Close.
+                    <br />
+                    Save Time.
+                    <br />
+                    Travel Better.
+                  </h2>
+
+
+                  <p
+                    className="
+                      mt-4
+                      text-blue-100
+                      text-sm
+                      md:text-base
+                      leading-7
+                    "
+                  >
+                    We understand how important location is during
+                    business trips and exhibitions. Our team helps
+                    you plan accommodation around your schedule,
+                    venue and travel requirements.
+                  </p>
+
+                </div>
+
+
+                {/* Right */}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                  <div
+                    className="
+                      bg-white/10
+                      border
+                      border-white/10
+                      rounded-2xl
+                      p-5
+                    "
+                  >
+
+                    <FaBuilding className="text-orange-400 text-2xl" />
+
+                    <h3 className="text-white font-bold mt-4">
+                      Exhibition Venues
+                    </h3>
+
+                    <p className="text-blue-100 text-sm mt-2 leading-6">
+                      Convenient hotel options close to major
+                      exhibition and trade fair venues.
+                    </p>
+
+                  </div>
+
+
+                  <div
+                    className="
+                      bg-white/10
+                      border
+                      border-white/10
+                      rounded-2xl
+                      p-5
+                    "
+                  >
+
+                    <FaPlane className="text-orange-400 text-2xl" />
+
+                    <h3 className="text-white font-bold mt-4">
+                      Airport Access
+                    </h3>
+
+                    <p className="text-blue-100 text-sm mt-2 leading-6">
+                      Accommodation options with convenient
+                      airport connectivity.
+                    </p>
+
+                  </div>
+
+
+                  <div
+                    className="
+                      bg-white/10
+                      border
+                      border-white/10
+                      rounded-2xl
+                      p-5
+                    "
+                  >
+
+                    <FaUsers className="text-orange-400 text-2xl" />
+
+                    <h3 className="text-white font-bold mt-4">
+                      Group Stays
+                    </h3>
+
+                    <p className="text-blue-100 text-sm mt-2 leading-6">
+                      Coordinated accommodation for business
+                      teams and corporate groups.
+                    </p>
+
+                  </div>
+
+
+                  <div
+                    className="
+                      bg-white/10
+                      border
+                      border-white/10
+                      rounded-2xl
+                      p-5
+                    "
+                  >
+
+                    <FaHotel className="text-orange-400 text-2xl" />
+
+                    <h3 className="text-white font-bold mt-4">
+                      Comfortable Hotels
+                    </h3>
+
+                    <p className="text-blue-100 text-sm mt-2 leading-6">
+                      Options selected around your comfort,
+                      schedule and requirements.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </Reveal>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          WHY CHOOSE US
+      ===================================================== */}
+
+      <section className="py-16 md:py-20 bg-[#f6f9fd]">
 
         <div
           className="
@@ -783,6 +1041,7 @@ export default function Services() {
                 Why Choose Us
               </span>
 
+
               <h2
                 className="
                   mt-2
@@ -792,32 +1051,16 @@ export default function Services() {
                   text-[#102f59]
                 "
               >
-                Your Journey,
+                More Than Just a
                 <span className="text-[#1556bd]">
-                  {" "}Our Responsibility
+                  {" "}Hotel Booking
                 </span>
               </h2>
-
-              <p
-                className="
-                  mt-4
-                  text-gray-600
-                  text-sm
-                  md:text-base
-                  leading-7
-                "
-              >
-                We combine travel expertise, personalized service and
-                international destination knowledge to make every journey
-                more convenient.
-              </p>
 
             </div>
 
           </Reveal>
 
-
-          {/* Advantages */}
 
           <div
             className="
@@ -830,7 +1073,7 @@ export default function Services() {
             "
           >
 
-            {advantages.map((item, index) => {
+            {benefits.map((item, index) => {
 
               const Icon = item.icon;
 
@@ -843,13 +1086,13 @@ export default function Services() {
                   <div
                     className="
                       h-full
-                      bg-[#f6f9fd]
+                      bg-white
                       border
                       border-gray-100
                       rounded-2xl
                       p-7
                       text-center
-                      hover:bg-white
+                      shadow-sm
                       hover:shadow-lg
                       transition-all
                       duration-300
@@ -914,15 +1157,23 @@ export default function Services() {
           FINAL CTA
       ===================================================== */}
 
-      <section className="relative py-20 md:py-24 bg-[#063b73] overflow-hidden">
+      <section
+        className="
+          relative
+          py-20
+          md:py-24
+          bg-[#063b73]
+          overflow-hidden
+        "
+      >
 
-        {/* Decorative circles */}
+        {/* Decorative Elements */}
 
         <div
           className="
             absolute
             -top-24
-            -right-24
+            -right-20
             w-72
             h-72
             rounded-full
@@ -967,7 +1218,7 @@ export default function Services() {
                 uppercase
               "
             >
-              Ready to Travel?
+              Plan Your Stay
             </span>
 
 
@@ -980,9 +1231,9 @@ export default function Services() {
                 text-white
               "
             >
-              Let's Plan Your
+              Your Next Trip Deserves
               <span className="text-orange-400">
-                {" "}Next Journey
+                {" "}the Right Stay
               </span>
             </h2>
 
@@ -998,9 +1249,9 @@ export default function Services() {
                 mx-auto
               "
             >
-              Tell us about your travel requirements and our team
-              will help you create a smooth, comfortable and
-              well-planned journey.
+              Tell us your destination, travel dates and accommodation
+              requirements. Our team will help you plan a comfortable
+              and convenient stay.
             </p>
 
 
@@ -1024,7 +1275,7 @@ export default function Services() {
                 shadow-lg
               "
             >
-              Contact Our Team
+              Enquire for Accommodation
 
               <FaArrowRight className="text-sm" />
 

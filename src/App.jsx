@@ -6,6 +6,9 @@ import Services from "./pages/Services";
 import Exhibitions from "./pages/Exhibitions";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import Hotel from "./pages/Hotel";
+import Visa from "./pages/Visa";
+import Holiday from "./pages/Holiday";
 
 import TopHeader from "./components/layout/TopHeader";
 import Navbar from "./components/layout/Navbar";
@@ -20,7 +23,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
-    <BrowserRouter basename="/sarathi-nx-official/">
+    <BrowserRouter basename="/sarathi-nx-official">
       <ScrollToTop />
 
       {/* =====================================================
@@ -56,12 +59,12 @@ function App() {
 
         <Route
           path="/hotel-accommodation"
-          element={<Services />}
+          element={<Hotel />}
         />
 
         <Route
           path="/visa-documentation"
-          element={<Services />}
+          element={<Visa />}
         />
 
         <Route
@@ -71,7 +74,7 @@ function App() {
 
         <Route
           path="/premium-holiday-packages"
-          element={<Services />}
+          element={<Holiday />}
         />
 
         <Route
