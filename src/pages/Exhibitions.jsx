@@ -91,65 +91,193 @@ const journeyImages = [
   tradeFairImage,
   image1,
   image2,
-  
 ];
 
 export default function Exhibitions() {
   return (
     <main className="bg-white overflow-hidden">
 
-      {/* ================= HERO ================= */}
+      {/* =====================================================
+          HERO
+      ===================================================== */}
 
-      <section className="relative min-h-[560px] md:min-h-[620px] overflow-hidden bg-[#dfe7ef]">
+      <section
+        className="
+          relative
+          min-h-[460px]
+          md:min-h-[500px]
+          overflow-hidden
+          bg-[#dfe7ef]
+        "
+      >
 
         {/* Banner Image */}
+
         <img
           src={tradeFairImage}
           alt="International Trade Fair"
-          className="absolute inset-0 w-full h-full object-contain object-center"
+          className="
+            absolute
+            inset-0
+            w-full
+            h-full
+            object-cover
+            object-center
+          "
         />
 
-        {/* Dark overlay - image ko visible rakhega */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#052f62]/55 via-[#073b73]/20 to-transparent" />
+
+        {/* Dark Overlay */}
+
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-r
+            from-[#052f62]/65
+            via-[#073b73]/35
+            to-transparent
+          "
+        />
+
+
+        {/* Bottom Gradient */}
+
+        <div
+          className="
+            absolute
+            inset-x-0
+            bottom-0
+            h-28
+            bg-gradient-to-t
+            from-black/35
+            to-transparent
+          "
+        />
+
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10 pt-20 md:pt-24">
+
+        <div
+          className="
+            relative
+            z-10
+            max-w-[1280px]
+            mx-auto
+            px-5
+            sm:px-8
+            lg:px-10
+            pt-16
+            md:pt-20
+          "
+        >
 
           <Reveal>
 
             <div className="max-w-[570px]">
 
-              <div className="flex items-center gap-3 mb-5">
+              {/* Label */}
+
+              <div className="flex items-center gap-3 mb-4">
+
                 <span className="w-10 h-[2px] bg-orange-500" />
 
-                <span className="text-white text-xs md:text-sm font-bold tracking-[3px]">
+                <span
+                  className="
+                    text-white
+                    text-xs
+                    md:text-sm
+                    font-bold
+                    tracking-[3px]
+                  "
+                >
                   INTERNATIONAL EXHIBITIONS
                 </span>
+
               </div>
 
-              <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[62px] font-extrabold leading-[1.05]">
+
+              {/* Heading */}
+
+              <h1
+                className="
+                  text-white
+                  text-4xl
+                  sm:text-5xl
+                  md:text-6xl
+                  lg:text-[62px]
+                  font-extrabold
+                  leading-[1.05]
+                  drop-shadow-lg
+                "
+              >
                 Explore Leading
                 <br />
+
                 <span className="text-orange-500">
                   Global Exhibitions
                 </span>
               </h1>
 
-              <p className="mt-6 text-white text-base md:text-lg leading-7 max-w-[510px]">
+
+              {/* Description */}
+
+              <p
+                className="
+                  mt-5
+                  text-white
+                  text-base
+                  md:text-lg
+                  leading-7
+                  max-w-[510px]
+                  drop-shadow-md
+                "
+              >
                 Discover the world's leading trade fairs and exhibitions.
                 We provide complete travel assistance for businesses
                 attending international exhibitions.
               </p>
 
+
+              {/* Compact CTA */}
+
               <a
                 href="#exhibitions"
-                className="inline-flex items-center gap-3 mt-7 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3.5 rounded-full shadow-lg transition-all duration-300"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  mt-5
+                  bg-orange-500
+                  hover:bg-orange-600
+                  text-white
+                  font-semibold
+                  px-5
+                  py-2
+                  rounded-full
+                  shadow-lg
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                "
               >
                 Plan Exhibition Travel
 
-                <span className="w-8 h-8 rounded-full bg-white text-orange-500 flex items-center justify-center">
-                  <FaArrowRight className="text-xs" />
+                <span
+                  className="
+                    w-7
+                    h-7
+                    rounded-full
+                    bg-white
+                    text-orange-500
+                    flex
+                    items-center
+                    justify-center
+                  "
+                >
+                  <FaArrowRight className="text-[10px]" />
                 </span>
+
               </a>
 
             </div>
@@ -158,59 +286,164 @@ export default function Exhibitions() {
 
         </div>
 
-        {/* ================= HERO FEATURES ================= */}
+
+        {/* =================================================
+            HERO FEATURES
+        ================================================= */}
 
         <div className="absolute bottom-0 left-0 right-0 z-20">
 
           <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10">
 
-            <div className="bg-white/95 backdrop-blur-sm rounded-t-[30px] px-5 md:px-8 py-5 shadow-lg">
+            <div
+              className="
+                bg-white/95
+                backdrop-blur-sm
+                rounded-t-[26px]
+                px-5
+                md:px-8
+                py-4
+                shadow-[0_-8px_30px_rgba(0,0,0,0.12)]
+              "
+            >
 
               <div className="grid grid-cols-1 sm:grid-cols-3">
 
-                <div className="flex items-center justify-center sm:justify-start gap-4 py-3">
-                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#0754bd] flex items-center justify-center text-xl">
+                {/* Feature 1 */}
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-center
+                    sm:justify-start
+                    gap-4
+                    py-2
+                  "
+                >
+
+                  <div
+                    className="
+                      w-10
+                      h-10
+                      rounded-full
+                      bg-blue-50
+                      text-[#0754bd]
+                      flex
+                      items-center
+                      justify-center
+                      text-lg
+                    "
+                  >
                     <FaPlane />
                   </div>
 
                   <div>
+
                     <h4 className="text-[#153764] font-bold text-sm">
                       End-to-End
                     </h4>
+
                     <p className="text-[#153764] text-xs">
                       Travel Support
                     </p>
+
                   </div>
+
                 </div>
 
-                <div className="flex items-center justify-center sm:justify-start gap-4 py-3 sm:border-l border-gray-200 sm:pl-8">
-                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#0754bd] flex items-center justify-center text-xl">
+
+                {/* Feature 2 */}
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-center
+                    sm:justify-start
+                    gap-4
+                    py-2
+                    sm:border-l
+                    border-gray-200
+                    sm:pl-8
+                  "
+                >
+
+                  <div
+                    className="
+                      w-10
+                      h-10
+                      rounded-full
+                      bg-blue-50
+                      text-[#0754bd]
+                      flex
+                      items-center
+                      justify-center
+                      text-lg
+                    "
+                  >
                     <FaGlobe />
                   </div>
 
                   <div>
+
                     <h4 className="text-[#153764] font-bold text-sm">
                       Global Exhibition
                     </h4>
+
                     <p className="text-[#153764] text-xs">
                       Expertise
                     </p>
+
                   </div>
+
                 </div>
 
-                <div className="flex items-center justify-center sm:justify-start gap-4 py-3 sm:border-l border-gray-200 sm:pl-8">
-                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#0754bd] flex items-center justify-center text-xl">
+
+                {/* Feature 3 */}
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-center
+                    sm:justify-start
+                    gap-4
+                    py-2
+                    sm:border-l
+                    border-gray-200
+                    sm:pl-8
+                  "
+                >
+
+                  <div
+                    className="
+                      w-10
+                      h-10
+                      rounded-full
+                      bg-blue-50
+                      text-[#0754bd]
+                      flex
+                      items-center
+                      justify-center
+                      text-lg
+                    "
+                  >
                     <FaShieldAlt />
                   </div>
 
                   <div>
+
                     <h4 className="text-[#153764] font-bold text-sm">
                       Seamless & Hassle-free
                     </h4>
+
                     <p className="text-[#153764] text-xs">
                       Experience
                     </p>
+
                   </div>
+
                 </div>
 
               </div>
@@ -224,27 +457,55 @@ export default function Exhibitions() {
       </section>
 
 
-      {/* ================= EXHIBITIONS ================= */}
+      {/* =====================================================
+          EXHIBITIONS
+      ===================================================== */}
 
-      <section id="exhibitions" className="py-14 md:py-20 bg-white">
+      <section
+        id="exhibitions"
+        className="py-14 md:py-20 bg-white"
+      >
 
         <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10">
-
-          {/* Heading */}
 
           <Reveal>
 
             <div className="text-center max-w-[800px] mx-auto">
 
-              <span className="text-orange-500 text-xs md:text-sm font-bold tracking-[2.5px] uppercase">
+              <span
+                className="
+                  text-orange-500
+                  text-xs
+                  md:text-sm
+                  font-bold
+                  tracking-[2.5px]
+                  uppercase
+                "
+              >
                 Upcoming Trade Fairs
               </span>
 
-              <h2 className="mt-2 text-3xl md:text-4xl font-bold text-[#102f59]">
+              <h2
+                className="
+                  mt-2
+                  text-3xl
+                  md:text-4xl
+                  font-bold
+                  text-[#102f59]
+                "
+              >
                 Explore Leading Exhibitions
               </h2>
 
-              <p className="mt-4 text-gray-600 text-sm md:text-base leading-7">
+              <p
+                className="
+                  mt-4
+                  text-gray-600
+                  text-sm
+                  md:text-base
+                  leading-7
+                "
+              >
                 Explore the world's most important exhibitions and
                 international trade fairs. Plan your business journey
                 with complete travel, accommodation and visa assistance.
@@ -255,53 +516,157 @@ export default function Exhibitions() {
           </Reveal>
 
 
-          {/* ================= CARDS ================= */}
+          {/* Exhibition Cards */}
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div
+            className="
+              mt-12
+              grid
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-3
+              gap-7
+            "
+          >
 
             {exhibitions.map((item, index) => (
 
-              <Reveal key={item.title} delay={index * 0.04}>
+              <Reveal
+                key={item.title}
+                delay={index * 0.04}
+              >
 
-                <article className="group bg-white border border-gray-200 rounded-xl overflow-hidden h-full flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <article
+                  className="
+                    group
+                    bg-white
+                    border
+                    border-gray-200
+                    rounded-xl
+                    overflow-hidden
+                    h-full
+                    flex
+                    flex-col
+                    shadow-sm
+                    hover:shadow-xl
+                    hover:-translate-y-1
+                    transition-all
+                    duration-300
+                  "
+                >
 
                   {/* Image */}
 
-                  <div className="relative w-full h-[215px] overflow-hidden">
+                  <div
+                    className="
+                      relative
+                      w-full
+                      h-[215px]
+                      overflow-hidden
+                    "
+                  >
 
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="
+                        w-full
+                        h-full
+                        object-cover
+                        group-hover:scale-105
+                        transition-transform
+                        duration-500
+                      "
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-black/40
+                        to-transparent
+                      "
+                    />
 
-                    <span className="absolute top-4 left-4 bg-white text-[#1556bd] px-3 py-1.5 rounded-full text-[11px] font-bold shadow">
+                    <span
+                      className="
+                        absolute
+                        top-4
+                        left-4
+                        bg-white
+                        text-[#1556bd]
+                        px-3
+                        py-1.5
+                        rounded-full
+                        text-[11px]
+                        font-bold
+                        shadow
+                      "
+                    >
                       TRADE FAIR
                     </span>
 
                   </div>
 
 
-                  {/* Content */}
+                  {/* Card Content */}
 
                   <div className="p-5 flex flex-col flex-1">
 
-                    <h3 className="text-xl font-bold leading-6 text-[#17375f] group-hover:text-[#1556bd] transition-colors">
+                    <h3
+                      className="
+                        text-xl
+                        font-bold
+                        leading-6
+                        text-[#17375f]
+                        group-hover:text-[#1556bd]
+                        transition-colors
+                      "
+                    >
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-sm leading-5 text-gray-500 min-h-[40px]">
+
+                    <p
+                      className="
+                        mt-2
+                        text-sm
+                        leading-5
+                        text-gray-500
+                        min-h-[40px]
+                      "
+                    >
                       {item.subtitle}
                     </p>
 
 
                     {/* Date */}
 
-                    <div className="mt-5 flex items-center gap-3 text-sm text-gray-600">
+                    <div
+                      className="
+                        mt-5
+                        flex
+                        items-center
+                        gap-3
+                        text-sm
+                        text-gray-600
+                      "
+                    >
 
-                      <span className="w-8 h-8 rounded-full bg-blue-50 text-[#1556bd] flex items-center justify-center shrink-0">
+                      <span
+                        className="
+                          w-8
+                          h-8
+                          rounded-full
+                          bg-blue-50
+                          text-[#1556bd]
+                          flex
+                          items-center
+                          justify-center
+                          shrink-0
+                        "
+                      >
                         <FaCalendarAlt className="text-xs" />
                       </span>
 
@@ -314,9 +679,30 @@ export default function Exhibitions() {
 
                     {/* Location */}
 
-                    <div className="mt-2 flex items-center gap-3 text-sm text-gray-600">
+                    <div
+                      className="
+                        mt-2
+                        flex
+                        items-center
+                        gap-3
+                        text-sm
+                        text-gray-600
+                      "
+                    >
 
-                      <span className="w-8 h-8 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center shrink-0">
+                      <span
+                        className="
+                          w-8
+                          h-8
+                          rounded-full
+                          bg-orange-50
+                          text-orange-500
+                          flex
+                          items-center
+                          justify-center
+                          shrink-0
+                        "
+                      >
                         <FaMapMarkerAlt className="text-xs" />
                       </span>
 
@@ -329,13 +715,33 @@ export default function Exhibitions() {
 
                     {/* Price */}
 
-                    <div className="mt-5 pt-4 border-t border-gray-100">
+                    <div
+                      className="
+                        mt-5
+                        pt-4
+                        border-t
+                        border-gray-100
+                      "
+                    >
 
-                      <span className="block text-xs text-gray-400 mb-1">
+                      <span
+                        className="
+                          block
+                          text-xs
+                          text-gray-400
+                          mb-1
+                        "
+                      >
                         Package Starting From
                       </span>
 
-                      <span className="text-xl font-bold text-[#17375f]">
+                      <span
+                        className="
+                          text-xl
+                          font-bold
+                          text-[#17375f]
+                        "
+                      >
                         {item.price}
                       </span>
 
@@ -352,7 +758,21 @@ export default function Exhibitions() {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 text-center border border-[#1556bd] text-[#1556bd] hover:bg-[#1556bd] hover:text-white py-2.5 rounded-md text-sm font-semibold transition-all duration-300"
+                          className="
+                            flex-1
+                            text-center
+                            border
+                            border-[#1556bd]
+                            text-[#1556bd]
+                            hover:bg-[#1556bd]
+                            hover:text-white
+                            py-2.5
+                            rounded-md
+                            text-sm
+                            font-semibold
+                            transition-all
+                            duration-300
+                          "
                         >
                           Read More
                         </a>
@@ -361,7 +781,16 @@ export default function Exhibitions() {
 
                         <button
                           type="button"
-                          className="flex-1 border border-gray-300 text-gray-500 py-2.5 rounded-md text-sm font-semibold"
+                          className="
+                            flex-1
+                            border
+                            border-gray-300
+                            text-gray-500
+                            py-2.5
+                            rounded-md
+                            text-sm
+                            font-semibold
+                          "
                         >
                           Read More
                         </button>
@@ -370,7 +799,19 @@ export default function Exhibitions() {
 
                       <a
                         href="#contact"
-                        className="flex-1 text-center bg-orange-500 hover:bg-orange-600 text-white py-2.5 rounded-md text-sm font-semibold transition-colors duration-300"
+                        className="
+                          flex-1
+                          text-center
+                          bg-orange-500
+                          hover:bg-orange-600
+                          text-white
+                          py-2.5
+                          rounded-md
+                          text-sm
+                          font-semibold
+                          transition-colors
+                          duration-300
+                        "
                       >
                         Enquire Now
                       </a>
@@ -392,25 +833,72 @@ export default function Exhibitions() {
       </section>
 
 
-      {/* ================= RUNNING IMAGES ================= */}
+      {/* =====================================================
+          RUNNING IMAGES
+      ===================================================== */}
 
-      <section className="py-14 md:py-20 bg-[#f6f9fd] overflow-hidden">
+      <section
+        className="
+          py-14
+          md:py-20
+          bg-[#f6f9fd]
+          overflow-hidden
+        "
+      >
 
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10">
+        <div
+          className="
+            max-w-[1280px]
+            mx-auto
+            px-5
+            sm:px-8
+            lg:px-10
+          "
+        >
 
           <Reveal>
 
-            <div className="text-center max-w-[750px] mx-auto">
+            <div
+              className="
+                text-center
+                max-w-[750px]
+                mx-auto
+              "
+            >
 
-              <span className="text-orange-500 text-xs md:text-sm font-bold tracking-[2.5px] uppercase">
+              <span
+                className="
+                  text-orange-500
+                  text-xs
+                  md:text-sm
+                  font-bold
+                  tracking-[2.5px]
+                  uppercase
+                "
+              >
                 Our Exhibition Journeys
               </span>
 
-              <h2 className="mt-2 text-3xl md:text-4xl font-bold text-[#102f59]">
+              <h2
+                className="
+                  mt-2
+                  text-3xl
+                  md:text-4xl
+                  font-bold
+                  text-[#102f59]
+                "
+              >
                 Successful Corporate Journeys
               </h2>
 
-              <p className="mt-3 text-gray-500 text-sm md:text-base">
+              <p
+                className="
+                  mt-3
+                  text-gray-500
+                  text-sm
+                  md:text-base
+                "
+              >
                 Supporting businesses across leading international exhibitions.
               </p>
 
@@ -423,26 +911,55 @@ export default function Exhibitions() {
 
         {/* Running Images */}
 
-        <div className="mt-10 relative w-full overflow-hidden">
+        <div
+          className="
+            mt-10
+            relative
+            w-full
+            overflow-hidden
+          "
+        >
 
-          <div className="flex w-max gap-5 trade-marquee">
+          <div
+            className="
+              flex
+              w-max
+              gap-5
+              trade-marquee
+            "
+          >
 
-            {[...journeyImages, ...journeyImages].map((image, index) => (
+            {[...journeyImages, ...journeyImages].map(
+              (image, index) => (
 
-              <div
-                key={index}
-                className="w-[280px] sm:w-[330px] lg:w-[390px] h-[200px] rounded-2xl overflow-hidden shrink-0 shadow-md"
-              >
+                <div
+                  key={index}
+                  className="
+                    w-[280px]
+                    sm:w-[330px]
+                    lg:w-[390px]
+                    h-[200px]
+                    rounded-2xl
+                    overflow-hidden
+                    shrink-0
+                    shadow-md
+                  "
+                >
 
-                <img
-                  src={image}
-                  alt={`Exhibition journey ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
+                  <img
+                    src={image}
+                    alt={`Exhibition journey ${index + 1}`}
+                    className="
+                      w-full
+                      h-full
+                      object-cover
+                    "
+                  />
 
-              </div>
+                </div>
 
-            ))}
+              )
+            )}
 
           </div>
 
@@ -451,7 +968,9 @@ export default function Exhibitions() {
       </section>
 
 
-      {/* ================= MARQUEE CSS ================= */}
+      {/* =====================================================
+          MARQUEE CSS
+      ===================================================== */}
 
       <style>{`
         @keyframes tradeMarquee {

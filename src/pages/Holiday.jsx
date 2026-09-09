@@ -11,7 +11,6 @@ import {
 
 import Reveal from "../components/common/Reveal";
 
-
 /* =========================================================
    HOLIDAY PACKAGES
 ========================================================= */
@@ -115,7 +114,6 @@ const packages = [
   },
 ];
 
-
 /* =========================================================
    MAIN COMPONENT
 ========================================================= */
@@ -126,9 +124,18 @@ export default function HolidayPackages() {
 
       {/* =====================================================
           HERO
+          COMPACT HEIGHT
       ===================================================== */}
 
-      <section className="relative min-h-[580px] md:min-h-[650px] overflow-hidden">
+      <section
+        className="
+          relative
+          h-[430px]
+          sm:h-[450px]
+          md:h-[480px]
+          overflow-hidden
+        "
+      >
 
         {/* Background Image */}
 
@@ -145,7 +152,7 @@ export default function HolidayPackages() {
           "
         />
 
-        {/* Dark Premium Overlay */}
+        {/* Dark Overlay */}
 
         <div
           className="
@@ -165,13 +172,12 @@ export default function HolidayPackages() {
             absolute
             inset-x-0
             bottom-0
-            h-40
+            h-28
             bg-gradient-to-t
             from-black/35
             to-transparent
           "
         />
-
 
         {/* Hero Content */}
 
@@ -184,28 +190,28 @@ export default function HolidayPackages() {
             px-5
             sm:px-8
             lg:px-10
-            pt-28
-            md:pt-36
+            pt-20
+            md:pt-24
           "
         >
 
           <Reveal>
 
-            <div className="max-w-[720px]">
+            <div className="max-w-[680px]">
 
-              {/* Small Heading */}
+              {/* Label */}
 
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-3">
 
-                <span className="w-11 h-[2px] bg-orange-500" />
+                <span className="w-9 h-[2px] bg-orange-500" />
 
                 <span
                   className="
                     text-white
-                    text-xs
-                    md:text-sm
+                    text-[10px]
+                    md:text-xs
                     font-bold
-                    tracking-[3px]
+                    tracking-[2.5px]
                   "
                 >
                   PREMIUM HOLIDAY PACKAGES
@@ -213,18 +219,17 @@ export default function HolidayPackages() {
 
               </div>
 
-
-              {/* Main Heading */}
+              {/* Heading */}
 
               <h1
                 className="
                   text-white
-                  text-4xl
-                  sm:text-5xl
-                  md:text-6xl
-                  lg:text-[68px]
+                  text-3xl
+                  sm:text-4xl
+                  md:text-5xl
+                  lg:text-[58px]
                   font-extrabold
-                  leading-[1.04]
+                  leading-[1.03]
                   drop-shadow-xl
                 "
               >
@@ -236,17 +241,16 @@ export default function HolidayPackages() {
                 </span>
               </h1>
 
-
               {/* Description */}
 
               <p
                 className="
-                  mt-6
+                  mt-4
                   text-white/90
-                  text-base
-                  md:text-lg
-                  leading-8
-                  max-w-[600px]
+                  text-sm
+                  md:text-base
+                  leading-6
+                  max-w-[550px]
                 "
               >
                 Discover beautifully curated holiday experiences
@@ -254,24 +258,24 @@ export default function HolidayPackages() {
                 personalized travel arrangements.
               </p>
 
-
-              {/* CTA */}
+              {/* Compact CTA */}
 
               <a
                 href="/sarathi-nx-official/#contact"
                 className="
                   inline-flex
                   items-center
-                  gap-3
-                  mt-8
+                  gap-2
+                  mt-5
                   bg-orange-500
                   hover:bg-orange-600
                   text-white
-                  px-7
-                  py-3.5
+                  px-5
+                  py-2.5
                   rounded-full
+                  text-sm
                   font-semibold
-                  shadow-xl
+                  shadow-lg
                   transition-all
                   duration-300
                   hover:-translate-y-1
@@ -281,8 +285,8 @@ export default function HolidayPackages() {
 
                 <span
                   className="
-                    w-8
-                    h-8
+                    w-6
+                    h-6
                     rounded-full
                     bg-white
                     text-orange-500
@@ -291,7 +295,7 @@ export default function HolidayPackages() {
                     justify-center
                   "
                 >
-                  <FaArrowRight className="text-xs" />
+                  <FaArrowRight className="text-[10px]" />
                 </span>
 
               </a>
@@ -302,30 +306,29 @@ export default function HolidayPackages() {
 
         </div>
 
-
         {/* =================================================
             HERO BOTTOM FEATURES
         ================================================= */}
 
         <div className="absolute bottom-0 left-0 right-0 z-20">
 
-          <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10">
+          <div className="max-w-[1280px] mx-auto px-3 sm:px-6 lg:px-10">
 
             <div
               className="
                 bg-white/95
                 backdrop-blur-md
-                rounded-t-[30px]
-                shadow-[0_-10px_35px_rgba(0,0,0,0.15)]
-                px-5
-                md:px-8
-                py-5
+                rounded-t-[22px]
+                shadow-[0_-8px_25px_rgba(0,0,0,0.12)]
+                px-4
+                md:px-6
+                py-3
               "
             >
 
               <div className="grid grid-cols-1 sm:grid-cols-3">
 
-                {/* Feature */}
+                {/* Feature 1 */}
 
                 <div
                   className="
@@ -333,22 +336,22 @@ export default function HolidayPackages() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2
                   "
                 >
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-9
+                      h-9
                       rounded-full
                       bg-orange-50
                       text-orange-500
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-base
                     "
                   >
                     <FaUmbrellaBeach />
@@ -356,11 +359,11 @@ export default function HolidayPackages() {
 
                   <div>
 
-                    <h4 className="text-[#153764] font-bold text-sm">
+                    <h4 className="text-[#153764] font-bold text-xs">
                       Handpicked Holidays
                     </h4>
 
-                    <p className="text-gray-500 text-xs mt-1">
+                    <p className="text-gray-500 text-[10px] mt-0.5">
                       Curated Experiences
                     </p>
 
@@ -368,8 +371,7 @@ export default function HolidayPackages() {
 
                 </div>
 
-
-                {/* Feature */}
+                {/* Feature 2 */}
 
                 <div
                   className="
@@ -377,25 +379,25 @@ export default function HolidayPackages() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2
                     sm:border-l
                     border-gray-200
-                    sm:pl-8
+                    sm:pl-6
                   "
                 >
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-9
+                      h-9
                       rounded-full
                       bg-blue-50
                       text-[#1556bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-base
                     "
                   >
                     <FaHotel />
@@ -403,11 +405,11 @@ export default function HolidayPackages() {
 
                   <div>
 
-                    <h4 className="text-[#153764] font-bold text-sm">
+                    <h4 className="text-[#153764] font-bold text-xs">
                       Premium Stays
                     </h4>
 
-                    <p className="text-gray-500 text-xs mt-1">
+                    <p className="text-gray-500 text-[10px] mt-0.5">
                       Comfortable Accommodation
                     </p>
 
@@ -415,8 +417,7 @@ export default function HolidayPackages() {
 
                 </div>
 
-
-                {/* Feature */}
+                {/* Feature 3 */}
 
                 <div
                   className="
@@ -424,25 +425,25 @@ export default function HolidayPackages() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2
                     sm:border-l
                     border-gray-200
-                    sm:pl-8
+                    sm:pl-6
                   "
                 >
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-9
+                      h-9
                       rounded-full
                       bg-blue-50
                       text-[#1556bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-base
                     "
                   >
                     <FaPlaneDeparture />
@@ -450,11 +451,11 @@ export default function HolidayPackages() {
 
                   <div>
 
-                    <h4 className="text-[#153764] font-bold text-sm">
+                    <h4 className="text-[#153764] font-bold text-xs">
                       Complete Travel
                     </h4>
 
-                    <p className="text-gray-500 text-xs mt-1">
+                    <p className="text-gray-500 text-[10px] mt-0.5">
                       From Planning To Return
                     </p>
 
@@ -496,7 +497,6 @@ export default function HolidayPackages() {
               Discover The World
             </span>
 
-
             <h2
               className="
                 mt-3
@@ -512,7 +512,6 @@ export default function HolidayPackages() {
                 {" "}Beautifully Planned
               </span>
             </h2>
-
 
             <p
               className="
@@ -551,8 +550,6 @@ export default function HolidayPackages() {
             lg:px-10
           "
         >
-
-          {/* Heading */}
 
           <Reveal>
 
@@ -652,9 +649,6 @@ export default function HolidayPackages() {
                       "
                     />
 
-
-                    {/* Image Overlay */}
-
                     <div
                       className="
                         absolute
@@ -665,9 +659,6 @@ export default function HolidayPackages() {
                         to-transparent
                       "
                     />
-
-
-                    {/* Location */}
 
                     <div
                       className="
@@ -683,12 +674,8 @@ export default function HolidayPackages() {
                       "
                     >
                       <FaMapMarkerAlt className="text-orange-400" />
-
                       {item.location}
                     </div>
-
-
-                    {/* Rating */}
 
                     <div
                       className="
@@ -705,13 +692,11 @@ export default function HolidayPackages() {
                         shadow-lg
                       "
                     >
-
                       <FaStar className="text-orange-400 text-xs" />
 
                       <span className="text-[#17375f] text-xs font-bold">
                         Premium
                       </span>
-
                     </div>
 
                   </div>
@@ -733,9 +718,6 @@ export default function HolidayPackages() {
                       {item.title}
                     </h3>
 
-
-                    {/* Duration */}
-
                     <div
                       className="
                         mt-3
@@ -746,15 +728,9 @@ export default function HolidayPackages() {
                         text-sm
                       "
                     >
-
                       <FaCalendarAlt className="text-[#1556bd]" />
-
                       {item.duration}
-
                     </div>
-
-
-                    {/* Description */}
 
                     <p
                       className="
@@ -766,9 +742,6 @@ export default function HolidayPackages() {
                     >
                       {item.description}
                     </p>
-
-
-                    {/* Highlights */}
 
                     <div className="mt-5 space-y-2.5">
 
@@ -795,9 +768,6 @@ export default function HolidayPackages() {
                       ))}
 
                     </div>
-
-
-                    {/* Bottom */}
 
                     <div
                       className="
@@ -829,7 +799,6 @@ export default function HolidayPackages() {
 
                       </div>
 
-
                       <a
                         href="/sarathi-nx-official/#contact"
                         className="
@@ -857,6 +826,7 @@ export default function HolidayPackages() {
                 </article>
 
               </Reveal>
+
             ))}
 
           </div>
@@ -890,8 +860,6 @@ export default function HolidayPackages() {
             "
           >
 
-            {/* Decorative Circle */}
-
             <div
               className="
                 absolute
@@ -904,7 +872,6 @@ export default function HolidayPackages() {
               "
             />
 
-
             <div
               className="
                 relative
@@ -916,8 +883,6 @@ export default function HolidayPackages() {
                 md:p-12
               "
             >
-
-              {/* Left */}
 
               <Reveal>
 
@@ -935,7 +900,6 @@ export default function HolidayPackages() {
                     More Than A Holiday
                   </span>
 
-
                   <h2
                     className="
                       mt-3
@@ -951,7 +915,6 @@ export default function HolidayPackages() {
                     Travel Memories.
                   </h2>
 
-
                   <p
                     className="
                       mt-5
@@ -965,7 +928,6 @@ export default function HolidayPackages() {
                     Our team takes care of the important details so
                     you can spend more time enjoying your destination.
                   </p>
-
 
                   <a
                     href="/sarathi-nx-official/#contact"
@@ -988,9 +950,6 @@ export default function HolidayPackages() {
                 </div>
 
               </Reveal>
-
-
-              {/* Right */}
 
               <div className="grid grid-cols-2 gap-4">
 
@@ -1111,7 +1070,6 @@ export default function HolidayPackages() {
               Your Next Escape Awaits
             </span>
 
-
             <h2
               className="
                 mt-3
@@ -1126,7 +1084,6 @@ export default function HolidayPackages() {
                 {" "}Dream Holiday?
               </span>
             </h2>
-
 
             <p
               className="
@@ -1143,7 +1100,6 @@ export default function HolidayPackages() {
               create a holiday experience around your travel style,
               preferences and budget.
             </p>
-
 
             <a
               href="/sarathi-nx-official/#contact"

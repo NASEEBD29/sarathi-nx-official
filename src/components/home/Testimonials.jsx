@@ -732,7 +732,7 @@ export default function Testimonials() {
             BOTTOM CTA
         ===================================================== */}
 
-        <motion.div
+        {/* <motion.div
           initial={{
             opacity: 0,
             y: 15,
@@ -787,7 +787,7 @@ export default function Testimonials() {
             Plan Your Journey
           </a>
 
-        </motion.div>
+        </motion.div> */}
 
       </div>
 

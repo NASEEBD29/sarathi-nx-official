@@ -6,8 +6,6 @@ import {
   FaUserTie,
   FaClipboardCheck,
   FaArrowRight,
-  FaPlaneDeparture,
-  FaHotel,
   FaStamp,
 } from "react-icons/fa";
 
@@ -139,8 +137,8 @@ export default function VisaDocumentation() {
       <section
         className="
           relative
-          min-h-[560px]
-          md:min-h-[630px]
+          min-h-[480px]
+          md:min-h-[510px]
           overflow-hidden
           bg-[#dce5ed]
         "
@@ -156,13 +154,13 @@ export default function VisaDocumentation() {
             inset-0
             w-full
             h-full
-            object-contain
+            object-cover
             object-center
           "
         />
 
 
-        {/* Overlay */}
+        {/* Main Overlay */}
 
         <div
           className="
@@ -183,7 +181,7 @@ export default function VisaDocumentation() {
             absolute
             inset-x-0
             bottom-0
-            h-44
+            h-36
             bg-gradient-to-t
             from-black/30
             to-transparent
@@ -202,8 +200,9 @@ export default function VisaDocumentation() {
             px-5
             sm:px-8
             lg:px-10
-            pt-24
-            md:pt-32
+            pt-20
+            md:pt-24
+            pb-28
           "
         >
 
@@ -213,9 +212,9 @@ export default function VisaDocumentation() {
 
               {/* Label */}
 
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4">
 
-                <span className="w-11 h-[2px] bg-orange-500" />
+                <span className="w-10 h-[2px] bg-orange-500" />
 
                 <span
                   className="
@@ -240,7 +239,7 @@ export default function VisaDocumentation() {
                   text-4xl
                   sm:text-5xl
                   md:text-6xl
-                  lg:text-[64px]
+                  lg:text-[60px]
                   font-extrabold
                   leading-[1.04]
                   drop-shadow-lg
@@ -259,10 +258,11 @@ export default function VisaDocumentation() {
 
               <p
                 className="
-                  mt-6
+                  mt-5
                   text-white
-                  text-base
-                  md:text-lg
+                  text-sm
+                  md:text-base
+                  lg:text-lg
                   leading-7
                   max-w-[570px]
                   drop-shadow-md
@@ -281,14 +281,16 @@ export default function VisaDocumentation() {
                 className="
                   inline-flex
                   items-center
-                  gap-3
-                  mt-8
-                  px-7
-                  py-3.5
+                  gap-2.5
+                  mt-6
+                  px-6
+                  py-2.5
                   rounded-full
                   bg-orange-500
                   hover:bg-orange-600
                   text-white
+                  text-sm
+                  md:text-base
                   font-semibold
                   shadow-xl
                   transition-all
@@ -300,8 +302,8 @@ export default function VisaDocumentation() {
 
                 <span
                   className="
-                    w-8
-                    h-8
+                    w-7
+                    h-7
                     rounded-full
                     bg-white
                     text-orange-500
@@ -310,7 +312,7 @@ export default function VisaDocumentation() {
                     justify-center
                   "
                 >
-                  <FaArrowRight className="text-xs" />
+                  <FaArrowRight className="text-[10px]" />
                 </span>
 
               </a>
@@ -334,11 +336,11 @@ export default function VisaDocumentation() {
               className="
                 bg-white/95
                 backdrop-blur-md
-                rounded-t-[30px]
+                rounded-t-[26px]
                 shadow-[0_-8px_30px_rgba(0,0,0,0.12)]
                 px-5
                 md:px-8
-                py-5
+                py-3
               "
             >
 
@@ -353,22 +355,23 @@ export default function VisaDocumentation() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2.5
                   "
                 >
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-10
+                      h-10
                       rounded-full
                       bg-blue-50
                       text-[#0754bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-lg
+                      shrink-0
                     "
                   >
                     <FaPassport />
@@ -397,8 +400,8 @@ export default function VisaDocumentation() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2.5
                     sm:border-l
                     border-gray-200
                     sm:pl-8
@@ -407,15 +410,16 @@ export default function VisaDocumentation() {
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-10
+                      h-10
                       rounded-full
                       bg-blue-50
                       text-[#0754bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-lg
+                      shrink-0
                     "
                   >
                     <FaFileAlt />
@@ -444,8 +448,8 @@ export default function VisaDocumentation() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2.5
                     sm:border-l
                     border-gray-200
                     sm:pl-8
@@ -454,15 +458,16 @@ export default function VisaDocumentation() {
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-10
+                      h-10
                       rounded-full
                       bg-blue-50
                       text-[#0754bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-lg
+                      shrink-0
                     "
                   >
                     <FaGlobeAsia />

@@ -21,6 +21,13 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 import ScrollToTop from "./components/common/ScrollToTop";
 
+import BusinessCorporateTravel from "./pages/BusinessCorporateTravel";
+import MICEExhibitionTravel from "./pages/MICEExhibitionTravel";
+import TravelInsurance from "./pages/TravelInsurance";
+import TransferCarRental from "./pages/TransferCarRental";
+import CruiseFerryBooking from "./pages/CruiseFerryBooking";
+import GroupCustomizedTours from "./pages/GroupCustomizedTours";
+
 function App() {
   return (
     <BrowserRouter basename="/sarathi-nx-official">
@@ -86,7 +93,16 @@ function App() {
           path="/contact-us"
           element={<Contact />}
         />
-
+        {/* <Route
+          path="/business-corporate-travel"
+          element={<BusinessCorporateTravel />} 
+        /> */}
+          <Route path="/business-corporate-travel" element={<BusinessCorporateTravel />} />
+<Route path="/mice-exhibition-travel" element={<MICEExhibitionTravel />} />
+<Route path="/travel-insurance" element={<TravelInsurance />} />
+<Route path="/transfer-car-rental" element={<TransferCarRental />} />
+<Route path="/cruise-ferry-booking" element={<CruiseFerryBooking />} />
+<Route path="/group-customized-tours" element={<GroupCustomizedTours />} />
         {/* ===================================================
             OLD ROUTES
             Existing links/bookmarks won't break

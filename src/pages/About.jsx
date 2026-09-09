@@ -13,7 +13,6 @@ import {
 
 import Reveal from "../components/common/Reveal";
 
-
 /* =========================================================
    WHY CHOOSE US DATA
 ========================================================= */
@@ -45,7 +44,6 @@ const advantages = [
   },
 ];
 
-
 /* =========================================================
    SERVICES
 ========================================================= */
@@ -69,7 +67,6 @@ const services = [
   },
 ];
 
-
 /* =========================================================
    MAIN COMPONENT
 ========================================================= */
@@ -78,12 +75,11 @@ export default function About() {
   return (
     <main className="bg-white overflow-hidden">
 
-
       {/* =====================================================
           HERO
       ===================================================== */}
 
-      <section className="relative min-h-[570px] md:min-h-[650px] overflow-hidden">
+      <section className="relative h-[420px] sm:h-[440px] md:h-[480px] overflow-hidden">
 
         {/* Hero Image */}
 
@@ -100,7 +96,6 @@ export default function About() {
           "
         />
 
-
         {/* Dark Overlay */}
 
         <div
@@ -109,11 +104,10 @@ export default function About() {
             inset-0
             bg-gradient-to-r
             from-[#041d3d]/90
-            via-[#073b70]/70
+            via-[#073b70]/65
             to-[#073b70]/10
           "
         />
-
 
         {/* Bottom Gradient */}
 
@@ -123,13 +117,12 @@ export default function About() {
             bottom-0
             left-0
             right-0
-            h-40
+            h-28
             bg-gradient-to-t
             from-black/30
             to-transparent
           "
         />
-
 
         {/* Hero Content */}
 
@@ -142,28 +135,30 @@ export default function About() {
             px-5
             sm:px-8
             lg:px-10
-            pt-32
-            md:pt-40
+            pt-20
+            sm:pt-24
+            md:pt-28
           "
         >
 
           <Reveal>
 
-            <div className="max-w-[760px]">
+            <div className="max-w-[700px]">
 
               {/* Label */}
 
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4">
 
-                <span className="w-12 h-[2px] bg-orange-500" />
+                <span className="w-9 h-[2px] bg-orange-500" />
 
                 <span
                   className="
                     text-white
-                    text-xs
+                    text-[10px]
+                    sm:text-xs
                     md:text-sm
                     font-bold
-                    tracking-[3px]
+                    tracking-[2.5px]
                     uppercase
                   "
                 >
@@ -172,16 +167,15 @@ export default function About() {
 
               </div>
 
-
               {/* Heading */}
 
               <h1
                 className="
                   text-white
-                  text-4xl
-                  sm:text-5xl
-                  md:text-6xl
-                  lg:text-[68px]
+                  text-3xl
+                  sm:text-4xl
+                  md:text-5xl
+                  lg:text-[58px]
                   font-extrabold
                   leading-[1.05]
                   drop-shadow-xl
@@ -195,24 +189,22 @@ export default function About() {
                 </span>
               </h1>
 
-
               {/* Description */}
 
               <p
                 className="
-                  mt-6
+                  mt-4
                   text-white/90
-                  text-base
-                  md:text-lg
-                  leading-8
-                  max-w-[650px]
+                  text-sm
+                  md:text-base
+                  leading-6
+                  max-w-[590px]
                 "
               >
                 Sarathi NX is a professionally managed travel company
                 providing reliable solutions for international business
                 travel, exhibitions, corporate journeys and holidays.
               </p>
-
 
               {/* Button */}
 
@@ -221,16 +213,17 @@ export default function About() {
                 className="
                   inline-flex
                   items-center
-                  gap-3
-                  mt-8
+                  gap-2.5
+                  mt-5
                   bg-orange-500
                   hover:bg-orange-600
                   text-white
-                  px-7
-                  py-3.5
+                  px-5
+                  py-2.5
                   rounded-full
+                  text-sm
                   font-semibold
-                  shadow-xl
+                  shadow-lg
                   transition-all
                   duration-300
                   hover:-translate-y-1
@@ -240,8 +233,8 @@ export default function About() {
 
                 <span
                   className="
-                    w-8
-                    h-8
+                    w-6
+                    h-6
                     rounded-full
                     bg-white
                     text-orange-500
@@ -250,7 +243,7 @@ export default function About() {
                     justify-center
                   "
                 >
-                  <FaArrowRight className="text-xs" />
+                  <FaArrowRight className="text-[9px]" />
                 </span>
 
               </a>
@@ -260,7 +253,6 @@ export default function About() {
           </Reveal>
 
         </div>
-
 
         {/* =================================================
             HERO STATS
@@ -282,8 +274,8 @@ export default function About() {
               className="
                 bg-white/95
                 backdrop-blur-md
-                rounded-t-[28px]
-                shadow-[0_-10px_35px_rgba(0,0,0,0.15)]
+                rounded-t-[22px]
+                shadow-[0_-8px_25px_rgba(0,0,0,0.14)]
                 grid
                 grid-cols-2
                 md:grid-cols-4
@@ -314,13 +306,13 @@ export default function About() {
 
                 <div
                   key={stat.label}
-                  className="py-5 px-3 text-center"
+                  className="py-3 px-3 text-center"
                 >
 
                   <p
                     className="
-                      text-xl
-                      md:text-2xl
+                      text-lg
+                      md:text-xl
                       font-extrabold
                       text-[#103a6d]
                     "
@@ -330,9 +322,9 @@ export default function About() {
 
                   <p
                     className="
-                      mt-1
-                      text-[10px]
-                      md:text-xs
+                      mt-0.5
+                      text-[9px]
+                      md:text-[11px]
                       text-gray-500
                       font-medium
                       uppercase
@@ -415,7 +407,6 @@ export default function About() {
                   "
                 />
 
-
                 {/* Experience Card */}
 
                 <div
@@ -468,7 +459,6 @@ export default function About() {
                   Who We Are
                 </span>
 
-
                 <h2
                   className="
                     mt-3
@@ -487,7 +477,6 @@ export default function About() {
                   </span>
                 </h2>
 
-
                 <p
                   className="
                     mt-6
@@ -502,7 +491,6 @@ export default function About() {
                   simpler, more organized and more reliable.
                 </p>
 
-
                 <p
                   className="
                     mt-4
@@ -516,7 +504,6 @@ export default function About() {
                   leisure holidays, we coordinate the essential parts
                   of your travel so you can focus on what matters most.
                 </p>
-
 
                 {/* Points */}
 
@@ -623,7 +610,6 @@ export default function About() {
 
           </Reveal>
 
-
           <div
             className="
               grid
@@ -682,7 +668,6 @@ export default function About() {
                       <Icon />
                     </div>
 
-
                     <h3
                       className="
                         mt-6
@@ -693,7 +678,6 @@ export default function About() {
                     >
                       {service.title}
                     </h3>
-
 
                     <div
                       className="
@@ -778,7 +762,6 @@ export default function About() {
 
           </Reveal>
 
-
           <div
             className="
               grid
@@ -834,7 +817,6 @@ export default function About() {
                   <FaHandshake />
                 </div>
 
-
                 <h3
                   className="
                     mt-7
@@ -845,7 +827,6 @@ export default function About() {
                 >
                   Our Mission
                 </h3>
-
 
                 <p
                   className="
@@ -911,7 +892,6 @@ export default function About() {
                   <FaGlobeAsia />
                 </div>
 
-
                 <h3
                   className="
                     mt-7
@@ -921,7 +901,6 @@ export default function About() {
                 >
                   Our Vision
                 </h3>
-
 
                 <p
                   className="
@@ -1000,7 +979,6 @@ export default function About() {
 
           </Reveal>
 
-
           <div
             className="
               grid
@@ -1060,7 +1038,6 @@ export default function About() {
                         <Icon />
                       </div>
 
-
                       <span
                         className="
                           text-gray-200
@@ -1073,7 +1050,6 @@ export default function About() {
 
                     </div>
 
-
                     <h3
                       className="
                         mt-7
@@ -1084,7 +1060,6 @@ export default function About() {
                     >
                       {item.title}
                     </h3>
-
 
                     <p
                       className="
@@ -1154,7 +1129,6 @@ export default function About() {
           "
         />
 
-
         <div
           className="
             relative
@@ -1182,7 +1156,6 @@ export default function About() {
               Let's Travel Together
             </span>
 
-
             <h2
               className="
                 mt-4
@@ -1197,7 +1170,6 @@ export default function About() {
               <br />
               With The Right Partner.
             </h2>
-
 
             <p
               className="
@@ -1214,19 +1186,19 @@ export default function About() {
               or your next holiday, our team is ready to help you plan it.
             </p>
 
-
             <a
               href="/sarathi-nx-official/#contact"
               className="
                 inline-flex
                 items-center
-                gap-3
-                mt-8
+                gap-2.5
+                mt-7
                 bg-white
                 text-[#103a6d]
-                px-8
-                py-4
+                px-6
+                py-3
                 rounded-full
+                text-sm
                 font-bold
                 shadow-xl
                 hover:bg-orange-500
@@ -1238,7 +1210,7 @@ export default function About() {
             >
               Contact Our Team
 
-              <FaArrowRight className="text-sm" />
+              <FaArrowRight className="text-xs" />
 
             </a>
 

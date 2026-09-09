@@ -33,7 +33,7 @@ export default function Home() {
       {/* <UpcomingEvents/> */}
       {/* <UpcomingExhibitions/> */}
       {/* <Industries/> */}
-      <Gallery/>
+      {/* <Gallery/> */}
       <Testimonials/>
       <Contact/>
       {/* <Footer/> */}

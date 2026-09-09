@@ -120,9 +120,19 @@ export default function Services() {
           HERO BANNER
       ===================================================== */}
 
-      <section className="relative min-h-[560px] md:min-h-[630px] overflow-hidden bg-[#dce6f0]">
+      <section
+        className="
+          relative
+          h-[350px]
+          sm:h-[380px]
+          md:h-[410px]
+          lg:h-[430px]
+          overflow-hidden
+          bg-[#dce6f0]
+        "
+      >
 
-        {/* Flight Image */}
+        {/* Background Image */}
 
         <img
           src={flightImage}
@@ -132,71 +142,81 @@ export default function Services() {
             inset-0
             w-full
             h-full
-            object-contain
+            object-cover
             object-center
           "
         />
 
-        {/* Dark blue gradient */}
+        {/* Main Overlay */}
 
         <div
           className="
             absolute
             inset-0
             bg-gradient-to-r
-            from-[#062f5f]/75
-            via-[#073e76]/40
-            to-transparent
+            from-[#062f5f]/90
+            via-[#073e76]/60
+            to-[#073e76]/10
           "
         />
 
-        {/* Additional subtle bottom gradient */}
+        {/* Bottom Overlay */}
 
         <div
           className="
             absolute
             inset-x-0
             bottom-0
-            h-40
+            h-32
             bg-gradient-to-t
-            from-black/25
+            from-black/35
             to-transparent
           "
         />
 
-        {/* Hero Content */}
+
+        {/* =================================================
+            HERO CONTENT
+        ================================================= */}
 
         <div
           className="
             relative
             z-10
+            h-full
             max-w-[1280px]
             mx-auto
             px-5
             sm:px-8
             lg:px-10
-            pt-24
-            md:pt-32
+            flex
+            items-center
+            -translate-y-10
+            sm:-translate-y-9
+            md:-translate-y-8
+            lg:-translate-y-7
           "
         >
 
           <Reveal>
 
-            <div className="max-w-[650px]">
+            <div className="max-w-[600px]">
 
-              {/* Small heading */}
+              {/* Eyebrow */}
 
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-2">
 
-                <span className="w-11 h-[2px] bg-orange-500" />
+                <span className="w-9 md:w-11 h-[2px] bg-orange-500" />
 
                 <span
                   className="
                     text-white
-                    text-xs
+                    text-[10px]
+                    sm:text-xs
                     md:text-sm
                     font-bold
-                    tracking-[3px]
+                    tracking-[2.5px]
+                    md:tracking-[3px]
                   "
                 >
                   FLIGHT & AIR TRAVEL
@@ -205,17 +225,17 @@ export default function Services() {
               </div>
 
 
-              {/* Main heading */}
+              {/* Heading */}
 
               <h1
                 className="
                   text-white
-                  text-4xl
-                  sm:text-5xl
-                  md:text-6xl
-                  lg:text-[64px]
+                  text-3xl
+                  sm:text-4xl
+                  md:text-5xl
+                  lg:text-[54px]
                   font-extrabold
-                  leading-[1.04]
+                  leading-[1.02]
                   drop-shadow-lg
                 "
               >
@@ -232,12 +252,15 @@ export default function Services() {
 
               <p
                 className="
-                  mt-6
+                  mt-3
+                  md:mt-3.5
                   text-white
-                  text-base
-                  md:text-lg
-                  leading-7
-                  max-w-[560px]
+                  text-sm
+                  sm:text-base
+                  md:text-[17px]
+                  leading-6
+                  md:leading-6
+                  max-w-[520px]
                   drop-shadow-md
                 "
               >
@@ -254,14 +277,19 @@ export default function Services() {
                 className="
                   inline-flex
                   items-center
-                  gap-3
-                  mt-8
-                  px-7
-                  py-3.5
+                  gap-2.5
+                  mt-3.5
+                  md:mt-4
+                  px-5
+                  md:px-6
+                  py-2
+                  md:py-2.5
                   rounded-full
                   bg-orange-500
                   hover:bg-orange-600
                   text-white
+                  text-sm
+                  md:text-[15px]
                   font-semibold
                   shadow-xl
                   transition-all
@@ -273,8 +301,10 @@ export default function Services() {
 
                 <span
                   className="
-                    w-8
-                    h-8
+                    w-6
+                    h-6
+                    md:w-7
+                    md:h-7
                     rounded-full
                     bg-white
                     text-orange-500
@@ -283,7 +313,7 @@ export default function Services() {
                     justify-center
                   "
                 >
-                  <FaArrowRight className="text-xs" />
+                  <FaArrowRight className="text-[9px] md:text-[10px]" />
                 </span>
 
               </a>
@@ -307,11 +337,13 @@ export default function Services() {
               className="
                 bg-white/95
                 backdrop-blur-md
-                rounded-t-[30px]
-                shadow-[0_-8px_30px_rgba(0,0,0,0.12)]
-                px-5
-                md:px-8
-                py-5
+                rounded-t-2xl
+                md:rounded-t-[24px]
+                shadow-[0_-6px_25px_rgba(0,0,0,0.12)]
+                px-4
+                md:px-6
+                py-3
+                md:py-4
               "
             >
 
@@ -325,22 +357,26 @@ export default function Services() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2
+                    sm:py-1
                   "
                 >
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-9
+                      h-9
+                      md:w-10
+                      md:h-10
                       rounded-full
                       bg-blue-50
                       text-[#0754bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-base
+                      md:text-lg
                       shrink-0
                     "
                   >
@@ -349,11 +385,11 @@ export default function Services() {
 
                   <div>
 
-                    <h4 className="text-[#153764] font-bold text-sm">
+                    <h4 className="text-[#153764] font-bold text-xs md:text-sm">
                       Global Flights
                     </h4>
 
-                    <p className="text-[#153764] text-xs mt-0.5">
+                    <p className="text-[#153764] text-[10px] md:text-xs mt-0.5">
                       Worldwide Connections
                     </p>
 
@@ -370,25 +406,29 @@ export default function Services() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2
+                    sm:py-1
                     sm:border-l
                     border-gray-200
-                    sm:pl-8
+                    sm:pl-6
                   "
                 >
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-9
+                      h-9
+                      md:w-10
+                      md:h-10
                       rounded-full
                       bg-blue-50
                       text-[#0754bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-base
+                      md:text-lg
                       shrink-0
                     "
                   >
@@ -397,11 +437,11 @@ export default function Services() {
 
                   <div>
 
-                    <h4 className="text-[#153764] font-bold text-sm">
+                    <h4 className="text-[#153764] font-bold text-xs md:text-sm">
                       International Travel
                     </h4>
 
-                    <p className="text-[#153764] text-xs mt-0.5">
+                    <p className="text-[#153764] text-[10px] md:text-xs mt-0.5">
                       Business & Leisure
                     </p>
 
@@ -418,25 +458,29 @@ export default function Services() {
                     items-center
                     justify-center
                     sm:justify-start
-                    gap-4
-                    py-3
+                    gap-3
+                    py-2
+                    sm:py-1
                     sm:border-l
                     border-gray-200
-                    sm:pl-8
+                    sm:pl-6
                   "
                 >
 
                   <div
                     className="
-                      w-11
-                      h-11
+                      w-9
+                      h-9
+                      md:w-10
+                      md:h-10
                       rounded-full
                       bg-blue-50
                       text-[#0754bd]
                       flex
                       items-center
                       justify-center
-                      text-xl
+                      text-base
+                      md:text-lg
                       shrink-0
                     "
                   >
@@ -445,11 +489,11 @@ export default function Services() {
 
                   <div>
 
-                    <h4 className="text-[#153764] font-bold text-sm">
+                    <h4 className="text-[#153764] font-bold text-xs md:text-sm">
                       Dedicated Support
                     </h4>
 
-                    <p className="text-[#153764] text-xs mt-0.5">
+                    <p className="text-[#153764] text-[10px] md:text-xs mt-0.5">
                       Travel Assistance
                     </p>
 
@@ -472,7 +516,7 @@ export default function Services() {
           INTRODUCTION
       ===================================================== */}
 
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-14 md:py-18 lg:py-20 bg-white">
 
         <div
           className="
@@ -499,7 +543,6 @@ export default function Services() {
               Our Travel Services
             </span>
 
-
             <h2
               className="
                 mt-3
@@ -508,6 +551,7 @@ export default function Services() {
                 lg:text-[42px]
                 font-bold
                 text-[#102f59]
+                leading-tight
               "
             >
               Everything You Need for
@@ -515,7 +559,6 @@ export default function Services() {
                 {" "}Seamless Travel
               </span>
             </h2>
-
 
             <p
               className="
@@ -542,7 +585,7 @@ export default function Services() {
           SERVICES
       ===================================================== */}
 
-      <section className="py-16 md:py-20 bg-[#f6f9fd]">
+      <section className="py-14 md:py-18 lg:py-20 bg-[#f6f9fd]">
 
         <div
           className="
@@ -553,8 +596,6 @@ export default function Services() {
             lg:px-10
           "
         >
-
-          {/* Section Heading */}
 
           <Reveal>
 
@@ -594,12 +635,14 @@ export default function Services() {
 
           <div
             className="
-              mt-12
+              mt-10
+              md:mt-12
               grid
               grid-cols-1
               sm:grid-cols-2
               lg:grid-cols-3
-              gap-7
+              gap-6
+              md:gap-7
             "
           >
 
@@ -620,7 +663,8 @@ export default function Services() {
                       border
                       border-gray-200
                       rounded-2xl
-                      p-7
+                      p-6
+                      md:p-7
                       h-full
                       flex
                       flex-col
@@ -631,8 +675,6 @@ export default function Services() {
                       duration-300
                     "
                   >
-
-                    {/* Icon */}
 
                     <div
                       className="
@@ -655,11 +697,10 @@ export default function Services() {
                     </div>
 
 
-                    {/* Title */}
-
                     <h3
                       className="
-                        mt-6
+                        mt-5
+                        md:mt-6
                         text-xl
                         font-bold
                         text-[#17375f]
@@ -670,8 +711,6 @@ export default function Services() {
                       {service.title}
                     </h3>
 
-
-                    {/* Description */}
 
                     <p
                       className="
@@ -684,8 +723,6 @@ export default function Services() {
                       {service.description}
                     </p>
 
-
-                    {/* Points */}
 
                     <div className="mt-5 space-y-3">
 
@@ -716,8 +753,6 @@ export default function Services() {
                     </div>
 
 
-                    {/* Bottom CTA */}
-
                     <a
                       href="/sarathi-nx-official/#contact"
                       className="
@@ -734,6 +769,7 @@ export default function Services() {
                       "
                     >
                       Enquire Now
+
                       <FaArrowRight className="text-xs" />
                     </a>
 
@@ -754,7 +790,7 @@ export default function Services() {
           WHY CHOOSE US
       ===================================================== */}
 
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-14 md:py-18 lg:py-20 bg-white">
 
         <div
           className="
@@ -817,16 +853,16 @@ export default function Services() {
           </Reveal>
 
 
-          {/* Advantages */}
-
           <div
             className="
-              mt-12
+              mt-10
+              md:mt-12
               grid
               grid-cols-1
               sm:grid-cols-2
               lg:grid-cols-4
-              gap-6
+              gap-5
+              md:gap-6
             "
           >
 
@@ -847,7 +883,8 @@ export default function Services() {
                       border
                       border-gray-100
                       rounded-2xl
-                      p-7
+                      p-6
+                      md:p-7
                       text-center
                       hover:bg-white
                       hover:shadow-lg
@@ -914,9 +951,18 @@ export default function Services() {
           FINAL CTA
       ===================================================== */}
 
-      <section className="relative py-20 md:py-24 bg-[#063b73] overflow-hidden">
+      <section
+        className="
+          relative
+          py-16
+          md:py-20
+          lg:py-24
+          bg-[#063b73]
+          overflow-hidden
+        "
+      >
 
-        {/* Decorative circles */}
+        {/* Decorative Circle 1 */}
 
         <div
           className="
@@ -929,6 +975,9 @@ export default function Services() {
             bg-blue-400/10
           "
         />
+
+
+        {/* Decorative Circle 2 */}
 
         <div
           className="
@@ -975,9 +1024,11 @@ export default function Services() {
               className="
                 mt-3
                 text-3xl
+                sm:text-4xl
                 md:text-5xl
                 font-bold
                 text-white
+                leading-tight
               "
             >
               Let's Plan Your
@@ -1010,13 +1061,17 @@ export default function Services() {
                 inline-flex
                 items-center
                 gap-3
-                mt-8
+                mt-7
+                md:mt-8
                 bg-white
                 text-[#063b73]
-                px-8
+                px-7
+                md:px-8
                 py-3.5
                 rounded-full
                 font-semibold
+                text-sm
+                md:text-base
                 hover:bg-orange-50
                 transition-all
                 duration-300
@@ -1027,7 +1082,6 @@ export default function Services() {
               Contact Our Team
 
               <FaArrowRight className="text-sm" />
-
             </a>
 
           </Reveal>
